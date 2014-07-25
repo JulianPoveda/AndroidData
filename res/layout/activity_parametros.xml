@@ -1,0 +1,174 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${packageName}.${activityClass}" >
+
+    <TextView
+        android:id="@+id/LblListaTrabajoSolicitudes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="43dp"
+        android:layout_marginTop="41dp"
+        android:text="@string/LblParametros"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/LblListaTrabajoRevision"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/LblListaTrabajoSolicitudes"
+        android:layout_alignRight="@+id/LblListaTrabajoSolicitudes"
+        android:layout_below="@+id/LblListaTrabajoSolicitudes"
+        android:layout_marginTop="33dp"
+        android:text="@string/LblPDA"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/LblParametrosAlcantarillado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/LblListaTrabajoRevision"
+        android:layout_alignRight="@+id/LblListaTrabajoRevision"
+        android:layout_below="@+id/TxtParametrosPDA"
+        android:layout_marginTop="21dp"
+        android:text="@string/LblParamPuerto"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/TxtParametrosPuerto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/LblParametrosAlcantarillado"
+        android:layout_alignBottom="@+id/LblParametrosAlcantarillado"
+        android:layout_alignLeft="@+id/TxtParametrosPDA"
+        android:ems="10"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/TxtParametrosPDA"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/LblListaTrabajoRevision"
+        android:layout_toRightOf="@+id/LblListaTrabajoSolicitudes"
+        android:ems="10"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/TxtParametrosIpServidor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/LblParametrosArea"
+        android:layout_alignBottom="@+id/LblParametrosArea"
+        android:layout_marginLeft="17dp"
+        android:layout_toRightOf="@+id/LblParametrosArea"
+        android:ems="10"
+        android:inputType="text" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/LblParametrosPisos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/TxtParametrosPuerto"
+        android:layout_alignLeft="@+id/LblParametrosArea"
+        android:layout_alignRight="@+id/LblParametrosArea"
+        android:text="@string/LblParamServicio"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/TxtParametrosServicio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/LblParametrosPisos"
+        android:layout_alignBottom="@+id/LblParametrosPisos"
+        android:layout_alignLeft="@+id/TxtParametrosIpServidor"
+        android:ems="10"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/LblParametrosImpresora"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/LblParametrosAlcantarillado"
+        android:layout_alignRight="@+id/LblParametrosAlcantarillado"
+        android:layout_below="@+id/TxtParametrosPuerto"
+        android:layout_marginTop="20dp"
+        android:text="@string/LblParamImpresora"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/LblParametrosTecnico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/LblParametrosImpresora"
+        android:layout_alignBottom="@+id/LblParametrosImpresora"
+        android:layout_alignLeft="@+id/LblParametrosPisos"
+        android:layout_toLeftOf="@+id/TxtParametrosNombreTecnico"
+        android:text="@string/LblParamTecnico"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/LblParametrosArea"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/LblParametrosAlcantarillado"
+        android:layout_marginLeft="88dp"
+        android:layout_toRightOf="@+id/TxtParametrosPDA"
+        android:text="@string/LblParamServidor"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/TxtParametrosNombreTecnico"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/LblParametrosTecnico"
+        android:layout_alignBottom="@+id/LblParametrosTecnico"
+        android:layout_alignLeft="@+id/TxtParametrosServicio"
+        android:ems="10"
+        android:inputType="text" />
+
+    <Spinner
+        android:id="@+id/CmbParametrosImpresoras"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignLeft="@+id/TxtParametrosWS"
+        android:layout_alignTop="@+id/LblParametrosImpresora"
+        android:layout_toLeftOf="@+id/LblParametrosArea" />
+
+    <Button
+        android:id="@+id/BtnParametrosGuardar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TxtParametrosWS"
+        android:layout_marginTop="17dp"
+        android:layout_toRightOf="@+id/TxtParametrosWS"
+        android:text="@string/BtnParamGuardar" />
+
+    <EditText
+        android:id="@+id/TxtParametrosWS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/CmbParametrosImpresoras"
+        android:layout_marginTop="21dp"
+        android:layout_toLeftOf="@+id/LblParametrosArea"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/LblParametosWS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/TxtParametrosWS"
+        android:layout_alignLeft="@+id/LblParametrosImpresora"
+        android:layout_alignRight="@+id/LblParametrosImpresora"
+        android:layout_alignTop="@+id/TxtParametrosWS"
+        android:gravity="left|center_vertical"
+        android:text="@string/LblParamWS"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+   
+</RelativeLayout>
+

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><string name="dc_Lbl_Titulo">Titulo Dialogo Confirmacion</string>
+<string name="dc_Lbl_Mensaje">Mensaje de Confirmacion</string>
+<string name="dc_Btn_Aceptar">Aceptar</string>
+<string name="dc_Btn_Cancelar">Cancelar</string>
+<string name="di_Lbl_Mensaje">Mensaje de Informacion</string>
+<string name="di_Btn_Aceptar">Aceptar</string>
+    
+</resources>

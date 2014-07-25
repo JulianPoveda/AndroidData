@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><string name="AdecuacionesLblTitulo">ADECUACIONES A REALIZAR</string>
+<string name="AdecuacionesLblOtros">Otros</string>
+<string name="AdecuacionesLblSuspension">Suspension</string>
+<string name="AdecuacionesLblArmario">Instalacion de Armario</string>
+<string name="AdecuacionesLblSoporte">Adecuacion o Cambio de Soporte</string>
+<string name="AdecuacionesLblTierra">Cambio o Instalacion Puesta a Tierra</string>
+<string name="AdecuacionesLblAcometida">Cambio o Instalacion de Acometida</string>
+<string name="AdecuacionesLblCaja">Cambio o Instalacion de Caja</string>
+<string name="AdecuacionesLblTubo">Cambio Tubo</string>
+<string name="AdecuacionesLblMedidor">Cambio o Instalacion de Medidor</string>
+<string name="AdecuacionesBtnGuardar">Guardar Adecuaciones</string>
+    
+</resources>

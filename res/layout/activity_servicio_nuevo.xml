@@ -1,0 +1,499 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LayoutServicioNuevo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${packageName}.${activityClass}" >
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayouyLeft"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblPropietario"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ServicioNuevoTxtPropietario"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/ServicioNuevoTxtPropietario"
+            android:gravity="right|center_vertical"
+            android:text="@string/ServicioNuevoLblPropietario"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/ServicioNuevoTxtPropietario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="21dp"
+            android:layout_toRightOf="@+id/ServicioNuevoLblPropietario"
+            android:ems="10"
+            android:inputType="textPersonName" >
+
+            <requestFocus />
+        </EditText>
+
+        <Spinner
+            android:id="@+id/ServicioNuevoCmbTipoUsuario"
+            android:layout_width="180dp"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/ServicioNuevoTxtPropietario"
+            android:layout_below="@+id/ServicioNuevoTxtPropietario" />
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblTipoPropietario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ServicioNuevoCmbTipoUsuario"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/ServicioNuevoLblPropietario"
+            android:layout_below="@+id/ServicioNuevoLblPropietario"
+            android:gravity="right|center_vertical"
+            android:text="@string/ServicioNuevoLblTipoEnterado"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblDireccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ServicioNuevoTxtDireccion"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/ServicioNuevoTxtDireccion"
+            android:layout_toLeftOf="@+id/ServicioNuevoCmbTipoUsuario"
+            android:gravity="right|center_vertical"
+            android:text="@string/ServicioNuevoLblDireccion"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/ServicioNuevoCmbMunicipio"
+            android:layout_width="220dp"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/ServicioNuevoTxtDireccion"
+            android:layout_below="@+id/ServicioNuevoTxtDireccion" />
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblMunicipio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ServicioNuevoCmbMunicipio"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/ServicioNuevoLblDireccion"
+            android:layout_alignTop="@+id/ServicioNuevoCmbMunicipio"
+            android:gravity="right|center_vertical"
+            android:text="@string/ServicioNuevoLblMunicipio"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/ServicioNuevoCmbClaseServicio"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignTop="@+id/ServicioNuevoLblClaseServicio"
+            android:layout_toRightOf="@+id/ServicioNuevoLblClaseServicio" />
+
+        <Spinner
+            android:id="@+id/ServicioNuevoCmbTipoConexion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ServicioNuevoCmbEstadoServicio"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/ServicioNuevoCmbEstadoServicio"
+            android:layout_toRightOf="@+id/ServicioNuevoLblTipoServicio" />
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblTipoServicio"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ServicioNuevoCmbTipoConexion"
+            android:layout_alignTop="@+id/ServicioNuevoCmbEstadoServicio"
+            android:layout_toRightOf="@+id/ServicioNuevoCmbEstadoServicio"
+            android:gravity="right|center_vertical"
+            android:text="@string/ServicioNuevoLblTipoServicio"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/ServicioNuevoTxtLecturaContador"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ServicioNuevoTxtSerieContador"
+            android:layout_alignBottom="@+id/ServicioNuevoTxtSerieContador"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/ServicioNuevoLblLecturaContador"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblSerieContador"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ServicioNuevoTxtSerieContador"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/ServicioNuevoCmbEstadoServicio"
+            android:gravity="right|center_vertical"
+            android:text="@string/ServicioNuevoLblSerieContador"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/ServicioNuevoTxtSerieContador"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ServicioNuevoLblEstadoServicio"
+            android:layout_toRightOf="@+id/ServicioNuevoLblSerieContador"
+            android:ems="10"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblCuentaVecina1"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ServicioNuevoTxtCuenta1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/ServicioNuevoTxtCuenta1"
+            android:gravity="right|center_vertical"
+            android:text="@string/ServicioNuevoLblCuentaVecina1"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblCuentaVecina2"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ServicioNuevoTxtCuenta1"
+            android:layout_alignTop="@+id/ServicioNuevoTxtCuenta1"
+            android:layout_toRightOf="@+id/ServicioNuevoTxtCuenta1"
+            android:gravity="right|center_vertical"
+            android:text="@string/ServicioNuevoLblCuentaVecina2"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/ServicioNuevoTxtCuenta1"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ServicioNuevoTxtSerieContador"
+            android:layout_toRightOf="@+id/ServicioNuevoLblCuentaVecina1"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/ServicioNuevoTxtCuenta2"
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ServicioNuevoLblCuentaVecina2"
+            android:layout_alignBottom="@+id/ServicioNuevoLblCuentaVecina2"
+            android:layout_toRightOf="@+id/ServicioNuevoLblCuentaVecina2"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblLecturaContador"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ServicioNuevoLblCuentaVecina2"
+            android:layout_below="@+id/ServicioNuevoCmbTipoConexion"
+            android:layout_toRightOf="@+id/ServicioNuevoTxtSerieContador"
+            android:gravity="right|center_vertical"
+            android:text="@string/ServicioNuevoLblLecturaContador"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/ServicioNuevoTxtNodoTransformador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/ServicioNuevoLblCuentaVecina2"
+            android:layout_alignRight="@+id/ServicioNuevoTxtCuenta2"
+            android:layout_below="@+id/ServicioNuevoLblCuentaVecina2"
+            android:ems="10"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/ServicioNuevoTxtNodoSecundario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/ServicioNuevoTxtNodoTransformador"
+            android:layout_alignRight="@+id/ServicioNuevoTxtNodoTransformador"
+            android:layout_below="@+id/ServicioNuevoTxtNodoTransformador"
+            android:ems="10"
+            android:inputType="textCapWords" />
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblNodoTransformador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ServicioNuevoTxtNodoTransformador"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/ServicioNuevoTxtCuenta1"
+            android:layout_below="@+id/ServicioNuevoTxtCuenta1"
+            android:gravity="right|center_vertical"
+            android:text="@string/ServicioNuevoLblNodoTransformador"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblNodoSecundario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ServicioNuevoTxtNodoSecundario"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/ServicioNuevoLblNodoTransformador"
+            android:layout_alignTop="@+id/ServicioNuevoTxtNodoSecundario"
+            android:gravity="right|center_vertical"
+            android:text="@string/ServicioNuevoLblNodoSecundario"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/ServicioNuevoCmbUbicacion"
+            android:layout_width="110dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/ServicioNuevoCmbTipoUsuario" />
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblUbicacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ServicioNuevoCmbUbicacion"
+            android:layout_below="@+id/ServicioNuevoTxtPropietario"
+            android:layout_toLeftOf="@+id/ServicioNuevoCmbUbicacion"
+            android:gravity="right|center_vertical"
+            android:text="@string/ServicioNuevoLblUbicacion"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/ServicioNuevoTxtDireccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/ServicioNuevoCmbTipoUsuario"
+            android:layout_toRightOf="@+id/ServicioNuevoLblDireccion"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <Spinner
+            android:id="@+id/ServicioNuevoCmbEstadoServicio"
+            android:layout_width="170dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/ServicioNuevoCmbClaseServicio"
+            android:layout_toRightOf="@+id/ServicioNuevoLblEstadoServicio" />
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblEstadoServicio"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ServicioNuevoCmbEstadoServicio"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/ServicioNuevoCmbEstadoServicio"
+            android:gravity="right|center_vertical"
+            android:text="@string/ServicioNuevoLblEstadoServicio"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/ServicioNuevoCmbEstrato"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/ServicioNuevoTxtDireccion" />
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblEstrato"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ServicioNuevoCmbEstrato"
+            android:layout_alignTop="@+id/ServicioNuevoCmbEstrato"
+            android:layout_toLeftOf="@+id/ServicioNuevoCmbEstrato"
+            android:gravity="right|center_vertical"
+            android:text="@string/ServicioNuevoLblEstrato"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblClaseServicio"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/ServicioNuevoCmbMunicipio"
+            android:gravity="right|center_vertical"
+            android:text="@string/ServicioNuevoLblClaseServicio"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayoutRight"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblTituloDocumentacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/ServicioNuevoLblDocTitulo"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Spinner
+            android:id="@+id/ServicioNuevoCmbDocEscritura"
+            android:layout_width="100dp"
+            android:layout_height="45dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/ServicioNuevoLblTituloDocumentacion"
+            android:layout_marginRight="22dp"
+            android:layout_marginTop="24dp" />
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblDocLibertad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ServicioNuevoCmbDocEscritura"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/ServicioNuevoCmbDocEscritura"
+            android:layout_toLeftOf="@+id/ServicioNuevoCmbDocEscritura"
+            android:gravity="right|center_vertical"
+            android:text="@string/ServicioNuevoLblDocLibertad"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/ServicioNuevoCmbDocEstratificacion"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_alignLeft="@+id/ServicioNuevoCmbDocEscritura"
+            android:layout_alignRight="@+id/ServicioNuevoCmbDocEscritura"
+            android:layout_below="@+id/ServicioNuevoCmbDocEscritura" />
+
+        <Spinner
+            android:id="@+id/ServicioNuevoCmbDocCedulaPropietario"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_alignLeft="@+id/ServicioNuevoCmbDocEstratificacion"
+            android:layout_alignRight="@+id/ServicioNuevoCmbDocEstratificacion"
+            android:layout_below="@+id/ServicioNuevoCmbDocEstratificacion" />
+
+        <Spinner
+            android:id="@+id/ServicioNuevoCmbDocReciboVecino"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_alignLeft="@+id/ServicioNuevoCmbDocCedulaPropietario"
+            android:layout_alignRight="@+id/ServicioNuevoCmbDocCedulaPropietario"
+            android:layout_below="@+id/ServicioNuevoCmbDocCedulaPropietario" />
+
+        <Spinner
+            android:id="@+id/ServicioNuevoCmbDocRealizaInstalacion"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_alignLeft="@+id/ServicioNuevoCmbDocReciboVecino"
+            android:layout_alignRight="@+id/ServicioNuevoCmbDocEstratificacion"
+            android:layout_below="@+id/ServicioNuevoCmbDocReciboVecino" />
+
+        <Spinner
+            android:id="@+id/ServicioNuevoCmbDocCompraContador"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_alignLeft="@+id/ServicioNuevoCmbDocRealizaInstalacion"
+            android:layout_alignRight="@+id/ServicioNuevoCmbDocRealizaInstalacion"
+            android:layout_below="@+id/ServicioNuevoCmbDocRealizaInstalacion" />
+
+        <Spinner
+            android:id="@+id/ServicioNuevoCmbDocAutorizacionUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_alignLeft="@+id/ServicioNuevoCmbDocCompraContador"
+            android:layout_alignRight="@+id/ServicioNuevoCmbDocCompraContador"
+            android:layout_below="@+id/ServicioNuevoCmbDocCompraContador" />
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblDocEstratificacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ServicioNuevoCmbDocEstratificacion"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/ServicioNuevoCmbDocEstratificacion"
+            android:layout_toLeftOf="@+id/ServicioNuevoCmbDocEstratificacion"
+            android:gravity="right|center_vertical"
+            android:text="@string/ServicioNuevoLblDocEstratificacion"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblDocCedulaPropietario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ServicioNuevoCmbDocReciboVecino"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/ServicioNuevoLblDocEstratificacion"
+            android:layout_alignTop="@+id/ServicioNuevoCmbDocCedulaPropietario"
+            android:gravity="right|center_vertical"
+            android:text="@string/ServicioNuevoLblDocCedulaPropietario"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblDocReciboVecino"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ServicioNuevoCmbDocRealizaInstalacion"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/ServicioNuevoLblDocCedulaPropietario"
+            android:layout_below="@+id/ServicioNuevoLblDocCedulaPropietario"
+            android:gravity="right|center_vertical"
+            android:text="@string/ServicioNuevoLblDocReciboVecino"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblDocRealizaInstalacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ServicioNuevoCmbDocCompraContador"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/ServicioNuevoCmbDocRealizaInstalacion"
+            android:layout_toLeftOf="@+id/ServicioNuevoCmbDocRealizaInstalacion"
+            android:gravity="right|center_vertical"
+            android:text="@string/ServicioNuevoLblDocRealizaInstalacion"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblDocCompraContador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ServicioNuevoCmbDocAutorizacionUsuario"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/ServicioNuevoLblDocRealizaInstalacion"
+            android:layout_below="@+id/ServicioNuevoLblDocRealizaInstalacion"
+            android:gravity="right|center_vertical"
+            android:text="@string/ServicioNuevoLblDocCompraContador"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/ServicioNuevoLblDocAutorizacionUsuario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ServicioNuevoCmbDocAutorizacionUsuario"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/ServicioNuevoLblDocCompraContador"
+            android:layout_below="@+id/ServicioNuevoLblDocCompraContador"
+            android:gravity="right|center_vertical"
+            android:text="@string/ServicioNuevoLblDocAutorizacionUsuario"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Button
+            android:id="@+id/ServicioNuevoBtnCrear"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="27dp"
+            android:layout_marginRight="26dp"
+            android:layout_toLeftOf="@+id/ServicioNuevoBtnCancelar"
+            android:text="@string/ServicioNuevoBtnCrear" />
+
+        <Button
+            android:id="@+id/ServicioNuevoBtnCancelar"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ServicioNuevoBtnCrear"
+            android:layout_alignBottom="@+id/ServicioNuevoBtnCrear"
+            android:layout_alignRight="@+id/ServicioNuevoCmbDocAutorizacionUsuario"
+            android:layout_marginRight="22dp"
+            android:text="@string/ServicioNuevoBtnCancelar" />
+
+    </RelativeLayout>
+
+</LinearLayout>

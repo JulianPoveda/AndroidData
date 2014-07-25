@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><string name="BodegaContadoresLblTitulo">CONTADORES DISPONIBLES</string>
+<string name="BodegaContadoresBtnAceptar">Aceptar</string>
+<string name="BodegaContadoresBtnCancelar">Cancelar</string>
+<string name="BodegaContadorLblMarca">MARCA</string>
+<string name="BodegaContadorLblSerie">SERIE</string>
+<string name="BodegaContadorLblLectura">LECTURA</string>
+<string name="BodegaContadorLblTipo">TIPO</string>
+<string name="BodegaContadoresLblSerie">Serie:</string>
+<string name="BodegaContadorTxtMarca">Marca</string>
+<string name="BodegaContadorTxtSerie">Serie</string>
+<string name="BodegaContadorTxtLectura">Lectura</string>
+<string name="BodegaContadorTxtTipo">Tipo</string>
+<string name="BodegaContadoresTxtSerie">Serie</string>
+    
+</resources>

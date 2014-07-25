@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="LblParametros">PARAMETROS</string>
+    <string name="LblParamPuerto">Puerto</string>
+    <string name="LblParamServicio">Pagina</string>
+    <string name="LblParamTecnico">Nombre del Tecnico </string>
+    <string name="LblParamServidor">Servidor</string>
+    <string name="LblParamCedula">Cedula</string>
+    <string name="LblParamImpresora">Impresora</string>
+    <string name="BtnParamGuardar">Guardar Parametros</string>
+    <string name="LblParamWS">Web Service</string>
+    
+</resources>

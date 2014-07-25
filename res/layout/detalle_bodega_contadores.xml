@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+    
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/BodegaContadorTxtMarca"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/BodegaContadorTxtMarca"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/BodegaContadorTxtSerie"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/BodegaContadorTxtMarca"
+            android:layout_alignBottom="@+id/BodegaContadorTxtMarca"
+            android:layout_toRightOf="@+id/BodegaContadorTxtMarca"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/BodegaContadorTxtSerie"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/BodegaContadorTxtTipo"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/BodegaContadorTxtLectura"
+            android:layout_alignBottom="@+id/BodegaContadorTxtLectura"
+            android:layout_toRightOf="@+id/BodegaContadorTxtLectura"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/BodegaContadorTxtTipo"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <TextView
+            android:id="@+id/BodegaContadorTxtLectura"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/BodegaContadorTxtSerie"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/BodegaContadorTxtLectura"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    </RelativeLayout>
+        
+</LinearLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="EncontradoTitulo">Contador Encontrado</string>
+    <string name="PruebasTitulo">Pruebas Al Medidor</string>
+    <string name="PruebasLblConexion">Conexion</string>
+    <string name="PruebasLblContinuidad">Continuidad</string>
+    <string name="PruebasLblPuente">Puentes</string>
+    <string name="PruebasLblIntegrador">Integrador</string>
+    <string name="PruebasLblVacio">Vacio</string>
+    <string name="PruebasLblFrenado">Frenado</string>
+    <string name="PruebasLblRetirado">Retirado</string>
+    <string name="PruebasLblRozamiento">Rozamiento</string>
+    <string name="PruebasLblAplomado">Aplomado</string>
+    <string name="PruebasBtnGuardar">Guardar</string>
+    <string name="PruebasBtnEliminar">Eliminar</string>
+    <string name="EncontradoLblMarca">Marca</string>
+    <string name="EncontradorLblSerie">Serie</string>
+    <string name="EncontradoLblLectura1">Lectura 1</string>
+    <string name="EncontradoLblLectura2">Lectura 2</string>
+    <string name="EncontradoLblLectura3">Lectura 3</string>
+    <string name="EncontradoCmbTipoMedidor">Tipo</string>
+    <string name="EncontradoBtnRegistrar">Registrar</string>
+    <string name="EncontradoBtnEliminar">Eliminar</string>
+    
+</resources>
