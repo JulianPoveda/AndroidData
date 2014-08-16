@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="detalle_solicitud_revision">N° Revision</string>
-    <string name="detalle_solicitud_nodo">Nodo</string>
-    <string name="detalle_solicitud_tipo">Tipo</string>
-    
-</resources>

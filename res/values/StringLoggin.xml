@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="LblVersion">Version</string>
-    <string name="LblPDA">PDA</string>
-    <string name="LblUsuario">Usuario</string>
-    <string name="LblContrasena">Contraseña</string>
-    <string name="BtnLoggin">Ingresar</string>
-    
-</resources>
