@@ -1,0 +1,589 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${packageName}.${activityClass}" >
+	
+	<RelativeLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:layout_weight="1" >
+
+	    <TextView
+	        android:id="@+id/CensoLblCensoCarga"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true"
+	        android:gravity="center_vertical|center_horizontal"
+	        android:text="@string/CensoLblCenso"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+	    <TextView
+	        android:id="@+id/CensoLblElemento"
+	        android:layout_width="120dp"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBottom="@+id/CensoCmbElemento"
+	        android:layout_alignParentLeft="true"
+	        android:layout_below="@+id/CensoLblCensoCarga"
+	        android:gravity="right|center_vertical"
+	        android:text="@string/CensoLblElemento"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+	    <Spinner
+	        android:id="@+id/CensoCmbElemento"
+	        android:layout_width="wrap_content"
+	        android:layout_height="40dp"
+	        android:layout_alignParentRight="true"
+	        android:layout_below="@+id/CensoLblCensoCarga"
+	        android:layout_toRightOf="@+id/CensoLblElemento" />
+
+	    <Spinner
+	        android:id="@+id/CensoCmbCarga"
+	        android:layout_width="wrap_content"
+	        android:layout_height="40dp"
+	        android:layout_below="@+id/CensoLblElemento"
+	        android:layout_toRightOf="@+id/CensoLblElemento" />
+
+	    <TextView
+	        android:id="@+id/CensoLblCarga"
+	        android:layout_width="150dp"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBottom="@+id/CensoCmbCarga"
+	        android:layout_alignParentLeft="true"
+	        android:layout_below="@+id/CensoLblElemento"
+	        android:layout_toLeftOf="@+id/CensoCmbCarga"
+	        android:gravity="right|center_vertical"
+	        android:text="@string/CensoLblCarga"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+	    <Button
+	        android:id="@+id/CensoBtnEliminar"
+	        android:layout_width="100dp"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBaseline="@+id/CensoBtnRegistrar"
+	        android:layout_alignBottom="@+id/CensoBtnRegistrar"
+	        android:layout_marginLeft="48dp"
+	        android:layout_toRightOf="@+id/CensoBtnRegistrar"
+	        android:text="@string/CensoBtnEliminar" />
+
+	    <TableLayout
+	        android:id="@+id/CensoTablaElementos"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentBottom="true"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignParentRight="true"
+	        android:layout_below="@+id/CensoBtnRegistrar" >
+
+	        <TableRow
+	            android:id="@+id/tableRow2"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+	        </TableRow>
+
+	        <TableRow
+	            android:id="@+id/tableRow3"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+	        </TableRow>
+
+	        <TableRow
+	            android:id="@+id/tableRow4"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content" >
+	        </TableRow>
+	    </TableLayout>
+
+	    <Button
+	        android:id="@+id/CensoBtnRegistrar"
+	        android:layout_width="100dp"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/CensoLblVatios"
+	        android:layout_marginTop="21dp"
+	        android:layout_toRightOf="@+id/CensoLblVatios"
+	        android:text="@string/CensoBtnRegistrar" />
+
+	    <TextView
+	        android:id="@+id/CensoLblCantidad"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_above="@+id/CensoBtnRegistrar"
+	        android:layout_alignRight="@+id/CensoBtnEliminar"
+	        android:layout_below="@+id/CensoCmbCarga"
+	        android:gravity="right|center_vertical"
+	        android:text="@string/CensoLblCantidad"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	    <Spinner
+	        android:id="@+id/CensoCmbCantidad"
+	        android:layout_width="120dp"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBottom="@+id/CensoLblCantidad"
+	        android:layout_alignTop="@+id/CensoLblCantidad"
+	        android:layout_toRightOf="@+id/CensoLblCantidad" />
+
+	    <EditText
+	        android:id="@+id/CensoTxtVatios"
+	        android:layout_width="140dp"
+	        android:layout_height="45dp"
+	        android:layout_alignTop="@+id/CensoLblCantidad"
+	        android:layout_toRightOf="@+id/CensoLblCarga"
+	        android:ems="10"
+	        android:inputType="number" />
+
+	    <TextView
+	        android:id="@+id/CensoLblVatios"
+	        android:layout_width="wrap_content"
+	        android:layout_height="45dp"
+	        android:layout_alignParentLeft="true"
+	        android:layout_below="@+id/CensoCmbCarga"
+	        android:layout_toLeftOf="@+id/CensoTxtVatios"
+	        android:gravity="right|center_vertical"
+	        android:text="@string/CensoLblVatios"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	</RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <Spinner
+            android:id="@+id/ErrorCmbTipoPrueba"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ErrorCmbTipoConexion"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/ErrorCmbTipoConexion"
+            android:layout_toRightOf="@+id/ErrorCmbTipoConexion" />
+
+        <TextView
+            android:id="@+id/ErrorLblConexion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ErrorCmbTipoConexion"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/ErrorCmbTipoConexion"
+            android:gravity="right|center_vertical"
+            android:text="@string/ErrorLblConexion"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/ErrorLblPctError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/ErrorLblPctError"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Spinner
+            android:id="@+id/ErrorCmbTipoConexion"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/ErrorLblPctError"
+            android:layout_toLeftOf="@+id/ErrorChkFaseC"
+            android:layout_toRightOf="@+id/ErrorLblConexion" />
+
+        <CheckBox
+            android:id="@+id/ErrorChkFaseA"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/ErrorLblConexion"
+            android:layout_marginTop="25dp"
+            android:text="@string/ErrorFaseFrenada" />
+
+        <CheckBox
+            android:id="@+id/ErrorChkFaseB"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ErrorChkFaseA"
+            android:layout_alignBottom="@+id/ErrorChkFaseA"
+            android:layout_centerHorizontal="true"
+            android:text="@string/ErrorFaseFrenada" />
+
+        <CheckBox
+            android:id="@+id/ErrorChkFaseC"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ErrorChkFaseB"
+            android:layout_alignBottom="@+id/ErrorChkFaseB"
+            android:layout_alignParentRight="true"
+            android:text="@string/ErrorFaseFrenada" />
+
+        <EditText
+            android:id="@+id/CensoTxtVa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/ErrorChkFaseA"
+            android:layout_below="@+id/ErrorChkFaseA"
+            android:layout_toRightOf="@+id/CensoLblVa1"
+            android:ems="10"
+            android:inputType="numberDecimal" >
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/CensoLblVa1"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/CensoTxtVa"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/ErrorChkFaseA"
+            android:gravity="right|center_vertical"
+            android:text="@string/CensoLblVa1"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/CensoTxtVb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/CensoTxtVa"
+            android:layout_alignBottom="@+id/CensoTxtVa"
+            android:layout_alignRight="@+id/ErrorChkFaseB"
+            android:layout_toRightOf="@+id/CensoLblVb"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/CensoTxtVc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/CensoTxtVb"
+            android:layout_alignBottom="@+id/CensoTxtVb"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/CensoLblVc"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:id="@+id/CensoLblVb"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/CensoTxtVb"
+            android:layout_alignLeft="@+id/ErrorChkFaseB"
+            android:layout_below="@+id/ErrorChkFaseB"
+            android:gravity="right|center_vertical"
+            android:text="@string/CensoLblVb"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/CensoLblVc"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/CensoTxtVc"
+            android:layout_alignLeft="@+id/ErrorChkFaseC"
+            android:layout_below="@+id/ErrorChkFaseC"
+            android:gravity="right|center_vertical"
+            android:text="@string/CensoLblVc"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/CensoTxtIa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/CensoTxtVa"
+            android:layout_alignRight="@+id/CensoTxtVa"
+            android:layout_below="@+id/CensoTxtVa"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/CensoTxtIb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/CensoTxtIa"
+            android:layout_alignBottom="@+id/CensoTxtIa"
+            android:layout_alignLeft="@+id/CensoTxtVb"
+            android:layout_alignRight="@+id/CensoTxtVb"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/CensoTxtIc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/CensoTxtVc"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/CensoTxtVc"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/CensoTxtTc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/CensoTxtIc"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/CensoTxtIc"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/CensoTxtTa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/CensoTxtIa"
+            android:layout_alignRight="@+id/CensoTxtIa"
+            android:layout_below="@+id/CensoTxtIa"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/CensoTxtNvc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/CensoTxtTc"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/CensoTxtTc"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/CensoTxtNvb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/CensoTxtTb"
+            android:layout_alignRight="@+id/CensoTxtTb"
+            android:layout_below="@+id/CensoTxtTb"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/CensoTxtNva"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/CensoTxtNvb"
+            android:layout_alignBottom="@+id/CensoTxtNvb"
+            android:layout_alignLeft="@+id/CensoTxtTa"
+            android:layout_alignRight="@+id/CensoTxtTa"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/CensoLblIa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/CensoTxtIa"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/CensoTxtVa"
+            android:layout_toLeftOf="@+id/CensoTxtIa"
+            android:gravity="right|center_vertical"
+            android:text="@string/CensoLblIa"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/CensoLblIb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/CensoTxtIb"
+            android:layout_alignLeft="@+id/CensoLblVb"
+            android:layout_below="@+id/CensoTxtVb"
+            android:layout_toLeftOf="@+id/CensoTxtIb"
+            android:gravity="right|center_vertical"
+            android:text="@string/CensoLblIb"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/CensoLblIc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/CensoTxtIc"
+            android:layout_alignRight="@+id/CensoLblVc"
+            android:layout_below="@+id/CensoTxtVc"
+            android:layout_toRightOf="@+id/ErrorCmbTipoConexion"
+            android:gravity="right|center_vertical"
+            android:text="@string/CensoLblIc"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/CensoLblTa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/CensoTxtTa"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/CensoTxtIa"
+            android:layout_toLeftOf="@+id/CensoTxtTa"
+            android:gravity="right|center_vertical"
+            android:text="@string/CensoLblTa"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/CensoLblTb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/CensoTxtNvb"
+            android:layout_alignLeft="@+id/CensoLblIb"
+            android:layout_below="@+id/CensoLblIa"
+            android:layout_toLeftOf="@+id/CensoTxtTb"
+            android:gravity="right|center_vertical"
+            android:text="@string/CensoLblTb"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/CensoLblTc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/CensoTxtNvb"
+            android:layout_alignRight="@+id/CensoLblIc"
+            android:layout_below="@+id/CensoLblIa"
+            android:layout_toRightOf="@+id/ErrorCmbTipoConexion"
+            android:gravity="right|center_vertical"
+            android:text="@string/CensoLblTc"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/CensoLblNva"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/CensoTxtNva"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/CensoTxtTa"
+            android:layout_toLeftOf="@+id/CensoTxtNva"
+            android:gravity="right|center_vertical"
+            android:text="@string/CensoLblNva"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/CensoLblNvb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/CensoTxtNvb"
+            android:layout_alignLeft="@+id/CensoLblTb"
+            android:layout_below="@+id/CensoTxtTa"
+            android:layout_toLeftOf="@+id/CensoTxtTb"
+            android:gravity="right|center_vertical"
+            android:text="@string/CensoLblNva"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/CensoLblNvc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/CensoTxtNvb"
+            android:layout_alignLeft="@+id/CensoLblVc"
+            android:layout_below="@+id/CensoTxtTc"
+            android:layout_toLeftOf="@+id/CensoTxtNvc"
+            android:gravity="right|center_vertical"
+            android:text="@string/CensoLblNva"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/ErrorLblFp1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/CensoTxtNva"
+            android:layout_marginTop="45dp"
+            android:text="@string/ErrorLblFp1"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/ErrorLblRevoluciones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ErrorLblFp2"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/CensoTxtNva"
+            android:gravity="right|center_vertical"
+            android:text="@string/ErrorLblRevoluciones"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <EditText
+            android:id="@+id/ErrorTxtRevUnidades"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ErrorLblRevoluciones"
+            android:layout_alignTop="@+id/ErrorLblRevoluciones"
+            android:layout_toRightOf="@+id/ErrorLblRevoluciones"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+        <EditText
+            android:id="@+id/CensoTxtTb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/CensoTxtNvc"
+            android:layout_alignLeft="@+id/CensoTxtIb"
+            android:layout_alignRight="@+id/CensoTxtIb"
+            android:ems="10"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:id="@+id/ErrorLblFp2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ErrorLblFp1"
+            android:layout_alignLeft="@+id/CensoLblNvb"
+            android:text="@string/ErrorLblFp2"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/ErrorLblFp3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/CensoLblNvc"
+            android:layout_below="@+id/ErrorTxtRevUnidades"
+            android:text="@string/ErrorLblFp3"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Button
+            android:id="@+id/ErrorBtnGuardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ErrorLblFp2"
+            android:layout_marginTop="33dp"
+            android:layout_toRightOf="@+id/ErrorLblConexion"
+            android:text="@string/ErrorBtnGuardar" />
+
+        <Button
+            android:id="@+id/ErrorBtnCalcular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ErrorBtnGuardar"
+            android:layout_alignBottom="@+id/ErrorBtnGuardar"
+            android:layout_alignRight="@+id/ErrorCmbTipoConexion"
+            android:text="@string/ErrorLblCalcular" />
+
+        <TextView
+            android:id="@+id/ErrorLblFp1Value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/CensoTxtNva"
+            android:layout_alignRight="@+id/CensoTxtNva"
+            android:layout_below="@+id/ErrorLblRevoluciones"
+            android:text="@string/ErrorLblFp1Value"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/ErrorLblFp2Value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ErrorLblFp2"
+            android:layout_alignBottom="@+id/ErrorLblFp2"
+            android:layout_alignRight="@+id/CensoTxtNvb"
+            android:layout_toRightOf="@+id/ErrorLblFp2"
+            android:text="@string/ErrorLblFp1Value"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/ErrorLblFp3Value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ErrorLblFp3"
+            android:layout_alignBottom="@+id/ErrorLblFp3"
+            android:layout_alignLeft="@+id/CensoTxtNvc"
+            android:layout_alignParentRight="true"
+            android:text="@string/ErrorLblFp1Value"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </RelativeLayout>
+
+</LinearLayout>

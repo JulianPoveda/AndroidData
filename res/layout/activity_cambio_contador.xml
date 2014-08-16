@@ -1,0 +1,396 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${packageName}.${activityClass}" >
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <TextView
+            android:id="@+id/CambioContadorLblMovimientosContador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/CambioContadorLblMovimientos"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Spinner
+            android:id="@+id/ContadorCmbMovimiento"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@+id/CambioContadorLblMovimientosContador"
+            android:layout_toRightOf="@+id/CambioContadorLblTipoIngreso" />
+
+        <TextView
+            android:id="@+id/CambioContadorLblTipoIngreso"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ContadorCmbMovimiento"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/ContadorCmbMovimiento"
+            android:gravity="right|center_vertical"
+            android:text="@string/CambioContadorLblTipoIngreso"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/ContadorTxtSerie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/ContadorCmbMovimiento"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/ContadorCmbMovimiento"
+            android:ems="10"
+            android:inputType="textPassword" />
+
+        <Spinner
+            android:id="@+id/ContadorCmbMarca"
+            android:layout_width="290dp"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/ContadorTxtSerie"
+            android:layout_below="@+id/ContadorTxtSerie" />
+
+        <TextView
+            android:id="@+id/CambioContadorLblMarca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ContadorCmbMarca"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/ContadorCmbMarca"
+            android:layout_toLeftOf="@+id/ContadorCmbMarca"
+            android:gravity="right|center_vertical"
+            android:text="@string/CambioContadorLblMarca"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/CambioContadorLblSerie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ContadorTxtSerie"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/CambioContadorLblTipoIngreso"
+            android:layout_below="@+id/CambioContadorLblTipoIngreso"
+            android:gravity="right|center_vertical"
+            android:text="@string/CambioContadorLblSerie"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/ContadorTxtLectura"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ContadorCmbMarca"
+            android:layout_toRightOf="@+id/CambioContadorLblMarca"
+            android:ems="10"
+            android:inputType="numberPassword" />
+
+        <TextView
+            android:id="@+id/CambioContadorLblLectura"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ContadorTxtLectura"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/CambioContadorLblMarca"
+            android:layout_below="@+id/CambioContadorLblMarca"
+            android:gravity="right|center_vertical"
+            android:text="@string/CambioContadorLblLectura"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/CambioContadorLblTipo"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ContadorTxtLectura"
+            android:layout_below="@+id/ContadorCmbMarca"
+            android:layout_toRightOf="@+id/ContadorTxtLectura"
+            android:gravity="right|center_vertical"
+            android:text="@string/CambioContadorLblTipo"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/ContadorCmbTipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/CambioContadorLblTipo"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/ContadorCmbMarca"
+            android:layout_toRightOf="@+id/CambioContadorLblTipo" />
+
+        <Button
+            android:id="@+id/ContadorBtnRegistrar"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/ContadorTxtLectura"
+            android:layout_below="@+id/ContadorTxtLectura"
+            android:text="@string/CambioContadorBtnRegistrar" />
+
+        <TableLayout
+            android:id="@+id/TablaMovimientosContadores"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/ContadorBtnRegistrar"
+            android:focusableInTouchMode="true" >
+
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </TableRow>
+        </TableLayout>
+
+        <Button
+            android:id="@+id/ContadorBtnEliminar"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ContadorBtnRegistrar"
+            android:layout_alignBottom="@+id/ContadorBtnRegistrar"
+            android:layout_toRightOf="@+id/ContadorBtnRegistrar"
+            android:text="@string/ContadorBtnEliminar" />
+
+        <Button
+            android:id="@+id/ContadorBtnBodega"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ContadorCmbMarca"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/ContadorCmbMarca"
+            android:layout_toRightOf="@+id/ContadorCmbMarca"
+            android:text="@string/ContadorBtnBodega" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <TextView
+            android:id="@+id/CambioContadorLblDatosTransformador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/CambioContadorLblDatosTransformador"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <EditText
+            android:id="@+id/TranforTxtNumero"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/CambioContadorLblDatosTransformador"
+            android:layout_toRightOf="@+id/DatosTransLblNumero"
+            android:ems="10"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/DatosTransLblNumero"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/TranforTxtNumero"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/CambioContadorLblDatosTransformador"
+            android:gravity="right|center_vertical"
+            android:text="@string/DatosTransLblNumero"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/TranforTxtMarca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/TranforTxtNumero"
+            android:layout_toRightOf="@+id/DatosTransLblNumero"
+            android:ems="10"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/TranforTxtKva"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/TranforTxtMarca"
+            android:layout_toRightOf="@+id/DatosTransLblNumero"
+            android:ems="10"
+            android:inputType="text" />
+
+        <Spinner
+            android:id="@+id/AcometidaCmbClase2"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/TranforTxtKva"
+            android:layout_below="@+id/TranforTxtKva" />
+
+        <EditText
+            android:id="@+id/TranforTxtAnno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/AcometidaCmbClase2"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/AcometidaCmbClase2"
+            android:ems="10"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/TranforTxtVoltaje1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/TranforTxtAnno"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/TranforTxtAnno"
+            android:ems="10"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/TranforTxtVoltaje2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/TranforTxtVoltaje1"
+            android:layout_toRightOf="@+id/DatosTransLblNumero"
+            android:ems="10"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/TranforTxtNodo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/TranforTxtVoltaje2"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/TranforTxtVoltaje2"
+            android:ems="10"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/DatosTransLblMarca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/TranforTxtKva"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/DatosTransLblNumero"
+            android:layout_alignTop="@+id/TranforTxtMarca"
+            android:gravity="right|center_vertical"
+            android:text="@string/DatosTansLblMarca"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/DatosTransLblKVA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/TranforTxtKva"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/DatosTransLblMarca"
+            android:layout_toLeftOf="@+id/TranforTxtKva"
+            android:gravity="right|center_vertical"
+            android:text="@string/DatosTransLblKVA"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/DatosTransLblPropietario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/TranforTxtAnno"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/DatosTransLblKVA"
+            android:layout_below="@+id/DatosTransLblKVA"
+            android:gravity="right|center_vertical"
+            android:text="@string/DatosTansLblPropietario"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/DatosTransLblAnno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/TranforTxtVoltaje1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/TranforTxtAnno"
+            android:layout_toLeftOf="@+id/AcometidaCmbClase2"
+            android:gravity="right|center_vertical"
+            android:text="@string/DatosTransLblAnno"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/DatosTransLblVoltaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/TranforTxtVoltaje1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/DatosTransLblAnno"
+            android:layout_below="@+id/DatosTransLblAnno"
+            android:gravity="right|center_vertical"
+            android:text="@string/DatosTransLblVoltaje"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/DatosTransLblVoltaje2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/TranforTxtNodo"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/DatosTransLblVoltaje"
+            android:layout_alignTop="@+id/TranforTxtVoltaje2"
+            android:gravity="right|center_vertical"
+            android:text="@string/DatosTransLblVoltaje2"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/DatosTransLblNodo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/TranforTxtNodo"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/DatosTransLblVoltaje2"
+            android:layout_below="@+id/DatosTransLblVoltaje2"
+            android:gravity="right|fill_vertical"
+            android:text="@string/DatosTransLblNodo"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Button
+            android:id="@+id/TranforBtnEliminar"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/TranforBtnGuardar"
+            android:layout_alignBottom="@+id/TranforBtnGuardar"
+            android:layout_alignLeft="@+id/TranforTxtNodo"
+            android:layout_marginLeft="99dp"
+            android:text="@string/DatosTransBtnEliminar" />
+
+        <Button
+            android:id="@+id/TranforBtnGuardar"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/TranforTxtNodo"
+            android:layout_below="@+id/TranforTxtNodo"
+            android:text="@string/DatosTransBtnGuardar" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,439 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${packageName}.${activityClass}" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <TextView
+            android:id="@+id/DatosActaLblTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/DatosActaLblTitulo"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <EditText
+            android:id="@+id/DatosActaTxtTelefono"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignLeft="@+id/DatosActaCmbFamilias"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/DatosActaLblTitulo"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:inputType="number" />
+
+        <Spinner
+            android:id="@+id/DatosActaCmbFamilias"
+            android:layout_width="250dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/DatosActaTxtTelefono"
+            android:gravity="center_vertical" />
+
+        <Spinner
+            android:id="@+id/DatosActaCmbFotos"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignLeft="@+id/DatosActaCmbFamilias"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/DatosActaCmbFamilias" />
+
+        <Spinner
+            android:id="@+id/DatosActaCmbElectricista"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignLeft="@+id/DatosActaCmbFotos"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/DatosActaCmbFotos" />
+
+        <EditText
+            android:id="@+id/DatosActaTxtKwNoResidencial"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignLeft="@+id/DatosActaCmbElectricista"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/DatosActaCmbElectricista"
+            android:ems="10"
+            android:inputType="number" />
+
+        <Spinner
+            android:id="@+id/DatosActaCmbTipoMedidor"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignLeft="@+id/DatosActaTxtKwNoResidencial"
+            android:layout_below="@+id/DatosActaTxtKwNoResidencial"
+            android:gravity="center_vertical" />
+
+        <Spinner
+            android:id="@+id/DatosActaCmbUbicacionMedidor"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignLeft="@+id/DatosActaCmbTipoMedidor"
+            android:layout_below="@+id/DatosActaCmbTipoMedidor" />
+
+        <Spinner
+            android:id="@+id/DatosActaCmbIrregularidades"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignLeft="@+id/DatosActaCmbUbicacionMedidor"
+            android:layout_below="@+id/DatosActaCmbUbicacionMedidor" />
+
+        <Spinner
+            android:id="@+id/DatosActaCmbRegistrador"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignLeft="@+id/DatosActaCmbIrregularidades"
+            android:layout_below="@+id/DatosActaCmbIrregularidades" />
+
+        <EditText
+            android:id="@+id/DatosActaTxtPorcentajeNoResidencial"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignLeft="@+id/DatosActaCmbRegistrador"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/DatosActaCmbRegistrador"
+            android:ems="10"
+            android:inputType="number" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/DatosActaBtnGuardar"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/DatosActaTxtPorcentajeNoResidencial"
+            android:layout_centerHorizontal="true"
+            android:text="@string/DatosActaBtnGuardar" />
+
+        <TextView
+            android:id="@+id/DatosActaLblTelefono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/DatosActaTxtTelefono"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/DatosActaTxtTelefono"
+            android:layout_toLeftOf="@+id/DatosActaTxtTelefono"
+            android:gravity="right|center_vertical"
+            android:text="@string/DatosActaLblTelefono"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/DatosActaLblFamilias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/DatosActaCmbFotos"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/DatosActaLblTelefono"
+            android:layout_alignTop="@+id/DatosActaCmbFamilias"
+            android:gravity="right|center_vertical"
+            android:text="@string/DatosActaLblFamilia"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/DatosActaLblFotos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/DatosActaCmbElectricista"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/DatosActaLblFamilias"
+            android:layout_toLeftOf="@+id/DatosActaCmbFotos"
+            android:gravity="right|center_vertical"
+            android:text="@string/DatosActaLblFotos"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/DatosActaLblElectricista"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/DatosActaTxtKwNoResidencial"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/DatosActaLblFotos"
+            android:layout_below="@+id/DatosActaLblFotos"
+            android:gravity="right|center_vertical"
+            android:text="@string/DatosActaLblElectricista"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/DatosActaLblPorcentajeNoResidencial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/DatosActaTxtPorcentajeNoResidencial"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/DatosActaCmbRegistrador"
+            android:layout_toLeftOf="@+id/DatosActaTxtPorcentajeNoResidencial"
+            android:gravity="right|center_vertical"
+            android:text="@string/DatosActaLblPorcentajeNoResidencial"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/DatosActaLblRegistrador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/DatosActaLblPorcentajeNoResidencial"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/DatosActaCmbRegistrador"
+            android:layout_toLeftOf="@+id/DatosActaCmbRegistrador"
+            android:gravity="right|center_vertical"
+            android:text="@string/DatosActaLblRegistrador"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/DatosActaLblIrregularidades"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/DatosActaLblRegistrador"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/DatosActaLblUbicacionMedidor"
+            android:layout_alignTop="@+id/DatosActaCmbIrregularidades"
+            android:gravity="right|center_vertical"
+            android:text="@string/DatosActaLblIrregularidades"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/DatosActaLblUbicacionMedidor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/DatosActaCmbUbicacionMedidor"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/DatosActaCmbTipoMedidor"
+            android:layout_toLeftOf="@+id/DatosActaCmbUbicacionMedidor"
+            android:gravity="right|center_vertical"
+            android:text="@string/DatosActaLblUbicacionMedidor"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/DatosActaLblTipoMedidor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/DatosActaLblUbicacionMedidor"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/DatosActaLblKwNoResidencial"
+            android:layout_alignTop="@+id/DatosActaCmbTipoMedidor"
+            android:gravity="right|center_vertical"
+            android:text="@string/DatosActaLblTipoMedidor"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/DatosActaLblKwNoResidencial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/DatosActaTxtKwNoResidencial"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/DatosActaTxtKwNoResidencial"
+            android:layout_toLeftOf="@+id/DatosActaTxtKwNoResidencial"
+            android:gravity="right|center_vertical"
+            android:text="@string/DatosActaLblKwNoResidencial"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <TextView
+            android:id="@+id/AdecuacionesLblTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="@string/AdecuacionesLblTitulo"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <EditText
+            android:id="@+id/AdecuacionesTxtOtros"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/AdecuacionesLblTitulo"
+            android:layout_marginTop="20dp"
+            android:ems="10" />
+
+        <TextView
+            android:id="@+id/AdecuacionesLblOtros"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AdecuacionesTxtOtros"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/AdecuacionesTxtOtros"
+            android:layout_toLeftOf="@+id/AdecuacionesTxtOtros"
+            android:gravity="right|center_vertical"
+            android:text="@string/AdecuacionesLblOtros"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/AdecuacionesCmbSuspension"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignLeft="@+id/AdecuacionesTxtOtros"
+            android:layout_below="@+id/AdecuacionesTxtOtros" />
+
+        <Spinner
+            android:id="@+id/AdecuacionesCmbTubo"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignLeft="@+id/AdecuacionesCmbSuspension"
+            android:layout_below="@+id/AdecuacionesCmbSuspension" />
+
+        <Spinner
+            android:id="@+id/AdecuacionesCmbArmario"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignLeft="@+id/AdecuacionesCmbTubo"
+            android:layout_below="@+id/AdecuacionesCmbTubo" />
+
+        <Spinner
+            android:id="@+id/AdecuacionesCmbSoporte"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignLeft="@+id/AdecuacionesCmbArmario"
+            android:layout_below="@+id/AdecuacionesCmbArmario" />
+
+        <Spinner
+            android:id="@+id/AdecuacionesCmbTierra"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_below="@+id/AdecuacionesCmbSoporte"
+            android:layout_toRightOf="@+id/AdecuacionesLblOtros" />
+
+        <Spinner
+            android:id="@+id/AdecuacionesCmbAcometida"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignLeft="@+id/AdecuacionesCmbTierra"
+            android:layout_below="@+id/AdecuacionesCmbTierra" />
+
+        <Spinner
+            android:id="@+id/AdecuacionesCmbCaja"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignLeft="@+id/AdecuacionesCmbAcometida"
+            android:layout_below="@+id/AdecuacionesCmbAcometida" />
+
+        <Spinner
+            android:id="@+id/AdecuacionesCmbMedidor"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:layout_alignLeft="@+id/AdecuacionesCmbCaja"
+            android:layout_below="@+id/AdecuacionesCmbCaja" />
+
+        <TextView
+            android:id="@+id/AdecuacionesLblSuspension"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/AdecuacionesCmbTubo"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/AdecuacionesCmbSuspension"
+            android:layout_toLeftOf="@+id/AdecuacionesCmbSuspension"
+            android:gravity="right|center_vertical"
+            android:text="@string/AdecuacionesLblSuspension"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/AdecuacionesLblMedidor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AdecuacionesCmbMedidor"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/AdecuacionesLblCaja"
+            android:layout_alignTop="@+id/AdecuacionesCmbMedidor"
+            android:gravity="right|center_vertical"
+            android:text="@string/AdecuacionesLblMedidor"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/AdecuacionesLblCaja"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/AdecuacionesCmbMedidor"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/AdecuacionesCmbAcometida"
+            android:layout_toLeftOf="@+id/AdecuacionesCmbCaja"
+            android:gravity="right|center_vertical"
+            android:text="@string/AdecuacionesLblCaja"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/AdecuacionesLblAcometida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/AdecuacionesLblCaja"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/AdecuacionesCmbAcometida"
+            android:layout_toLeftOf="@+id/AdecuacionesCmbAcometida"
+            android:gravity="right|center_vertical"
+            android:text="@string/AdecuacionesLblAcometida"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/AdecuacionesLblTierra"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/AdecuacionesLblAcometida"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/AdecuacionesLblAcometida"
+            android:layout_below="@+id/AdecuacionesCmbSoporte"
+            android:gravity="right|center_vertical"
+            android:text="@string/AdecuacionesLblTierra"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/AdecuacionesLblSoporte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/AdecuacionesLblTierra"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/AdecuacionesLblTierra"
+            android:layout_below="@+id/AdecuacionesCmbArmario"
+            android:gravity="right|center_vertical"
+            android:text="@string/AdecuacionesLblSoporte"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/AdecuacionesLblArmario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/AdecuacionesLblSoporte"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/AdecuacionesLblSoporte"
+            android:layout_below="@+id/AdecuacionesCmbTubo"
+            android:gravity="right|center_vertical"
+            android:text="@string/AdecuacionesLblArmario"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/AdecuacionesLblTubo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/AdecuacionesLblArmario"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/AdecuacionesLblArmario"
+            android:layout_below="@+id/AdecuacionesLblSuspension"
+            android:gravity="right|center_vertical"
+            android:text="@string/AdecuacionesLblTubo"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Button
+            android:id="@+id/AdecuacionesBtnGuardar"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/AdecuacionesLblMedidor"
+            android:layout_centerHorizontal="true"
+            android:text="@string/AdecuacionesBtnGuardar" />
+
+    </RelativeLayout>
+
+</LinearLayout>

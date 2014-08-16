@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/context_menu_tabla_eliminar" android:title="Eliminar"></item>
+    <item android:id="@+id/context_menu_tabla_editar" android:title="Editar"></item>
+    
+
+</menu>

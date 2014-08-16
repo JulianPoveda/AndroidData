@@ -1,0 +1,372 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${packageName}.${activityClass}" >
+    
+    <RelativeLayout
+        android:id="@+id/relativeLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignLeft="@+id/ServicioNuevoLeft"
+        android:layout_below="@+id/ServicioNuevoLeft"
+        android:background="@color/AzulCielo" >
+
+        <TextView
+            android:id="@+id/ActaLblDocEnterado"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ActaTxtDocEnterado"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/ActaTxtDocEnterado"
+            android:gravity="center_vertical|right"
+            android:text="@string/ActasLblDocEnterado"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <EditText
+            android:id="@+id/ActaTxtDocEnterado"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="29dp"
+            android:layout_toRightOf="@+id/ActaLblDocEnterado"
+            android:ems="10"
+            android:inputType="number" />
+
+        <EditText
+            android:id="@+id/ActaTxtDocTestigo"
+            android:layout_width="280dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ActaTxtDocEnterado"
+            android:layout_alignBottom="@+id/ActaTxtDocEnterado"
+            android:layout_alignParentRight="true"
+            android:ems="10"
+            android:inputType="number" >
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/ActaLblDocTestigo"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ActaTxtDocTestigo"
+            android:layout_alignTop="@+id/ActaTxtDocTestigo"
+            android:layout_toLeftOf="@+id/ActaTxtDocTestigo"
+            android:gravity="right|center_vertical"
+            android:text="@string/ActaLblDocTestigo"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <EditText
+            android:id="@+id/ActaTxtNombreEnterado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/ActaTxtDocEnterado"
+            android:layout_alignRight="@+id/ActaTxtDocEnterado"
+            android:layout_below="@+id/ActaTxtDocEnterado"
+            android:ems="10"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/ActaTxtNombreTestigo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/ActaTxtNombreEnterado"
+            android:layout_alignBottom="@+id/ActaTxtNombreEnterado"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/ActaLblDocTestigo"
+            android:ems="10"
+            android:inputType="text" />
+
+        <TextView
+            android:id="@+id/ActaLblNombreEnterado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ActaTxtNombreEnterado"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/ActaLblDocEnterado"
+            android:layout_below="@+id/ActaLblDocEnterado"
+            android:gravity="right|center_vertical"
+            android:text="@string/ActasLblNombreEnterado"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/ActaLblNombreTestigo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ActaTxtNombreTestigo"
+            android:layout_alignLeft="@+id/ActaLblDocTestigo"
+            android:layout_alignRight="@+id/ActaLblDocTestigo"
+            android:layout_below="@+id/ActaLblDocTestigo"
+            android:gravity="right|center_vertical"
+            android:text="@string/ActaLblNombreTestigo"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Spinner
+            android:id="@+id/ActaCmbTipoEnterado"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignRight="@+id/ActaTxtNombreEnterado"
+            android:layout_below="@+id/ActaTxtNombreEnterado"
+            android:layout_toRightOf="@+id/ActaLblNombreEnterado" />
+
+        <TextView
+            android:id="@+id/ActaLblTipoEnterado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ActaCmbTipoEnterado"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/ActaLblNombreEnterado"
+            android:layout_alignTop="@+id/ActaCmbTipoEnterado"
+            android:gravity="right|center_vertical"
+            android:text="@string/ActaLblTipoEnterado"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Spinner
+            android:id="@+id/ActaCmbUbicacionMedidor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ActaCmbTipoEnterado"
+            android:layout_alignLeft="@+id/ActaTxtNombreTestigo"
+            android:layout_alignTop="@+id/ActaCmbTipoEnterado" />
+
+        <TextView
+            android:id="@+id/ActaLblUbicacionMedidor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ActaCmbUbicacionMedidor"
+            android:layout_alignLeft="@+id/ActaLblNombreTestigo"
+            android:layout_alignRight="@+id/ActaLblNombreTestigo"
+            android:layout_alignTop="@+id/ActaCmbTipoEnterado"
+            android:gravity="right|center_vertical"
+            android:text="@string/ActaLblUbicacionMedidor"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Spinner
+            android:id="@+id/ActaCmbRespuestaPQR"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignRight="@+id/ActaCmbTipoEnterado"
+            android:layout_below="@+id/ActaCmbTipoEnterado"
+            android:layout_toRightOf="@+id/ActaLblTipoEnterado" />
+
+        <Spinner
+            android:id="@+id/ActaCmbUsoDerecho"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ActaCmbRespuestaPQR"
+            android:layout_alignLeft="@+id/ActaCmbUbicacionMedidor"
+            android:layout_below="@+id/ActaCmbUbicacionMedidor" />
+
+        <TextView
+            android:id="@+id/ActaLblRtaPQR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ActaCmbRespuestaPQR"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/ActaLblTipoEnterado"
+            android:layout_alignTop="@+id/ActaCmbRespuestaPQR"
+            android:gravity="right|center_vertical"
+            android:text="@string/ActaLblRtaPQR"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/ActaLblUsoDerecho"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ActaCmbUsoDerecho"
+            android:layout_alignLeft="@+id/ActaLblUbicacionMedidor"
+            android:layout_alignRight="@+id/ActaLblUbicacionMedidor"
+            android:layout_below="@+id/ActaLblUbicacionMedidor"
+            android:gravity="right|center_vertical"
+            android:text="@string/ActaLblUsoDerecho"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/ActaBtnGuardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ActaCmbRespuestaPQR"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="@string/ActaBtnGuardar" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ServicioNuevoLeft"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/Curuba" >
+
+        <TextView
+            android:id="@+id/ActaLblOrden"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/ActaLblOrden"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/ActaLblActa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/ActaLblOrden"
+            android:layout_centerVertical="true"
+            android:text="@string/ActaLblActa"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/ActaLblCuenta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/ActaLblActa"
+            android:text="@string/ActaLblCuenta"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/ActaLblNumOrden"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ActaLblActa"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/ActaLblOrden"
+            android:gravity="left|center_vertical"
+            android:text="@string/ActaLblOrden"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/ActaLblNumActa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ActaLblActa"
+            android:layout_alignLeft="@+id/ActaLblNumOrden"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/ActaLblNumOrden"
+            android:gravity="left|center_vertical"
+            android:text="@string/ActaLblActa"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/ActaLblNumCuenta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/ActaLblCuenta"
+            android:layout_toRightOf="@+id/ActaLblCuenta"
+            android:gravity="left|center_vertical"
+            android:text="@string/ActaLblCuenta"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_above="@+id/relativeLayout3"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/ServicioNuevoLeft"
+        android:background="@color/VerdeManzana" >
+
+        <TextView
+            android:id="@+id/ActaLblDiagrama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ActaCmbDiagrama"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical"
+            android:text="@string/ActaLblDiagrama"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Spinner
+            android:id="@+id/ActaCmbDiagrama"
+            android:layout_width="220dp"
+            android:layout_height="50dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/ActaLblDiagrama" />
+
+        <Spinner
+            android:id="@+id/ActaCmbAcometida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/ActaLblAcometida"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/ActaLblAcometida" />
+
+        <TextView
+            android:id="@+id/ActaLblItemPago"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/ActaLblDiagrama"
+            android:gravity="center_vertical"
+            android:text="@string/ActaLblItemPago"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/ActaLblAcometida"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/ActaLblItemPago"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="27dp"
+            android:layout_toRightOf="@+id/ActaCmbDiagrama"
+            android:gravity="center_vertical"
+            android:text="@string/ActaLblAcometida"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Button
+            android:id="@+id/ActaBtnAddItem"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/ActaCmbItems"
+            android:text="@string/ActaBtnAddItem" />
+
+        <Button
+            android:id="@+id/ActaBtnRemoveItem"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/ActaBtnAddItem"
+            android:text="@string/ActaBtnRemoveItem" />
+
+        <TextView
+            android:id="@+id/ActaItemsAplicados"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/ActaBtnRemoveItem"
+            android:layout_toRightOf="@+id/ActaCmbDiagrama"
+            android:gravity="center_vertical"
+            android:text="@string/ErrorTxtVacio"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Spinner
+            android:id="@+id/ActaCmbItems"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/ActaCmbDiagrama"
+            android:layout_toRightOf="@+id/ActaLblItemPago" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ActaLblOrden">N° Orden</string>
+    <string name="ActaLblActa">N° Acta</string>
+    <string name="ActaLblCuenta">N° Cuenta</string>
+    <string name="ActaLblDiagrama">Diagrama</string>
+    <string name="ActaLblAcometida">Acometida</string>
+    <string name="ActaLblItemPago">Item de Pago</string>
+    <string name="ActaBtnAddItem">+</string>
+    <string name="ActaBtnRemoveItem">-</string>
+    <string name="ActaLblItemAplicados">Items a aplicar: </string>
+    <string name="ActasLblDocEnterado">Doc Enterado</string>
+    <string name="ActasLblNombreEnterado">Nombre Enterado</string>
+    <string name="ActaLblTipoEnterado">Tipo Enterado</string>
+    <string name="ActaLblDocTestigo">Doc Testigo</string>
+    <string name="ActaLblNombreTestigo">Nombre Testigo</string>
+    <string name="ActaLblRtaPQR">Respuesta PQR</string>
+    <string name="ActaLblUbicacionMedidor">Ubicacion Medidor</string>
+    <string name="ActaLblUsoDerecho">Uso Derecho</string>
+    <string name="ActaBtnGuardar">Guardar Datos</string>
+    
+</resources>

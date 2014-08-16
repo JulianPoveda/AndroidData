@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><string name="ServicioNuevoLblPropietario">Propietario</string>
+<string name="ServicioNuevoLblTipoEnterado">Tipo Enterado</string><string name="ServicioNuevoLblUbicacion">Ubicacion</string><string name="ServicioNuevoLblDireccion">Direccion</string><string name="ServicioNuevoLblMunicipio">Municipio</string><string name="ServicioNuevoLblEstrato">Estrato</string>
+<string name="ServicioNuevoLblClaseServicio">Clase Servicio</string><string name="ServicioNuevoLblEstadoServicio">Estado Servicio</string>
+
+<string name="ServicioNuevoLblTipoServicio">Tipo</string><string name="ServicioNuevoLblSerieContador">Serie Contador</string>
+<string name="ServicioNuevoLblLecturaContador">Lectura</string>
+<string name="ServicioNuevoLblCuentaVecina1">Cuenta Vecina1</string>
+<string name="ServicioNuevoLblCuentaVecina2">Cuenta Vecina2</string>
+<string name="ServicioNuevoLblNodoTransformador">Nodo Transformador</string>
+<string name="ServicioNuevoLblNodoSecundario">Nodo Secundario</string>
+<string name="ServicioNuevoLblDocTitulo">DOCUMENTACION</string>
+<string name="ServicioNuevoLblDocLibertad">Libertad, Tradicion, Escritura, Compra Venta</string>
+<string name="ServicioNuevoLblDocEstratificacion">Estratificacion</string>
+<string name="ServicioNuevoLblDocCedulaPropietario">Fotocopia Cedula Propietario</string>
+<string name="ServicioNuevoLblDocReciboVecino">Fotocopia Recibo del Vecino</string>
+<string name="ServicioNuevoLblDocRealizaInstalacion">Tecnico Elec Realizo Instalacion Interna</string>
+<string name="ServicioNuevoLblDocCompraContador">Factura Compra Contador</string>
+<string name="ServicioNuevoLblDocAutorizacionUsuario">Carta Autorizacion Usuario</string>
+<string name="ServicioNuevoBtnCrear">Crear Nuevo Servicio</string>
+<string name="ServicioNuevoBtnCancelar">Cancelar</string>
+
+
+
+
+
+    
+</resources>

@@ -1,0 +1,463 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${packageName}.${activityClass}" >
+
+    <RelativeLayout
+        android:id="@+id/RealtiveLayoutLeft"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <Spinner
+            android:id="@+id/AutogestionCmbTipoOrden"
+            android:layout_width="200dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="22dp" />
+
+        <TextView
+            android:id="@+id/AutogestionLblTipoOrden"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionCmbTipoOrden"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/AutogestionCmbTipoOrden"
+            android:layout_toLeftOf="@+id/AutogestionCmbTipoOrden"
+            android:gravity="right|center_vertical"
+            android:text="@string/AutogestionLblTipoOrden"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/AutogestionCmbDependencia"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/AutogestionCmbTipoOrden"
+            android:layout_toRightOf="@+id/AutogestionLblTipoOrden" />
+
+        <TextView
+            android:id="@+id/AutogestionLblDependencia"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionCmbDependencia"
+            android:layout_alignTop="@+id/AutogestionCmbDependencia"
+            android:layout_toLeftOf="@+id/AutogestionCmbDependencia"
+            android:gravity="right|center_vertical"
+            android:text="@string/AutogestionLblDependencia"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/AutogestionCmbConsecutivo"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionLblDependencia"
+            android:layout_alignTop="@+id/AutogestionLblDependencia"
+            android:layout_toLeftOf="@+id/AutogestionLblDependencia" />
+
+        <TextView
+            android:id="@+id/AutogestionLblConsecutivo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionCmbConsecutivo"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/AutogestionCmbConsecutivo"
+            android:layout_toLeftOf="@+id/AutogestionCmbConsecutivo"
+            android:gravity="right|center_vertical"
+            android:text="@string/AutogestionLblConsecutivo"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/AutogestionTxtPropietario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/AutogestionCmbConsecutivo"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/AutogestionLblDependencia"
+            android:ems="10"
+            android:inputType="textPersonName" >
+
+            <requestFocus />
+        </EditText>
+
+        <TextView
+            android:id="@+id/AutogestionLblPropietario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionTxtPropietario"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/AutogestionTxtPropietario"
+            android:layout_toLeftOf="@+id/AutogestionTxtPropietario"
+            android:gravity="right|center_vertical"
+            android:text="@string/AutogestionLblPropietario"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/AutogestionTxtCuenta"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/AutogestionTxtPropietario"
+            android:layout_below="@+id/AutogestionTxtPropietario"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/AutogestionLblCuenta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionTxtCuenta"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/AutogestionTxtCuenta"
+            android:layout_toLeftOf="@+id/AutogestionTxtCuenta"
+            android:gravity="right|center_vertical"
+            android:text="@string/AutogestionLblCuenta"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/AutogestionCmbUbicacion"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionTxtCuenta"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/AutogestionTxtCuenta" />
+
+        <TextView
+            android:id="@+id/AutogestionLblUbicacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionCmbUbicacion"
+            android:layout_below="@+id/AutogestionTxtPropietario"
+            android:layout_toLeftOf="@+id/AutogestionCmbUbicacion"
+            android:layout_toRightOf="@+id/AutogestionTxtCuenta"
+            android:gravity="right|center_vertical"
+            android:text="@string/AutogestionLblUbicacion"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/AutogestionTxtDireccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/AutogestionTxtCuenta"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/AutogestionTxtCuenta"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/AutogestionLblDireccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionTxtDireccion"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/AutogestionTxtDireccion"
+            android:layout_toLeftOf="@+id/AutogestionTxtDireccion"
+            android:gravity="right|center_vertical"
+            android:text="@string/AutogestionLblDireccion"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/AutogestionCmbMunicipio"
+            android:layout_width="220dp"
+            android:layout_height="40dp"
+            android:layout_below="@+id/AutogestionTxtDireccion"
+            android:layout_toRightOf="@+id/AutogestionLblDireccion" />
+
+        <TextView
+            android:id="@+id/AutogestionLblMunicipio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionCmbMunicipio"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/AutogestionCmbMunicipio"
+            android:layout_toLeftOf="@+id/AutogestionCmbMunicipio"
+            android:gravity="right|center_vertical"
+            android:text="@string/AutogestionLblMunicipio"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/AutogestionLblNodo"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionCmbMunicipio"
+            android:layout_alignTop="@+id/AutogestionCmbMunicipio"
+            android:layout_toRightOf="@+id/AutogestionCmbMunicipio"
+            android:gravity="right|center_vertical"
+            android:text="@string/AutogestionLblNodo"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/AutogestionTxtNodo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionLblNodo"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/AutogestionTxtDireccion"
+            android:layout_toRightOf="@+id/AutogestionLblNodo"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/AutogestionLblCargaContratada"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionTxtCargaContratada"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/AutogestionTxtCargaContratada"
+            android:gravity="right|center_vertical"
+            android:text="@string/AutogestionLblCargaContratada"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/AutogestionTxtCargaContratada"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/AutogestionCmbMunicipio"
+            android:layout_toRightOf="@+id/AutogestionLblCargaContratada"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/AutogestionLblEstrato"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionTxtCargaContratada"
+            android:layout_below="@+id/AutogestionCmbMunicipio"
+            android:layout_toRightOf="@+id/AutogestionTxtCargaContratada"
+            android:gravity="right|center_vertical"
+            android:text="@string/AutogestionLblEstrato"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/AutogestionCmbEstrato"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionLblEstrato"
+            android:layout_alignLeft="@+id/AutogestionLblNodo"
+            android:layout_alignTop="@+id/AutogestionLblEstrato" />
+
+        <TextView
+            android:id="@+id/AutogestionLblCiclo"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionCmbEstrato"
+            android:layout_alignTop="@+id/AutogestionCmbEstrato"
+            android:layout_toRightOf="@+id/AutogestionCmbEstrato"
+            android:gravity="right|center_vertical"
+            android:text="@string/AutogestionLblCiclo"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/AutogestionCmbCiclo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionLblCiclo"
+            android:layout_below="@+id/AutogestionTxtNodo"
+            android:layout_toRightOf="@+id/AutogestionLblCiclo" />
+
+        <Spinner
+            android:id="@+id/AutogestionCmbClaseServicio"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/AutogestionTxtCargaContratada"
+            android:layout_below="@+id/AutogestionTxtCargaContratada" />
+
+        <TextView
+            android:id="@+id/AutogestionLblClaseServicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionCmbClaseServicio"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/AutogestionCmbClaseServicio"
+            android:layout_toLeftOf="@+id/AutogestionCmbClaseServicio"
+            android:gravity="right|center_vertical"
+            android:text="@string/AutogestionLblClaseServicio"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/AutogestionLblTipoConexion"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionCmbTipoConexion"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/AutogestionCmbTipoConexion"
+            android:gravity="right|center_vertical"
+            android:text="@string/AutogestionLblTipoConexion"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/AutogestionCmbTipoConexion"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_alignTop="@+id/AutogestionLblMarcaContador"
+            android:layout_toRightOf="@+id/AutogestionLblTipoConexion" />
+
+        <TextView
+            android:id="@+id/AutogestionLblMarcaContador"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@+id/AutogestionCmbClaseServicio"
+            android:layout_toRightOf="@+id/AutogestionCmbTipoConexion"
+            android:gravity="right|center_vertical"
+            android:text="@string/AutogestionLblMarcaContador"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/AutogestionCmbMarcaContador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionLblMarcaContador"
+            android:layout_alignTop="@+id/AutogestionLblMarcaContador"
+            android:layout_toRightOf="@+id/AutogestionLblMarcaContador" />
+
+        <TextView
+            android:id="@+id/AutogestionLblSerieContador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionTxtSerieContador"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/AutogestionTxtSerieContador"
+            android:gravity="right|center_vertical"
+            android:text="@string/AutogestionLblSerieContador"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/AutogestionTxtSerieContador"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/AutogestionCmbTipoConexion"
+            android:layout_toRightOf="@+id/AutogestionLblSerieContador"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/AutogestionLblLecturaContador"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionTxtSerieContador"
+            android:layout_alignTop="@+id/AutogestionTxtSerieContador"
+            android:layout_toRightOf="@+id/AutogestionTxtSerieContador"
+            android:gravity="right|center_vertical"
+            android:text="@string/AutogestionLblLecturaContador"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/AutogestionTxtLecturaContador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/AutogestionCmbMarcaContador"
+            android:layout_toRightOf="@+id/AutogestionLblLecturaContador"
+            android:ems="10"
+            android:inputType="number" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayoutRight"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <TextView
+            android:id="@+id/AutogestionLblClaseSolicitud"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionCmbClaseSolicitud"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/AutogestionCmbClaseSolicitud"
+            android:gravity="right|center_vertical"
+            android:text="@string/AutogestionLblCaseSolicitud"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/AutogestionCmbTipoSolicitud"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/AutogestionLblTipoSolicitud"
+            android:layout_toRightOf="@+id/AutogestionLblTipoSolicitud" />
+
+        <TextView
+            android:id="@+id/AutogestionLblDependenciaAsignada"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/AutogestionLblTipoAccion"
+            android:layout_toLeftOf="@+id/AutogestionTxtDependenciaAsignada"
+            android:gravity="right|center_vertical"
+            android:text="@string/AutogestionLblDependenciaAsignada"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/AutogestionLblTipoSolicitud"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/AutogestionLblClaseSolicitud"
+            android:layout_below="@+id/AutogestionLblClaseSolicitud"
+            android:gravity="right|center_vertical"
+            android:text="@string/AutogestionLblTipoSolicitud"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Spinner
+            android:id="@+id/AutogestionCmbClaseSolicitud"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="62dp"
+            android:layout_toRightOf="@+id/AutogestionLblClaseSolicitud" />
+
+        <Spinner
+            android:id="@+id/AutogestionCmbTipoAccion"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/AutogestionCmbTipoSolicitud"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/AutogestionCmbTipoSolicitud" />
+
+        <TextView
+            android:id="@+id/AutogestionLblTipoAccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionCmbTipoAccion"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/AutogestionCmbTipoAccion"
+            android:layout_toLeftOf="@+id/AutogestionCmbTipoAccion"
+            android:gravity="right|center_vertical"
+            android:text="@string/AutogestionLblTipoAccion"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/AutogestionTxtDependenciaAsignada"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AutogestionLblDependenciaAsignada"
+            android:layout_alignParentRight="true"
+            android:ems="10"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/AutogestionBtnCancelar"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/AutogestionBtnCrear"
+            android:layout_alignBottom="@+id/AutogestionBtnCrear"
+            android:layout_marginLeft="27dp"
+            android:layout_toRightOf="@+id/AutogestionBtnCrear"
+            android:text="@string/AutogestionBtnCancelar" />
+
+        <Button
+            android:id="@+id/AutogestionBtnCrear"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/AutogestionLblDependenciaAsignada"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="71dp"
+            android:text="@string/AutogestionBtnCrear" />
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><string name="DefinitivosLblMaterial">Material</string>
+<string name="DefinitivosLblCantidad">Cantidad</string>
+<string name="DefinitivosLblDecimal">.</string>
+<string name="DefinitivosBtnAgregar">Agregar</string>
+<string name="DefinitivosBtnEliminar">Eliminar</string>
+<string name="DefinitivosLblCuotas">Cuotas</string>
+<string name="TabDefinitivosProvisionales">Materiales Definitivos y/o Provisionales</string>
+<string name="DefinitivosLblTitulo">MATERIALES DEFINITIVOS</string>
+<string name="DefinitivosLblNumCuotas">1</string>
+<string name="ProvisionalesLblTitulo">MATERIALES PROVISIONALES</string>
+<string name="ProvisionalesLblMaterial">Material</string>
+<string name="ProvisionalesLblCantidad">Cantidad</string>
+<string name="ProvisionalesLblDecimal">.</string>
+<string name="ProvisionalesBtnAgregar">Agregar</string>
+<string name="ProvisionalesBtnEliminar">Eliminar</string>
+<string name="ProvisionalesLblCuotas">Cuotas</string>
+<string name="ProvisionalesLblNumCuotas">1</string>
+<string name="UsuarioLblTitulo">MATERIALES DEL USUARIO</string>
+<string name="UsuarioLblEstadoMaterial">Estado del Material</string>
+<string name="UsuarioLblMaterial">Material</string>
+<string name="UsuarioLblCantidad">Cantidad</string>
+<string name="UsuarioLblDecimales">.</string>
+<string name="UsuarioLblDisposicion">Disposicion Final</string>
+<string name="UsuarioBtnAgregar">Agregar</string>
+<string name="UsuarioBtnEliminar">Eliminar</string>
+<string name="ObservacionLblTitulo">OBSERVACION DE MATERIALES</string>
+<string name="ObservacionBtnGuardar">Guardar</string>
+<string name="ObservacionBtnEditar">Editar</string>
+    
+</resources>

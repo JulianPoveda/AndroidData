@@ -1,0 +1,192 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${packageName}.${activityClass}" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <TextView
+            android:id="@+id/SellosLbltipoIngreso"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/SellosCmbTipoIngreso"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/SellosCmbTipoIngreso"
+            android:gravity="right|center_vertical"
+            android:text="@string/SellosLblTipoIngreso"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Spinner
+            android:id="@+id/SellosCmbTipoIngreso"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="24dp"
+            android:layout_toRightOf="@+id/SellosLbltipoIngreso" />
+
+        <TextView
+            android:id="@+id/SellosLblTipoSellos"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/SellosCmbTipoIngreso"
+            android:layout_alignTop="@+id/SellosCmbTipoIngreso"
+            android:layout_marginLeft="86dp"
+            android:layout_toRightOf="@+id/SellosCmbTipoIngreso"
+            android:gravity="right|center_vertical"
+            android:text="@string/SellosLblTipoSello"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Spinner
+            android:id="@+id/SellosCmbTipoSello"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/SellosLblTipoSellos"
+            android:layout_alignTop="@+id/SellosLblTipoSellos"
+            android:layout_toRightOf="@+id/SellosLblTipoSellos" />
+
+        <Spinner
+            android:id="@+id/SellosCmbUbicacion"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/SellosCmbTipoIngreso"
+            android:layout_below="@+id/SellosCmbTipoIngreso"
+            android:layout_toLeftOf="@+id/SellosLblTipoSellos" />
+
+        <TextView
+            android:id="@+id/SellosLblUbicacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/SellosCmbUbicacion"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/SellosLbltipoIngreso"
+            android:layout_alignTop="@+id/SellosCmbUbicacion"
+            android:gravity="right|center_vertical"
+            android:text="@string/SellosLblUbicacion"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Spinner
+            android:id="@+id/SellosCmbColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/SellosCmbUbicacion"
+            android:layout_alignLeft="@+id/SellosCmbTipoSello"
+            android:layout_alignRight="@+id/SellosCmbTipoSello"
+            android:layout_alignTop="@+id/SellosCmbUbicacion" />
+
+        <TextView
+            android:id="@+id/SellosLblColor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/SellosCmbColor"
+            android:layout_alignLeft="@+id/SellosLblTipoSellos"
+            android:layout_alignRight="@+id/SellosLblTipoSellos"
+            android:layout_below="@+id/SellosLblTipoSellos"
+            android:gravity="right|center_vertical"
+            android:text="@string/SellosLblColor"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Spinner
+            android:id="@+id/SellosCmbEstado"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/SellosCmbColor"
+            android:layout_alignRight="@+id/SellosCmbColor"
+            android:layout_below="@+id/SellosCmbColor" />
+
+        <TextView
+            android:id="@+id/SellosLblEstado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/SellosCmbEstado"
+            android:layout_alignLeft="@+id/SellosLblColor"
+            android:layout_alignRight="@+id/SellosLblColor"
+            android:layout_alignTop="@+id/SellosCmbEstado"
+            android:gravity="right|center_vertical"
+            android:text="@string/SellosLblEstado"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/SellosLblSerie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/SellosLblEstado"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/SellosLblUbicacion"
+            android:layout_below="@+id/SellosLblUbicacion"
+            android:gravity="right|center_vertical"
+            android:text="@string/SellosLblSerie"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <EditText
+            android:id="@+id/SellosTxtSerie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/SellosLblSerie"
+            android:layout_alignRight="@+id/SellosCmbUbicacion"
+            android:layout_toRightOf="@+id/SellosLblSerie"
+            android:ems="10"
+            android:inputType="textPassword" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/SellosBtnRegistrar"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/SellosTxtSerie"
+            android:layout_marginRight="27dp"
+            android:layout_marginTop="22dp"
+            android:layout_toLeftOf="@+id/SellosLblEstado"
+            android:text="@string/SellosBtnRegistrar" />
+
+        <Button
+            android:id="@+id/SellosBtnEliminar"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/SellosBtnRegistrar"
+            android:layout_alignBottom="@+id/SellosBtnRegistrar"
+            android:layout_alignLeft="@+id/SellosLblEstado"
+            android:text="@string/SellosBtnEliminar" />
+
+        <TableLayout
+            android:id="@+id/TablaSellos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/SellosBtnRegistrar" >
+
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/tableRow4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+            </TableRow>
+        </TableLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

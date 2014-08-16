@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/Acta" android:title="Acta"></item>
+    <item android:id="@+id/Acometida" android:title="Acometida"></item>
+    <item android:id="@+id/CensoPruebas" android:title="Censo de Carga &amp; Pruebas de Error"></item>
+    <item android:id="@+id/DatosAdecuaciones" android:title="Datos Acta &amp; Adecuaciones"></item><item android:id="@+id/EncontradoPruebas" android:title="Contador Encontrado &amp; Pruebas Al Medidor"></item><item android:id="@+id/IrregularidadesObservaciones" android:title="Irregularidades &amp; Observaciones"></item>
+    <item android:id="@+id/Materiales" android:title="Materiales"></item><item android:id="@+id/Sellos" android:title="Sellos"></item>
+    <item android:id="@+id/Volver" android:title="Volver"></item>
+    
+    
+    
+
+</menu>

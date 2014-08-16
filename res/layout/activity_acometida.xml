@@ -1,0 +1,214 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="${packageName}.${activityClass}" >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/AcometidaLblTipoIngreso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AcometidaCmbTipoIngreso"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:gravity="right|center_vertical"
+            android:text="@string/AcometidaLblTipoIngreso"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Spinner
+            android:id="@+id/AcometidaCmbTipoIngreso"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/AcometidaLblTipoIngreso" />
+
+        <TextView
+            android:id="@+id/AcometidaLblConductor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AcometidaCmbConductor"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/AcometidaLblTipoIngreso"
+            android:layout_below="@+id/AcometidaLblTipoIngreso"
+            android:gravity="right|center_vertical"
+            android:text="@string/AcometidaLblConductor"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Spinner
+            android:id="@+id/AcometidaCmbTipo"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignRight="@+id/AcometidaCmbConductor"
+            android:layout_below="@+id/AcometidaCmbConductor"
+            android:layout_toRightOf="@+id/AcometidaLblConductor" />
+
+        <TextView
+            android:id="@+id/AcometidaLblTipo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AcometidaCmbTipo"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@+id/AcometidaCmbTipo"
+            android:layout_toLeftOf="@+id/AcometidaCmbTipo"
+            android:gravity="right|center_vertical"
+            android:text="@string/AcometidaLblTipo"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Spinner
+            android:id="@+id/AcometidaCmbCalibre"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignRight="@+id/AcometidaCmbTipo"
+            android:layout_below="@+id/AcometidaCmbTipo"
+            android:layout_toRightOf="@+id/AcometidaLblTipo" />
+
+        <Spinner
+            android:id="@+id/AcometidaCmbClase"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignRight="@+id/AcometidaCmbCalibre"
+            android:layout_below="@+id/AcometidaCmbCalibre"
+            android:layout_toRightOf="@+id/AcometidaLblTipo" />
+
+        <TextView
+            android:id="@+id/AcometidaLblCalibre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AcometidaCmbCalibre"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/AcometidaLblTipo"
+            android:layout_below="@+id/AcometidaLblTipo"
+            android:gravity="right|center_vertical"
+            android:text="@string/AcometidaLblCalibre"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/AcometidaLblClase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/AcometidaCmbFases"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/AcometidaLblCalibre"
+            android:layout_below="@+id/AcometidaCmbCalibre"
+            android:gravity="right|center_vertical"
+            android:text="@string/AcometidaLblClase"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/AcometidaLblFases"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AcometidaCmbFases"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/AcometidaLblClase"
+            android:layout_alignTop="@+id/AcometidaCmbFases"
+            android:gravity="right|center_vertical"
+            android:text="@string/AcometidaLblFases"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/AcometidaLblDecimalLongitud"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/AcometidaCmbClase"
+            android:layout_alignTop="@+id/AcometidaCmbUnidad"
+            android:layout_toRightOf="@+id/AcometidaCmbUnidad"
+            android:gravity="center_vertical"
+            android:text="@string/AcometidaLblDecimaLongitud"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/AcometidaLblUnidadLongitud"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AcometidaCmbDecima"
+            android:layout_alignTop="@+id/AcometidaCmbDecima"
+            android:layout_toRightOf="@+id/AcometidaCmbDecima"
+            android:gravity="center_vertical"
+            android:text="@string/AcometidaLblUnidadLongitud"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <Spinner
+            android:id="@+id/AcometidaCmbConductor"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/AcometidaCmbTipoIngreso"
+            android:layout_alignRight="@+id/AcometidaCmbTipoIngreso"
+            android:layout_below="@+id/AcometidaCmbTipoIngreso" />
+
+        <TextView
+            android:id="@+id/AcometidaLblLongitud"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AcometidaBtnEliminar"
+            android:layout_alignTop="@+id/AcometidaCmbConductor"
+            android:layout_marginLeft="21dp"
+            android:layout_toRightOf="@+id/AcometidaCmbTipoIngreso"
+            android:gravity="right|center_vertical"
+            android:text="@string/AcometidaLblLongitud"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <NumberPicker
+            android:id="@+id/AcometidaCmbUnidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/AcometidaCmbClase"
+            android:layout_alignTop="@+id/AcometidaLblLongitud"
+            android:layout_toRightOf="@+id/AcometidaLblLongitud" />
+
+        <NumberPicker
+            android:id="@+id/AcometidaCmbDecima"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/AcometidaCmbUnidad"
+            android:layout_alignTop="@+id/AcometidaLblDecimalLongitud"
+            android:layout_toRightOf="@+id/AcometidaLblDecimalLongitud" />
+
+        <Button
+            android:id="@+id/AcometidaBtnEliminar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/AcometidaBtnGuardar"
+            android:layout_alignRight="@+id/AcometidaBtnGuardar"
+            android:layout_alignTop="@+id/AcometidaCmbCalibre"
+            android:text="@string/AcometidaBtnEliminar" />
+
+        <Spinner
+            android:id="@+id/AcometidaCmbFases"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/AcometidaCmbClase"
+            android:layout_alignRight="@+id/AcometidaCmbClase"
+            android:layout_below="@+id/AcometidaCmbClase" />
+
+        <Button
+            android:id="@+id/AcometidaBtnGuardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/AcometidaLblUnidadLongitud"
+            android:layout_marginLeft="26dp"
+            android:layout_toRightOf="@+id/AcometidaLblUnidadLongitud"
+            android:text="@string/AcometidaBtnGuardar" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_weight="0.67" >
+
+        <TableLayout
+            android:id="@+id/tabla_cuerpo"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:stretchColumns="0,1" >
+    
+        </TableLayout>
+    </RelativeLayout>
+
+</LinearLayout>

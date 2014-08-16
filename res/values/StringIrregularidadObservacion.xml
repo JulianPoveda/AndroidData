@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><string name="IrreObsLblIrregularidad">IRREGULARIDADES</string>
+<string name="IrreObsLblObservaciones">OBSERVACIONES</string>
+<string name="IrreObsLblAddIrregularidades">Registrar</string>
+<string name="IrrObsLblGrupo">Grupo</string>
+<string name="IrrObsLblSubgrupo">Subgrupo</string>
+<string name="IrrObsLblObservacion">Observacion</string>
+<string name="IrrObsBtnRegistrarObservacion">Registrar</string>
+<string name="IrrelblIrregularidades">Irregularidad</string>
+<string name="IrreObsBtnRemoveIrregularidad">Eliminar</string>
+    
+</resources>

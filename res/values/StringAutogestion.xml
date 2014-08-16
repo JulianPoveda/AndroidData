@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="AutogestionLblTipoOrden">Tipo de Orden a Crear</string>
+    <string name="AutogestionLblConsecutivo">Consecutivo</string>
+    <string name="AutogestionLblDependencia">Dependencia</string>
+    <string name="AutogestionLblPropietario">Propietario</string>
+    <string name="AutogestionLblCuenta">Cuenta</string>
+    <string name="AutogestionLblUbicacion">Ubicacion</string>
+    <string name="AutogestionLblDireccion">Direccion</string>
+    <string name="AutogestionLblMunicipio">Municipio</string>
+    <string name="AutogestionLblNodo">Nodo</string>
+    <string name="AutogestionLblCargaContratada">Carga Contratada</string>
+    <string name="AutogestionLblEstrato">Estrato</string>
+    <string name="AutogestionLblCiclo">Ciclo</string>
+    <string name="AutogestionLblClaseServicio">Clase de Servicio</string>
+    <string name="AutogestionLblTipoConexion">Tipo</string>
+    <string name="AutogestionLblMarcaContador">Marca Cont</string>
+    <string name="AutogestionLblSerieContador">Serie Contador</string>
+    <string name="AutogestionLblLecturaContador">Lect. Contador</string>
+    <string name="AutogestionLblCaseSolicitud">Clase Solicitud</string>
+    <string name="AutogestionLblTipoSolicitud">Tipo Solicitud</string>
+    <string name="AutogestionLblTipoAccion">Tipo Accion</string>
+    <string name="AutogestionLblDependenciaAsignada">Dependencia Asignada</string>
+    <string name="AutogestionBtnCrear">Crear Autogestion</string>
+    <string name="AutogestionBtnCancelar">Cancelar </string>
+    
+</resources>
