@@ -152,67 +152,79 @@ public class FormatosActas {
 		 
 		/**************************************************Datos del suscriptor y equipo de medida********************************************/
 		FcnZebra.WrSubTitulo("DATOS DEL SUSCRIPTOR Y EQUIPO DE MEDIDA",10,1,1);
-		this._infTabla= ImpSQL.SelectData("imp_equipo_medida", "tipo, marca, serie, lectura, fecha_ins, conexion", "id_orden='"+ordenTrabajo+"' AND tipo<>'NM'");
-		for(int i=0;i<this._infTabla.size();i++){
-			this._infRegistro1 = this._infTabla.get(i);
-			
-			if(this._infRegistro1.getAsString("tipo").equals("SD")){
-				FcnZebra.WrLabel("SERVICIO DIRECTO","Se Deja Instalado Servicio Directo.", 10, 0 ,1);				
-			}else if((this._infRegistro1.getAsString("tipo").equals("R"))&&(this._infRegistro1.getAsString("serie").equals("-1"))){
-				FcnZebra.WrLabel("RETIRADO","Se Encuentra Predio Sin Servicio.", 10, 0 ,1);				
-			}else if((this._infRegistro1.getAsString("tipo").equals("R"))&&(this._infRegistro1.getAsString("serie").equals("0"))){
-				FcnZebra.WrLabel("RETIRADO","Se Encuentra Predio Con Servicio Directo.", 10, 0 ,1);				
-			}else if((this._infRegistro1.getAsString("tipo").equals("R"))&&(this._infRegistro1.getAsString("lectura").equals("-1"))){
-				FcnZebra.WrLabel("Medidor:","RETIRADO", 10, 0.5 ,0);
-				FcnZebra.WrLabel("Tipo:",this._infRegistro1.getAsString("conexion"), 280, 0 ,1);				
-			}else if(this._infRegistro1.getAsString("tipo").equals("R")){
-				FcnZebra.WrLabel("Medidor:","RETIRADO", 10, 0.5 ,0);
-				FcnZebra.WrLabel("Serie:",this._infRegistro1.getAsString("serie"), 280, 0 ,1);
-				FcnZebra.WrLabel("Marca:",this._infRegistro1.getAsString("marca"), 10, 0 ,0);
-				FcnZebra.WrLabel("Tipo:",this._infRegistro1.getAsString("conexion"), 280, 0 ,1);	
-				FcnZebra.WrLabel("Lectura",this._infRegistro1.getAsString("lectura"), 10, 0 ,1);
-			}else if(this._infRegistro1.getAsString("tipo").equals("CM")){
-				FcnZebra.WrLabel("Medidor:","CANCELACION MATRICULA", 10, 0.5 ,0);
-				FcnZebra.WrLabel("Tipo:",this._infRegistro1.getAsString("conexion"), 370, 0.5 ,1);
-			}else if(this._infRegistro1.getAsString("tipo").equals("P")){
-				FcnZebra.WrLabel("Medidor:","PROVISIONAL",10, 0.5, 0);
-				FcnZebra.WrLabel("Serie:",this._infRegistro1.getAsString("serie"),280, 0, 1);
-				FcnZebra.WrLabel("Marca:",this._infRegistro1.getAsString("marca"),10, 0.5, 0);
-				FcnZebra.WrLabel("Tipo:",this._infRegistro1.getAsString("conexion"),280, 0, 1);
-				FcnZebra.WrLabel("Lectura:",this._infRegistro1.getAsString("lectura"),10, 0.5, 0);
-				FcnZebra.WrLabel("Propietario:","EMSA",280, 0, 1);
-			}else if(this._infRegistro1.getAsString("tipo").equals("D")){
-				FcnZebra.WrLabel("Medidor:","INSTALADO",10, 0.5, 0);
-				FcnZebra.WrLabel("Serie:",this._infRegistro1.getAsString("serie"),280, 0, 1);
-				FcnZebra.WrLabel("Marca:",this._infRegistro1.getAsString("marca"),10, 0.5, 0);
-				FcnZebra.WrLabel("Tipo:",this._infRegistro1.getAsString("conexion"),280, 0, 1);
-				FcnZebra.WrLabel("Lectura:",this._infRegistro1.getAsString("lectura"),10, 0.5, 0);
-				FcnZebra.WrLabel("Propietario:","EMSA",280, 0, 1);
-			}else if(this._infRegistro1.getAsString("tipo").equals("DP")){
-				FcnZebra.WrLabel("Medidor:","INSTALADO PROPIETARIO",10, 0.5, 0);
-				FcnZebra.WrLabel("Serie:",this._infRegistro1.getAsString("serie"),280, 0, 1);
-				FcnZebra.WrLabel("Marca:",this._infRegistro1.getAsString("marca"),10, 0.5, 0);
-				FcnZebra.WrLabel("Tipo:",this._infRegistro1.getAsString("conexion"),280, 0, 1);
-				FcnZebra.WrLabel("Lectura:",this._infRegistro1.getAsString("lectura"),10, 0.5, 0);
-				FcnZebra.WrLabel("Propietario:","Usuario",280, 0, 1);
+		
+		
+		if(ImpSQL.ExistRegistros("imp_equipo_medida", "id_orden='"+ordenTrabajo+"'")){
+			this._infTabla= ImpSQL.SelectData("imp_equipo_medida", "tipo, marca, serie, lectura, fecha_ins, conexion", "id_orden='"+ordenTrabajo+"' AND tipo<>'NM'");
+			for(int i=0;i<this._infTabla.size();i++){
+				this._infRegistro1 = this._infTabla.get(i);				
+				if(this._infRegistro1.getAsString("tipo").equals("SD")){
+					FcnZebra.WrLabel("SERVICIO DIRECTO","Se Deja Instalado Servicio Directo.", 10, 0 ,1);				
+				}else if((this._infRegistro1.getAsString("tipo").equals("R"))&&(this._infRegistro1.getAsString("serie").equals("-1"))){
+					FcnZebra.WrLabel("RETIRADO","Se Encuentra Predio Sin Servicio.", 10, 0 ,1);				
+				}else if((this._infRegistro1.getAsString("tipo").equals("R"))&&(this._infRegistro1.getAsString("serie").equals("0"))){
+					FcnZebra.WrLabel("RETIRADO","Se Encuentra Predio Con Servicio Directo.", 10, 0 ,1);				
+				}else if((this._infRegistro1.getAsString("tipo").equals("R"))&&(this._infRegistro1.getAsString("lectura").equals("-1"))){
+					FcnZebra.WrLabel("Medidor:","RETIRADO", 10, 0.5 ,0);
+					FcnZebra.WrLabel("Tipo:",this._infRegistro1.getAsString("conexion"), 280, 0 ,1);				
+				}else if(this._infRegistro1.getAsString("tipo").equals("R")){
+					FcnZebra.WrLabel("Medidor:","RETIRADO", 10, 0.5 ,0);
+					FcnZebra.WrLabel("Serie:",this._infRegistro1.getAsString("serie"), 280, 0 ,1);
+					FcnZebra.WrLabel("Marca:",this._infRegistro1.getAsString("marca"), 10, 0 ,0);
+					FcnZebra.WrLabel("Tipo:",this._infRegistro1.getAsString("conexion"), 280, 0 ,1);	
+					FcnZebra.WrLabel("Lectura",this._infRegistro1.getAsString("lectura"), 10, 0 ,1);
+				}else if(this._infRegistro1.getAsString("tipo").equals("CM")){
+					FcnZebra.WrLabel("Medidor:","CANCELACION MATRICULA", 10, 0.5 ,0);
+					FcnZebra.WrLabel("Tipo:",this._infRegistro1.getAsString("conexion"), 370, 0.5 ,1);
+				}else if(this._infRegistro1.getAsString("tipo").equals("P")){
+					FcnZebra.WrLabel("Medidor:","PROVISIONAL",10, 0.5, 0);
+					FcnZebra.WrLabel("Serie:",this._infRegistro1.getAsString("serie"),280, 0, 1);
+					FcnZebra.WrLabel("Marca:",this._infRegistro1.getAsString("marca"),10, 0.5, 0);
+					FcnZebra.WrLabel("Tipo:",this._infRegistro1.getAsString("conexion"),280, 0, 1);
+					FcnZebra.WrLabel("Lectura:",this._infRegistro1.getAsString("lectura"),10, 0.5, 0);
+					FcnZebra.WrLabel("Propietario:","EMSA",280, 0, 1);
+				}else if(this._infRegistro1.getAsString("tipo").equals("D")){
+					FcnZebra.WrLabel("Medidor:","INSTALADO",10, 0.5, 0);
+					FcnZebra.WrLabel("Serie:",this._infRegistro1.getAsString("serie"),280, 0, 1);
+					FcnZebra.WrLabel("Marca:",this._infRegistro1.getAsString("marca"),10, 0.5, 0);
+					FcnZebra.WrLabel("Tipo:",this._infRegistro1.getAsString("conexion"),280, 0, 1);
+					FcnZebra.WrLabel("Lectura:",this._infRegistro1.getAsString("lectura"),10, 0.5, 0);
+					FcnZebra.WrLabel("Propietario:","EMSA",280, 0, 1);
+				}else if(this._infRegistro1.getAsString("tipo").equals("DP")){
+					FcnZebra.WrLabel("Medidor:","INSTALADO PROPIETARIO",10, 0.5, 0);
+					FcnZebra.WrLabel("Serie:",this._infRegistro1.getAsString("serie"),280, 0, 1);
+					FcnZebra.WrLabel("Marca:",this._infRegistro1.getAsString("marca"),10, 0.5, 0);
+					FcnZebra.WrLabel("Tipo:",this._infRegistro1.getAsString("conexion"),280, 0, 1);
+					FcnZebra.WrLabel("Lectura:",this._infRegistro1.getAsString("lectura"),10, 0.5, 0);
+					FcnZebra.WrLabel("Propietario:","Usuario",280, 0, 1);
+				}
 			}
+		}else{
+			this._infRegistro1 = this.ImpSQL.SelectDataRegistro("amd_medidor_encontrado", "marca,serie,lectura,tipo", "id_orden='"+ordenTrabajo+"'");
+			FcnZebra.WrLabel("Medidor:","ENCONTRADO",10, 0.5, 0);
+			FcnZebra.WrLabel("Marca:",this._infRegistro1.getAsString("marca"),280, 0, 1);
+			FcnZebra.WrLabel("Serie:",this._infRegistro1.getAsString("serie"),10, 0, 0);
+			FcnZebra.WrLabel("Tipo:",this._infRegistro1.getAsString("tipo"),280, 0, 0);
+			FcnZebra.WrLabel("Lectura:",this._infRegistro1.getAsString("lectura"),550, 0, 1);	
+			FcnZebra.WrLabel("",ImpSQL.StrSelectShieldWhere("amd_inconsistencias", "valor", "id_orden='"+ordenTrabajo+"' AND cod_inconsistencia='AD15'"),10, 0, 1);	
 		}
 		
+		
+		
 		//En caso de que no se encuentre ningun movimiento de medidor
-		try{
+		/*try{
 			if(!ImpSQL.ExistRegistros("imp_equipo_medida","id_orden='"+ordenTrabajo+"' AND tipo<>'NM'")){
 				FcnZebra.WrLabel("Medidor:","ENCONTRADO",10, 0.5, 0);
 				FcnZebra.WrLabel("Marca:",this._infRegistro1.getAsString("marca"),280, 0, 1);
 				FcnZebra.WrLabel("Serie:",this._infRegistro1.getAsString("serie"),10, 0, 0);
 				FcnZebra.WrLabel("Tipo:",this._infRegistro1.getAsString("conexion"),280, 0, 0);
 				FcnZebra.WrLabel("Lectura:",this._infRegistro1.getAsString("lectura"),550, 0, 1);
-				
 				FcnZebra.WrLabel("",ImpSQL.StrSelectShieldWhere("amd_inconsistencias", "valor", "id_orden='"+ordenTrabajo+"' AND cod_inconsistencia='AD15'"),10, 0, 1);
 			}
 		}catch(Exception e){
 			Toast.makeText(this.context,"Error "+e.toString(), Toast.LENGTH_SHORT).show();
 			
-		}
+		}*/
 		
 		/****************************************************************Datos de Acometidas*********************************************************/
 		FcnZebra.WrSubTitulo("ACOMETIDAS",10,1,1);
