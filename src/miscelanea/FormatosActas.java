@@ -206,7 +206,6 @@ public class FormatosActas {
 			FcnZebra.WrLabel("Serie:",this._infRegistro1.getAsString("serie"),10, 0, 0);
 			FcnZebra.WrLabel("Tipo:",this._infRegistro1.getAsString("tipo"),280, 0, 0);
 			FcnZebra.WrLabel("Lectura:",this._infRegistro1.getAsString("lectura"),550, 0, 1);	
-			FcnZebra.WrLabel("",ImpSQL.StrSelectShieldWhere("amd_inconsistencias", "valor", "id_orden='"+ordenTrabajo+"' AND cod_inconsistencia='AD15'"),10, 0, 1);	
 		}
 		
 		

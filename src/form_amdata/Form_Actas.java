@@ -3,12 +3,15 @@ package form_amdata;
 import java.io.File;
 import java.util.ArrayList;
 
+import class_amdata.Class_Impresiones;
+
 import sypelc.androidamdata.R;
 import miscelanea.FormatosActas;
 import miscelanea.SQLite;
 import miscelanea.Util;
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
@@ -24,7 +27,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Form_Actas extends Activity implements OnClickListener{
-	FormatosActas 	ActaImpresa;
+	Class_Impresiones 	FcnImpresion;
+	FormatosActas 		ActaImpresa;
 	SQLite 				ActasSQL;
 	Util   				ActasUtil;
 	
@@ -96,6 +100,8 @@ public class Form_Actas extends Activity implements OnClickListener{
 		this.OrdenTrabajo		= bundle.getString("OrdenTrabajo");
 		this.CuentaCliente 		= bundle.getString("CuentaCliente");		
 		this.FolderAplicacion	= bundle.getString("FolderAplicacion");
+		
+		FcnImpresion= new Class_Impresiones(this, this.FolderAplicacion, this.CedulaUsuario);
 		
 		ActasSQL 	= new SQLite(this, this.FolderAplicacion);
 		ActasUtil 	= new Util();
@@ -310,15 +316,21 @@ public class Form_Actas extends Activity implements OnClickListener{
 				return true;	
 				
 			case R.id.ImpresionOriginal:
-				ActaImpresa.FormatoVerificacion(OrdenTrabajo,"Desviacion",1, CedulaUsuario);
+				if(this.FcnImpresion.validarDatosImpresionActa(OrdenTrabajo)){
+					ActaImpresa.FormatoVerificacion(OrdenTrabajo,"Desviacion",1, CedulaUsuario);
+				}				
 				return true;
 				
 			case R.id.ImpresionCopia:
-				ActaImpresa.FormatoVerificacion(OrdenTrabajo,"Desviacion",2, CedulaUsuario);
+				if(this.FcnImpresion.validarDatosImpresionActa(OrdenTrabajo)){
+					ActaImpresa.FormatoVerificacion(OrdenTrabajo,"Desviacion",2, CedulaUsuario);
+				}				
 				return true;
 				
 			case R.id.ImpresionArchivo:
-				ActaImpresa.FormatoVerificacion(OrdenTrabajo,"Desviacion",3, CedulaUsuario);
+				if(this.FcnImpresion.validarDatosImpresionActa(OrdenTrabajo)){
+					ActaImpresa.FormatoVerificacion(OrdenTrabajo,"Desviacion",3, CedulaUsuario);
+				}				
 				return true;	
 				
 			default:
