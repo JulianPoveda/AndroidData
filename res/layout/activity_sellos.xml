@@ -153,8 +153,8 @@
             android:layout_alignLeft="@+id/SellosLblEstado"
             android:text="@string/SellosBtnEliminar" />
 
-        <TableLayout
-            android:id="@+id/TablaSellos"
+        <ScrollView
+            android:id="@+id/scrollView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -162,31 +162,13 @@
             android:layout_alignParentRight="true"
             android:layout_below="@+id/SellosBtnRegistrar" >
 
-            <TableRow
-                android:id="@+id/tableRow1"
+            <TableLayout
+                android:id="@+id/TablaSellos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" >
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/tableRow2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/tableRow3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-            </TableRow>
-
-            <TableRow
-                android:id="@+id/tableRow4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-            </TableRow>
-        </TableLayout>
-
+            </TableLayout>
+        </ScrollView>
+		         
     </RelativeLayout>
 
 </LinearLayout>
