@@ -68,7 +68,7 @@ public class Form_CensoCarga extends Activity implements OnClickListener, OnChec
 	
 	CheckBox		_chkFaseA, _chkFaseB, _chkFaseC;
 	Spinner 		_cmbElementos, _cmbEstadoElemento, _cmbConexion, _cmbPrueba, _cmbCantidad;
-	TextView		_lblVb, _lblVc, _lblIb, _lblIc, _lblTb, _lblTc, _lblNvb, _lblNvc, _lblFp1, _lblFp2, _lblFp3;
+	TextView		_lblVb, _lblVc, _lblIb, _lblIc, _lblTb, _lblTc, _lblNvb, _lblNvc, _lblFp1, _lblFp2, _lblFp3, _lbltcr;
 	EditText 		_txtVa, _txtVb, _txtVc, _txtIa, _txtIb, _txtIc, _txtTa, _txtTb, _txtTc, _txtNva, _txtNvb, _txtNvc, _txtRevUnidades, _txtVatios;
 	Button 			_btnRegistrar, _btnEliminar, _btnErrorCalcular, _btnErrorGuardar;
 	
@@ -132,6 +132,7 @@ public class Form_CensoCarga extends Activity implements OnClickListener, OnChec
 		_lblFp1				= (TextView) findViewById(R.id.ErrorLblFp1Value);
 		_lblFp2				= (TextView) findViewById(R.id.ErrorLblFp2Value);
 		_lblFp3				= (TextView) findViewById(R.id.ErrorLblFp3Value); 
+		_lbltcr 			= (TextView) findViewById(R.id.CensoLblTCR41);
 		
 		_txtVa				= (EditText) findViewById(R.id.CensoTxtVa);
 		_txtVb				= (EditText) findViewById(R.id.CensoTxtVb);
@@ -426,6 +427,9 @@ public class Form_CensoCarga extends Activity implements OnClickListener, OnChec
     					Toast.makeText(this,"Error al registrar el elemento.",Toast.LENGTH_SHORT).show();
     				}
     			}
+    			
+    			_lbltcr.setText("TCR:"+this.CensoSQL.StrSelectShieldWhere("adm_censo_carga","sum(capacidad)"," id_orden='"+this.OrdenTrabajo+"'"));
+    			
     			break;
     			
     		case R.id.CensoBtnEliminar:

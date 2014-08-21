@@ -47,5 +47,7 @@
     <string name="title_activity_bodega_contadores">CONTADORES DISPONIBLES</string>
     <string name="title_activity_servicio_nuevo">Creacion Orden de Nuevo Servicio</string>
     <string name="title_activity_auto_gestion">Creacion de Autogestion</string>
+    <string name="CensoLblTCR3">TCR:</string>
+    <string name="CensoLblTCR4">TCR:</string>
 
 </resources>

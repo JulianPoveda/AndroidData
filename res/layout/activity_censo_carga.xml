@@ -154,6 +154,17 @@
 	        android:text="@string/CensoLblVatios"
 	        android:textAppearance="?android:attr/textAppearanceMedium" />
 
+	    <TextView
+	        android:id="@+id/CensoLblTCR2"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBaseline="@+id/CensoBtnRegistrar"
+	        android:layout_alignBottom="@+id/CensoBtnRegistrar"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignRight="@+id/CensoLblVatios"
+	        android:text="@string/CensoLblTCR4"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+
 	</RelativeLayout>
 
     <RelativeLayout
