@@ -49,5 +49,7 @@
     <string name="title_activity_auto_gestion">Creacion de Autogestion</string>
     <string name="CensoLblTCR3">TCR:</string>
     <string name="CensoLblTCR4">TCR:</string>
+    <string name="CensoLblTCD">TCD:</string>
+    <string name="CensoLblTCC">TCC:</string>
 
 </resources>

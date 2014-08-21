@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     tools:context="${packageName}.${activityClass}" >
 	
 	<RelativeLayout
@@ -105,43 +106,6 @@
 		        </TableRow>
 		    </TableLayout>
 		</ScrollView>
-	
-	    <Button
-	        android:id="@+id/CensoBtnRegistrar"
-	        android:layout_width="100dp"
-	        android:layout_height="wrap_content"
-	        android:layout_below="@+id/CensoLblVatios"
-	        android:layout_marginTop="21dp"
-	        android:layout_toRightOf="@+id/CensoLblVatios"
-	        android:text="@string/CensoBtnRegistrar" />
-
-	    <TextView
-	        android:id="@+id/CensoLblCantidad"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_above="@+id/CensoBtnRegistrar"
-	        android:layout_alignRight="@+id/CensoBtnEliminar"
-	        android:layout_below="@+id/CensoCmbCarga"
-	        android:gravity="right|center_vertical"
-	        android:text="@string/CensoLblCantidad"
-	        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-	    <Spinner
-	        android:id="@+id/CensoCmbCantidad"
-	        android:layout_width="120dp"
-	        android:layout_height="wrap_content"
-	        android:layout_alignBottom="@+id/CensoLblCantidad"
-	        android:layout_alignTop="@+id/CensoLblCantidad"
-	        android:layout_toRightOf="@+id/CensoLblCantidad" />
-
-	    <EditText
-	        android:id="@+id/CensoTxtVatios"
-	        android:layout_width="140dp"
-	        android:layout_height="45dp"
-	        android:layout_alignTop="@+id/CensoLblCantidad"
-	        android:layout_toRightOf="@+id/CensoLblCarga"
-	        android:ems="10"
-	        android:inputType="number" />
 
 	    <TextView
 	        android:id="@+id/CensoLblVatios"
@@ -154,15 +118,71 @@
 	        android:text="@string/CensoLblVatios"
 	        android:textAppearance="?android:attr/textAppearanceMedium" />
 
+	    <Button
+	        android:id="@+id/CensoBtnRegistrar"
+	        android:layout_width="100dp"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@+id/CensoLblVatios"
+	        android:layout_marginTop="29dp"
+	        android:layout_toRightOf="@+id/CensoTxtVatios"
+	        android:text="@string/CensoBtnRegistrar" />
+
+	    <TextView
+	        android:id="@+id/CensoLblCantidad"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_above="@+id/CensoBtnRegistrar"
+	        android:layout_toLeftOf="@+id/CensoBtnEliminar"
+	        android:gravity="right|center_vertical"
+	        android:text="@string/CensoLblCantidad"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	    <Spinner
+	        android:id="@+id/CensoCmbCantidad"
+	        android:layout_width="120dp"
+	        android:layout_height="wrap_content"
+	        android:layout_above="@+id/CensoBtnRegistrar"
+	        android:layout_alignTop="@+id/CensoTxtVatios"
+	        android:layout_toRightOf="@+id/CensoLblCantidad" />
+
 	    <TextView
 	        android:id="@+id/CensoLblTCR2"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:layout_alignBaseline="@+id/CensoBtnRegistrar"
-	        android:layout_alignBottom="@+id/CensoBtnRegistrar"
+	        android:layout_above="@+id/CensoBtnEliminar"
 	        android:layout_alignParentLeft="true"
-	        android:layout_alignRight="@+id/CensoLblVatios"
+	        android:layout_alignRight="@+id/CensoTxtVatios"
+	        android:layout_marginLeft="32dp"
 	        android:text="@string/CensoLblTCR4"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	    <EditText
+	        android:id="@+id/CensoTxtVatios"
+	        android:layout_width="140dp"
+	        android:layout_height="45dp"
+	        android:layout_alignLeft="@+id/CensoCmbCarga"
+	        android:layout_below="@+id/CensoCmbCarga"
+	        android:ems="10"
+	        android:inputType="number" />
+
+	    <TextView
+	        android:id="@+id/CensoLblTCD"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignLeft="@+id/CensoLblTCR2"
+	        android:layout_alignRight="@+id/CensoLblTCR2"
+	        android:layout_below="@+id/CensoLblTCR2"
+	        android:text="@string/CensoLblTCD"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+	    <TextView
+	        android:id="@+id/CensoLblTCC"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBottom="@+id/CensoBtnRegistrar"
+	        android:layout_alignLeft="@+id/CensoLblTCD"
+	        android:layout_alignRight="@+id/CensoLblTCD"
+	        android:text="@string/CensoLblTCC"
 	        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 	</RelativeLayout>
