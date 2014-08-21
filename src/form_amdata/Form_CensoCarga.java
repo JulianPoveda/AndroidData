@@ -132,7 +132,7 @@ public class Form_CensoCarga extends Activity implements OnClickListener, OnChec
 		_lblFp1				= (TextView) findViewById(R.id.ErrorLblFp1Value);
 		_lblFp2				= (TextView) findViewById(R.id.ErrorLblFp2Value);
 		_lblFp3				= (TextView) findViewById(R.id.ErrorLblFp3Value); 
-		_lbltcr 			= (TextView) findViewById(R.id.CensoLblTCR41);
+		_lbltcr 			= (TextView) findViewById(R.id.CensoLblTCR2);
 		
 		_txtVa				= (EditText) findViewById(R.id.CensoTxtVa);
 		_txtVb				= (EditText) findViewById(R.id.CensoTxtVb);
@@ -428,7 +428,7 @@ public class Form_CensoCarga extends Activity implements OnClickListener, OnChec
     				}
     			}
     			
-    			_lbltcr.setText("TCR:"+this.CensoSQL.StrSelectShieldWhere("adm_censo_carga","sum(capacidad)"," id_orden='"+this.OrdenTrabajo+"'"));
+    			_lbltcr.setText("TCR:"+this.CensoSQL.StrSelectShieldWhere("amd_censo_carga","sum(capacidad)"," id_orden='"+this.OrdenTrabajo+"' AND tipo_carga='R'"));
     			
     			break;
     			
