@@ -337,7 +337,7 @@ public class FormatosActas {
 				
 				FcnZebra.WrLabel("Corr:",this._infRegistro1.getAsString("corriente"),10,0,0);
 				FcnZebra.WrLabel("Tmpo:",this._infRegistro1.getAsString("tiempo"),300,0,0);
-				FcnZebra.WrLabel("Vuel:",this._infRegistro1.getAsString("tiempo"),460,0,1);
+				FcnZebra.WrLabel("Vuel:",this._infRegistro1.getAsString("vueltas"),460,0,1);
 				
 				FcnZebra.WrLabel("Revo:",this._infRegistro1.getAsString("rev"),10,0,0);
 				FcnZebra.WrLabel("Fp:  ",this._infRegistro1.getAsString("fp")+"%",300,0,0);

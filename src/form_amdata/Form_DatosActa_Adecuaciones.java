@@ -44,7 +44,7 @@ public class Form_DatosActa_Adecuaciones extends Activity implements OnClickList
 	private String _strElectricista[] 		= {"...","No","Si"};
 	private String _strTipoMedidor[] 		= {"...","No Hay Medidor","Induccion","Electronico"};
 	private String _strUbicacionMedidor[] 	= {"...","No Hay Medidor","Interno","Externo"};
-	private String _strIrregularidades[] 	= {"...","No Hay Irregularidades","No","Si"};
+	private String _strIrregularidades[] 	= {"...","No Hay Irreg","No","Si"};
 	private String _strRegistrador[] 		= {"...","No Hay Medidor","Digital","Ciclometrico"};
 	
 	/**Adecuaciones a realizar**/
