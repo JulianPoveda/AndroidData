@@ -167,7 +167,7 @@ public class zebra_QL420 {
 	public void WrSubTitulo(String InfSubtitulo, int OffsetSub, double SaltoLineaPre, double SaltoLineaPos){
 		this._lineaActual += this._altoFuente1 * SaltoLineaPre;
 		SetValuesFont("SUBTITULO");
-		this._infImpresora += "TEXT " + this._tipoFuente1+ " 0 " + OffsetSub + " " + this._lineaActual+ " " + InfSubtitulo + ";\r\n";
+		this._infImpresora += "TEXT " + this._tipoFuente1+ " 0 " + OffsetSub + " " + this._lineaActual+ " " + InfSubtitulo + " \r\n";
 		if(this._copiaArchivo){
 			this._infArchivo += "2;"+OffsetSub+";"+this._lineaActual+";"+InfSubtitulo+";\r\n";			
 		}

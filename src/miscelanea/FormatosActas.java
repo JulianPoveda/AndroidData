@@ -486,8 +486,8 @@ public class FormatosActas {
 		
 		/**************************************************Inicio de impresion de las irregularidades**********************************/
 		this._infTabla = ImpSQL.SelectData("vista_irregularidades", "descripcion", "id_orden='"+ordenTrabajo+"' ORDER BY descripcion");
-		if(this._infRegistro1.size()>0){
-			FcnZebra.WrSubTitulo("IRREGULARIDADES",10,1,1.5);
+		if(this._infTabla.size()>0){
+			FcnZebra.WrSubTitulo("IRREGULARIDADES",10,1.5,1.5);
 			for(int i=0;i<this._infTabla.size();i++){
 				this._infRegistro1 = this._infTabla.get(i);
 				FcnZebra.WrLabel(this._infRegistro1.getAsString("descripcion"), "", 10, 0, 1);
