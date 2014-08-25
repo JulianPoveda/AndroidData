@@ -107,6 +107,7 @@ public class Form_CensoCarga extends Activity implements OnClickListener, OnChec
 		CensoTabla 	= new Tablas(this, _strCamposTabla, "110,275,80,70,90", 1, "#74BBEE", "#A9CFEA" ,"#EE7474");
 		CensoSQL 	= new SQLite(this, FolderAplicacion);
 		CensoUtil 	= new Util();
+	
 		
 		FcnCenso 	= new Class_CensoCarga(this, FolderAplicacion);
 		
@@ -173,7 +174,11 @@ public class Form_CensoCarga extends Activity implements OnClickListener, OnChec
 		AdaptadorTipoPrueba 	= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,_strPrueba);
 		_cmbPrueba.setAdapter(AdaptadorTipoPrueba);
 				
-			
+		_lbltcr.setText("TCR:  "+this.CensoSQL.StrSelectShieldWhere("amd_censo_carga","sum(capacidad*cantidad)"," id_orden='"+this.OrdenTrabajo+"' AND tipo_carga='R'"));
+		_lbltcd.setText("TCD:  "+this.CensoSQL.StrSelectShieldWhere("amd_censo_carga","sum(capacidad*cantidad)"," id_orden='"+this.OrdenTrabajo+"' AND tipo_carga='D'"));
+		_lbltcc.setText("TCC:  "+this.CensoSQL.StrSelectShieldWhere("amd_censo_carga","sum(capacidad*cantidad)"," id_orden='"+this.OrdenTrabajo+"'"));
+	
+		
 		//Adaptador para el combo del calibre del material segun el tipo  y el conductor
 		ElementosCenso	= CensoSQL.SelectData("amd_elementos_censo", "descripcion", "id_elemento IS NOT NULL ORDER BY descripcion");
 		CensoUtil.ArrayContentValuesToString(StringElementosCenso, ElementosCenso, "descripcion");		
@@ -198,6 +203,9 @@ public class Form_CensoCarga extends Activity implements OnClickListener, OnChec
 		_btnEliminar.setOnClickListener(this);
 		_btnErrorCalcular.setOnClickListener(this);
 		_btnErrorGuardar.setOnClickListener(this);
+	
+	
+	
 	}
 	
 	@Override
@@ -431,9 +439,9 @@ public class Form_CensoCarga extends Activity implements OnClickListener, OnChec
     				}
     			}
     			
-    			_lbltcr.setText("TCR:  "+this.CensoSQL.StrSelectShieldWhere("amd_censo_carga","sum(capacidad)"," id_orden='"+this.OrdenTrabajo+"' AND tipo_carga='R'"));
-    			_lbltcd.setText("TCR:  "+this.CensoSQL.StrSelectShieldWhere("amd_censo_carga","sum(capacidad)"," id_orden='"+this.OrdenTrabajo+"' AND tipo_carga='D'"));
-    			_lbltcc.setText("TCR:  "+this.CensoSQL.StrSelectShieldWhere("amd_censo_carga","sum(capacidad)"," id_orden='"+this.OrdenTrabajo+"'"));
+    			_lbltcr.setText("TCR:  "+this.CensoSQL.StrSelectShieldWhere("amd_censo_carga","sum(capacidad*cantidad)"," id_orden='"+this.OrdenTrabajo+"' AND tipo_carga='R'"));
+    			_lbltcd.setText("TCD:  "+this.CensoSQL.StrSelectShieldWhere("amd_censo_carga","sum(capacidad*cantidad)"," id_orden='"+this.OrdenTrabajo+"' AND tipo_carga='D'"));
+    			_lbltcc.setText("TCC:  "+this.CensoSQL.StrSelectShieldWhere("amd_censo_carga","sum(capacidad*cantidad)"," id_orden='"+this.OrdenTrabajo+"'"));
     			
     			
     			break;
@@ -445,9 +453,9 @@ public class Form_CensoCarga extends Activity implements OnClickListener, OnChec
 			        ll.removeAllViews();
 			        ll.addView(InformacionTabla);
 			        
-			        _lbltcr.setText("TCR:  "+this.CensoSQL.StrSelectShieldWhere("amd_censo_carga","sum(capacidad)"," id_orden='"+this.OrdenTrabajo+"' AND tipo_carga='R'"));
-	    			_lbltcd.setText("TCR:  "+this.CensoSQL.StrSelectShieldWhere("amd_censo_carga","sum(capacidad)"," id_orden='"+this.OrdenTrabajo+"' AND tipo_carga='D'"));
-	    			_lbltcc.setText("TCR:  "+this.CensoSQL.StrSelectShieldWhere("amd_censo_carga","sum(capacidad)"," id_orden='"+this.OrdenTrabajo+"'"));
+			        _lbltcr.setText("TCR:  "+this.CensoSQL.StrSelectShieldWhere("amd_censo_carga","sum(capacidad*cantidad)"," id_orden='"+this.OrdenTrabajo+"' AND tipo_carga='R'"));
+	    			_lbltcd.setText("TCD:  "+this.CensoSQL.StrSelectShieldWhere("amd_censo_carga","sum(capacidad*cantidad)"," id_orden='"+this.OrdenTrabajo+"' AND tipo_carga='D'"));
+	    			_lbltcc.setText("TCC:  "+this.CensoSQL.StrSelectShieldWhere("amd_censo_carga","sum(capacidad*cantidad)"," id_orden='"+this.OrdenTrabajo+"'"));
 	    			
 			    }else{
     				Toast.makeText(this,"Error al eliminar el elemento.",Toast.LENGTH_SHORT).show();

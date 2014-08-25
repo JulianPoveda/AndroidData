@@ -428,9 +428,11 @@ public class FormatosActas {
 		
 		FcnZebra.setCurrentLine(tempCurrentLine);
 		this._infTabla = ImpSQL.SelectData("imp_datos_generales", "descripcion, valor", "id_orden='"+ordenTrabajo+"' AND descripcion_titulo = 'ADECUACIONES A REALIZAR'");
+		
 		if(this._infTabla.size()>0){
 			FcnZebra.WrLabel("", "ADECUACIONES A REALIZAR",360, 1, 1.5);
 			for(int i=0;i<this._infTabla.size();i++){
+				
 				this._infRegistro1 = this._infTabla.get(i);
 				this._tempStr1 	= this._infRegistro1.getAsString("descripcion").split("_");
 				this._tempStr2	= this._infRegistro1.getAsString("valor").split("_");
