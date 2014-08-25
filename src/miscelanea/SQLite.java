@@ -24,7 +24,7 @@ import android.util.Log;
 public class SQLite {
 	private static Archivos ArchSQL;	
 	private static String N_BD = null; 	
-	private static final int VERSION_BD = 1;																		
+	private static final int VERSION_BD = 2;																		
 	
 	private BDHelper nHelper;
 	private Context nContexto;
@@ -187,7 +187,7 @@ public class SQLite {
 												+ "	cedula_enterado	VARCHAR(20) NOT NULL,"
 												+ "	evento			VARCHAR(50),"
 												+ "	tipo_enterado	VARCHAR(50) NOT NULL,"
-												+ "	fecha_revision	TIMESTAMP  NOT NULL DEFAULT current_timestamp,"
+												+ "	fecha_revision	TIMESTAMP,"
 												+ "	usuario_ins 	VARCHAR(50) NOT NULL,"
 												+ " fecha_ins		TIMESTAMP  NOT NULL DEFAULT current_timestamp,"
 												+ " cedula_testigo	VARCHAR(20),"
@@ -1095,11 +1095,19 @@ public class SQLite {
 					"	ON 		a.id_orden = b.id_orden" +
 					"	WHERE	a.estado = 'PC';");
 			
+			db.execSQL(	"CREATE TRIGGER tg_fecha_revision AFTER INSERT ON amd_actas FOR EACH ROW BEGIN " +
+						"	UPDATE amd_actas SET fecha_revision=datetime('now','localtime') WHERE id_orden = NEW.id_orden;" +
+						"END;");
+			
 		}
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 			db.execSQL("UPDATE db_parametros SET valor = '1.6' WHERE item = 'version'");
+			
+			db.execSQL(	"CREATE TRIGGER tg_fecha_revision AFTER INSERT ON amd_actas FOR EACH ROW BEGIN " +
+						"	UPDATE amd_actas SET fecha_revision=datetime('now','localtime') WHERE id_orden = NEW.id_orden;" +
+						"END;");
 		}
 	}
 	
