@@ -61,16 +61,15 @@ public class Class_Sellos {
 	
 	
 	/**Funcion encargada de realizar la eliminacion del registro el de las tablas respectivas**/
-	public boolean eliminarSello(String _tipoIngreso, String _tipoSello, String _serieSello, String _colorSello){
+	public boolean eliminarSello(String _tipoIngreso,  String _serieSello){
 		boolean _retorno = false;
-		if(this.validarMovimientoSelloEliminado(_tipoIngreso,_tipoSello,_serieSello,_colorSello)){
-			
+		if(this.validarMovimientoSelloEliminado(_serieSello)){
 			if(_tipoIngreso.equals("RETIRADO")){
-				_retorno = this.eliminarDatosSello(_tipoSello, _serieSello);			
+				_retorno = this.eliminarDatosSello(_serieSello);			
 			}else if(_tipoIngreso.equals("INSTALADO")){
-				_retorno = this.eliminarDatosSello(_tipoSello, _serieSello) && this.eliminarUsoSelloBodega(_serieSello, _tipoSello, _colorSello);
+				_retorno = this.eliminarDatosSello(_serieSello) && this.eliminarUsoSelloBodega(_serieSello);
 			}else if(_tipoIngreso.equals("EXISTENTE")){
-				_retorno = this.eliminarDatosSello(_tipoSello, _serieSello);		
+				_retorno = this.eliminarDatosSello(_serieSello);		
 			}
 		}
 		return _retorno;
@@ -93,8 +92,8 @@ public class Class_Sellos {
 	
 	
 	/**funcion para eliminar el registro del sello**/
-	private boolean eliminarDatosSello(String _tipoSello, String _serieSello){
-		return this.SellosSQL.DeleteRegistro("amd_sellos", "id_orden='"+this.OrdenTrabajo+"' AND tipo='"+_tipoSello+"' AND numero='"+_serieSello+"'");
+	private boolean eliminarDatosSello(String _serieSello){
+		return this.SellosSQL.DeleteRegistro("amd_sellos", "id_orden='"+this.OrdenTrabajo+"' AND numero='"+_serieSello+"'");
 	}
 	
 	
@@ -112,8 +111,8 @@ public class Class_Sellos {
 	
 	
 	/**Funcion para validar el movimiento del sello a eliminar, en efecto corresponda al registrado en amd_sellos**/
-	private boolean validarMovimientoSelloEliminado(String _estadoSello, String _tipoSello, String _serieSello, String _colorSello){
-		return this.SellosSQL.ExistRegistros("amd_sellos", "estado='"+_estadoSello+"' AND tipo='"+_tipoSello+"' AND numero='"+_serieSello+"' AND color='"+_colorSello+"'" );
+	private boolean validarMovimientoSelloEliminado(String _serieSello){
+		return this.SellosSQL.ExistRegistros("amd_sellos", "numero='"+_serieSello+"'" );
 	}
 	
 	
@@ -126,10 +125,10 @@ public class Class_Sellos {
 	
 	
 	/**funcion para eliminar el registro del sello en la bodega**/
-	private boolean eliminarUsoSelloBodega(String _serieSello, String _tipoSello, String _colorSello){
+	private boolean eliminarUsoSelloBodega(String _serieSello){
 		this._tempRegistro.clear();
 		this._tempRegistro.put("estado", "P");
-		return this.SellosSQL.UpdateRegistro("amd_bodega_sellos", this._tempRegistro, "numero='"+_serieSello+"' AND tipo='"+_tipoSello+"' AND color='"+_colorSello+"'");
+		return this.SellosSQL.UpdateRegistro("amd_bodega_sellos", this._tempRegistro, "numero='"+_serieSello+"'");
 	}
 	
 	/**Funcion para confirmar la serie**/

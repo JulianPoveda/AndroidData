@@ -85,7 +85,7 @@ public class Class_Contador {
 			this._tempRegistro.put("textSerie","");
 			this._tempRegistro.put("enableSerie", false);
 			this._tempRegistro.put("textLectura","");
-			this._tempRegistro.put("enableLectura", false);
+			this._tempRegistro.put("enableLectura", true);
 			this._tempRegistro.put("valorTipoConexion","...");
 			this._tempRegistro.put("enableTipoConexion", false);
 			this._tempRegistro.put("valorMarcaMedidor","...");
@@ -95,7 +95,7 @@ public class Class_Contador {
 			this._tempRegistro.put("textSerie","");
 			this._tempRegistro.put("enableSerie", false);
 			this._tempRegistro.put("textLectura","");
-			this._tempRegistro.put("enableLectura", false);
+			this._tempRegistro.put("enableLectura", true);
 			this._tempRegistro.put("valorTipoConexion","...");
 			this._tempRegistro.put("enableTipoConexion", false);
 			this._tempRegistro.put("valorMarcaMedidor","...");

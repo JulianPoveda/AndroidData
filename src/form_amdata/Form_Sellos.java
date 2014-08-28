@@ -300,7 +300,7 @@ public class Form_Sellos extends Activity implements OnClickListener, OnItemSele
 				break;
 				
 			case R.id.SellosBtnEliminar:
-				if(!this.FcnSellos.eliminarSello(_cmbTipoMovimiento.getSelectedItem().toString(), _cmbTipoSello.getSelectedItem().toString(), _txtSerie.getText().toString(), _cmbColor.getSelectedItem().toString())){
+				if(!this.FcnSellos.eliminarSello(_cmbTipoMovimiento.getSelectedItem().toString(), _txtSerie.getText().toString())){
 					Toast.makeText(getApplicationContext(),"Error al tratar de eliminar el sello.", Toast.LENGTH_SHORT).show();
 				}
 				this.VerSellosRegistrados();

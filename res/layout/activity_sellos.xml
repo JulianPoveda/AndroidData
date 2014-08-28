@@ -129,7 +129,7 @@
             android:layout_alignRight="@+id/SellosCmbUbicacion"
             android:layout_toRightOf="@+id/SellosLblSerie"
             android:ems="10"
-            android:inputType="textPassword" >
+            android:inputType="numberPassword" >
 
             <requestFocus />
         </EditText>

@@ -153,7 +153,8 @@ public class FormatosActas {
 		/**************************************************Datos del suscriptor y equipo de medida********************************************/
 		FcnZebra.WrSubTitulo("DATOS DEL SUSCRIPTOR Y EQUIPO DE MEDIDA",10,1,1);
 		
-		
+		FcnZebra.WrLabel("Ubicación Medidor:", ImpSQL.StrSelectShieldWhere("amd_impresiones_inf", "ubicacion", "id_orden='"+ordenTrabajo+"'"), 10, 0, 1);
+				
 		if(ImpSQL.ExistRegistros("imp_equipo_medida", "id_orden='"+ordenTrabajo+"'")){
 			this._infTabla= ImpSQL.SelectData("imp_equipo_medida", "tipo, marca, serie, lectura, fecha_ins, conexion", "id_orden='"+ordenTrabajo+"' AND tipo<>'NM'");
 			for(int i=0;i<this._infTabla.size();i++){
@@ -545,7 +546,7 @@ public class FormatosActas {
 			FcnZebra.WrLabel("CC.", CedulaTecnico, 10, 0, 1);
 			FcnZebra.WrLabel("", "Empleado y/o Contratista", 10, 0, 1);
 		}
-		FcnZebra.JustInformation("NO PAGAR NI REALIZAR NEGOCIACIONES CON EL OPERARIO POR NINGUN CONCEPTO. DENUNCIE CUALQUIER IRREGULARIDAD AL TELEFONO"+" 66666666", 10, 1, 1);	
+		FcnZebra.JustInformation("NO PAGAR NI REALIZAR NEGOCIACIONES CON EL OPERARIO POR NINGUN CONCEPTO. DENUNCIE CUALQUIER IRREGULARIDAD AL TELEFONO"+" 6614000", 10, 1, 1);	
 		FcnZebra.WrSubTitulo("ITEMS DE PAGO APLICADOS: "+ImpSQL.StrSelectShieldWhere("amd_impresiones_inf", "items", "id_orden='"+ordenTrabajo+"'"),10,1.2,1.2);
 		
 		//_infImpresion = WrLabel(_infImpresion, "", copiaImpresion, 10, 0, 1);
@@ -686,22 +687,21 @@ public class FormatosActas {
 			}
 		}	
 			
-		if(ImpSQL.ExistRegistros("imp_acometida_material", "id_orden='"+ordenTrabajo+"' AND tipo_ingreso='N'")){
-			FcnZebra.WrSubTitulo("MATERIAL RETIRADO",10,0,1.2);
-			FcnZebra.WrSubTitulo("COMETIDA",10,0,1.2);
-			this._infRegistro1 = ImpSQL.SelectDataRegistro("imp_acometida_material", "fase,calibre,longitud", "id_orden='"+ordenTrabajo+"' AND tipo_ingreso='N'");
-			FcnZebra.WrLabel("Fases:",this._infRegistro1.getAsString("fase"), 10, 0, 0);
-			FcnZebra.WrLabel("Calibre:",this._infRegistro1.getAsString("calibre"), 210, 0, 0);
-			FcnZebra.WrLabel("MTS:",this._infRegistro1.getAsString("longitud"), 350, 0, 1);
-		}
-		
-		if(ImpSQL.ExistRegistros("amd_cambios_contadores","id_orden='"+ordenTrabajo+"' AND tipo IN ('R)")){
-			this._infRegistro1 = ImpSQL.SelectDataRegistro("amd_cambios_contadores", "marca,serie,lectura.tipo", "id_orden='"+ordenTrabajo+"' AND tipo IN ('R)");
-			FcnZebra.WrSubTitulo("MEDIDOR RETIRADO",10,0,1.2);		
+		if(ImpSQL.ExistRegistros("amd_cambios_contadores","id_orden='"+ordenTrabajo+"' AND tipo IN ('R')")){
+			this._infRegistro1 = ImpSQL.SelectDataRegistro("amd_cambios_contadores", "marca,serie,lectura,tipo", "id_orden='"+ordenTrabajo+"' AND tipo IN ('R')");
+			FcnZebra.WrSubTitulo("MEDIDOR RETIRADO",10,1,1.2);		
 			FcnZebra.WrLabel("Marca:",this._infRegistro1.getAsString("marca"), 10, 0, 0);
 			FcnZebra.WrLabel("Serie:",this._infRegistro1.getAsString("serie"), 260, 0, 1);
 			FcnZebra.WrLabel("Lectura:",this._infRegistro1.getAsString("lectura"), 10, 0, 0);
 			FcnZebra.WrLabel("Tipo:",this._infRegistro1.getAsString("tipo"), 260, 0, 1);
+		}
+		
+		if(ImpSQL.ExistRegistros("imp_acometida_material","id_orden='"+ordenTrabajo+"' AND tipo_ingreso IN ('Nueva')")){
+			this._infRegistro1 = ImpSQL.SelectDataRegistro("imp_acometida_material", "fase,calibre,longitud", "id_orden='"+ordenTrabajo+"' AND tipo_ingreso IN ('Existente')");
+			FcnZebra.WrSubTitulo("ACOMETIDA RETIRADA",10,1,1.2);		
+			FcnZebra.WrLabel("Fase:",this._infRegistro1.getAsString("fase"), 10, 0, 0);
+			FcnZebra.WrLabel("Calibre:",this._infRegistro1.getAsString("calibre"), 260, 0, 0);
+			FcnZebra.WrLabel("Longitud:",this._infRegistro1.getAsString("longitud"), 400, 0, 1);
 		}
 		
 		FcnZebra.WrSubTitulo("OBSERVACIONES",10,1,1.2);
