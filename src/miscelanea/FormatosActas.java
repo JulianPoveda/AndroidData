@@ -115,8 +115,9 @@ public class FormatosActas {
 		}else{
 			FcnZebra.WrLabel("Revision:    ", ordenTrabajo,200, 0, 1.2);	
 		}
+		this._infRegistro1 = ImpSQL.SelectDataRegistro("vista_ordenes_trabajo", "municipio", "id_orden='"+ordenTrabajo+"'");
 		FcnZebra.WrLabel("Codigo:     ", ImpSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "cuenta", "id_orden='"+ordenTrabajo+"'"), 200, 0, 1.2);
-		FcnZebra.WrLabel("VILLAVICENCIO", "", 300, 0, 1.2);
+		FcnZebra.WrLabel("", this._infRegistro1.getAsString("municipio"), 300, 0, 1.2);
 		FcnZebra.WrLabel("Contratista:","SYPELC LTDA", 200, 0, 1.2);
 		
 		this._infRegistro1.clear();
