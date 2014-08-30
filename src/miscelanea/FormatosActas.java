@@ -121,8 +121,10 @@ public class FormatosActas {
 		FcnZebra.WrLabel("Contratista:","SYPELC LTDA", 200, 0, 1.2);
 		
 		this._infRegistro1.clear();
+		this._infRegistro2.clear();
 		this._infRegistro1 = ImpSQL.SelectDataRegistro("vista_actas", "dia,mes,anno,hora,propietario,nombre_enterado,cedula_enterado,tipo_enterado,cedula_testigo,nombre_testigo", "id_orden='"+ordenTrabajo+"'");
-		FcnZebra.JustInformation("A los "+this._infRegistro1.getAsString("dia")+" dias del mes "+this._infRegistro1.getAsString("mes")+" de "+this._infRegistro1.getAsString("anno")+", siendo las "+this._infRegistro1.getAsString("hora")+", se hacen presentes en el inmueble de: "+this._infRegistro1.getAsString("propietario")+" los representantes de EMSA E.S.P. "+this.ImpSQL.StrSelectShieldWhere("amd_param_sistema","valor", "codigo='NOM_TECNICO'")+" con Cod/C.C: "+CedulaTecnico+" y en presencia del senor(a): "+this._infRegistro1.getAsString("nombre_enterado")+" con cedula "+this._infRegistro1.getAsString("cedula_enterado")+" en calidad de "+this._infRegistro1.getAsString("tipo_enterado")+", con el fin de efectuar una revision de los equipos de medida e instalaciones electricas del inmueble con el codigo indicado. Habiendose identificado los empleados/contratistas informan al usuario que de acuerdo al contrato de servicios publicos con condiciones uniformes vigente su derecho a solicitar asesoria y/o participacion de un tecnico particular, o de cualquier persona para que sirva de testigo en el proceso de revision. Sin embargo, si transcurre un plazo de 15 minutos sin hacerse presente se hara la revision sin su presencia, el cliente/usuario hace uso de su derecho: No. Transcurridos 15 minutos , procede a hacer la revision, con los siguientes resultados:", 10, 2, 1);
+		this._infRegistro2 = ImpSQL.SelectDataRegistro("amd_impresiones_inf", "uso_derecho", "id_orden='"+ordenTrabajo+"'");
+		FcnZebra.JustInformation("A los "+this._infRegistro1.getAsString("dia")+" dias del mes "+this._infRegistro1.getAsString("mes")+" de "+this._infRegistro1.getAsString("anno")+", siendo las "+this._infRegistro1.getAsString("hora")+", se hacen presentes en el inmueble de: "+this._infRegistro1.getAsString("propietario")+" los representantes de EMSA E.S.P. "+this.ImpSQL.StrSelectShieldWhere("amd_param_sistema","valor", "codigo='NOM_TECNICO'")+" con Cod/C.C: "+CedulaTecnico+" y en presencia del senor(a): "+this._infRegistro1.getAsString("nombre_enterado")+" con cedula "+this._infRegistro1.getAsString("cedula_enterado")+" en calidad de "+this._infRegistro1.getAsString("tipo_enterado")+", con el fin de efectuar una revision de los equipos de medida e instalaciones electricas del inmueble con el codigo indicado. Habiendose identificado los empleados/contratistas informan al usuario que de acuerdo al contrato de servicios publicos con condiciones uniformes vigente su derecho a solicitar asesoria y/o participacion de un tecnico particular, o de cualquier persona para que sirva de testigo en el proceso de revision. Sin embargo, si transcurre un plazo de 15 minutos sin hacerse presente se hara la revision sin su presencia, el cliente/usuario hace uso de su derecho:("+this._infRegistro2.getAsString("uso_derecho")+") Transcurridos 15 minutos , procede a hacer la revision, con los siguientes resultados:", 10, 2, 1);
 		 
 		/***************************************************************Datos del suscriptor****************************************************/
 		FcnZebra.WrSubTitulo("DATOS GENERALES DEL SUSCRIPTOR",10,1,1);
@@ -154,7 +156,7 @@ public class FormatosActas {
 		/**************************************************Datos del suscriptor y equipo de medida********************************************/
 		FcnZebra.WrSubTitulo("DATOS DEL SUSCRIPTOR Y EQUIPO DE MEDIDA",10,1,1);
 		
-		FcnZebra.WrLabel("Ubicación Medidor:", ImpSQL.StrSelectShieldWhere("amd_impresiones_inf", "ubicacion", "id_orden='"+ordenTrabajo+"'"), 10, 0, 1);
+		FcnZebra.WrLabel("Ubicacion Medidor:", ImpSQL.StrSelectShieldWhere("amd_impresiones_inf", "ubicacion", "id_orden='"+ordenTrabajo+"'"), 10, 0, 1);
 				
 		if(ImpSQL.ExistRegistros("imp_equipo_medida", "id_orden='"+ordenTrabajo+"'")){
 			this._infTabla= ImpSQL.SelectData("imp_equipo_medida", "tipo, marca, serie, lectura, fecha_ins, conexion", "id_orden='"+ordenTrabajo+"' AND tipo<>'NM'");
@@ -605,8 +607,9 @@ public class FormatosActas {
 		}else{
 			FcnZebra.WrLabel("Revision:    ", ordenTrabajo,200, 0, 1);	
 			}
+		this._infRegistro1 = ImpSQL.SelectDataRegistro("vista_ordenes_trabajo", "municipio", "id_orden='"+ordenTrabajo+"'");
 		FcnZebra.WrLabel("Codigo:     ", ImpSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "cuenta", "id_orden='"+ordenTrabajo+"'"), 200, 0, 1);
-		FcnZebra.WrLabel("VILLAVICENCIO", "", 300, 0, 1);
+		FcnZebra.WrLabel("", this._infRegistro1.getAsString("municipio"), 300, 0, 1);
 		FcnZebra.WrLabel("Contratista:","SYPELC LTDA", 200, 0, 3);
 		
 		this._infRegistro1.clear();
@@ -705,8 +708,18 @@ public class FormatosActas {
 			FcnZebra.WrLabel("Longitud:",this._infRegistro1.getAsString("longitud"), 400, 0, 1);
 		}
 		
-		FcnZebra.WrSubTitulo("OBSERVACIONES",10,1,1.2);
-		FcnZebra.JustInformation(ImpSQL.StrSelectShieldWhere("amd_observacion_materiales", "observacion", "id_orden='"+ordenTrabajo+"'"), 10, 0, 2);
+		if(ImpSQL.ExistRegistros("amd_observacion_materiales", "id_orden='"+ordenTrabajo+"'"))
+		{
+			FcnZebra.WrSubTitulo("OBSERVACIONES",10,1,1.2);
+			FcnZebra.JustInformation(ImpSQL.StrSelectShieldWhere("amd_observacion_materiales", "observacion", "id_orden='"+ordenTrabajo+"'"), 10, 0, 2);
+				
+			}
+		else
+		{
+			Toast.makeText(this.context,"Falta registrar la observacion",Toast.LENGTH_SHORT).show();
+		}
+		
+		
 		
 		if(ImpSQL.ExistRegistros("amd_actas", "id_orden='"+ordenTrabajo+"' AND nombre_enterado IS NOT NULL")){
 			FcnZebra.JustInformation("ATENDIO LA VISITA EL (LOS) REPRESENTANTE(S) LEGAL(ES) DEL INMUEBLE, EL SENOR(ES): "+ImpSQL.StrSelectShieldWhere("amd_actas", "nombre_enterado", "id_orden='"+ordenTrabajo+"'")+" IDENTIFICADO CON CC. "+ImpSQL.StrSelectShieldWhere("amd_actas", "cedula_enterado", "id_orden='"+ordenTrabajo+"'")+", QUIEN AUTORIZA EL COBRO DE LOS ANTERIORES MATERIALES.", 10, 0, 3);
