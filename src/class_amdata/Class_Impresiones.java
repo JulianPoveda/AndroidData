@@ -81,4 +81,23 @@ public class Class_Impresiones {
 		return _retorno;		
 	}
 
+
+
+
+public boolean validarDatosImpresionMateriales(String _ordenTrabajo){
+	boolean _retorno = true;
+	
+	/**validacion Observaciones**/
+	if(!this.ActasSQL.ExistRegistros("amd_observacion_materiales", "id_orden='"+_ordenTrabajo+"'")){
+			Toast.makeText(this._ctxActas,"No existen Observaciones de Materiales", Toast.LENGTH_SHORT).show();
+			_retorno = false;
+		}
+	
+		
+	return _retorno;		
 }
+
+}
+
+
+

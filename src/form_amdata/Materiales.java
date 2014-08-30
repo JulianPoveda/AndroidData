@@ -3,6 +3,8 @@ package form_amdata;
 import java.io.File;
 import java.util.ArrayList;
 
+import class_amdata.Class_Impresiones;
+
 import sypelc.androidamdata.R;
 import miscelanea.FormatosActas;
 import miscelanea.SQLite;
@@ -33,6 +35,7 @@ import android.widget.Toast;
 
 public class Materiales extends Activity implements OnClickListener, OnItemSelectedListener, OnSeekBarChangeListener{
 	FormatosActas 	ActaImpresa;
+	Class_Impresiones FcnImpresion;
 	SQLite 				MaterialesSQL;
 	Util   				MaterialesUtil;
 	
@@ -145,6 +148,7 @@ public class Materiales extends Activity implements OnClickListener, OnItemSelec
 		ActaImpresa		= new FormatosActas(this, this.FolderAplicacion, true);
 		MaterialesSQL 	= new SQLite(this, FolderAplicacion);
 		MaterialesUtil 	= new Util();
+		FcnImpresion	= new Class_Impresiones(this, this.FolderAplicacion, this.CedulaUsuario);
 		
 		/**Inicializacion del tabhost**/
 		TabHost tabs=(TabHost)findViewById(android.R.id.tabhost);
@@ -415,15 +419,23 @@ public class Materiales extends Activity implements OnClickListener, OnItemSelec
 				return true;	
 				
 			case R.id.OriginalEmpresa:
-				ActaImpresa.FormatoMateriales(OrdenTrabajo,"Materiales", 1, CedulaUsuario);
+				if(this.FcnImpresion.validarDatosImpresionMateriales(OrdenTrabajo)){
+					ActaImpresa.FormatoMateriales(OrdenTrabajo,"Materiales", 1, CedulaUsuario);
+				}	
 				return true;	
 				
 			case R.id.CopiaUsuario:
-				ActaImpresa.FormatoMateriales(OrdenTrabajo,"Materiales", 2, CedulaUsuario);
+				if(this.FcnImpresion.validarDatosImpresionMateriales(OrdenTrabajo)){
+					ActaImpresa.FormatoMateriales(OrdenTrabajo,"Materiales", 2, CedulaUsuario);
+				}		
 				return true;				
 				
+				
 			case R.id.CopiaArchivo:
-				ActaImpresa.FormatoMateriales(OrdenTrabajo,"Materiales", 3, CedulaUsuario);
+				
+				if(this.FcnImpresion.validarDatosImpresionMateriales(OrdenTrabajo)){
+					ActaImpresa.FormatoMateriales(OrdenTrabajo,"Materiales", 3, CedulaUsuario);
+				}	
 				return true;
 				
 				
