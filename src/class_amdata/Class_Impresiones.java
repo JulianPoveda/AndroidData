@@ -69,13 +69,12 @@ public class Class_Impresiones {
 			}
 		}		
 
-	/**validacion IRREGULARIDADES**/
-	if(!this.ActasSQL.ExistRegistros("amd_irregularidades", "id_orden='"+_ordenTrabajo+"'")){
-		if(!this.ActasSQL.ExistRegistros("amd_inconsistencias", "id_orden='"+_ordenTrabajo+"' AND cod_inconsistencia='AD14'")){
-			Toast.makeText(this._ctxActas,"No existen registro de Irregularidades ni observacion administrativa AD14, no es posible imprimir.", Toast.LENGTH_SHORT).show();
-			_retorno = false;
+		/**validacion IRREGULARIDADES**/
+		if(!this.ActasSQL.ExistRegistros("amd_irregularidades", "id_orden='"+_ordenTrabajo+"'")){
+			if(!this.ActasSQL.ExistRegistros("amd_inconsistencias", "id_orden='"+_ordenTrabajo+"' AND cod_inconsistencia='AD14'")){
+				Toast.makeText(this._ctxActas,"No existen registro de Irregularidades ni observacion administrativa AD14, no es posible imprimir.", Toast.LENGTH_SHORT).show();
+				_retorno = false;
 		}
-		
 	}		
 		
 		
