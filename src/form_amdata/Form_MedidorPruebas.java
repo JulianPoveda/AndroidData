@@ -140,8 +140,8 @@ public class Form_MedidorPruebas extends Activity implements OnClickListener, On
 		AdaptadorTipoMedidor 	= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,_strTipo);
 		_cmbTipoMedidor.setAdapter(AdaptadorTipoMedidor);
 				
-		MarcaMedidores	= PruebasSQL.SelectData("amd_param_marca_contador", "id_marca||' ('||nombre||')' as medidores", "id_marca IS NOT NULL ORDER BY id_marca");
-		PruebasUtil.ArrayContentValuesToString(StringMarcaMedidores, MarcaMedidores, "medidores");
+		MarcaMedidores	= PruebasSQL.SelectData("vista_marca_contador", "descripcion", "id_marca IS NOT NULL ORDER BY descripcion");
+		PruebasUtil.ArrayContentValuesToString(StringMarcaMedidores, MarcaMedidores, "descripcion");
 		AdaptadorMarcaMedidores = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,StringMarcaMedidores);
 		_cmbMarcaMedidor.setAdapter(AdaptadorMarcaMedidores);
 		

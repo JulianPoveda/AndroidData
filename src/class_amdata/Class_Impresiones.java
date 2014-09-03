@@ -39,28 +39,31 @@ public class Class_Impresiones {
 				_retorno = false;
 			}
 		}
-			/**validacion medidor instalado**/
-			if(!this.ActasSQL.ExistRegistros("amd_cambios_contadores", "id_orden='"+_ordenTrabajo+"'")){
-				if(!this.ActasSQL.ExistRegistros("amd_inconsistencias", "id_orden='"+_ordenTrabajo+"' AND cod_inconsistencia='AD15'")){
-					Toast.makeText(this._ctxActas,"No existen registro de instalacion de contador ni observacion administrativa AD15, no es posible imprimir.", Toast.LENGTH_SHORT).show();
-					_retorno = false;
-				}
-	
+		
+		/**validacion medidor instalado**/
+		if(!this.ActasSQL.ExistRegistros("amd_cambios_contadores", "id_orden='"+_ordenTrabajo+"'")){
+			if(!this.ActasSQL.ExistRegistros("amd_inconsistencias", "id_orden='"+_ordenTrabajo+"' AND cod_inconsistencia='AD15'")){
+				Toast.makeText(this._ctxActas,"No existen registro de instalacion de contador ni observacion administrativa AD15, no es posible imprimir.", Toast.LENGTH_SHORT).show();
+				_retorno = false;
 			}
-			/**validacion acometida**/
-				if(!this.ActasSQL.ExistRegistros("amd_acometida", "id_orden='"+_ordenTrabajo+"'")){
-					if(!this.ActasSQL.ExistRegistros("amd_inconsistencias", "id_orden='"+_ordenTrabajo+"' AND cod_inconsistencia='AD10'")){
-						Toast.makeText(this._ctxActas,"No existen registro de acometida ni observacion administrativa AD10, no es posible imprimir.", Toast.LENGTH_SHORT).show();
-						_retorno = false;
-					}
-				}
+		}
+	
+		/**validacion acometida**/
+		if(!this.ActasSQL.ExistRegistros("amd_acometida", "id_orden='"+_ordenTrabajo+"'")){
+			if(!this.ActasSQL.ExistRegistros("amd_inconsistencias", "id_orden='"+_ordenTrabajo+"' AND cod_inconsistencia='AD10'")){
+				Toast.makeText(this._ctxActas,"No existen registro de acometida ni observacion administrativa AD10, no es posible imprimir.", Toast.LENGTH_SHORT).show();
+				_retorno = false;
+			}
+		}
+	
 		/**validacion aforo**/
-					if(!this.ActasSQL.ExistRegistros("amd_censo_carga", "id_orden='"+_ordenTrabajo+"'")){
-						if(!this.ActasSQL.ExistRegistros("amd_inconsistencias", "id_orden='"+_ordenTrabajo+"' AND cod_inconsistencia='AD11'")){
-							Toast.makeText(this._ctxActas,"No existen registro de censo de carga ni observacion administrativa AD11, no es posible imprimir.", Toast.LENGTH_SHORT).show();
-							_retorno = false;
-						}
-					}
+		if(!this.ActasSQL.ExistRegistros("amd_censo_carga", "id_orden='"+_ordenTrabajo+"'")){
+			if(!this.ActasSQL.ExistRegistros("amd_inconsistencias", "id_orden='"+_ordenTrabajo+"' AND cod_inconsistencia='AD11'")){
+				Toast.makeText(this._ctxActas,"No existen registro de censo de carga ni observacion administrativa AD11, no es posible imprimir.", Toast.LENGTH_SHORT).show();
+				_retorno = false;
+			}
+		}
+	
 		/**validacion porcentaje error**/
 		if(!this.ActasSQL.ExistRegistros("amd_pct_error", "id_orden='"+_ordenTrabajo+"'")){
 			if(!this.ActasSQL.ExistRegistros("amd_inconsistencias", "id_orden='"+_ordenTrabajo+"' AND cod_inconsistencia='AD12'")){
@@ -74,29 +77,24 @@ public class Class_Impresiones {
 			if(!this.ActasSQL.ExistRegistros("amd_inconsistencias", "id_orden='"+_ordenTrabajo+"' AND cod_inconsistencia='AD14'")){
 				Toast.makeText(this._ctxActas,"No existen registro de Irregularidades ni observacion administrativa AD14, no es posible imprimir.", Toast.LENGTH_SHORT).show();
 				_retorno = false;
-		}
-	}		
-		
-		
+			}
+		}		
 		return _retorno;		
 	}
 
 
 
 
-public boolean validarDatosImpresionMateriales(String _ordenTrabajo){
-	boolean _retorno = true;
-	
-	/**validacion Observaciones**/
-	if(!this.ActasSQL.ExistRegistros("amd_observacion_materiales", "id_orden='"+_ordenTrabajo+"'")){
+	public boolean validarDatosImpresionMateriales(String _ordenTrabajo){
+		boolean _retorno = true;
+		
+		/**validacion Observaciones**/
+		if(!this.ActasSQL.ExistRegistros("amd_observacion_materiales", "id_orden='"+_ordenTrabajo+"'")){
 			Toast.makeText(this._ctxActas,"No existen Observaciones de Materiales", Toast.LENGTH_SHORT).show();
 			_retorno = false;
 		}
-	
-		
-	return _retorno;		
-}
-
+		return _retorno;		
+	}
 }
 
 
