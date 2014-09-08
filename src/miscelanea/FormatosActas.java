@@ -204,12 +204,21 @@ public class FormatosActas {
 				}
 			}
 		}else{
-			this._infRegistro1 = this.ImpSQL.SelectDataRegistro("amd_medidor_encontrado", "marca,serie,lectura,tipo", "id_orden='"+ordenTrabajo+"'");
 			FcnZebra.WrLabel("Medidor:","ENCONTRADO",10, 0.5, 0);
-			FcnZebra.WrLabel("Marca:",this._infRegistro1.getAsString("marca"),280, 0, 1);
-			FcnZebra.WrLabel("Serie:",this._infRegistro1.getAsString("serie"),10, 0, 0);
-			FcnZebra.WrLabel("Tipo:",this._infRegistro1.getAsString("tipo"),280, 0, 0);
-			FcnZebra.WrLabel("Lectura:",this._infRegistro1.getAsString("lectura"),550, 0, 1);	
+			
+			if(this.ImpSQL.ExistRegistros("amd_medidor_encontrado", "id_orden='"+ordenTrabajo+"'")){
+				this._infRegistro1 = this.ImpSQL.SelectDataRegistro("amd_medidor_encontrado", "marca,serie,lectura,tipo", "id_orden='"+ordenTrabajo+"'");
+				FcnZebra.WrLabel("Marca:",this._infRegistro1.getAsString("marca"),280, 0, 1);
+				FcnZebra.WrLabel("Serie:",this._infRegistro1.getAsString("serie"),10, 0, 0);
+				FcnZebra.WrLabel("Tipo:",this._infRegistro1.getAsString("tipo"),280, 0, 0);
+				FcnZebra.WrLabel("Lectura:",this._infRegistro1.getAsString("lectura"),550, 0, 1);	
+				
+			}else{
+				FcnZebra.WrLabel("Marca:","",280, 0, 1);
+				FcnZebra.WrLabel("Serie:","",10, 0, 0);
+				FcnZebra.WrLabel("Tipo:","",280, 0, 0);
+				FcnZebra.WrLabel("Lectura:","",550, 0, 1);	
+			}
 		}
 		
 		
@@ -676,7 +685,7 @@ public class FormatosActas {
 			}			
 		}
 		
-		this._infRegistro1 = ImpSQL.SelectDataRegistro("imp_medidor_material", "serie,cobro,marca,lectura,tipo", "id_orden='"+ordenTrabajo+"' AND tipo IN ('D','P')");
+		this._infRegistro1 = ImpSQL.SelectDataRegistro("imp_medidor_material", "serie,cobro,marca,lectura,tipo", "id_orden='"+ordenTrabajo+"' AND tipo IN ('DEFINITIVO','PROVISIONAL')");
 		if(this._infRegistro1.size()>0){
 			FcnZebra.WrSubTitulo("MEDIDOR INSTALADO",10,1.5,1);
 			if(this._infRegistro1.getAsString("cobro").equals("SERVICIO DIRECTO")){
@@ -730,7 +739,7 @@ public class FormatosActas {
 			FcnZebra.WrLabel("", "Usuario", 10, 0, 0);
 			FcnZebra.WrLabel("", "Empleado y/o Contratista", 400, 0, 1);
 		}else if(ImpSQL.ExistRegistros("amd_actas", "id_orden='"+ordenTrabajo+"' AND nombre_testigo IS NOT NULL")){
-			FcnZebra.JustInformation("ATENDIO LA VISITA EL (LOS) REPRESENTANTE(S) LEGAL(ES) DEL INMUEBLE, EL SEÑOR(ES): "+ImpSQL.StrSelectShieldWhere("amd_actas", "nombre_testigo", "id_orden='"+ordenTrabajo+"'")+" IDENTIFICADO CON CC. "+ImpSQL.StrSelectShieldWhere("amd_actas", "cedula_testigo", "id_orden='"+ordenTrabajo+"'")+", COMO TESTIGO.", 10, 0, 3);
+			FcnZebra.JustInformation("ATENDIO LA VISITA EL (LOS) REPRESENTANTE(S) LEGAL(ES) DEL INMUEBLE, EL SENOR(ES): "+ImpSQL.StrSelectShieldWhere("amd_actas", "nombre_testigo", "id_orden='"+ordenTrabajo+"'")+" IDENTIFICADO CON CC. "+ImpSQL.StrSelectShieldWhere("amd_actas", "cedula_testigo", "id_orden='"+ordenTrabajo+"'")+", COMO TESTIGO.", 10, 0, 3);
 			FcnZebra.WrLabel("", ImpSQL.StrSelectShieldWhere("amd_actas", "nombre_testigo", "id_orden='"+ordenTrabajo+"'"), 10, 5, 0);
 			FcnZebra.WrLabel("", ImpSQL.StrSelectShieldWhere("amd_param_sistema", "valor", "codigo='NOM_TECNICO'"), 400, 0, 1);
 			FcnZebra.WrLabel("CC.", ImpSQL.StrSelectShieldWhere("amd_actas", "cedula_testigo", "id_orden='"+ordenTrabajo+"'"), 10, 0, 0);
@@ -739,7 +748,7 @@ public class FormatosActas {
 			FcnZebra.WrLabel("", "Empleado y/o Contratista", 400, 0, 1);
 		}
 		
-		FcnZebra.JustInformation("NO PAGAR NI REALIZAR NEGOCIACIONES CON EL OPERARIO POR NINGUN CONCEPTO. DENUNCIE CUALQUIER IRREGULARIDAD AL TELEFONO"+"66666666", 10, 1, 1);	
+		FcnZebra.JustInformation("NO PAGAR NI REALIZAR NEGOCIACIONES CON EL OPERARIO POR NINGUN CONCEPTO. DENUNCIE CUALQUIER IRREGULARIDAD AL TELEFONO"+"6614000", 10, 1, 1);	
 			
 		switch(copiaImpresion){
 			case 1:

@@ -30,6 +30,190 @@
                 android:layout_height="match_parent" >
 
                 <LinearLayout
+                    android:id="@+id/tab1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" >
+
+                        <TextView
+                            android:id="@+id/UsuarioLblTitulo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:text="@string/UsuarioLblTitulo"
+                            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                        <Spinner
+                            android:id="@+id/UsuarioCmbEstado"
+                            android:layout_width="300dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_below="@+id/UsuarioLblTitulo"
+                            android:layout_marginTop="23dp" />
+
+                        <Spinner
+                            android:id="@+id/UsuarioCmbMaterial"
+                            android:layout_width="350dp"
+                            android:layout_height="40dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_below="@+id/UsuarioCmbEstado" />
+
+                        <TextView
+                            android:id="@+id/UsuarioLblMaterial"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/UsuarioCmbMaterial"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignTop="@+id/UsuarioCmbMaterial"
+                            android:layout_toLeftOf="@+id/UsuarioCmbMaterial"
+                            android:gravity="right|center_vertical"
+                            android:text="@string/UsuarioLblMaterial"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <TextView
+                            android:id="@+id/UsuarioLblEstadoMaterial"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_above="@+id/UsuarioCmbMaterial"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignTop="@+id/UsuarioCmbEstado"
+                            android:layout_toLeftOf="@+id/UsuarioCmbEstado"
+                            android:gravity="right|center_vertical"
+                            android:text="@string/UsuarioLblEstadoMaterial"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <Spinner
+                            android:id="@+id/UsuarioCmbUnidades"
+                            android:layout_width="80dp"
+                            android:layout_height="40dp"
+                            android:layout_alignLeft="@+id/UsuarioCmbMaterial"
+                            android:layout_below="@+id/UsuarioCmbMaterial" />
+
+                        <TextView
+                            android:id="@+id/UsuarioLblDecimales"
+                            android:layout_width="10dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/UsuarioCmbUnidades"
+                            android:layout_alignTop="@+id/UsuarioCmbUnidades"
+                            android:layout_toRightOf="@+id/UsuarioCmbUnidades"
+                            android:gravity="right|center_vertical"
+                            android:text="@string/UsuarioLblDecimales"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <Spinner
+                            android:id="@+id/UsuarioCmbDecimas"
+                            android:layout_width="50dp"
+                            android:layout_height="40dp"
+                            android:layout_alignTop="@+id/UsuarioLblDecimales"
+                            android:layout_toRightOf="@+id/UsuarioLblDecimales" />
+
+                        <TextView
+                            android:id="@+id/UsuarioLblCantidad"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/UsuarioCmbUnidades"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignRight="@+id/UsuarioLblMaterial"
+                            android:layout_alignTop="@+id/UsuarioCmbUnidades"
+                            android:gravity="right|center_vertical"
+                            android:text="@string/UsuarioLblCantidad"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <Spinner
+                            android:id="@+id/UsuarioCmbDisposicion"
+                            android:layout_width="200dp"
+                            android:layout_height="40dp"
+                            android:layout_alignLeft="@+id/UsuarioCmbUnidades"
+                            android:layout_below="@+id/UsuarioCmbUnidades" />
+
+                        <TextView
+                            android:id="@+id/UsuarioLblDisposicion"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/UsuarioCmbDisposicion"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignRight="@+id/UsuarioLblCantidad"
+                            android:layout_alignTop="@+id/UsuarioCmbDisposicion"
+                            android:gravity="right|center_vertical"
+                            android:text="@string/UsuarioLblDisposicion"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                        <Button
+                            android:id="@+id/UsuarioBtnAgregar"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/UsuarioCmbDecimas"
+                            android:layout_alignTop="@+id/UsuarioCmbDecimas"
+                            android:layout_marginLeft="21dp"
+                            android:layout_toRightOf="@+id/UsuarioCmbDisposicion"
+                            android:text="@string/UsuarioBtnAgregar" />
+
+                        <Button
+                            android:id="@+id/UsuarioBtnEliminar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignBottom="@+id/UsuarioCmbDisposicion"
+                            android:layout_alignLeft="@+id/UsuarioBtnAgregar"
+                            android:layout_alignRight="@+id/UsuarioBtnAgregar"
+                            android:layout_below="@+id/UsuarioBtnAgregar"
+                            android:text="@string/UsuarioBtnEliminar" />
+
+                        <TableLayout
+                            android:id="@+id/TablaUsuario"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_below="@+id/UsuarioLblDisposicion" >
+                        </TableLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" >
+
+                        <TextView
+                            android:id="@+id/ObservacionLlblTitulo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:text="@string/ObservacionLblTitulo"
+                            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                        <EditText
+                            android:id="@+id/ObservacionTxtObs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="200dp"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_below="@+id/ObservacionLlblTitulo"
+                            android:layout_marginTop="39dp"
+                            android:ems="10"
+                            android:inputType="textMultiLine" />
+
+                        <Button
+                            android:id="@+id/ObservacionBtnGuardar"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ObservacionTxtObs"
+                            android:layout_centerHorizontal="true"
+                            android:text="@string/ObservacionBtnGuardar" />
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/tab2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -303,196 +487,6 @@
                             android:gravity="center_vertical|center_horizontal"
                             android:text="@string/ProvisionalesLblNumCuotas"
                             android:textAppearance="?android:attr/textAppearanceMedium" />
-                    </RelativeLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/tab1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal" >
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" >
-
-                        <TextView
-                            android:id="@+id/UsuarioLblTitulo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentTop="true"
-                            android:gravity="center_vertical|center_horizontal"
-                            android:text="@string/UsuarioLblTitulo"
-                            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-                        <Spinner
-                            android:id="@+id/UsuarioCmbEstado"
-                            android:layout_width="300dp"
-                            android:layout_height="40dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_below="@+id/UsuarioLblTitulo"
-                            android:layout_marginTop="23dp" />
-
-                        <Spinner
-                            android:id="@+id/UsuarioCmbMaterial"
-                            android:layout_width="350dp"
-                            android:layout_height="40dp"
-                            android:layout_alignParentRight="true"
-                            android:layout_below="@+id/UsuarioCmbEstado" />
-
-                        <TextView
-                            android:id="@+id/UsuarioLblMaterial"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/UsuarioCmbMaterial"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignTop="@+id/UsuarioCmbMaterial"
-                            android:layout_toLeftOf="@+id/UsuarioCmbMaterial"
-                            android:gravity="right|center_vertical"
-                            android:text="@string/UsuarioLblMaterial"
-                            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                        <TextView
-                            android:id="@+id/UsuarioLblEstadoMaterial"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_above="@+id/UsuarioCmbMaterial"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignTop="@+id/UsuarioCmbEstado"
-                            android:layout_toLeftOf="@+id/UsuarioCmbEstado"
-                            android:gravity="right|center_vertical"
-                            android:text="@string/UsuarioLblEstadoMaterial"
-                            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                        <Spinner
-                            android:id="@+id/UsuarioCmbUnidades"
-                            android:layout_width="80dp"
-                            android:layout_height="40dp"
-                            android:layout_alignLeft="@+id/UsuarioCmbMaterial"
-                            android:layout_below="@+id/UsuarioCmbMaterial" />
-
-                        <TextView
-                            android:id="@+id/UsuarioLblDecimales"
-                            android:layout_width="10dp"
-                            android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/UsuarioCmbUnidades"
-                            android:layout_alignTop="@+id/UsuarioCmbUnidades"
-                            android:layout_toRightOf="@+id/UsuarioCmbUnidades"
-                            android:gravity="right|center_vertical"
-                            android:text="@string/UsuarioLblDecimales"
-                            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                        <Spinner
-                            android:id="@+id/UsuarioCmbDecimas"
-                            android:layout_width="50dp"
-                            android:layout_height="40dp"
-                            android:layout_alignTop="@+id/UsuarioLblDecimales"
-                            android:layout_toRightOf="@+id/UsuarioLblDecimales" />
-
-                        <TextView
-                            android:id="@+id/UsuarioLblCantidad"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/UsuarioCmbUnidades"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignRight="@+id/UsuarioLblMaterial"
-                            android:layout_alignTop="@+id/UsuarioCmbUnidades"
-                            android:gravity="right|center_vertical"
-                            android:text="@string/UsuarioLblCantidad"
-                            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                        <Spinner
-                            android:id="@+id/UsuarioCmbDisposicion"
-                            android:layout_width="200dp"
-                            android:layout_height="40dp"
-                            android:layout_alignLeft="@+id/UsuarioCmbUnidades"
-                            android:layout_below="@+id/UsuarioCmbUnidades" />
-
-                        <TextView
-                            android:id="@+id/UsuarioLblDisposicion"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/UsuarioCmbDisposicion"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignRight="@+id/UsuarioLblCantidad"
-                            android:layout_alignTop="@+id/UsuarioCmbDisposicion"
-                            android:gravity="right|center_vertical"
-                            android:text="@string/UsuarioLblDisposicion"
-                            android:textAppearance="?android:attr/textAppearanceMedium" />
-
-                        <Button
-                            android:id="@+id/UsuarioBtnAgregar"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/UsuarioCmbDecimas"
-                            android:layout_alignTop="@+id/UsuarioCmbDecimas"
-                            android:layout_marginLeft="21dp"
-                            android:layout_toRightOf="@+id/UsuarioCmbDisposicion"
-                            android:text="@string/UsuarioBtnAgregar" />
-
-                        <Button
-                            android:id="@+id/UsuarioBtnEliminar"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignBottom="@+id/UsuarioCmbDisposicion"
-                            android:layout_alignLeft="@+id/UsuarioBtnAgregar"
-                            android:layout_alignRight="@+id/UsuarioBtnAgregar"
-                            android:layout_below="@+id/UsuarioBtnAgregar"
-                            android:text="@string/UsuarioBtnEliminar" />
-
-                     	<TableLayout
-                            android:id="@+id/TablaUsuario"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignParentRight="true"
-                            android:layout_below="@+id/UsuarioLblDisposicion" >  
-                        </TableLayout>
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" >
-
-                        <TextView
-                            android:id="@+id/ObservacionLlblTitulo"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentTop="true"
-                            android:gravity="center_vertical|center_horizontal"
-                            android:text="@string/ObservacionLblTitulo"
-                            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-                        <EditText
-                            android:id="@+id/ObservacionTxtObs"
-                            android:layout_width="wrap_content"
-                            android:layout_height="200dp"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignParentRight="true"
-                            android:layout_below="@+id/ObservacionLlblTitulo"
-                            android:layout_marginTop="39dp"
-                            android:ems="10"
-                            android:inputType="textMultiLine" >
-
-                            <requestFocus />
-                        </EditText>
-
-                        <Button
-                            android:id="@+id/ObservacionBtnGuardar"
-                            android:layout_width="100dp"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/ObservacionTxtObs"
-                            android:layout_centerHorizontal="true"
-                            android:text="@string/ObservacionBtnGuardar" />
-
                     </RelativeLayout>
                 </LinearLayout>
             </FrameLayout>

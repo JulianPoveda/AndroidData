@@ -76,6 +76,7 @@ public class Materiales extends Activity implements OnClickListener, OnItemSelec
 	
 	
 	/**Creacion de objetos para la tabla de materiales provisionales**/
+	
 	Tablas					TablaMaterialesProvisionales;
 	private TableLayout		TablaProvisionales;
 	private LinearLayout 	FilaTablaProvisionales;
@@ -105,7 +106,34 @@ public class Materiales extends Activity implements OnClickListener, OnItemSelec
 	private LinearLayout 	FilaTablaUsuario;
 	
 	/**ArrayList de los materiales de usuario**/
-	private ArrayList<String> _strMaterialesUsuario= new ArrayList<String>();
+	//private ArrayList<String> _strMaterialesUsuario= new ArrayList<String>();
+	private String _strMaterialesUsuario[] = {	"Alambre N° 10.",
+												"Conectores 1 perno.",
+												"Codo emt 1 pulg.",
+												"Codo emt 3/4 pulg.",
+												"Conector de Derivacion tipo Cuna tipo II simetrico",
+												"Estribo 2 awg con conector cuna tipo VII",
+												"Tensores para acometida",
+												"Terminal EMT 3/4 Pulgada",
+												"Tubo Conduit Galvanizado 3/4 x 3 Mts",
+												"Union EMT 3/4 Pulgada",
+												"Cable Concentrico Aluminio 1x6+6 awg",
+												"Cable Concentrico Cobre 1x8+8 awg",
+												"Cable Concentrico Cobre 2x8+8 awg",
+												"Cable Concentrico Cobre 3x8+8 awg",
+												"Cable Concentrico 3x6+6 awg",
+												"Cable Concentrico 3x6+8 awg",
+												"Terminales MT 1 Pulgada",
+												"Caja Monofasica",
+												"Caja Polifasica",
+												"Capacete",
+												"Alambre No.6",
+												"Alambre No.8",
+												"Alambre No.10",
+												"Alambre No.12",
+												"Conectores 1 Perno",
+												"Conectores 2 Pernos",
+												};
 	private String 	_strUnidadesUsuario[];
 	private String 	_strDecimasUsuario[]	={"0","1","2","3","4","5","6","7","8","9"};
 	private String  _strEstadoMatUsuario[]	={"Retirado","Reutilizado","Instalado"};
@@ -253,8 +281,8 @@ public class Materiales extends Activity implements OnClickListener, OnItemSelec
 		_btnEliminarUsuario		= (Button) findViewById(R.id.UsuarioBtnEliminar);
 		
 		
-		_tempTabla = MaterialesSQL.SelectData("vista_material_id_trabajo_orden", "descripcion", "id_orden='"+OrdenTrabajo+"' ORDER BY descripcion ASC");
-		MaterialesUtil.ArrayContentValuesToString(_strMaterialesUsuario, _tempTabla, "descripcion");
+		//_tempTabla = MaterialesSQL.SelectData("vista_material_id_trabajo_orden", "descripcion", "id_orden='"+OrdenTrabajo+"' ORDER BY descripcion ASC");
+		//MaterialesUtil.ArrayContentValuesToString(_strMaterialesUsuario, _tempTabla, "descripcion");
 		AdaptadorMaterialesUsuario= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,_strMaterialesUsuario);
 		_cmbUsuarioMateriales.setAdapter(AdaptadorMaterialesUsuario);
 				

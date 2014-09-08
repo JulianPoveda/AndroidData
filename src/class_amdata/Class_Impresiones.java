@@ -79,6 +79,11 @@ public class Class_Impresiones {
 				_retorno = false;
 			}
 		}		
+		/**validación medidor encontrado
+		if(!this.ImpSQL.ExistRegistros("amd_medidor_encontrado", "id_orden='"+_ordenTrabajo+"'")){
+			Toast.makeText(this._ctxActas,"", Toast.LENGTH_SHORT).show();
+			_retorno = false;
+		   }**/
 		return _retorno;		
 	}
 
