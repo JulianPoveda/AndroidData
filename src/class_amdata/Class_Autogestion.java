@@ -150,7 +150,7 @@ public class Class_Autogestion{
 		this._ubicacion		 	= _ubicacion.substring(0,1);
 		this._direccion			= _direccion;
 		this._municipio			= _municipio;
-		this._nodo				=  _nodo;
+		this._nodo				= _nodo;
 		this._carga 			= _carga;
 		this._estrato 			= _estrato;
 		this._ciclo				= _ciclo;
@@ -197,29 +197,6 @@ public class Class_Autogestion{
 		}else if(this._marcaContador.isEmpty()){
 			Toast.makeText(this._ctxAutogestion,"No ha seleccionado la marca del contador.",Toast.LENGTH_SHORT).show();
 			_retorno = false;
-		}else if(!this._marcaContador.equals("SD (SERVICIO DIRECTO)") && !this._marcaContador.equals("SS (SIN SERVICIO)")){
-			if(this._tipoConexion.isEmpty()){
-				Toast.makeText(this._ctxAutogestion,"No ha seleccionado el tipo de conexion que tiene el predio.",Toast.LENGTH_SHORT).show();
-				_retorno = false;
-			}else if(this._serieContador.isEmpty()){
-				Toast.makeText(this._ctxAutogestion,"No ha ingresado la serie del contador.",Toast.LENGTH_SHORT).show();
-				_retorno = false;
-			}else if(this._lecturaContador.isEmpty()){
-				Toast.makeText(this._ctxAutogestion,"No ha seleccionado la lectura del contador.",Toast.LENGTH_SHORT).show();
-				_retorno = false;
-			}else if(this._nodo.isEmpty()){
-				Toast.makeText(this._ctxAutogestion,"No ha ingresado el nodo.",Toast.LENGTH_SHORT).show();
-				_retorno = false;
-			}else if(this._carga.isEmpty()){
-				Toast.makeText(this._ctxAutogestion,"No ha ingresado la carga contratada.",Toast.LENGTH_SHORT).show();
-				_retorno = false;
-			}else if(this._ciclo.isEmpty()){
-				Toast.makeText(this._ctxAutogestion,"No ha seleccionado el ciclo.",Toast.LENGTH_SHORT).show();
-				_retorno = false;
-			}else{
-				this._estado 		= "I";
-				this._conContador 	= "S";
-			}
 		}else if(this._tipoOrden.isEmpty()){
 			Toast.makeText(this._ctxAutogestion,"No ha seleccionado el tipo de orden a crear.",Toast.LENGTH_SHORT).show();
 			_retorno = false;
@@ -243,6 +220,33 @@ public class Class_Autogestion{
 				this._id_orden = this._solicitud;
 			}
 		}	
+		
+		
+		if(!this._marcaContador.equals("SD (SERVICIO DIRECTO)") && !this._marcaContador.equals("SS (SIN SERVICIO)")){
+			if(this._tipoConexion.isEmpty()){
+				Toast.makeText(this._ctxAutogestion,"No ha seleccionado el tipo de conexion que tiene el predio.",Toast.LENGTH_SHORT).show();
+				_retorno = false;
+			}else if(this._serieContador.isEmpty()){
+				Toast.makeText(this._ctxAutogestion,"No ha ingresado la serie del contador.",Toast.LENGTH_SHORT).show();
+				_retorno = false;
+			}else if(this._lecturaContador.isEmpty()){
+				Toast.makeText(this._ctxAutogestion,"No ha seleccionado la lectura del contador.",Toast.LENGTH_SHORT).show();
+				_retorno = false;
+			}else if(this._nodo.isEmpty()){
+				Toast.makeText(this._ctxAutogestion,"No ha ingresado el nodo.",Toast.LENGTH_SHORT).show();
+				_retorno = false;
+			}else if(this._carga.isEmpty()){
+				Toast.makeText(this._ctxAutogestion,"No ha ingresado la carga contratada.",Toast.LENGTH_SHORT).show();
+				_retorno = false;
+			}else if(this._ciclo.isEmpty()){
+				Toast.makeText(this._ctxAutogestion,"No ha seleccionado el ciclo.",Toast.LENGTH_SHORT).show();
+				_retorno = false;
+			}else{
+				this._estado 		= "I";
+				this._conContador 	= "S";
+			}
+		}
+		
 		return _retorno;
 	}
 	
@@ -275,15 +279,14 @@ public class Class_Autogestion{
 		this._tempRegistro.put("progreso","0/1");
 		this._tempRegistro.put("estado", "P");
 		this._tempRegistro.put("observacion", "NODO GENERICO");
-		this._tempRegistro.put("tipo", "O");
-		
+		this._tempRegistro.put("tipo", "O");		
 		return this.AutogestionSQL.InsertRegistro("amd_nodo", this._tempRegistro);
 	}
 	
 	
 	private boolean crearOrden(){
 		this._tempRegistro.clear();
-		this._tempRegistro.put("id_orden", this._id_orden);
+		this._tempRegistro.put("id_orden", "-"+this._id_orden);
 		this._tempRegistro.put("cuenta", this._cuenta);
 		this._tempRegistro.put("propietario", this._propietario);
 		this._tempRegistro.put("ubicacion", this._ubicacion);

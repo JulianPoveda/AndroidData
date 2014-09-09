@@ -234,22 +234,44 @@ public class Form_Autogestion extends Activity implements OnClickListener, OnIte
 		// TODO Auto-generated method stub
 		switch(v.getId()){
 			case R.id.AutogestionBtnCrear:
-				if(this.FcnAutogestion.validarDatosAutogestion(	this._cmbTipoOrden.getSelectedItem().toString(), 	this._cmbConsecutivo.getSelectedItem().toString(), 
-																this._cmbDependencia.getSelectedItem().toString(), 	this._cmbClaseSolicitud.getSelectedItem().toString(),
-																this._cmbTipoSolicitud.getSelectedItem().toString(),this._cmbTipoAccion.getSelectedItem().toString(), 
-																this._txtPropietario.getText().toString(), 			this._txtCuenta.getText().toString(), 
-																this._cmbUbicacion.getSelectedItem().toString(), 	this._txtDireccion.getText().toString(), 
-																this._cmbMunicipio.getSelectedItem().toString(), 	this._txtNodo.getText().toString(), 
-																this._txtCargaContratada.getText().toString(), 		this._cmbEstrato.getSelectedItem().toString(), 
-																this._cmbCiclo.getSelectedItem().toString(), 		this._cmbClaseServicio.getSelectedItem().toString(),
-																this._cmbTipoConexion.getSelectedItem().toString(), this._cmbMarcaContador.getSelectedItem().toString(),
-																this._txtSerieContador.getText().toString(), 		this._txtLecturaContador.getText().toString())){
-					if(this.FcnAutogestion.crearAutogestion()){
-						Toast.makeText(this,"Autogestion creada correctamente.",Toast.LENGTH_SHORT).show();
-					}else{
-						Toast.makeText(this,"Error al crear la autogestion.",Toast.LENGTH_SHORT).show();
+				if(this._cmbTipoOrden.getSelectedItem().toString().equals("SOLICITUD")){
+					if(this.FcnAutogestion.validarDatosAutogestion(	this._cmbTipoOrden.getSelectedItem().toString()+"", 	this._cmbConsecutivo.getSelectedItem().toString()+"", 
+																	this._cmbDependencia.getSelectedItem().toString()+"", 	this._cmbClaseSolicitud.getSelectedItem().toString()+"",
+																	this._cmbTipoSolicitud.getSelectedItem().toString()+"",	this._cmbTipoAccion.getSelectedItem().toString()+"", 
+																	this._txtPropietario.getText().toString()+"", 			this._txtCuenta.getText().toString()+"", 
+																	this._cmbUbicacion.getSelectedItem().toString()+"", 	this._txtDireccion.getText().toString()+"", 
+																	this._cmbMunicipio.getSelectedItem().toString()+"", 	this._txtNodo.getText().toString()+"", 
+																	this._txtCargaContratada.getText().toString()+"", 		this._cmbEstrato.getSelectedItem().toString()+"", 
+																	this._cmbCiclo.getSelectedItem().toString()+"", 		this._cmbClaseServicio.getSelectedItem().toString()+"",
+																	this._cmbTipoConexion.getSelectedItem().toString()+"", 	this._cmbMarcaContador.getSelectedItem().toString()+"",
+																	this._txtSerieContador.getText().toString()+"", 		this._txtLecturaContador.getText().toString()+"")){								
+						if(this.FcnAutogestion.crearAutogestion()){
+							Toast.makeText(this,"Autogestion creada correctamente.",Toast.LENGTH_SHORT).show();
+						}else{
+							Toast.makeText(this,"Error al crear la autogestion.",Toast.LENGTH_SHORT).show();
+						}
+					}
+				}else if(this._cmbTipoOrden.getSelectedItem().toString().equals("REVISION")){
+					if(this.FcnAutogestion.validarDatosAutogestion(	this._cmbTipoOrden.getSelectedItem().toString()+"", 	this._cmbConsecutivo.getSelectedItem().toString()+"", 
+																	"", 													"",
+																	"",														"", 
+																	this._txtPropietario.getText().toString()+"", 			this._txtCuenta.getText().toString()+"", 
+																	this._cmbUbicacion.getSelectedItem().toString()+"", 	this._txtDireccion.getText().toString()+"", 
+																	this._cmbMunicipio.getSelectedItem().toString()+"", 	this._txtNodo.getText().toString()+"", 
+																	this._txtCargaContratada.getText().toString()+"", 		this._cmbEstrato.getSelectedItem().toString()+"", 
+																	this._cmbCiclo.getSelectedItem().toString()+"", 		this._cmbClaseServicio.getSelectedItem().toString()+"",
+																	this._cmbTipoConexion.getSelectedItem().toString()+"", 	this._cmbMarcaContador.getSelectedItem().toString()+"",
+																	this._txtSerieContador.getText().toString()+"", 		this._txtLecturaContador.getText().toString()+"")){
+						if(this.FcnAutogestion.crearAutogestion()){
+							Toast.makeText(this,"Autogestion creada correctamente.",Toast.LENGTH_SHORT).show();
+						}else{
+							Toast.makeText(this,"Error al crear la autogestion.",Toast.LENGTH_SHORT).show();
+						}
 					}
 				}
+				
+				
+				
 				break;
 		}
 		
