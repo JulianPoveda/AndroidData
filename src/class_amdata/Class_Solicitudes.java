@@ -22,6 +22,19 @@ public class Class_Solicitudes {
 		SolicitudesSQL	= new SQLite(this._contextSolicitudes,this._folderSolicitudes);
 	}
 	
+	
+	/*************************Funcion que retorna el estado que tiene la orden que se recibe por parametro*************************/
+	public boolean isAutogestion(String _orden){
+		boolean _retorno;
+		if(Integer.parseInt(_orden)>0){
+			_retorno =false;
+		}else{
+			_retorno =true;
+		}
+		return _retorno;
+	}
+	
+	
 	/*************************Funcion que retorna el estado que tiene la orden que se recibe por parametro*************************/
 	public String getEstadoOrden(String _orden){
 		return this.SolicitudesSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "estado", "id_orden='"+_orden+"'");

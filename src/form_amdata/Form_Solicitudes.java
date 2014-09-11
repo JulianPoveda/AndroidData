@@ -27,6 +27,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class Form_Solicitudes extends Activity implements OnItemSelectedListener, OnItemClickListener{
@@ -234,8 +235,23 @@ public class Form_Solicitudes extends Activity implements OnItemSelectedListener
 					startActivityForResult(DialogInformacion, CONFIRMACION_INFORMACION);
 				}
 				return true;
-			
 				
+			case R.id.EliminarAut:
+				if(FcnSolicitudes.getEstadoOrden(_txtOrden.getText().toString()).equals("P") && (FcnSolicitudes.isAutogestion(_txtOrden.getText().toString()))){
+					String _id_nodo= SolicitudesSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "id_nodo", "id_orden='"+_txtOrden.getText().toString()+"'");
+					if(SolicitudesSQL.IntSelectShieldWhere("amd_ordenes_trabajo", "count(*) as cantidad", "id_nodo='"+_id_nodo+"'")==1){
+						SolicitudesSQL.DeleteRegistro("amd_nodo", "id_nodo='"+_id_nodo+"'");
+					}
+					
+					SolicitudesSQL.DeleteRegistro("amd_contador_cliente_orden", "cuenta='"+_txtCuenta.getText().toString()+"'");
+					SolicitudesSQL.DeleteRegistro("amd_ordenes_trabajo", "id_orden='"+_txtOrden.getText().toString()+"'");
+					Toast.makeText(this,"Orden Eliminada Correctamente",Toast.LENGTH_SHORT).show();
+					CargarOrdenesTrabajo();				
+				}else{
+					Toast.makeText(this,"No es posible eliminar la orden, verifique que sea una orden no cargada y que se encuentre en estado P",Toast.LENGTH_SHORT).show();
+				}
+				return true;
+							
 			default:
 				return super.onOptionsItemSelected(item);
 		}

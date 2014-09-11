@@ -23,6 +23,7 @@ public class FormatosActas {
 	private String 						_tempStr1[];
 	private String 						_tempStr2[];
 	
+	private String						_variable1;
 	//private String						_NombreTecnico;
 	//private String 						_CedulaTecnico;
 	
@@ -110,12 +111,22 @@ public class FormatosActas {
 		 
 		 /********************************Validaciones necesarias para el encabezado del acta**************************************/
 		FcnZebra.WrLabel("N.          ", ImpSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "num_acta", "id_orden='"+ordenTrabajo+"'"), 200, 0, 1.2);
-		if(ordenTrabajo.length()>6){
-			FcnZebra.WrLabel("Solicitud:   ", ordenTrabajo, 200, 0, 1.2);	
-		}else{
-			FcnZebra.WrLabel("Revision:    ", ordenTrabajo,200, 0, 1.2);	
-		}
-		this._infRegistro1 = ImpSQL.SelectDataRegistro("vista_ordenes_trabajo", "municipio", "id_orden='"+ordenTrabajo+"'");
+		
+		long _intOrdenTrabajo =0;
+		_intOrdenTrabajo= Long.parseLong(ordenTrabajo);
+		
+		if(_intOrdenTrabajo >= 0){
+				if(ordenTrabajo.length()>6){
+					FcnZebra.WrLabel("Solicitud:   ", ordenTrabajo, 200, 0, 1.2);	
+				}else{
+					FcnZebra.WrLabel("Revision:    ", ordenTrabajo,200, 0, 1.2);	
+				}
+			}else
+			{
+				FcnZebra.WrLabel("Orden:   ","", 200, 0, 1.2);
+				
+			}	
+				this._infRegistro1 = ImpSQL.SelectDataRegistro("vista_ordenes_trabajo", "municipio", "id_orden='"+ordenTrabajo+"'");
 		FcnZebra.WrLabel("Codigo:     ", ImpSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "cuenta", "id_orden='"+ordenTrabajo+"'"), 200, 0, 1.2);
 		FcnZebra.WrLabel("", this._infRegistro1.getAsString("municipio"), 300, 0, 1.2);
 		FcnZebra.WrLabel("Contratista:","SYPELC LTDA", 200, 0, 1.2);
@@ -146,11 +157,27 @@ public class FormatosActas {
 			}
 		}
 		
+		this._infRegistro2.clear();
+		this._infRegistro2=ImpSQL.SelectDataRegistro("vista_ordenes_trabajo", "carga_instalada", "id_orden='"+ordenTrabajo+"'");
 		
-		FcnZebra.WrLabel("CARGA INSTALADA: ",this._infRegistro1.getAsString("carga_instalada"),10,1,0);
-		FcnZebra.WrLabel("CICLO: ",this._infRegistro1.getAsString("ciclo"),300,0,0);
-		FcnZebra.WrLabel("ESTRATO: ",this._infRegistro1.getAsString("estrato"),450,0,0);
-		FcnZebra.WrLabel("NODO: ",this._infRegistro1.getAsString("id_nodo"),600,0,2);
+		
+		if(this._infRegistro2.getAsString("carga_instalada").equals("null")){
+
+			FcnZebra.WrLabel("CARGA INSTALADA: "," ",10,1,0);
+			FcnZebra.WrLabel("CICLO: ",this._infRegistro1.getAsString("ciclo"),300,0,0);
+			FcnZebra.WrLabel("ESTRATO: ",this._infRegistro1.getAsString("estrato"),450,0,0);
+			FcnZebra.WrLabel("NODO: ",this._infRegistro1.getAsString("id_nodo"),600,0,2);
+	
+		}else{
+			FcnZebra.WrLabel("CARGA INSTALADA: ",this._infRegistro1.getAsString("carga_instalada"),10,1,0);
+			FcnZebra.WrLabel("CICLO: ",this._infRegistro1.getAsString("ciclo"),300,0,0);
+			FcnZebra.WrLabel("ESTRATO: ",this._infRegistro1.getAsString("estrato"),450,0,0);
+			FcnZebra.WrLabel("NODO: ",this._infRegistro1.getAsString("id_nodo"),600,0,2);
+			
+			
+		}
+		
+		
 		
 		 
 		/**************************************************Datos del suscriptor y equipo de medida********************************************/
@@ -611,11 +638,17 @@ public class FormatosActas {
 		FcnZebra.WrLabel("N.          ", ordenTrabajo + ImpSQL.StrSelectShieldWhere("amd_param_sistema", "valor", "codigo='NPDA'"), 200, 0, 1);
 		FcnZebra.WrLabel("ACTA REF.   ", ImpSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "num_acta", "id_orden='"+ordenTrabajo+"'"), 200, 0, 1);
 		
-		if(ordenTrabajo.length()>6){
-			FcnZebra.WrLabel("Solicitud:   ", ordenTrabajo, 200, 0, 1);	
-		}else{
-			FcnZebra.WrLabel("Revision:    ", ordenTrabajo,200, 0, 1);	
+		if(Integer.parseInt(ordenTrabajo) >= 0){
+			if(ordenTrabajo.length()>6){
+				FcnZebra.WrLabel("Solicitud:   ", ordenTrabajo, 200, 0, 1.2);	
+			}else{
+				FcnZebra.WrLabel("Revision:    ", ordenTrabajo,200, 0, 1.2);	
 			}
+		}else
+		{
+			FcnZebra.WrLabel("Orden:   ","", 200, 0, 1.2);
+			
+		}	
 		this._infRegistro1 = ImpSQL.SelectDataRegistro("vista_ordenes_trabajo", "municipio", "id_orden='"+ordenTrabajo+"'");
 		FcnZebra.WrLabel("Codigo:     ", ImpSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "cuenta", "id_orden='"+ordenTrabajo+"'"), 200, 0, 1);
 		FcnZebra.WrLabel("", this._infRegistro1.getAsString("municipio"), 300, 0, 1);
