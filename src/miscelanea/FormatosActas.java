@@ -161,7 +161,7 @@ public class FormatosActas {
 		this._infRegistro2=ImpSQL.SelectDataRegistro("vista_ordenes_trabajo", "carga_instalada", "id_orden='"+ordenTrabajo+"'");
 		
 		
-		if(this._infRegistro2.getAsString("carga_instalada").equals("null")){
+		if(this._infRegistro2.getAsString("carga_instalada")==null){
 
 			FcnZebra.WrLabel("CARGA INSTALADA: "," ",10,1,0);
 			FcnZebra.WrLabel("CICLO: ",this._infRegistro1.getAsString("ciclo"),300,0,0);
