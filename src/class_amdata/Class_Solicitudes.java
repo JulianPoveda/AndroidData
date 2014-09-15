@@ -26,14 +26,16 @@ public class Class_Solicitudes {
 	/*************************Funcion que retorna el estado que tiene la orden que se recibe por parametro*************************/
 	public boolean isAutogestion(String _orden){
 		boolean _retorno;
-		if(Integer.parseInt(_orden)>0){
-			_retorno =false;
-		}else{
+		char _number;
+	    _number=_orden.charAt(0);
+		if(_number == '-'){
 			_retorno =true;
+		}else{
+			_retorno =false;
 		}
 		return _retorno;
 	}
-	
+
 	
 	/*************************Funcion que retorna el estado que tiene la orden que se recibe por parametro*************************/
 	public String getEstadoOrden(String _orden){
