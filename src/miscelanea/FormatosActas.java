@@ -811,4 +811,84 @@ public class FormatosActas {
 		 MnBt.IntentPrint(this.Impresora,FcnZebra.getDoLabel());
 		 FcnZebra.resetEtiqueta();
 	}
+	
+	
+	/**
+	 * 
+	 */
+	public void FormatoResumenDiario(String _pda, String _tecnico){		
+		FcnZebra.clearInformacion();	
+		
+		FcnZebra.WrTitulo("ELECTRIFICADORA DEL META E.S.P.", 0, 1);
+		FcnZebra.DrawImage("IMAGES.PCX", 30, 25);
+		FcnZebra.WrTitulo("RESUMEN ORDENES DEL DIA", 0, 1);
+		FcnZebra.WrTitulo("NUMERO DE PDA: "+ _pda, 0, 1);
+		FcnZebra.WrTitulo("FECHA: "+ this.DT.GetDateTimeHora(), 0, 3);		
+		
+		//Relacion de actas realizadas por el tecnico
+		FcnZebra.WrTitulo("ACTAS REALIZADAS", 0, 1.5);		
+		FcnZebra.WrSubTitulo("ITEM", 5, 0, 0);
+		FcnZebra.WrSubTitulo("ORDEN", 75, 0, 0);
+		FcnZebra.WrSubTitulo("CUENTA", 230, 0, 0);
+		FcnZebra.WrSubTitulo("ESTADO", 650, 0, 1.2);	
+		
+		this._infTabla = ImpSQL.SelectData("amd_ordenes_trabajo","id_orden,estado,cuenta", "estado IN ('E','T','P','TA') ORDER BY id_orden");
+		for(int i=0; i<this._infTabla.size();i++){
+			FcnZebra.WrLabel(i+"", "", 5, 0, 0);
+			FcnZebra.WrLabel(this._infTabla.get(i).getAsString("id_orden"), "", 75, 0, 0);
+			FcnZebra.WrLabel(this._infTabla.get(i).getAsString("cuenta"), "", 230, 0, 0);
+			FcnZebra.WrLabel(this._infTabla.get(i).getAsString("estado"), "", 650, 0, 1);
+		}
+		
+		//Relacion de sellos retirados por el tecnico
+		FcnZebra.WrTitulo("RELACION DE SELLOS RETIRADOS", 1, 1.5);		
+		FcnZebra.WrSubTitulo("ORDEN", 5, 0, 0);
+		FcnZebra.WrSubTitulo("TIPO", 160, 0, 0);
+		FcnZebra.WrSubTitulo("SERIE", 320, 0, 0);
+		FcnZebra.WrSubTitulo("FECHA", 440, 0, 1.2);
+		
+		this._infTabla = ImpSQL.SelectData(	"amd_sellos as a JOIN amd_ordenes_trabajo as b ON a.id_orden = b.id_orden", 
+											"a.id_orden, a.tipo, a.numero, a.fecha_ins", 
+											"(a.estado = 'RETIRADO') AND (b.estado IN ('T','E')) ORDER BY a.fecha_ins, a.id_orden");
+		for(int i=0; i<this._infTabla.size();i++){
+			FcnZebra.WrLabel(this._infTabla.get(i).getAsString("id_orden"), "", 5, 0, 0);
+			FcnZebra.WrLabel(this._infTabla.get(i).getAsString("tipo"), "", 160, 0, 0);
+			FcnZebra.WrLabel(this._infTabla.get(i).getAsString("numero"), "", 320, 0, 0);
+			FcnZebra.WrLabel(this._infTabla.get(i).getAsString("fecha_ins"), "", 440, 0, 1);
+		}
+		
+		
+		//Relacion de medidores retirados por el tecnico
+		FcnZebra.WrTitulo("RELACION DE MEDIDORES RETIRADOS", 1, 1.5);		
+		FcnZebra.WrSubTitulo("ORDEN", 5, 0, 0);
+		FcnZebra.WrSubTitulo("TIPO", 110, 0, 0);
+		FcnZebra.WrSubTitulo("MARCA", 200, 0, 0);
+		FcnZebra.WrSubTitulo("SERIE", 350, 0, 0);
+		FcnZebra.WrSubTitulo("CUENTA", 550, 0, 1.2);
+		
+		this._infTabla = ImpSQL.SelectData(	"amd_cambios_contadores as a JOIN amd_ordenes_trabajo as b ON a.id_orden = b.id_orden", 
+											"a.id_orden, a.tipo, a.marca, a.serie, a.cuenta", 
+											"(a.tipo = 'R') AND (b.estado IN ('T','E')) ORDER BY a.id_orden");
+		for(int i=0; i<this._infTabla.size();i++){
+			FcnZebra.WrLabel(this._infTabla.get(i).getAsString("id_orden"), "", 5, 0, 0);
+			FcnZebra.WrLabel(this._infTabla.get(i).getAsString("tipo"), "", 110, 0, 0);
+			FcnZebra.WrLabel(this._infTabla.get(i).getAsString("marca"), "", 200, 0, 0);
+			FcnZebra.WrLabel(this._infTabla.get(i).getAsString("serie"), "", 350, 0, 0);
+			FcnZebra.WrLabel(this._infTabla.get(i).getAsString("cuenta"), "", 550, 0, 1);
+		}
+		
+		
+		FcnZebra.WrLabel("Observaciones:", "______________________________________________", 10, 2, 1);
+		FcnZebra.WrLabel("", "___________________________________________________________", 10, 0, 1);
+		FcnZebra.WrLabel("", "___________________________________________________________", 10, 0, 1);
+		FcnZebra.WrLabel("", "___________________________________________________________", 10, 0, 1);
+		FcnZebra.WrLabel("", "___________________________________________________________", 10, 0, 1);
+		
+		FcnZebra.WrLabel("Firma Quien Entrega", "", 10, 1, 2);
+		FcnZebra.WrLabel("Firma Quien Recibe", "", 10, 0, 2);
+		FcnZebra.WrLabel(_pda+"-"+DT.GetDateTimeHora()+"-"+_tecnico, "", 10, 0, 3);
+	
+		MnBt.IntentPrint(this.Impresora,FcnZebra.getDoLabel());
+		FcnZebra.resetEtiqueta();
+	}    
 }

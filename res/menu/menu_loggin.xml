@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     <item android:id="@+id/OrdenesTrabajo" android:title="Ordenes de Trabajo" ></item>
     <item android:id="@+id/Autogestion" android:title="Crear Autogestion"></item><item android:id="@+id/NuevoServicio" android:title="Crear Nuevo Servicio"></item><item android:id="@+id/ImpresionPrueba" android:title="Impresion de Prueba"></item>
-    <item android:id="@+id/Servidor" android:title="Servidor">
+    <item android:id="@+id/ImpresionResumen" android:title="Impresion del Resumen"></item><item android:id="@+id/Servidor" android:title="Servidor">
         <menu>
             <item android:id="@+id/Envio" android:title="Envio"/>
             <item android:id="@+id/Recepcion" android:title="Recepcion"/>
@@ -22,6 +22,7 @@
         </menu>
     </item>
     <item android:id="@+id/SalirSistema" android:title="Salir"></item>
+    
     
     
 </menu>

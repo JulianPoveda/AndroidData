@@ -3,8 +3,6 @@
    	<item android:id="@+id/InicioOrden" android:title="Iniciar Orden"></item>
     <item android:id="@+id/AperturaOrdenes" android:title="Apertura de Ordenes"></item><item android:id="@+id/CerrarOrden" android:title="Cerrar Orden"></item><item android:id="@+id/TrasladarOrden" android:title="Trasladar Orden"></item>
     <item android:id="@+id/EliminarAut" android:title="Eliminar Autogestión"></item>
-    <item android:id="@+id/BodegaContadores" android:title="Bodega Contadores"></item>
-    <item android:id="@+id/BodegaSellos" android:title="Bodega Sellos"></item>
     
     
     

@@ -1463,51 +1463,7 @@ public class SQLite {
 		return _query;		
 	}
 	
-	//Selecciona un registro
-	/*public void SelectData(ArrayList<String> TxtCampos, String TablaConsulta, String CamposConsulta, String CondicionConsulta, String Base) {
-		abrir();
-		try{
-			TxtCampos.clear();
-			if (!Base.equals("")){
-				TxtCampos.add(Base);
-			}
-			
-			Cursor c = nBD.rawQuery("SELECT DISTINCT "+CamposConsulta+" FROM "+TablaConsulta+" WHERE "+CondicionConsulta, null);
-			String[] Columnas = c.getColumnNames();
-					
-			for(c.moveToFirst();!c.isAfterLast();c.moveToNext()){
-				for(int i=0;i<Columnas.length;i++){
-					TxtCampos.add(c.getString(i));
-				}				
-			}			
-		}
-		catch(Exception e){
-			Log.i("Error en SQLite", e.toString());
-		}	
-		cerrar();
-	}*/
 	
-	
-	/*public void SelectDistinctLimit(ArrayList<ArrayList<String>> Registros, String Tabla, String Campos, String Condicion, int Limite) {
-		Registros.clear();
-		abrir();
-		try{
-			Cursor c = nBD.rawQuery("SELECT "+Campos+" FROM "+Tabla+" WHERE "+Condicion+" LIMIT "+ Limite, null);
-			String[] Columnas = c.getColumnNames();
-			
-			for(c.moveToFirst();!c.isAfterLast();c.moveToNext()){
-				ArrayList<String> Registro = new ArrayList<String>();
-				for(int i=0;i<Columnas.length;i++){
-					Registro.add(c.getString(i));
-				}
-				Registros.add(Registro);
-			}			
-		}
-		catch(Exception e){
-			Log.i("Error en SQLite SelectMultiple", e.toString());
-		}	
-		cerrar();
-	}*/
 	
 	/**Funcion que consulta un campo de una tabla segun la condicion recibida y retorna el resultado como un entero
 	 * @param _tabla		->Tabla sobre la cual se va a trabajar

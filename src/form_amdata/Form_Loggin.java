@@ -3,6 +3,8 @@ package form_amdata;
 import java.io.File;
 
 import dialogos.DialogInformacion;
+import dialogos.Modal_BodegaContadores;
+import dialogos.Modal_BodegaSellos;
 import dialogos.Modal_FileExplorer;
 import sistema.GPS;
 import sistema.Network;
@@ -10,6 +12,7 @@ import sypelc.androidamdata.R;
 import thread_timer.Beacon;
 import ws_asynchronous.DownLoadTrabajo;
 import ws_asynchronous.DownLoadParametros;
+import miscelanea.FormatosActas;
 import miscelanea.SQLite;
 import android.app.Activity;
 import android.content.Context;
@@ -28,14 +31,20 @@ import android.widget.Toast;
 
 
 public class Form_Loggin extends Activity implements OnClickListener{
+	private static int  ACT_BODEGA_SELLOS = 3;
+	private static int  ACT_BODEGA_CONTADORES = 2;
+	Intent BodegaSellos;
+	Intent BodegaContadores;
+	
 	private static int  GPS_ACTIVADO 	= 1;
 	private static int 	ARCHIVO_LOCAL 	= 555;
 
 	Intent DialogInformacion; 	
 	
-	private Network		Conexion;	
-	private SQLite 		SQL; 		
-	private GPS 		milocListener;
+	private FormatosActas 	ImpActa;
+	private Network			Conexion;	
+	private SQLite 			SQL; 		
+	private GPS 			milocListener;
 	
 	private boolean LogginUser  	= false; 
 	private String 	CedulaLoggin	= "";
@@ -56,6 +65,8 @@ public class Form_Loggin extends Activity implements OnClickListener{
 		setContentView(R.layout.activity_loggin);
 		
 		DialogInformacion	= new Intent(this,DialogInformacion.class);
+		BodegaContadores 	= new Intent(this,Modal_BodegaContadores.class);
+		BodegaSellos	 	= new Intent(this,Modal_BodegaSellos.class);
 		
 		if(getIntent().getExtras() != null){
 			Bundle bundle = getIntent().getExtras();
@@ -77,6 +88,7 @@ public class Form_Loggin extends Activity implements OnClickListener{
 		
 		Conexion	= new Network(this);
 		SQL 		= new SQLite(this, this.FolderAplicacion);
+		ImpActa		= new FormatosActas(this,this.FolderAplicacion,false);
 		
 		/********************************************Funciones para la captura de datos GPS****************************************/
 		this.milocListener = new GPS(this, SQL.StrSelectShieldWhere("amd_param_sistema", "valor", "codigo='NPDA'"), this.FolderAplicacion);		
@@ -161,8 +173,20 @@ public class Form_Loggin extends Activity implements OnClickListener{
 				Autogestion.putExtra("FolderAplicacion", this.FolderAplicacion);
 				startActivity(Autogestion);
 				return true;	
+				
+			case R.id.BodegaContadores:
+				BodegaContadores.putExtra("FolderAplicacion",  Environment.getExternalStorageDirectory() + File.separator + "EMSA");
+				startActivityForResult(BodegaContadores, ACT_BODEGA_CONTADORES);
+				return true;
 			
-			
+			case R.id.BodegaSellos:
+				BodegaSellos.putExtra("FolderAplicacion",  Environment.getExternalStorageDirectory() + File.separator + "EMSA");
+				startActivityForResult(BodegaSellos, ACT_BODEGA_SELLOS);
+				return true;
+				
+			case R.id.ImpresionResumen:
+				this.ImpActa.FormatoResumenDiario(this.PDA+"", this.NombreLoggin);
+				
 			case R.id.SalirSistema:
 				this.finish();
 				return true;
@@ -219,6 +243,7 @@ public class Form_Loggin extends Activity implements OnClickListener{
 			 menu.findItem(R.id.Sistema).setEnabled(true);
 			 menu.findItem(R.id.Autogestion).setEnabled(true);
 			 menu.findItem(R.id.NuevoServicio).setEnabled(true);
+			 menu.findItem(R.id.ImpresionResumen).setEnabled(true);
 		 }else{
 			 menu.findItem(R.id.OrdenesTrabajo).setEnabled(false);
 			 menu.findItem(R.id.ImpresionPrueba).setEnabled(false);
@@ -227,6 +252,7 @@ public class Form_Loggin extends Activity implements OnClickListener{
 			 menu.findItem(R.id.Sistema).setEnabled(false);
 			 menu.findItem(R.id.Autogestion).setEnabled(false);
 			 menu.findItem(R.id.NuevoServicio).setEnabled(false);
+			 menu.findItem(R.id.ImpresionResumen).setEnabled(false);
 		 }    	
 		 return true;  
 	}
