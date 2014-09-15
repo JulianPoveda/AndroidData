@@ -44,7 +44,6 @@ public class Modal_BodegaContadores extends Activity implements OnClickListener,
 		this.FolderAplicacion= bundle.getString("FolderAplicacion");		
 		ContadoresSQL	= new SQLite(this,this.FolderAplicacion);
 		
-		
 		AdaptadorContadores = new AdaptadorBodegaContadores(this, ArrayContadores);
 		ListaContadores = (ListView) findViewById(R.id.BodegaContadoresLstDisponibles);
 		ListaContadores.setAdapter(AdaptadorContadores);
@@ -94,7 +93,6 @@ public class Modal_BodegaContadores extends Activity implements OnClickListener,
 				break;
 		}	
 	}
-
 
 
 	@Override

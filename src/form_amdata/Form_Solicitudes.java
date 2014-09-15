@@ -7,6 +7,8 @@ import class_amdata.Class_Solicitudes;
 import dialogos.DialogConfirm;
 import dialogos.DialogInformacion;
 import dialogos.DialogSingleTxt;
+import dialogos.Modal_BodegaContadores;
+import dialogos.Modal_BodegaSellos;
 import sypelc.androidamdata.R;
 import miscelanea.SQLite;
 import miscelanea.Util;
@@ -31,6 +33,11 @@ import android.widget.Toast;
 
 
 public class Form_Solicitudes extends Activity implements OnItemSelectedListener, OnItemClickListener{
+	private static int  ACT_BODEGA_SELLOS = 1;
+	private static int  ACT_BODEGA_CONTADORES = 2;
+	Intent BodegaSellos;
+	Intent BodegaContadores;
+	
 	Intent DialogConfirmacion; 	
 	Intent DialogInformacion; 	
 	Intent DialogApertura;
@@ -87,6 +94,9 @@ public class Form_Solicitudes extends Activity implements OnItemSelectedListener
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_solicitudes);
+		
+		BodegaContadores 	= new Intent(this,Modal_BodegaContadores.class);
+		BodegaSellos	 	= new Intent(this,Modal_BodegaSellos.class);
 		
 		Bundle bundle = getIntent().getExtras();
 		this.FolderAplicacion= bundle.getString("FolderAplicacion");		
@@ -251,7 +261,17 @@ public class Form_Solicitudes extends Activity implements OnItemSelectedListener
 					Toast.makeText(this,"No es posible eliminar la orden, verifique que sea una orden no cargada y que se encuentre en estado P",Toast.LENGTH_SHORT).show();
 				}
 				return true;
-							
+				
+			case R.id.BodegaContadores:
+				BodegaContadores.putExtra("FolderAplicacion",  Environment.getExternalStorageDirectory() + File.separator + "EMSA");
+				startActivityForResult(BodegaContadores, ACT_BODEGA_CONTADORES);
+				return true;
+				
+			case R.id.BodegaSellos:
+				BodegaSellos.putExtra("FolderAplicacion",  Environment.getExternalStorageDirectory() + File.separator + "EMSA");
+				startActivityForResult(BodegaSellos, ACT_BODEGA_SELLOS);
+				return true;
+				
 			default:
 				return super.onOptionsItemSelected(item);
 		}

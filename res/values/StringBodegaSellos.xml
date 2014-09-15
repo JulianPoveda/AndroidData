@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="BodegaSellosBtnCancelar">Cancelar</string>
+    <string name="BodegaSellosBtnAceptar">Aceptar</string>
+    <string name="BodegaSelloTxtMarca">Marca</string>
+    <string name="BodegaSelloTxtSerie">Serie</string>
+    <string name="BodegaSelloTxtTipo">Tipo</string>
+    <string name="BodegaSelloTxtLectura">Lectura</string>
+    <string name="MedidorSellosBtnCancelar">Cancelar</string>
+    <string name="MedidorSellosBtnAceptar">Aceptar</string>
+    
+</resources>

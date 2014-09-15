@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 
 import class_amdata.Class_Impresiones;
+import dialogos.Modal_BodegaContadores;
+import dialogos.Modal_MedidorSellosOrden;
 
 import sypelc.androidamdata.R;
 import miscelanea.FormatosActas;
@@ -11,7 +13,6 @@ import miscelanea.SQLite;
 import miscelanea.Util;
 import android.app.Activity;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
@@ -27,6 +28,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Form_Actas extends Activity implements OnClickListener{
+	private static int  ACT_MEDIDOR_SELLOS_ORDEN = 1;
+	Intent MedidorSellosOrden;
+	
 	Class_Impresiones 	FcnImpresion;
 	FormatosActas 		ActaImpresa;
 	SQLite 				ActasSQL;
@@ -101,7 +105,8 @@ public class Form_Actas extends Activity implements OnClickListener{
 		this.CuentaCliente 		= bundle.getString("CuentaCliente");		
 		this.FolderAplicacion	= bundle.getString("FolderAplicacion");
 		
-		FcnImpresion= new Class_Impresiones(this, this.FolderAplicacion, this.CedulaUsuario);
+		MedidorSellosOrden 	= new Intent(this,Modal_MedidorSellosOrden.class);
+		FcnImpresion		= new Class_Impresiones(this, this.FolderAplicacion, this.CedulaUsuario);
 		
 		ActasSQL 	= new SQLite(this, this.FolderAplicacion);
 		ActasUtil 	= new Util();
@@ -314,6 +319,12 @@ public class Form_Actas extends Activity implements OnClickListener{
 				k.putExtra("FolderAplicacion",  Environment.getExternalStorageDirectory() + File.separator + "EMSA");
 				startActivity(k);
 				return true;	
+				
+			case R.id.MedidorSellosOrden:
+				MedidorSellosOrden.putExtra("CuentaCliente",  this.CuentaCliente);
+				MedidorSellosOrden.putExtra("FolderAplicacion",  Environment.getExternalStorageDirectory() + File.separator + "EMSA");
+				startActivityForResult(MedidorSellosOrden, ACT_MEDIDOR_SELLOS_ORDEN);
+				return true;
 				
 			case R.id.ImpresionOriginal:
 				if(this.FcnImpresion.validarDatosImpresionActa(OrdenTrabajo)){

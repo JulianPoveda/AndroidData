@@ -14,5 +14,6 @@
             <item android:id="@+id/ImpresionArchivo" android:title="Copia Archivo"/>
         </menu>
     </item>
-    <item android:id="@+id/Volver" android:title="Volver"></item>    
+    <item android:id="@+id/Volver" android:title="Volver"></item>
+    <item android:id="@+id/MedidorSellosOrden" android:title="Medidor y Sellos Orden"></item>    
 </menu>

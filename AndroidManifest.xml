@@ -124,8 +124,18 @@
         </activity>
         <activity
             android:name="form_amdata.Form_Autogestion"
-            android:label="@string/title_activity_auto_gestion" 
+            android:label="@string/title_activity_auto_gestion"
             android:screenOrientation="sensorLandscape" >
+        </activity>
+        <activity
+            android:name="dialogos.Modal_BodegaSellos"
+            android:label="@string/title_activity_bodega_sellos"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity
+            android:name="dialogos.Modal_MedidorSellosOrden"
+            android:label="@string/title_activity_medidor_sellos_orden"
+            android:theme="@android:style/Theme.Dialog" >
         </activity>
     </application>
 

@@ -1,0 +1,35 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <ListView
+        android:id="@+id/BodegaSellosLstDisponibles"
+        android:layout_width="700dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/BodegaSellosBtnCancelar"
+        android:layout_alignParentTop="true"
+        android:listSelector="@color/VerdeManzana" >
+
+    </ListView>
+
+    <Button
+        android:id="@+id/BodegaSellosBtnCancelar"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/BodegaSellosLstDisponibles"
+        android:layout_marginRight="168dp"
+        android:text="@string/BodegaSellosBtnCancelar" />
+
+    <Button
+        android:id="@+id/BodegaSellosBtnAceptar"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="40dp"
+        android:layout_toLeftOf="@+id/BodegaSellosBtnCancelar"
+        android:text="@string/BodegaSellosBtnAceptar" />
+
+</RelativeLayout>

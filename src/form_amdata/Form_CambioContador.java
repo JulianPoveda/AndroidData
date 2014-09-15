@@ -402,21 +402,6 @@ public class Form_CambioContador extends Activity implements OnClickListener, On
 	}
 	
 	
-	/*public boolean RegistrarIrregularidad(){
-		boolean _retorno = false;
-		int id_anomalia = ContadorSQL.SQLSelectCountWhere("amd_irregularidades", "id_anomalia IS NOT NULL") + 1;
-		_registroTemp.clear();
-		_registroTemp.put("id_anomalia",id_anomalia);
-		_registroTemp.put("id_orden",OrdenTrabajo);
-		_registroTemp.put("id_irregularidad", 18);
-		_registroTemp.put("usuario_ins",CedulaUsuario);
-		if(ContadorSQL.InsertarRegistro("amd_irregularidades", _registroTemp)){
-			_retorno = true;
-		}
-		return _retorno;
-	}*/
-	
-	
 	public void VerMovimientosContadores(){
 		TablaContadores 	= GraphContadorTabla.CuerpoTabla(FcnContador.getMovimientos());
 		FilaTablaContadores.removeAllViews();

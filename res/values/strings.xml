@@ -51,5 +51,7 @@
     <string name="CensoLblTCR4">TCR:</string>
     <string name="CensoLblTCD">TCD:</string>
     <string name="CensoLblTCC">TCC:</string>
+    <string name="title_activity_bodega_sellos">SELLOS DISPONIBLES</string>
+    <string name="title_activity_medidor_sellos_orden">MedidorSellosOrden</string>
 
 </resources>
