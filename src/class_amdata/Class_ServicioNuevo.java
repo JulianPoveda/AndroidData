@@ -130,7 +130,7 @@ public class Class_ServicioNuevo {
 	
 	
 	private boolean crearOrden(){
-		this._consecutivo = "-"+this.ServicioNuevoUtil.generarAleatorio(4);	
+		this._consecutivo = this.ServicioNuevoUtil.generarAleatorio(4, this._NPDA);	
 		this._tempRegistro.clear();
 		this._tempRegistro.put("id_orden", this._consecutivo + this._NPDA);
 		this._tempRegistro.put("cuenta", this._consecutivo + this._NPDA);
@@ -148,7 +148,7 @@ public class Class_ServicioNuevo {
 		this._tempRegistro.put("observacion_pad", "SERVICIO_NUEVO");
 		this._tempRegistro.put("tipo", "C");
 		this._tempRegistro.put("municipio", this._municipio);
-		this._tempRegistro.put("codigo_apertura", this.generarContrasena(this._consecutivo));
+		this._tempRegistro.put("codigo_apertura", this.generarContrasena(this._consecutivo.substring(1,5)));
 		this._tempRegistro.put("bodega", "1-SYPELC SOLICITUDES");
 		this._tempRegistro.put("solicitud", "");
 		this._tempRegistro.put("clase_solicitud", "");

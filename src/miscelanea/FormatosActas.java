@@ -44,11 +44,8 @@ public class FormatosActas {
 		this._copiaSistema 		= _copiaSistema;
 		
 		ImpSQL = new SQLite(this.context,this._folderAplicacion);
-		this.ImpArchivos = new Archivos(this.context,this._folderAplicacion, 10);
-		
-		//this._NombreTecnico		= ImpSQL.StrSelectShieldWhere("amd_param_sistema", "valor", "codigo='NOM_TECNICO'");
-		//this._CedulaTecnico		= ImpSQL.StrSelectShieldWhere("amd_param_sistema", "valor", "codigo='CC_TECNICO'");
-		this.Impresora 			= ImpSQL.StrSelectShieldWhere("amd_param_sistema", "valor", "codigo='BLUETOOTH'");
+		this.ImpArchivos= new Archivos(this.context,this._folderAplicacion, 10);
+		this.Impresora 	= ImpSQL.StrSelectShieldWhere("amd_param_sistema", "valor", "codigo='BLUETOOTH'");
 	    
 		MnBt 	= new Bluetooth(this.context);
 		ImpSQL 	= new SQLite(this.context, this._folderAplicacion);

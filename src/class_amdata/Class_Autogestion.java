@@ -173,7 +173,7 @@ public class Class_Autogestion{
 			
 		this._serieContador		= _serieContador;
 		this._lecturaContador	= _lecturaContador;
-		this._solicitud = this.AutogestionUtil.generarAleatorio(6);
+		this._solicitud = this.AutogestionUtil.generarAleatorio(4, this._NPDA);
 		
 		
 		if(this._propietario.isEmpty()){
@@ -286,7 +286,7 @@ public class Class_Autogestion{
 	
 	private boolean crearOrden(){
 		this._tempRegistro.clear();
-		this._tempRegistro.put("id_orden", "-"+this._id_orden);
+		this._tempRegistro.put("id_orden", this._id_orden);
 		this._tempRegistro.put("cuenta", this._cuenta);
 		this._tempRegistro.put("propietario", this._propietario);
 		this._tempRegistro.put("ubicacion", this._ubicacion);
@@ -302,7 +302,7 @@ public class Class_Autogestion{
 		this._tempRegistro.put("observacion_pad", "AUTOGESTION");
 		this._tempRegistro.put("tipo", "C");
 		this._tempRegistro.put("municipio", this._municipio);
-		this._tempRegistro.put("codigo_apertura", this.generarContrasena(this._solicitud));
+		this._tempRegistro.put("codigo_apertura", this.generarContrasena(this._solicitud.substring(1, 5)));
 		this._tempRegistro.put("solicitud", this._solicitud);
 		this._tempRegistro.put("clase_solicitud", this._claseSolicitud);
 		this._tempRegistro.put("tipo_solicitud", this._tipoSolicitud);
@@ -334,6 +334,13 @@ public class Class_Autogestion{
 
 	
 	private String generarContrasena(String _consecutivo){
+		/*int consecutivo = Integer.parseInt(_consecutivo);
+		int pda 		= Integer.parseInt(this._NPDA);
+	    int generado 	= consecutivo * pda;
+	    generado 		+= Integer.parseInt(_consecutivo + this._NPDA);
+	    String StrGenerado = generado + this._NPDA;*/
+		
 		return String.valueOf((Integer.parseInt(_consecutivo) * Integer.parseInt(this._NPDA))+ Integer.parseInt(_consecutivo + this._NPDA)) + this._NPDA;
+	
 	}
 }

@@ -138,7 +138,7 @@ public class Util {
 	}
 	
 	
-	public String generarAleatorio(int _limite){
+	public String generarAleatorio(int _limite, String _pda){
 		int numero = 0;
 		Random r1 = new Random(System.currentTimeMillis());
 		numero = r1.nextInt(999999999)+1;
@@ -147,7 +147,7 @@ public class Util {
 		while (builder.length() < _limite) {
             builder.append('0');
         }
-		return builder.toString().substring(0, _limite);
+		return "-"+builder.toString().substring(0, _limite) + _pda;
 	}
 	
 	
