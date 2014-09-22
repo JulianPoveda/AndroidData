@@ -107,7 +107,7 @@ public class Materiales extends Activity implements OnClickListener, OnItemSelec
 	
 	/**ArrayList de los materiales de usuario**/
 	//private ArrayList<String> _strMaterialesUsuario= new ArrayList<String>();
-	private String _strMaterialesUsuario[] = {	"Alambre N° 10.",
+	private String _strMaterialesUsuario[] = {	"Alambre Nï¿½ 10.",
 												"Conectores 1 perno.",
 												"Codo emt 1 pulg.",
 												"Codo emt 3/4 pulg.",
@@ -448,13 +448,13 @@ public class Materiales extends Activity implements OnClickListener, OnItemSelec
 				
 			case R.id.OriginalEmpresa:
 				if(this.FcnImpresion.validarDatosImpresionMateriales(OrdenTrabajo)){
-					ActaImpresa.FormatoMateriales(OrdenTrabajo,"Materiales", 1, CedulaUsuario);
+					ActaImpresa.FormatoMateriales(OrdenTrabajo, CuentaCliente, "Materiales", 1, CedulaUsuario);
 				}	
 				return true;	
 				
 			case R.id.CopiaUsuario:
 				if(this.FcnImpresion.validarDatosImpresionMateriales(OrdenTrabajo)){
-					ActaImpresa.FormatoMateriales(OrdenTrabajo,"Materiales", 2, CedulaUsuario);
+					ActaImpresa.FormatoMateriales(OrdenTrabajo, CuentaCliente, "Materiales", 2, CedulaUsuario);
 				}		
 				return true;				
 				
@@ -462,7 +462,7 @@ public class Materiales extends Activity implements OnClickListener, OnItemSelec
 			case R.id.CopiaArchivo:
 				
 				if(this.FcnImpresion.validarDatosImpresionMateriales(OrdenTrabajo)){
-					ActaImpresa.FormatoMateriales(OrdenTrabajo,"Materiales", 3, CedulaUsuario);
+					ActaImpresa.FormatoMateriales(OrdenTrabajo, CuentaCliente, "Materiales", 3, CedulaUsuario);
 				}	
 				return true;
 				

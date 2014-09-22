@@ -328,19 +328,19 @@ public class Form_Actas extends Activity implements OnClickListener{
 				
 			case R.id.ImpresionOriginal:
 				if(this.FcnImpresion.validarDatosImpresionActa(OrdenTrabajo)){
-					ActaImpresa.FormatoVerificacion(OrdenTrabajo,"Desviacion",1, CedulaUsuario);
+					ActaImpresa.FormatoVerificacion(OrdenTrabajo, CuentaCliente, "Desviacion",1, CedulaUsuario);
 				}				
 				return true;
 				
 			case R.id.ImpresionCopia:
 				if(this.FcnImpresion.validarDatosImpresionActa(OrdenTrabajo)){
-					ActaImpresa.FormatoVerificacion(OrdenTrabajo,"Desviacion",2, CedulaUsuario);
+					ActaImpresa.FormatoVerificacion(OrdenTrabajo, CuentaCliente, "Desviacion",2, CedulaUsuario);
 				}				
 				return true;
 				
 			case R.id.ImpresionArchivo:
 				if(this.FcnImpresion.validarDatosImpresionActa(OrdenTrabajo)){
-					ActaImpresa.FormatoVerificacion(OrdenTrabajo,"Desviacion",3, CedulaUsuario);
+					ActaImpresa.FormatoVerificacion(OrdenTrabajo, CuentaCliente, "Desviacion",3, CedulaUsuario);
 				}				
 				return true;	
 				
