@@ -52,7 +52,7 @@ public class Archivos {
 	public boolean MakeDirectory(String _new_directory){
 		File f = new File(this.Directory+File.separator+_new_directory);
 		if(f.mkdir()){
-			Toast.makeText(this.ctx,"Directorio "+_new_directory+" correctamente.", Toast.LENGTH_SHORT).show();
+			//Toast.makeText(this.ctx,"Directorio "+_new_directory+" correctamente.", Toast.LENGTH_SHORT).show();
 			return true;
 		}else{
 			return false;
@@ -243,5 +243,7 @@ public class Archivos {
 		}
 		return true;
 	}
+
+	
 
 }

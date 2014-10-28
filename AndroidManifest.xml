@@ -137,6 +137,14 @@
             android:label="@string/title_activity_medidor_sellos_orden"
             android:theme="@android:style/Theme.Dialog" >
         </activity>
+        <activity
+            android:name=".Descarga"
+            android:label="@string/title_activity_descarga" >
+        </activity>
+        <activity
+            android:name=".UploadTrabajo"
+            android:label="@string/title_activity_upload_trabajo" >
+        </activity>
     </application>
 
 </manifest>

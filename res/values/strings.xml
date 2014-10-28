@@ -53,5 +53,8 @@
     <string name="CensoLblTCC">TCC:</string>
     <string name="title_activity_bodega_sellos">SELLOS DISPONIBLES</string>
     <string name="title_activity_medidor_sellos_orden">MedidorSellosOrden</string>
+    <string name="title_activity_descarga">Descarga</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_upload_trabajo">UploadTrabajo</string>
 
 </resources>

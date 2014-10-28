@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="sypelc.androidamdata.UploadTrabajo" >
+
+    <item
+        android:id="@+id/select_all"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:title="Seleccionar Todo"/>
+    <item android:id="@+id/unselect_all" android:title="Deseleccionar Todo"></item>
+    <item android:id="@+id/envio" android:title="Descargar"></item>
+
+</menu>

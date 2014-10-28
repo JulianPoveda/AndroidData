@@ -9,8 +9,10 @@ import dialogos.Modal_FileExplorer;
 import sistema.GPS;
 import sistema.Network;
 import sypelc.androidamdata.R;
+import sypelc.androidamdata.UploadTrabajo;
 import thread_timer.Beacon;
 import ws_asynchronous.DownLoadTrabajo;
+import ws_asynchronous.UpLoadTrabajo;
 import ws_asynchronous.DownLoadParametros;
 import miscelanea.FormatosActas;
 import miscelanea.SQLite;
@@ -120,7 +122,26 @@ public class Form_Loggin extends Activity implements OnClickListener{
 	//Control de eventos al momento de seleccionar una opcion del menu del formulario
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {				
+		switch (item.getItemId()) {
+		  
+		case R.id.Envio:
+			  Intent j;
+				j = new Intent(this, UploadTrabajo.class);
+				j.putExtra("NombreUsuario", NombreLoggin);
+				j.putExtra("CedulaUsuario", CedulaLoggin);
+				j.putExtra("NivelUsuario", NivelLoggin);
+				j.putExtra("FolderAplicacion", this.FolderAplicacion);
+				startActivity(j);
+				return true;
+
+			  /*
+			if(Conexion.chkStatusNetWork()){
+				new UpLoadTrabajo(this, this.FolderAplicacion).execute("1",this.PDA+"");
+			}else{
+				Toast.makeText(this,"No hay conexion a internet.", Toast.LENGTH_LONG).show();	
+			}
+			return true;*/
+		
 			case R.id.Recepcion:
 				if(Conexion.chkStatusNetWork()){
 					new DownLoadTrabajo(this, this.FolderAplicacion).execute("1",this.PDA+"");

@@ -47,7 +47,7 @@ public class Form_MedidorPruebas extends Activity implements OnClickListener, On
 	private String 	_strTipo[]		= {"MONOFASICO","BIFASICO","TRIFASICO"};
 	
 	
-	private String  _strConexion[] 		= {"NO REALIZADA","CONFORME","NO CONFORME"};
+	private String  _strConexion[] 		= {"NO REALIZADA","CONFORME","NO CONFORME"," "};
 	private String 	_strContinuidad[]	= {"NO REALIZADA","CONFORME","NO CONFORME"};
 	private String  _strPuentes[]		= {"NO REALIZADA","CONFORME","NO CONFORME"};
 	private String 	_strIntegrador[]	= {"NO REALIZADA","SI REGISTRA","NO REGISTRA"};
