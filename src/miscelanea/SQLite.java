@@ -24,7 +24,7 @@ import android.util.Log;
 public class SQLite {
 	private static Archivos ArchSQL;	
 	private static String N_BD = null; 	
-	private static final int VERSION_BD = 2;																		
+	private static final int VERSION_BD = 3;																		
 	
 	private BDHelper nHelper;
 	private Context nContexto;
@@ -1163,6 +1163,7 @@ public class SQLite {
 					"	WHERE 	a.estado in ('T','TA')"+
 					"   ORDER BY id_acta;");
 			
+			
 			db.execSQL("CREATE VIEW upload_acometidas_pda AS" +
 					"	SELECT 	a.id_orden, SUBSTR(b.tipo_ingreso, 1, 1) as tipo_ingreso, b.id_acometida, b.longitud, u.login, b.fecha_ins, b.fase, SUBSTR(b.clase, 1, 1) as clase" +
 					"	FROM	amd_ordenes_trabajo AS a" +
@@ -1181,6 +1182,7 @@ public class SQLite {
 					"   ON           b.usuario_ins=u.documento"+
 					"   WHERE 	a.estado in ('T','TA');");
 			
+			
 			db.execSQL("CREATE VIEW upload_pct_error_pda AS" +
 					"	SELECT 	a.id_orden,  b.tipo_carga, b.voltaje, b.corriente, b.tiempo, b.vueltas, b.total, u.login, b.fecha_ins, b.rev, b.fase" +
 					"	FROM	amd_ordenes_trabajo AS a" +
@@ -1189,6 +1191,7 @@ public class SQLite {
 					"   JOIN       amd_usuarios as u"+
 					"   ON           b.usuario_ins=u.documento"+
 					"	WHERE 	a.estado in ('T','TA');");
+			
 			
 			db.execSQL("CREATE VIEW upload_sellos_pda AS" +
 					"	SELECT 	a.id_orden, b.estado, b.tipo, b.numero, b.color, b.irregularidad, b.ubicacion,u.login, b.fecha_ins" +
@@ -1199,6 +1202,7 @@ public class SQLite {
 					"   ON      b.usuario_ins=u.documento"+
 					"	WHERE 	a.estado in ('T','TA');");
 			
+			
 			db.execSQL("CREATE VIEW upload_irregularidades_pda AS" +
 					"	SELECT 	b.id_anomalia,a.id_orden, b.id_irregularidad, u.login, b.fecha_ins" +
 					"	FROM	amd_ordenes_trabajo AS a" +
@@ -1208,6 +1212,7 @@ public class SQLite {
 					"   ON      b.usuario_ins=u.documento"+
 					"	WHERE 	a.estado in ('T','TA');");
 			
+			
 			db.execSQL("CREATE VIEW upload_mvto_contadores_pda AS" +
 					"	SELECT 	a.id_orden, b.tipo, b.marca, b.serie, b.lectura, b.cuenta,  u.login, b.fecha_ins, b.cobro" +
 					"	FROM	amd_ordenes_trabajo AS a" +
@@ -1216,6 +1221,7 @@ public class SQLite {
 					"   JOIN    amd_usuarios as u"+
 					"   ON      b.usuario_ins=u.documento"+
 					"	WHERE 	a.estado in ('T','TA');");
+			
 			
 			db.execSQL("CREATE VIEW upload_materiales_trabajo_pda AS" +
 					"	SELECT 	a.id_orden, b.id_trabajo, b.id_material, b.cantidad, b.cuotas, b.automatico, b.usuario_ins, b.fecha_ins" +
@@ -1231,6 +1237,7 @@ public class SQLite {
 					"   ON 		a.id_orden = b.id_orden"+
 					"   WHERE 	a.estado in ('T','TA')");
 			
+			
 			db.execSQL("CREATE VIEW upload_medidor_encontrado_pda AS" +
 					"	SELECT 	a.id_orden, b.marca, b.serie, b.lectura, b.lectura_2, b.lectura_3, b.tipo" +
 					"	FROM	amd_ordenes_trabajo AS a" +
@@ -1245,6 +1252,7 @@ public class SQLite {
 					"   ON 		a.id_orden = b.id_orden"+
 					"   WHERE 	a.estado in ('T','TA')");
 			
+			
 			db.execSQL("CREATE VIEW  upload_inconsistencia_pda AS" +
 					"	SELECT 	  b.id_inconsistencia,a.id_orden, b.id_nodo, b.valor, b.fecha_ins,u.login, b.cod_inconsistencia, b.cuenta, b.trabajo" +
 					"	FROM	amd_ordenes_trabajo AS a" +
@@ -1253,6 +1261,7 @@ public class SQLite {
 					"   JOIN    amd_usuarios as u"+
 					"   ON       b.usuario_ins=u.documento"+
 					"	WHERE 	a.estado in ('T','TA');");
+			
 			
 			db.execSQL("CREATE VIEW upload_trabajos_orden_pda AS" +
 					"	SELECT 	b.id_revision,a.id_orden, b.id_trabajo,b.cuenta,b.nodo,b.estado,u.login,b.fecha_ins,b.cantidad" +
@@ -1263,6 +1272,7 @@ public class SQLite {
 					"   ON      b.usuario_ins=u.documento"+
 					"	WHERE 	a.estado in ('T','TA');");
 			
+			
 			db.execSQL("CREATE VIEW upload_censo_carga_pda AS" +
 					"	SELECT  a.id_orden, sum(b.capacidad*b.cantidad)  as total_censo, u.login, b.fecha_ins" +
 					"	FROM	amd_ordenes_trabajo AS a" +
@@ -1272,6 +1282,7 @@ public class SQLite {
 					"   ON      usuario_ins=u.documento"+
 					"   WHERE 	a.estado in ('T','TA')"+
 					"	GROUP BY  a.id_orden;");
+			
 			
 			db.execSQL("CREATE VIEW upload_elementos_prov_pda AS" +
 					"	SELECT 	a.id_orden,  b.elemento, b.marca, b.serie, b.valor, b.id_agrupador, b.cuenta,b.proceso,b.estado, b.usuario_ins, b.fecha_ins, b.cantidad" +
