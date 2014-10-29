@@ -1140,6 +1140,13 @@ public class SQLite {
 					"   ON 		a.id_orden = b.id_orden"+
 					"   WHERE 	a.estado in ('T','TA')");
 			
+			db.execSQL("CREATE VIEW upload_nodos AS " +
+					"	SELECT a.id_orden,n.id_nodo, n.observacion" +
+					"	from amd_ordenes_trabajo as a"+
+					"   JOIN amd_nodo as n"+
+					"   ON a.id_nodo=n.id_nodo"+
+					"   where a.estado in ('T',' TA')");
+			
 			db.execSQL(	"CREATE TRIGGER tg_fecha_revision AFTER INSERT ON amd_actas FOR EACH ROW BEGIN " +
 						"	UPDATE amd_actas SET fecha_revision=datetime('now','localtime') WHERE id_orden = NEW.id_orden;" +
 						"END;");
@@ -1292,6 +1299,14 @@ public class SQLite {
 					"   JOIN    amd_usuarios as u"+
 					"   ON      b.usuario_ins=u.documento	"+
 					"	WHERE 	a.estado in ('T','TA');");
+			
+			db.execSQL("CREATE VIEW upload_nodos AS " +
+					"	SELECT a.id_orden,n.id_nodo, n.observacion" +
+					"	from amd_ordenes_trabajo as a"+
+					"   JOIN amd_nodo as n"+
+					"   ON a.id_nodo=n.id_nodo"+
+					"   where a.estado in ('T',' TA')");
+
 			
 		}
 	}

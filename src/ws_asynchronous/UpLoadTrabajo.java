@@ -538,6 +538,24 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 		    listString16 += s;
 		}
 		ArchConnectServer.DoFile(this.FolderAplicacion,"SGD_ELEMENTOS_PROV_PDA",listString16);
+
+/*GENERAR SGD_NODOS_EXP*/
+		this.InformacionCarga.clear();		
+		for(int j=0; j<this._Ordenes.size();j++){
+			String orden=	this._Ordenes.get(j).toString();
+			this._tempTabla	= this.UploadSQL.SelectData("upload_nodos", "id_nodo, observacion","id_orden='"+orden+"'");
+			for(int i=0; i<this._tempTabla.size();i++){
+				this._tempRegistro = this._tempTabla.get(i);
+					  this.InformacionCarga.add(this._tempRegistro.getAsString("id_nodo")+","+this._tempRegistro.getAsString("observacion")+"\r\n");
+			 }
+		    }
+		String listString17 = "";
+		for (String s : InformacionCarga)
+		{
+		    listString17 += s;
+		}
+		ArchConnectServer.DoFile(this.FolderAplicacion,"SGD_NODOS_EXP",listString17);
+
 		
 //para descargar archivos
 		
@@ -575,6 +593,7 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 			   so.addProperty("SGD_SERVICIO_NUEVO_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_SERVICIO_NUEVO_PDA")));
 			   so.addProperty("SGD_TRABAJOS_ORDEN_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_TRABAJOS_ORDEN_PDA")));
 			   so.addProperty("SGD_VISITAS_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_VISITAS_PDA")));
+			   so.addProperty("SGD_NODOS_EXP",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_NODOS_EXP")));
 			   
 			   
 			   SoapSerializationEnvelope sse=new SoapSerializationEnvelope(SoapEnvelope.VER11);
