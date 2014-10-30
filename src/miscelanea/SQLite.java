@@ -1147,6 +1147,23 @@ public class SQLite {
 					"   ON a.id_nodo=n.id_nodo"+
 					"   where a.estado in ('T',' TA')");
 			
+			db.execSQL("CREATE VIEW upload_trabajos_exp AS " +
+					"	SELECT  b.fecha_ins, a.id_orden" +
+					"	FROM amd_ordenes_trabajo as a"+
+					"   JOIN  amd_param_trabajos_orden as b"+
+					"   ON b.id_orden=a.id_orden"+
+					"   WHERE a.estado='T'");
+			
+			db.execSQL("CREATE VIEW upload_sgd_ordenes_exp AS " +
+					"	SELECT id_orden,fecha_atencion,hora_ini,hora_fin,observacion_pad,usuario " +
+					"	FROM amd_ordenes_trabajo "+
+					"   WHERE estado='T'");
+			
+			db.execSQL("CREATE VIEW upload_sgd_ordenes_pda AS " +
+					"	SELECT id_orden,cuenta,fecha_atencion,hora_ini,hora_fin,usuario,observacion_pad,bodega,solicitud,clase_solicitud,tipo_solicitud,dependencia,tipo_accion,dependencia_asignada,consecutivo_accion,propietario,municipio,ubicacion,clase_servicio,estrato,id_nodo,fecha_ven,direccion,observacion_trabajo " +
+					"	FROM amd_ordenes_trabajo "+
+					"   WHERE id_orden< '0' and estado='T' ");
+			
 			db.execSQL(	"CREATE TRIGGER tg_fecha_revision AFTER INSERT ON amd_actas FOR EACH ROW BEGIN " +
 						"	UPDATE amd_actas SET fecha_revision=datetime('now','localtime') WHERE id_orden = NEW.id_orden;" +
 						"END;");
@@ -1158,7 +1175,7 @@ public class SQLite {
 			
 			/*db.execSQL(	"CREATE TRIGGER tg_fecha_revision AFTER INSERT ON amd_actas FOR EACH ROW BEGIN " +
 						"	UPDATE amd_actas SET fecha_revision=datetime('now','localtime') WHERE id_orden = NEW.id_orden;" +
-						"END;");//quitar esto cuando se actualice la vista*/
+						"END;");*/
 			
 			db.execSQL("CREATE VIEW upload_nodos_exp AS" +
 					"	SELECT 	b.id_acta, a.id_orden,b.id_revision, b.codigo_trabajo, b.nombre_enterado, b.cedula_enterado, b.evento, b.tipo_enterado, b.fecha_revision, u.login, b.fecha_ins, b.cedula_testigo, b.nombre_testigo" +
@@ -1306,7 +1323,23 @@ public class SQLite {
 					"   JOIN amd_nodo as n"+
 					"   ON a.id_nodo=n.id_nodo"+
 					"   where a.estado in ('T',' TA')");
-
+			
+			db.execSQL("CREATE VIEW upload_trabajos_exp AS " +
+					"	SELECT  b.fecha_ins, a.id_orden" +
+					"	FROM amd_ordenes_trabajo as a"+
+					"   JOIN  amd_param_trabajos_orden as b"+
+					"   ON b.id_orden=a.id_orden"+
+					"   WHERE a.estado='T'");
+			
+			db.execSQL("CREATE VIEW upload_sgd_ordenes_exp AS " +
+					"	SELECT id_orden,fecha_atencion,hora_ini,hora_fin,observacion_pad,usuario " +
+					"	FROM amd_ordenes_trabajo "+
+					"   WHERE estado='T'");
+			
+			db.execSQL("CREATE VIEW upload_sgd_ordenes_pda AS " +
+					"	SELECT id_orden,cuenta,fecha_atencion,hora_ini,hora_fin,usuario,observacion_pad,bodega,solicitud,clase_solicitud,tipo_solicitud,dependencia,tipo_accion,dependencia_asignada,consecutivo_accion,propietario,municipio,ubicacion,clase_servicio,estrato,id_nodo,fecha_ven,direccion,observacion_trabajo " +
+					"	FROM amd_ordenes_trabajo "+
+					"   WHERE id_orden< '0' and estado='T' ");
 			
 		}
 	}

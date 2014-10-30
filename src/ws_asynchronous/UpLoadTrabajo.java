@@ -45,6 +45,7 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 	private ArrayList<ContentValues>	_tempTabla		= new ArrayList<ContentValues>();
 	private ArrayList<ContentValues>	_tempTabla1		= new ArrayList<ContentValues>();
 	private ContentValues				_tempRegistro1	= new ContentValues();
+	private ContentValues				_tempRegistro2	= new ContentValues();
 	private ArrayList<String>           _Ordenes        = new ArrayList<String>();
 	ArrayList<String> _OrdenesS = new ArrayList<String>();
 	
@@ -118,6 +119,64 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 		this._tempTabla1	= this.UploadSQL.SelectData("amd_param_sistema", "valor","codigo='NPDA'");
 		this._tempRegistro1 = this._tempTabla1.get(0);
 		_NPDA = this._tempRegistro1.getAsString("valor");
+		
+/*DESCARGAR SGD_ORDENES_TRABAJO_EXP*/
+		
+	//actualizar la tabla amd_ordenes_trabajo con hora ini y hora fin.	
+		
+	//Se consulta la fecha min y max de las ordenes seleccionadas	y se actualiza en amd_ordenes_trabajo
+		for(int j=0; j<this._Ordenes.size();j++){
+			String orden=	this._Ordenes.get(j).toString();
+			this._tempTabla	= this.UploadSQL.SelectData("upload_trabajos_exp", "min(fecha_ins), max(fecha_ins)","id_orden='"+orden+"'");
+			for(int i=0; i<this._tempTabla.size();i++){
+				this._tempRegistro = this._tempTabla.get(i);
+				this._tempRegistro2.put("hora_ini", this._tempRegistro.getAsString("min(fecha_ins)"));
+				this._tempRegistro2.put("hora_fin", this._tempRegistro.getAsString("max(fecha_ins)"));
+				  this.UploadSQL.UpdateRegistro("amd_ordenes_trabajo", this._tempRegistro2, "id_orden='"+orden+"'");
+			 }
+		    
+		}
+		
+//selecciona las trasladadas y las inserta en amd_borrar_orden
+		
+//genera el archivo para actualizar sgd_ordenes_trabajos_exp
+
+		this.InformacionCarga.clear();		
+		String estado="C";
+		for(int j=0; j<this._Ordenes.size();j++){
+			String orden=	this._Ordenes.get(j).toString();
+			this._tempTabla	= this.UploadSQL.SelectData("upload_sgd_ordenes_exp", "id_orden,fecha_atencion,hora_ini,hora_fin,observacion_pad,usuario","id_orden='"+orden+"'");
+			for(int i=0; i<this._tempTabla.size();i++){
+				this._tempRegistro = this._tempTabla.get(i);
+					  this.InformacionCarga.add(this._tempRegistro.getAsString("id_orden")+","+this._tempRegistro.getAsString("fecha_atencion")+","+this._tempRegistro.getAsString("hora_ini")+","+this._tempRegistro.getAsString("hora_fin")+","+this._tempRegistro.getAsString("observacion_pad")+","+this._tempRegistro.getAsString("usuario")+","+estado+"\r\n");
+			 }
+		    }
+		String listSgd = "";
+		for (String s : InformacionCarga)
+		{
+			listSgd += s;
+		}
+		ArchConnectServer.DoFile(this.FolderAplicacion,"SGD_ORDENES_TRABAJO_EXP",listSgd);
+		
+//genera el archivo insertar en sgd_ordenes_trabajo_pda
+		
+		this.InformacionCarga.clear();		
+		for(int j=0; j<this._Ordenes.size();j++){
+			String orden=	this._Ordenes.get(j).toString();
+			this._tempTabla	= this.UploadSQL.SelectData("upload_sgd_ordenes_pda", "id_orden,cuenta,fecha_atencion,hora_ini,hora_fin,usuario,observacion_pad,bodega,solicitud,clase_solicitud,tipo_solicitud,dependencia,tipo_accion,dependencia_asignada,consecutivo_accion,propietario,municipio,ubicacion,clase_servicio,estrato,id_nodo,fecha_ven,direccion,observacion_trabajo","id_orden='"+orden+"'");
+			for(int i=0; i<this._tempTabla.size();i++){
+				this._tempRegistro = this._tempTabla.get(i);
+					  this.InformacionCarga.add(this._tempRegistro.getAsString("id_orden")+","+this._tempRegistro.getAsString("cuenta")+","+this._tempRegistro.getAsString("fecha_atencion")+","+this._tempRegistro.getAsString("hora_ini")+","+this._tempRegistro.getAsString("hora_fin")+","+this._tempRegistro.getAsString("usuario")+","+this._tempRegistro.getAsString("observacion_pad")+","+this._tempRegistro.getAsString("bodega")+","+this._tempRegistro.getAsString("solicitud")+","
+					  		+ ""+this._tempRegistro.getAsString("clase_solicitud")+","+this._tempRegistro.getAsString("tipo_solicitud")+","+this._tempRegistro.getAsString("dependencia")+","+this._tempRegistro.getAsString("tipo_accion")+","+this._tempRegistro.getAsString("dependencia_asignada")+","+this._tempRegistro.getAsString("consecutivo_accion")+","+this._tempRegistro.getAsString("propietario")+","+this._tempRegistro.getAsString("municipio")+","+this._tempRegistro.getAsString("ubicacion")+","
+					  				+ ""+this._tempRegistro.getAsString("clase_servicio")+","+this._tempRegistro.getAsString("estrato")+","+this._tempRegistro.getAsString("id_nodo")+","+this._tempRegistro.getAsString("fecha_ven")+","+this._tempRegistro.getAsString("direccion")+","+this._tempRegistro.getAsString("observacion_trabajo")+"\r\n");
+			 }
+		    }
+		String listSgd1 = "";
+		for (String s : InformacionCarga)
+		{
+			listSgd1 += s;
+		}
+		ArchConnectServer.DoFile(this.FolderAplicacion,"SGD_ORDENES_TRABAJO_PDA",listSgd1);
 		
 /*GENERAR SGD_aCTAS_PDA*/
 		this.InformacionCarga.clear();
@@ -594,7 +653,8 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 			   so.addProperty("SGD_TRABAJOS_ORDEN_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_TRABAJOS_ORDEN_PDA")));
 			   so.addProperty("SGD_VISITAS_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_VISITAS_PDA")));
 			   so.addProperty("SGD_NODOS_EXP",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_NODOS_EXP")));
-			   
+			   so.addProperty("SGD_ORDENES_TRABAJO_EXP",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ORDENES_TRABAJO_EXP")));
+			   so.addProperty("SGD_ORDENES_TRABAJO_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ORDENES_TRABAJO_PDA")));
 			   
 			   SoapSerializationEnvelope sse=new SoapSerializationEnvelope(SoapEnvelope.VER11);
 			   new MarshalBase64().register(sse);
