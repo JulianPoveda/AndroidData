@@ -670,7 +670,7 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 				   this.Respuesta = "-2";
 			   }else if(response.toString().equals("1")){
 				   this.Respuesta = "1";
-				   this.ArchUpLoadWS.DeleteFile(this.InformacionArchivos.getAsString("ruta_archivo"));
+				   this.ArchUpLoadWS.DeleteFile(this.DirectorioConexionServer+File.separator+this.FolderAplicacion);
 			   }
 		   	} catch (Exception e) {
 		   		this.Respuesta = e.toString();
