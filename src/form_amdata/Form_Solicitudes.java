@@ -10,6 +10,7 @@ import dialogos.DialogSingleTxt;
 import dialogos.Modal_BodegaContadores;
 import dialogos.Modal_BodegaSellos;
 import sypelc.androidamdata.R;
+import miscelanea.DateTime;
 import miscelanea.SQLite;
 import miscelanea.Util;
 import adaptador_download_trabajo.AdaptadorListaTrabajo;
@@ -43,10 +44,12 @@ public class Form_Solicitudes extends Activity implements OnItemSelectedListener
 	SQLite 			SolicitudesSQL; 
 	private String 	FolderAplicacion = "";
 	
-	private static int    	CONFIRMACION_INICIO_ORDEN	= 1;
-	private static int 		CONFIRMACION_INFORMACION 	= 2;
-	private static int		CONFIRMACION_CERRAR_ORDEN	= 3;
-	private static int 		CONFIRMACION_COD_APERTURA	= 4;
+	
+	private static int    	CONFIRMACION_INICIO_ORDEN	 = 1;
+	private static int 		CONFIRMACION_INFORMACION 	 = 2;
+	private static int		CONFIRMACION_CERRAR_ORDEN	 = 3;
+	private static int 		CONFIRMACION_COD_APERTURA	 = 4;
+	private static int 		CONFIRMACION_TRASLADAR_ORDEN = 5;
 	
 	private boolean enabledMenu = false;
 	
@@ -59,7 +62,7 @@ public class Form_Solicitudes extends Activity implements OnItemSelectedListener
 	//Variable para consulta general de la base de datos
 	ArrayList<ContentValues> _tempTabla = new ArrayList<ContentValues>();
 	ContentValues _tempRegistro = new ContentValues(); 
-	
+
 	
 	//Variable para consulta general de la base de datos
 	ArrayList<ContentValues> TablaQuery = new ArrayList<ContentValues>();
@@ -225,6 +228,18 @@ public class Form_Solicitudes extends Activity implements OnItemSelectedListener
 					startActivityForResult(DialogInformacion, CONFIRMACION_INFORMACION);
 				}
 				return true;
+				
+			case R.id.TrasladarOrden:
+				if(!_txtOrden.getText().toString().isEmpty()){
+					if(FcnSolicitudes.getEstadoOrden(_txtOrden.getText().toString()).equals("P")){
+						DialogConfirmacion.putExtra("informacion", "Desea Trasladar La Orden "+_txtOrden.getText().toString());
+						startActivityForResult(DialogConfirmacion, CONFIRMACION_TRASLADAR_ORDEN);	
+					}
+				}else{
+					DialogInformacion.putExtra("informacion","No ha seleccionado una orden para trasladar.");
+					startActivityForResult(DialogInformacion, CONFIRMACION_INFORMACION);
+				}
+				return true;
 			
 			case R.id.AperturaOrdenes:
 				if(FcnSolicitudes.IniciarAperturaOrden(_txtOrden.getText().toString())){
@@ -321,6 +336,16 @@ public class Form_Solicitudes extends Activity implements OnItemSelectedListener
 					DialogInformacion.putExtra("informacion", "Codigo De Apertura Erroneo");
 					startActivityForResult(DialogInformacion, CONFIRMACION_INFORMACION);
 				}
+			}			
+		}else if(resultCode == RESULT_OK && requestCode == CONFIRMACION_TRASLADAR_ORDEN){
+			if(data.getExtras().getBoolean("accion")){
+				_tempRegistro.clear();
+				_tempRegistro.put("estado","TA");
+				SolicitudesSQL.UpdateRegistro("amd_ordenes_trabajo", _tempRegistro, "id_orden='"+_txtOrden.getText().toString()+"'");
+				_tempRegistro.clear();
+				_tempRegistro.put("observacion_pad","TRASLADO");
+				SolicitudesSQL.UpdateRegistro("amd_ordenes_trabajo", _tempRegistro, "id_orden='"+_txtOrden.getText().toString()+"'");
+				CargarOrdenesTrabajo();
 			}			
 		}
     }

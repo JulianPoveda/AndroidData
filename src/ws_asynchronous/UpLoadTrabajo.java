@@ -132,12 +132,12 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 				this._tempRegistro = this._tempTabla.get(i);
 				this._tempRegistro2.put("hora_ini", this._tempRegistro.getAsString("min(fecha_ins)"));
 				this._tempRegistro2.put("hora_fin", this._tempRegistro.getAsString("max(fecha_ins)"));
-				  this.UploadSQL.UpdateRegistro("amd_ordenes_trabajo", this._tempRegistro2, "id_orden='"+orden+"'");
+				this.UploadSQL.UpdateRegistro("amd_ordenes_trabajo", this._tempRegistro2, "id_orden='"+orden+"'");
 			 }
 		    
 		}
 		
-//selecciona las trasladadas y las inserta en amd_borrar_orden
+
 		
 //genera el archivo para actualizar sgd_ordenes_trabajos_exp
 
@@ -145,10 +145,10 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 		String estado="C";
 		for(int j=0; j<this._Ordenes.size();j++){
 			String orden=	this._Ordenes.get(j).toString();
-			this._tempTabla	= this.UploadSQL.SelectData("upload_sgd_ordenes_exp", "id_orden,fecha_atencion,hora_ini,hora_fin,observacion_pad,usuario","id_orden='"+orden+"'");
+			this._tempTabla	= this.UploadSQL.SelectData("upload_sgd_ordenes_exp", "id_orden,fecha_revision,hora_ini,hora_fin,observacion_pad,usuario","id_orden='"+orden+"'");
 			for(int i=0; i<this._tempTabla.size();i++){
 				this._tempRegistro = this._tempTabla.get(i);
-					  this.InformacionCarga.add(this._tempRegistro.getAsString("id_orden")+","+this._tempRegistro.getAsString("fecha_atencion")+","+this._tempRegistro.getAsString("hora_ini")+","+this._tempRegistro.getAsString("hora_fin")+","+this._tempRegistro.getAsString("observacion_pad")+","+this._tempRegistro.getAsString("usuario")+","+estado+"\r\n");
+					  this.InformacionCarga.add(this._tempRegistro.getAsString("id_orden")+","+this._tempRegistro.getAsString("fecha_revision")+","+this._tempRegistro.getAsString("hora_ini")+","+this._tempRegistro.getAsString("hora_fin")+","+this._tempRegistro.getAsString("observacion_pad")+","+this._tempRegistro.getAsString("usuario")+","+estado+"\r\n");
 			 }
 		    }
 		String listSgd = "";
@@ -670,53 +670,45 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 				   this.Respuesta = "-2";
 			   }else if(response.toString().equals("1")){
 				   this.Respuesta = "1";
-				   this.ArchUpLoadWS.DeleteFile(this.DirectorioConexionServer+File.separator+this.FolderAplicacion);
+				   _retorno = 1;
+				   this.ArchConnectServer.DeleteFile(this.DirectorioConexionServer+File.separator+this.FolderAplicacion);
+				   BorrarOrdenes();
 			   }
 		   	} catch (Exception e) {
 		   		this.Respuesta = e.toString();
 			}
-		   
-		   
-		/*try{
-			SoapObject so=new SoapObject(NAMESPACE, METHOD_NAME);
-			so.addProperty("Contrato", params[0]);	
-			so.addProperty("PDA", params[1]);	
-			SoapSerializationEnvelope sse=new SoapSerializationEnvelope(SoapEnvelope.VER11);
-			sse.dotNet=true;
-			sse.setOutputSoapObject(so);
-			HttpTransportSE htse=new HttpTransportSE(URL);
-			htse.call(SOAP_ACTION, sse);
-			response=(SoapPrimitive) sse.getResponse();
-			
-		
-			if(response.toString()==null) {
-				_retorno = -1;
-			}else if(response.toString().isEmpty()){
-				_retorno = -2;
-			}else{
-				byte[] resultado = Base64.decode(response.toString());
-				try {
-					ArchConnectServer.ByteArrayToFile(resultado, "Trabajo.txt");
-					this.InformacionDescarga = ArchConnectServer.FileToArrayString("Trabajo.txt",false);
-					
-					for(int i=0;i<this.InformacionDescarga.size();i++){
-						LineasSQL = this.InformacionDescarga.get(i).toString().split("\\|");
-						this.UploadSQL.EjecutarSQL(this.LineasSQL[1]);
-						publishProgress((int)((i+1)*100/this.InformacionDescarga.size()));
-					}
-					//ArchConnectServer.DeleteFile("Trabajo.txt");
-					_retorno = 1;
-				} catch (IOException e) {
-					e.printStackTrace();
-					_retorno = -3;
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}		*/
-		return _retorno;
+		      
+			return _retorno;
 	}
 	
+	
+	public void BorrarOrdenes(){
+		for(int j=0; j<this._Ordenes.size();j++){
+			String orden=	this._Ordenes.get(j).toString();
+			this.UploadSQL.DeleteRegistro("amd_actas", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("amd_ordenes_trabajo", "id_orden='"+orden+"'");	
+			this.UploadSQL.DeleteRegistro("amd_acometida", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("amd_cambios_contadores", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("amd_censo_carga", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("amd_consumos_orden", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("amd_datos_tranfor", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("amd_impresiones_inf", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("amd_inconsistencias", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("amd_irregularidades", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("amd_material_usuario", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("amd_materiales_provisionales", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("amd_materiales_trabajo_orden", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("amd_medidor_encontrado", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("amd_observacion_materiales", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("amd_ordenes_trabajo", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("amd_pct_error", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("amd_prueba_integracion", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("amd_pruebas", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("amd_sellos", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("amd_servicio_nuevo", "id_orden='"+orden+"'");
+		}
+		
+	}
 	
 	
 	//Operaciones despues de finalizar la conexion con el servidor

@@ -1155,12 +1155,18 @@ public class SQLite {
 					"   WHERE a.estado='T'");
 			
 			db.execSQL("CREATE VIEW upload_sgd_ordenes_exp AS " +
-					"	SELECT id_orden,fecha_atencion,hora_ini,hora_fin,observacion_pad,usuario " +
-					"	FROM amd_ordenes_trabajo "+
-					"   WHERE estado='T'");
+					"	SELECT a.id_orden, strftime('%d/%m/%Y', b.fecha_revision) as fecha_revision,a.hora_ini,a.hora_fin,a.observacion_pad,a.usuario " +
+					"	FROM amd_ordenes_trabajo as a "+
+					"   JOIN amd_actas as b"+
+					"   ON a.id_orden=b.id_orden"+
+					"   WHERE a.estado='T'"+
+					"   UNION"+
+					"   SELECT id_orden,strftime('%d/%m/%Y',fecha_atencion) ,hora_ini,hora_fin,observacion_pad,usuario  "+
+					"   FROM amd_ordenes_trabajo"+
+					"   WHERE estado='TA'");
 			
 			db.execSQL("CREATE VIEW upload_sgd_ordenes_pda AS " +
-					"	SELECT id_orden,cuenta,fecha_atencion,hora_ini,hora_fin,usuario,observacion_pad,bodega,solicitud,clase_solicitud,tipo_solicitud,dependencia,tipo_accion,dependencia_asignada,consecutivo_accion,propietario,municipio,ubicacion,clase_servicio,estrato,id_nodo,fecha_ven,direccion,observacion_trabajo " +
+					"	SELECT id_orden,cuenta,strftime('%d/%m/%Y', fecha_atencion) as fecha_atencion,hora_ini,hora_fin,usuario,observacion_pad,bodega,solicitud,clase_solicitud,tipo_solicitud,dependencia,tipo_accion,dependencia_asignada,consecutivo_accion,propietario,municipio,ubicacion,clase_servicio,estrato,id_nodo,fecha_ven,direccion,observacion_trabajo " +
 					"	FROM amd_ordenes_trabajo "+
 					"   WHERE id_orden< '0' and estado='T' ");
 			
@@ -1332,12 +1338,18 @@ public class SQLite {
 					"   WHERE a.estado='T'");
 			
 			db.execSQL("CREATE VIEW upload_sgd_ordenes_exp AS " +
-					"	SELECT id_orden,fecha_atencion,hora_ini,hora_fin,observacion_pad,usuario " +
-					"	FROM amd_ordenes_trabajo "+
-					"   WHERE estado='T'");
+					"	SELECT a.id_orden, strftime('%d/%m/%Y', b.fecha_revision) as fecha_revision,a.hora_ini,a.hora_fin,a.observacion_pad,a.usuario " +
+					"	FROM amd_ordenes_trabajo as a "+
+					"   JOIN amd_actas as b"+
+					"   ON a.id_orden=b.id_orden"+
+					"   WHERE a.estado='T'"+
+					"   UNION"+
+					"    SELECT id_orden,strftime('%d/%m/%Y',fecha_atencion) ,hora_ini,hora_fin,observacion_pad,usuario"+
+					"   FROM amd_ordenes_trabajo"+
+					"   WHERE estado='TA'");
 			
 			db.execSQL("CREATE VIEW upload_sgd_ordenes_pda AS " +
-					"	SELECT id_orden,cuenta,fecha_atencion,hora_ini,hora_fin,usuario,observacion_pad,bodega,solicitud,clase_solicitud,tipo_solicitud,dependencia,tipo_accion,dependencia_asignada,consecutivo_accion,propietario,municipio,ubicacion,clase_servicio,estrato,id_nodo,fecha_ven,direccion,observacion_trabajo " +
+					"	SELECT id_orden,cuenta,strftime('%d/%m/%Y', fecha_atencion) as fecha_atencion,hora_ini,hora_fin,usuario,observacion_pad,bodega,solicitud,clase_solicitud,tipo_solicitud,dependencia,tipo_accion,dependencia_asignada,consecutivo_accion,propietario,municipio,ubicacion,clase_servicio,estrato,id_nodo,fecha_ven,direccion,observacion_trabajo " +
 					"	FROM amd_ordenes_trabajo "+
 					"   WHERE id_orden< '0' and estado='T' ");
 			
