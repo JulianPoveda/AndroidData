@@ -453,7 +453,7 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 				for(int i=0; i<this._tempTabla.size();i++){
 					this._tempRegistro = this._tempTabla.get(i);
 						  this.InformacionCarga.add("INSERT INTO SGD_MEDIDOR_ENCONTRADO_PDA VALUES "+"('"+this._tempRegistro.getAsString("id_orden")+"','"+this._tempRegistro.getAsString("marca")+"','"+this._tempRegistro.getAsString("serie")+"','"
-									+this._tempRegistro.getAsString("lectura_2")+"','"+this._tempRegistro.getAsString("lectura_3")+"','"+this._tempRegistro.getAsString("tipo")+"','"+_NPDA+"','1','@')"+";"+"&ENT&");
+									+this._tempRegistro.getAsString("lectura")+"','"+this._tempRegistro.getAsString("lectura_2")+"','"+this._tempRegistro.getAsString("lectura_3")+"','"+this._tempRegistro.getAsString("tipo")+"','"+_NPDA+"','1','@')"+";"+"&ENT&");
 					  
 				 }
 			    }
