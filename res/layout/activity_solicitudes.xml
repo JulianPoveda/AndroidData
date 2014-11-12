@@ -77,7 +77,7 @@
             android:layout_alignRight="@+id/LblDireccion"
             android:layout_alignTop="@+id/TxtRuta"
             android:gravity="right|center_vertical"
-            android:text="@string/LblRuta"
+            android:text="Estrato"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <EditText
@@ -198,7 +198,7 @@
             android:layout_alignRight="@+id/LblCuenta"
             android:layout_alignTop="@+id/TxtEstado"
             android:gravity="right|center_vertical"
-            android:text="@string/LblEstado"
+            android:text="C_Servicio"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
@@ -234,7 +234,7 @@
             android:layout_alignRight="@+id/LblOrden"
             android:layout_alignTop="@+id/TxtTipo"
             android:gravity="right|center_vertical"
-            android:text="@string/LblTipo"
+            android:text="Carga_Inst"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView

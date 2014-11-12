@@ -377,7 +377,7 @@ public class Form_Solicitudes extends Activity implements OnItemSelectedListener
 				String Join[] 	= {"amd_contador_cliente_orden as b"};
 				String On[] 	= {"a.cuenta = b.cuenta"};
 				TablaQuery = SolicitudesSQL.SelectNJoinLeftData("amd_ordenes_trabajo as a", 
-																"a.ruta, b.serie, a.direccion, a.propietario, a.cuenta, a.id_orden, a.estado, a.tipo, a.observacion_trabajo", 
+																"a.estrato, b.serie, a.direccion, a.propietario, a.cuenta, a.id_orden, a.clase_servicio, a.carga_instalada, a.observacion_trabajo", 
 																Join, 
 																On, 
 																"a.id_orden='"+ArraySolicitudes.get(position).getSolicitud()+"'");
@@ -385,14 +385,14 @@ public class Form_Solicitudes extends Activity implements OnItemSelectedListener
 				for(int i=0;i<TablaQuery.size();i++){
 					Registro.clear();
 					Registro = TablaQuery.get(i);
-					_txtRuta.setText(Registro.get("ruta").toString());
+					_txtRuta.setText(Registro.get("estrato").toString());
 					_txtSerie.setText(Registro.get("serie").toString());
 					_txtDireccion.setText(Registro.get("direccion").toString());
 					_txtPropietario.setText(Registro.get("propietario").toString());
 					_txtCuenta.setText(Registro.get("cuenta").toString());
 					_txtOrden.setText(Registro.get("id_orden").toString());
-					_txtEstado.setText(Registro.get("estado").toString());
-					_txtTipo.setText(Registro.get("tipo").toString());
+					_txtEstado.setText(Registro.get("clase_servicio").toString());
+					_txtTipo.setText(Registro.get("carga_instalada").toString());
 					_txtObservacion.setText(Registro.get("observacion_trabajo").toString());
 					this.enabledMenu = true;
 					invalidateOptionsMenu(); 
