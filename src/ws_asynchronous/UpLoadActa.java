@@ -70,7 +70,7 @@ public class  UpLoadActa extends AsyncTask<String, Integer, String>{
 		this.ListaDirectorios = new File(this.FolderWS).listFiles();
 	    this.ListaFolderActas.clear();
 	    for(int i=0;i<this.ListaDirectorios.length;i++){
-	    	if(this.ListaDirectorios[i].isDirectory()){
+	    	if(this.ListaDirectorios[i].isDirectory() && !this.ListaDirectorios[i].getName().equals("Descarga")){
 	    		this.ListaArchivos = new File(this.ListaDirectorios[i].toString()).listFiles();
 	    		if(this.ListaArchivos.length == 0){
 	    			ArchUpLoadWS.DeleteFile(this.ListaDirectorios[i].toString());	

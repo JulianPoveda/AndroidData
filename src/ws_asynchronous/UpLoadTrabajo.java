@@ -69,8 +69,8 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 	private String NAMESPACE;		//= "http://190.93.133.87:8080/ControlEnergia/WS";
 	
 	//Variables con la informacion del web service
-	private static final String METHOD_NAME	= "UpLoadTrabajo";
-	private static final String SOAP_ACTION	= "UpLoadTrabajo";
+	private final String METHOD_NAME	= "UpLoadTrabajo";
+	private final String SOAP_ACTION	= "UpLoadTrabajo";
 	SoapPrimitive 	response = null;
 	ProgressDialog 	_pDialog;
 	
@@ -133,8 +133,7 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 				this._tempRegistro2.put("hora_ini", this._tempRegistro.getAsString("min(fecha_ins)"));
 				this._tempRegistro2.put("hora_fin", this._tempRegistro.getAsString("max(fecha_ins)"));
 				this.UploadSQL.UpdateRegistro("amd_ordenes_trabajo", this._tempRegistro2, "id_orden='"+orden+"'");
-			 }
-		    
+			 }		    
 		}
 		
 
@@ -149,16 +148,16 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 			for(int i=0; i<this._tempTabla.size();i++){
 				this._tempRegistro = this._tempTabla.get(i);
 					  this.InformacionCarga.add(this._tempRegistro.getAsString("id_orden")+","+this._tempRegistro.getAsString("fecha_revision")+","+this._tempRegistro.getAsString("hora_ini")+","+this._tempRegistro.getAsString("hora_fin")+","+this._tempRegistro.getAsString("observacion_pad")+","+this._tempRegistro.getAsString("usuario")+","+estado+"\r\n");
-			 }
-		    }
+			}
+		}
+		
 		String listSgd = "";
-		for (String s : InformacionCarga)
-		{
+		for (String s : InformacionCarga){
 			listSgd += s;
 		}
 		ArchConnectServer.DoFile(this.FolderAplicacion,"SGD_ORDENES_TRABAJO_EXP",listSgd);
 		
-//genera el archivo insertar en sgd_ordenes_trabajo_pda
+		//genera el archivo insertar en sgd_ordenes_trabajo_pda
 		
 		this.InformacionCarga.clear();		
 		for(int j=0; j<this._Ordenes.size();j++){
@@ -169,39 +168,36 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 					  this.InformacionCarga.add(this._tempRegistro.getAsString("id_orden")+","+this._tempRegistro.getAsString("cuenta")+","+this._tempRegistro.getAsString("fecha_atencion")+","+this._tempRegistro.getAsString("hora_ini")+","+this._tempRegistro.getAsString("hora_fin")+","+this._tempRegistro.getAsString("usuario")+","+this._tempRegistro.getAsString("observacion_pad")+","+this._tempRegistro.getAsString("bodega")+","+this._tempRegistro.getAsString("solicitud")+","
 					  		+ ""+this._tempRegistro.getAsString("clase_solicitud")+","+this._tempRegistro.getAsString("tipo_solicitud")+","+this._tempRegistro.getAsString("dependencia")+","+this._tempRegistro.getAsString("tipo_accion")+","+this._tempRegistro.getAsString("dependencia_asignada")+","+this._tempRegistro.getAsString("consecutivo_accion")+","+this._tempRegistro.getAsString("propietario")+","+this._tempRegistro.getAsString("municipio")+","+this._tempRegistro.getAsString("ubicacion")+","
 					  				+ ""+this._tempRegistro.getAsString("clase_servicio")+","+this._tempRegistro.getAsString("estrato")+","+this._tempRegistro.getAsString("id_nodo")+","+this._tempRegistro.getAsString("fecha_ven")+","+this._tempRegistro.getAsString("direccion")+","+this._tempRegistro.getAsString("observacion_trabajo")+"\r\n");
-			 }
-		    }
+			}
+		}
 		String listSgd1 = "";
-		for (String s : InformacionCarga)
-		{
+		for (String s : InformacionCarga){
 			listSgd1 += s;
 		}
 		ArchConnectServer.DoFile(this.FolderAplicacion,"SGD_ORDENES_TRABAJO_PDA",listSgd1);
 		
-/*GENERAR SGD_aCTAS_PDA*/
+		/*GENERAR SGD_aCTAS_PDA*/
 		this.InformacionCarga.clear();
 		StringSQL="INICIO_ARCHIVO" + "&ENT&";
 		this.InformacionCarga.add(StringSQL);
 		
 		//se consulta la vista con las ordenes seleccionadas 
 		for(int j=0; j<this._Ordenes.size();j++){
-		String orden=	this._Ordenes.get(j).toString();
-		this._tempTabla	= this.UploadSQL.SelectData("upload_nodos_exp", "id_acta, id_orden,id_revision, codigo_trabajo, nombre_enterado, cedula_enterado, evento, tipo_enterado, fecha_revision, login, fecha_ins, cedula_testigo, nombre_testigo","id_orden='"+orden+"'");
-		for(int i=0; i<this._tempTabla.size();i++){
-			this._tempRegistro = this._tempTabla.get(i);
-				  this.InformacionCarga.add("INSERT INTO SGD_ACTAS_PDA VALUES "+"('"+this._tempRegistro.getAsString("id_acta")+"','"+this._tempRegistro.getAsString("id_orden")+"','"+this._tempRegistro.getAsString("id_revision")+"','"
-							+this._tempRegistro.getAsString("codigo_trabajo")+"','"+this._tempRegistro.getAsString("cedula_enterado")+"','"+this._tempRegistro.getAsString("nombre_enterado")+"','"
-							+this._tempRegistro.getAsString("id_orden")+"','"+this._tempRegistro.getAsString("tipo_enterado")+"','"+this._tempRegistro.getAsString("fecha_revision")+"','"
-							+this._tempRegistro.getAsString("login")+"','"+this._tempRegistro.getAsString("fecha_ins")+"','"+this._tempRegistro.getAsString("cedula_testigo")+"','"
-							+this._tempRegistro.getAsString("nombre_testigo")+"','"+_NPDA+"','1','@')"+";"+"&ENT&");
-			  
-		 }
+			String orden=	this._Ordenes.get(j).toString();
+			this._tempTabla	= this.UploadSQL.SelectData("upload_nodos_exp", "id_acta, id_orden,id_revision, codigo_trabajo, nombre_enterado, cedula_enterado, evento, tipo_enterado, fecha_revision, login, fecha_ins, cedula_testigo, nombre_testigo","id_orden='"+orden+"'");
+			for(int i=0; i<this._tempTabla.size();i++){
+				this._tempRegistro = this._tempTabla.get(i);
+				this.InformacionCarga.add("INSERT INTO SGD_ACTAS_PDA VALUES "+"('"+this._tempRegistro.getAsString("id_acta")+"','"+this._tempRegistro.getAsString("id_orden")+"','"+this._tempRegistro.getAsString("id_revision")+"','"
+				+this._tempRegistro.getAsString("codigo_trabajo")+"','"+this._tempRegistro.getAsString("cedula_enterado")+"','"+this._tempRegistro.getAsString("nombre_enterado")+"','"
+				+this._tempRegistro.getAsString("id_orden")+"','"+this._tempRegistro.getAsString("tipo_enterado")+"','"+this._tempRegistro.getAsString("fecha_revision")+"','"
+				+this._tempRegistro.getAsString("login")+"','"+this._tempRegistro.getAsString("fecha_ins")+"','"+this._tempRegistro.getAsString("cedula_testigo")+"','"
+				+this._tempRegistro.getAsString("nombre_testigo")+"','"+_NPDA+"','1','@')"+";"+"&ENT&");  
+			}
 	    }
 		
 		this.InformacionCarga.add("FIN_ARCHIVO");
 		String listString = "";
-		for (String s : InformacionCarga)
-		{
+		for (String s : InformacionCarga){
 		    listString += s;
 		}
 		ArchConnectServer.DoFile(this.FolderAplicacion,"SGD_ACTAS_PDA",listString);
@@ -335,7 +331,7 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 		}
 		ArchConnectServer.DoFile(this.FolderAplicacion,"SGD_IRREGULARIDADES_PDA",listString5);
 		
-/*GENERAR SGD_DIAGRAMAS_PDA*/
+		/*GENERAR SGD_DIAGRAMAS_PDA*/
 		this.InformacionCarga.clear();
 		this.InformacionCarga.add("INICIO_ARCHIVO" + "&ENT&");
 		
@@ -349,8 +345,8 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 		}
 		ArchConnectServer.DoFile(this.FolderAplicacion,"SGD_DIAGRAMAS_PDA",listString6);
 		
-/*GENERAR SGD_MVTO_CONTADORES_PDA*/
 		
+		/*GENERAR SGD_MVTO_CONTADORES_PDA*/
 		this.InformacionCarga.clear();
 		this.InformacionCarga.add("INICIO_ARCHIVO" + "&ENT&");
 		
@@ -369,8 +365,7 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 		
 		this.InformacionCarga.add("FIN_ARCHIVO");
 		String listString7 = "";
-		for (String s : InformacionCarga)
-		{
+		for (String s : InformacionCarga){
 		    listString7 += s;
 		}
 		ArchConnectServer.DoFile(this.FolderAplicacion,"SGD_MVTO_CONTADORES_PDA",listString7);
@@ -460,92 +455,80 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 		
 		this.InformacionCarga.add("FIN_ARCHIVO");
 		String listString11 = "";
-		for (String s : InformacionCarga)
-		{
+		for (String s : InformacionCarga){
 		    listString11 += s;
 		}
 		ArchConnectServer.DoFile(this.FolderAplicacion,"SGD_MEDIDOR_ENCONTRADO_PDA",listString11);
 
-/*GENERAR ITEM_PAGO*/
-		
+		/*GENERAR ITEM_PAGO*/
 		this.InformacionCarga.clear();
 		this.InformacionCarga.add("INICIO_ARCHIVO" + "&ENT&");
-		
 		//se consulta la vista con las ordenes seleccionadas 
-				for(int j=0; j<this._Ordenes.size();j++){
-				String orden=	this._Ordenes.get(j).toString();
-				this._tempTabla	= this.UploadSQL.SelectData("upload_item_pago", "id_orden, items","id_orden='"+orden+"'");
-				for(int i=0; i<this._tempTabla.size();i++){
-					this._tempRegistro = this._tempTabla.get(i);
-						  this.InformacionCarga.add("INSERT INTO ITEM_PAGO VALUES "+"('"+this._tempRegistro.getAsString("id_orden")+"','"+this._tempRegistro.getAsString("items")+"','"+_NPDA+"','1','@')"+";"+"&ENT&");
-					  
-				 }
-			    }
+		for(int j=0; j<this._Ordenes.size();j++){
+			String orden=	this._Ordenes.get(j).toString();
+			this._tempTabla	= this.UploadSQL.SelectData("upload_item_pago", "id_orden, items","id_orden='"+orden+"'");
+			for(int i=0; i<this._tempTabla.size();i++){
+				this._tempRegistro = this._tempTabla.get(i);
+				this.InformacionCarga.add("INSERT INTO ITEM_PAGO VALUES "+"('"+this._tempRegistro.getAsString("id_orden")+"','"+this._tempRegistro.getAsString("items")+"','"+_NPDA+"','1','@')"+";"+"&ENT&");
+			}
+		}
 		
 		this.InformacionCarga.add("FIN_ARCHIVO");
 		String listString12 = "";
-		for (String s : InformacionCarga)
-		{
+		for (String s : InformacionCarga){
 		    listString12 += s;
 		}
 		ArchConnectServer.DoFile(this.FolderAplicacion,"ITEM_PAGO",listString12);
 		
-/*GENERAR SGD_INCONSISTENCIA_PDA*/
-		
+		/*GENERAR SGD_INCONSISTENCIA_PDA*/		
 		this.InformacionCarga.clear();
 		this.InformacionCarga.add("INICIO_ARCHIVO" + "&ENT&");
-		
 		//se consulta la vista con las ordenes seleccionadas 
-				for(int j=0; j<this._Ordenes.size();j++){
-				String orden=	this._Ordenes.get(j).toString();
-				this._tempTabla	= this.UploadSQL.SelectData("upload_inconsistencia_pda", "id_inconsistencia,id_orden, id_nodo,valor,fecha_ins,login, cod_inconsistencia, cuenta, trabajo","id_orden='"+orden+"'");
-				for(int i=0; i<this._tempTabla.size();i++){
-					this._tempRegistro = this._tempTabla.get(i);
-						  this.InformacionCarga.add("INSERT  INTO SGD_INCONSISTENCIA_PDA (ID_INCONSISTENCIA,ID_ORDEN,NODO,VALOR,FECHA_INS,USUARIO_INS,COD_INCONSISTENCIA,CUENTA,TRABAJO,ID_PDA,ID_CONTRATO,ID_CARGA ) VALUES "
-					                +"('"+this._tempRegistro.getAsString("id_inconsistencia")+"','"+this._tempRegistro.getAsString("id_orden")+"','"+this._tempRegistro.getAsString("id_nodo")+"','"
-									+this._tempRegistro.getAsString("valor")+"','"+this._tempRegistro.getAsString("fecha_ins")+"','"+this._tempRegistro.getAsString("login")+"','"+this._tempRegistro.getAsString("cod_inconsistencia")+"','"
-								    +this._tempRegistro.getAsString("cuenta")+"','"+this._tempRegistro.getAsString("trabajo")+"','"+_NPDA+"','1','@')"+";"+"&ENT&");
-					  
-				 }
-			    }
+		for(int j=0; j<this._Ordenes.size();j++){
+			String orden=	this._Ordenes.get(j).toString();
+			this._tempTabla	= this.UploadSQL.SelectData("upload_inconsistencia_pda", "id_inconsistencia,id_orden, id_nodo,valor,fecha_ins,login, cod_inconsistencia, cuenta, trabajo","id_orden='"+orden+"'");
+			for(int i=0; i<this._tempTabla.size();i++){
+				this._tempRegistro = this._tempTabla.get(i);
+				this.InformacionCarga.add("INSERT  INTO SGD_INCONSISTENCIA_PDA (ID_INCONSISTENCIA,ID_ORDEN,NODO,VALOR,FECHA_INS,USUARIO_INS,COD_INCONSISTENCIA,CUENTA,TRABAJO,ID_PDA,ID_CONTRATO,ID_CARGA ) VALUES "
+				+"('"+this._tempRegistro.getAsString("id_inconsistencia")+"','"+this._tempRegistro.getAsString("id_orden")+"','"+this._tempRegistro.getAsString("id_nodo")+"','"
+				+this._tempRegistro.getAsString("valor")+"','"+this._tempRegistro.getAsString("fecha_ins")+"','"+this._tempRegistro.getAsString("login")+"','"+this._tempRegistro.getAsString("cod_inconsistencia")+"','"
+				+this._tempRegistro.getAsString("cuenta")+"','"+this._tempRegistro.getAsString("trabajo")+"','"+_NPDA+"','1','@')"+";"+"&ENT&");	  
+			}
+		}
 		
 		this.InformacionCarga.add("FIN_ARCHIVO");
 		String listString13 = "";
-		for (String s : InformacionCarga)
-		{
+		for (String s : InformacionCarga){
 		    listString13 += s;
 		}
 		ArchConnectServer.DoFile(this.FolderAplicacion,"SGD_INCONSISTENCIA_PDA",listString13);
 		
-/*GENERAR SGD_TRABAJOS_ORDEN_PDA*/
-		
+		/*GENERAR SGD_TRABAJOS_ORDEN_PDA*/
 		this.InformacionCarga.clear();
 		this.InformacionCarga.add("INICIO_ARCHIVO" + "&ENT&");
 		
 		//se consulta la vista con las ordenes seleccionadas 
-				for(int j=0; j<this._Ordenes.size();j++){
-				String orden=	this._Ordenes.get(j).toString();
-				this._tempTabla	= this.UploadSQL.SelectData("upload_trabajos_orden_pda", "id_revision,id_orden, id_trabajo,cuenta,nodo,estado,login,fecha_ins,cantidad","id_orden='"+orden+"'");
-				for(int i=0; i<this._tempTabla.size();i++){
-					this._tempRegistro = this._tempTabla.get(i);
-						  this.InformacionCarga.add("INSERT INTO SGD_TRABAJOS_ORDEN_PDA VALUES "
-					                +"('"+this._tempRegistro.getAsString("id_revision")+"','"+this._tempRegistro.getAsString("id_orden")+"','"+this._tempRegistro.getAsString("id_trabajo")+"','"
-									+this._tempRegistro.getAsString("cuenta")+"','"+this._tempRegistro.getAsString("nodo")+"','"+this._tempRegistro.getAsString("estado")+"','"+this._tempRegistro.getAsString("login")+"','"
-								    +this._tempRegistro.getAsString("fecha_ins")+"','"+this._tempRegistro.getAsString("cantidad")+"','"+_NPDA+"','1','@')"+";"+"&ENT&");
-					  
-				 }
-			    }
+		for(int j=0; j<this._Ordenes.size();j++){
+			String orden=	this._Ordenes.get(j).toString();
+			this._tempTabla	= this.UploadSQL.SelectData("upload_trabajos_orden_pda", "id_revision,id_orden, id_trabajo,cuenta,nodo,estado,login,fecha_ins,cantidad","id_orden='"+orden+"'");
+			for(int i=0; i<this._tempTabla.size();i++){
+				this._tempRegistro = this._tempTabla.get(i);
+				this.InformacionCarga.add("INSERT INTO SGD_TRABAJOS_ORDEN_PDA VALUES "
+				+"('"+this._tempRegistro.getAsString("id_revision")+"','"+this._tempRegistro.getAsString("id_orden")+"','"+this._tempRegistro.getAsString("id_trabajo")+"','"
+				+this._tempRegistro.getAsString("cuenta")+"','"+this._tempRegistro.getAsString("nodo")+"','"+this._tempRegistro.getAsString("estado")+"','"+this._tempRegistro.getAsString("login")+"','"
+				+this._tempRegistro.getAsString("fecha_ins")+"','"+this._tempRegistro.getAsString("cantidad")+"','"+_NPDA+"','1','@')"+";"+"&ENT&");
+			}
+		}
 		
 		this.InformacionCarga.add("FIN_ARCHIVO");
 		String listString14 = "";
-		for (String s : InformacionCarga)
-		{
+		for (String s : InformacionCarga){
 		    listString14 += s;
 		}
 		ArchConnectServer.DoFile(this.FolderAplicacion,"SGD_TRABAJOS_ORDEN_PDA",listString14);
 		
-/*GENERAR SGD_CENSO_CARGA_PDA*/
 		
+		/*GENERAR SGD_CENSO_CARGA_PDA*/
 		this.InformacionCarga.clear();
 		this.InformacionCarga.add("INICIO_ARCHIVO" + "&ENT&");		
 		double registrada;
@@ -557,23 +540,20 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 			this._tempTabla	= this.UploadSQL.SelectData("upload_censo_carga_pda", "id_orden, total_censo, login, fecha_ins","id_orden='"+orden+"'");
 			for(int i=0; i<this._tempTabla.size();i++){
 				this._tempRegistro = this._tempTabla.get(i);
-					  this.InformacionCarga.add("INSERT INTO SGD_CENSO_CARGA_PDA VALUES "
-				                +"('"+this._tempRegistro.getAsString("id_orden")+"','"+this._tempRegistro.getAsString("total_censo")+"','"+registrada+"','"
-								+directa+"','"+this._tempRegistro.getAsString("login")+"','"+this._tempRegistro.getAsString("fecha_ins")+"','"+_NPDA+"','1','@','0')"+";"+"&ENT&");
-				  
-			 }
-		    }
+				this.InformacionCarga.add("INSERT INTO SGD_CENSO_CARGA_PDA VALUES "
+				+"('"+this._tempRegistro.getAsString("id_orden")+"','"+this._tempRegistro.getAsString("total_censo")+"','"+registrada+"','"
+				+directa+"','"+this._tempRegistro.getAsString("login")+"','"+this._tempRegistro.getAsString("fecha_ins")+"','"+_NPDA+"','1','@','0')"+";"+"&ENT&");		  
+			}
+		}
 		
 		this.InformacionCarga.add("FIN_ARCHIVO");
 		String listString15 = "";
-		for (String s : InformacionCarga)
-		{
-		    listString15 += s;
+		for (String s : InformacionCarga){
+			listString15 += s;
 		}
 		ArchConnectServer.DoFile(this.FolderAplicacion,"SGD_CENSO_CARGA_PDA",listString15);
 
-/*GENERAR SGD_ELEMENTOS_PROV_PDA*/
-		
+		/*GENERAR SGD_ELEMENTOS_PROV_PDA*/
 		this.InformacionCarga.clear();
 		this.InformacionCarga.add("INICIO_ARCHIVO" + "&ENT&");
 		
@@ -582,103 +562,98 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 			this._tempTabla	= this.UploadSQL.SelectData("upload_elementos_prov_pda", "id_orden,  elemento, marca, serie, valor, id_agrupador, cuenta,proceso,estado,usuario_ins, fecha_ins, cantidad","id_orden='"+orden+"'");
 			for(int i=0; i<this._tempTabla.size();i++){
 				this._tempRegistro = this._tempTabla.get(i);
-					  this.InformacionCarga.add("INSERT INTO SGD_ELEMENTOS_PROV_PDA (id_orden,elemento,marca,serie,valor,id_agrupador,cuenta,proceso,estado,cantidad,usuario_ins,fecha_ins,id_pda,id_contrato,id_carga,id_descarga) VALUES "
-				                +"('"+this._tempRegistro.getAsString("id_orden")+"','"+this._tempRegistro.getAsString("elemento")+"','"+this._tempRegistro.getAsString("marca")+"','"+this._tempRegistro.getAsString("serie")+"',"
-				                		+ "'"+this._tempRegistro.getAsString("valor")+"','"+this._tempRegistro.getAsString("id_agrupador")+"','"+this._tempRegistro.getAsString("cuenta")+"','"+this._tempRegistro.getAsString("proceso")+"','"+this._tempRegistro.getAsString("estado")+"'"
-				                				+ ",'"+this._tempRegistro.getAsString("cantidad")+"','"+this._tempRegistro.getAsString("usuario_ins")+"','"+this._tempRegistro.getAsString("fecha_ins")+"','"+_NPDA+"','1','@','0')"+";"+"&ENT&");
-				  
-			 }
-		    }
+				this.InformacionCarga.add("INSERT INTO SGD_ELEMENTOS_PROV_PDA (id_orden,elemento,marca,serie,valor,id_agrupador,cuenta,proceso,estado,cantidad,usuario_ins,fecha_ins,id_pda,id_contrato,id_carga,id_descarga) VALUES "
+				+"('"+this._tempRegistro.getAsString("id_orden")+"','"+this._tempRegistro.getAsString("elemento")+"','"+this._tempRegistro.getAsString("marca")+"','"+this._tempRegistro.getAsString("serie")+"',"
+				+ "'"+this._tempRegistro.getAsString("valor")+"','"+this._tempRegistro.getAsString("id_agrupador")+"','"+this._tempRegistro.getAsString("cuenta")+"','"+this._tempRegistro.getAsString("proceso")+"','"+this._tempRegistro.getAsString("estado")+"'"
+				+ ",'"+this._tempRegistro.getAsString("cantidad")+"','"+this._tempRegistro.getAsString("usuario_ins")+"','"+this._tempRegistro.getAsString("fecha_ins")+"','"+_NPDA+"','1','@','0')"+";"+"&ENT&");  
+			}
+		}
 		
 		this.InformacionCarga.add("FIN_ARCHIVO");
 		String listString16 = "";
-		for (String s : InformacionCarga)
-		{
-		    listString16 += s;
+		for (String s : InformacionCarga){
+			listString16 += s;
 		}
 		ArchConnectServer.DoFile(this.FolderAplicacion,"SGD_ELEMENTOS_PROV_PDA",listString16);
 
-/*GENERAR SGD_NODOS_EXP*/
+		/*GENERAR SGD_NODOS_EXP*/
 		this.InformacionCarga.clear();		
 		for(int j=0; j<this._Ordenes.size();j++){
 			String orden=	this._Ordenes.get(j).toString();
 			this._tempTabla	= this.UploadSQL.SelectData("upload_nodos", "id_nodo, observacion","id_orden='"+orden+"'");
 			for(int i=0; i<this._tempTabla.size();i++){
 				this._tempRegistro = this._tempTabla.get(i);
-					  this.InformacionCarga.add(this._tempRegistro.getAsString("id_nodo")+","+this._tempRegistro.getAsString("observacion")+"\r\n");
-			 }
-		    }
+				this.InformacionCarga.add(this._tempRegistro.getAsString("id_nodo")+","+this._tempRegistro.getAsString("observacion")+"\r\n");
+			}
+		}
 		String listString17 = "";
-		for (String s : InformacionCarga)
-		{
-		    listString17 += s;
+		for (String s : InformacionCarga){
+			listString17 += s;
 		}
 		ArchConnectServer.DoFile(this.FolderAplicacion,"SGD_NODOS_EXP",listString17);
 
 		
-//para descargar archivos
-		
-		 File carpeta=new File(this.DirectorioConexionServer+File.separator+this.FolderAplicacion);
-		 this.ListaArchivos = new File(carpeta.toString()).listFiles();  
-		 	if(this.ListaArchivos.length == 0){
-		 		ArchUpLoadWS.DeleteFile(carpeta.toString());	
-   	     	}else{
-   	     		this.InformacionArchivos.clear();
-   	     		this.InformacionArchivos.put("idPda", this._NPDA);
-   	     		for(int j=0;j<this.ListaArchivos.length;j++){
-   	     			//this.InformacionArchivos.put("Archivo"+j,this.ListaArchivos[j].getName());
-   	     			this.InformacionArchivos.put(this.ListaArchivos[j].getName(),this.ListaArchivos[j].toString());
-   				}	    				
-   			}	    			
+		//para descargar archivos
+		File carpeta=new File(this.DirectorioConexionServer+File.separator+this.FolderAplicacion);
+		this.ListaArchivos = new File(carpeta.toString()).listFiles();  
+		if(this.ListaArchivos.length == 0){
+			ArchUpLoadWS.DeleteFile(carpeta.toString());	
+		}else{
+			this.InformacionArchivos.clear();
+			this.InformacionArchivos.put("idPda", this._NPDA);
+			for(int j=0;j<this.ListaArchivos.length;j++){
+				//this.InformacionArchivos.put("Archivo"+j,this.ListaArchivos[j].getName());
+				this.InformacionArchivos.put(this.ListaArchivos[j].getName(),this.ListaArchivos[j].toString());
+   			}	    				
+   		}	    			
    		
-		 //  this.InformacionArchivos = this.RegistroArchivos.get(i);
-		   try{
-			   SoapObject so=new SoapObject(NAMESPACE, METHOD_NAME);
-			   so.addProperty("idPda",this.InformacionArchivos.getAsString("idPda"));
-			   so.addProperty("ITEM_PAGO",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("ITEM_PAGO")));
-			   so.addProperty("SGD_ACOMETIDAS_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ACOMETIDAS_PDA")));
-			   so.addProperty("SGD_ACTAS_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ACTAS_PDA")));
-			   so.addProperty("SGD_CENSO_CARGA_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_CENSO_CARGA_PDA")));
-			   so.addProperty("SGD_DETALLE_CENSO_CARGA_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_DETALLE_CENSO_CARGA_PDA")));
-			   so.addProperty("SGD_DIAGRAMAS_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_DIAGRAMAS_PDA")));
-			   so.addProperty("SGD_ELEMENTOS_PROV_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ELEMENTOS_PROV_PDA")));
-			   so.addProperty("SGD_INCONSISTENCIA_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_INCONSISTENCIA_PDA")));
-			   so.addProperty("SGD_IRREGULARIDADES_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_IRREGULARIDADES_PDA")));
-			   so.addProperty("SGD_MATERIALES_TRABAJO_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_MATERIALES_TRABAJO_PDA")));
-			   so.addProperty("SGD_MEDIDOR_ENCONTRADO_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_MEDIDOR_ENCONTRADO_PDA")));
-			   so.addProperty("SGD_MVTO_CONTADORES_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_MVTO_CONTADORES_PDA")));
-			   so.addProperty("SGD_PCTERROR_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_PCTERROR_PDA")));
-			   so.addProperty("SGD_SELLOS_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_SELLOS_PDA")));
-			   so.addProperty("SGD_SERVICIO_NUEVO_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_SERVICIO_NUEVO_PDA")));
-			   so.addProperty("SGD_TRABAJOS_ORDEN_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_TRABAJOS_ORDEN_PDA")));
-			   so.addProperty("SGD_VISITAS_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_VISITAS_PDA")));
-			   so.addProperty("SGD_NODOS_EXP",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_NODOS_EXP")));
-			   so.addProperty("SGD_ORDENES_TRABAJO_EXP",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ORDENES_TRABAJO_EXP")));
-			   so.addProperty("SGD_ORDENES_TRABAJO_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ORDENES_TRABAJO_PDA")));
-			   
-			   SoapSerializationEnvelope sse=new SoapSerializationEnvelope(SoapEnvelope.VER11);
-			   new MarshalBase64().register(sse);
-			   sse.dotNet=true;
-			   sse.setOutputSoapObject(so);
-			   HttpTransportSE htse=new HttpTransportSE(URL);
-			   htse.call(SOAP_ACTION, sse);
-			   response=(SoapPrimitive) sse.getResponse();
-			   
-			   if(response==null) {
-				   this.Respuesta = "-1";
-			   }else if(response.toString().isEmpty()){
-				   this.Respuesta = "-2";
-			   }else if(response.toString().equals("1")){
-				   this.Respuesta = "1";
-				   _retorno = 1;
-				   this.ArchConnectServer.DeleteFile(this.DirectorioConexionServer+File.separator+this.FolderAplicacion);
-				   BorrarOrdenes();
-			   }
-		   	} catch (Exception e) {
-		   		this.Respuesta = e.toString();
+		//  this.InformacionArchivos = this.RegistroArchivos.get(i);
+		try{
+			SoapObject so=new SoapObject(NAMESPACE, this.METHOD_NAME);
+			so.addProperty("idPda",this.InformacionArchivos.getAsString("idPda"));
+			so.addProperty("ITEM_PAGO",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("ITEM_PAGO")));
+			so.addProperty("SGD_ACOMETIDAS_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ACOMETIDAS_PDA")));
+			so.addProperty("SGD_ACTAS_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ACTAS_PDA")));
+			so.addProperty("SGD_CENSO_CARGA_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_CENSO_CARGA_PDA")));
+			so.addProperty("SGD_DETALLE_CENSO_CARGA_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_DETALLE_CENSO_CARGA_PDA")));
+			so.addProperty("SGD_DIAGRAMAS_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_DIAGRAMAS_PDA")));
+			so.addProperty("SGD_ELEMENTOS_PROV_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ELEMENTOS_PROV_PDA")));
+			so.addProperty("SGD_INCONSISTENCIA_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_INCONSISTENCIA_PDA")));
+			so.addProperty("SGD_IRREGULARIDADES_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_IRREGULARIDADES_PDA")));
+			so.addProperty("SGD_MATERIALES_TRABAJO_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_MATERIALES_TRABAJO_PDA")));
+			so.addProperty("SGD_MEDIDOR_ENCONTRADO_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_MEDIDOR_ENCONTRADO_PDA")));
+			so.addProperty("SGD_MVTO_CONTADORES_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_MVTO_CONTADORES_PDA")));
+			so.addProperty("SGD_PCTERROR_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_PCTERROR_PDA")));
+			so.addProperty("SGD_SELLOS_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_SELLOS_PDA")));
+			so.addProperty("SGD_SERVICIO_NUEVO_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_SERVICIO_NUEVO_PDA")));
+			so.addProperty("SGD_TRABAJOS_ORDEN_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_TRABAJOS_ORDEN_PDA")));
+			so.addProperty("SGD_VISITAS_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_VISITAS_PDA")));
+			so.addProperty("SGD_NODOS_EXP",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_NODOS_EXP")));
+			so.addProperty("SGD_ORDENES_TRABAJO_EXP",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ORDENES_TRABAJO_EXP")));
+			so.addProperty("SGD_ORDENES_TRABAJO_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ORDENES_TRABAJO_PDA")));
+			
+			SoapSerializationEnvelope sse=new SoapSerializationEnvelope(SoapEnvelope.VER11);
+			new MarshalBase64().register(sse);
+			sse.dotNet=true;
+			sse.setOutputSoapObject(so);
+			HttpTransportSE htse=new HttpTransportSE(URL);
+			htse.call(this.SOAP_ACTION, sse);
+			response=(SoapPrimitive) sse.getResponse();
+			
+			if(response==null) {
+				this.Respuesta = "-1";
+			}else if(response.toString().isEmpty()){
+				this.Respuesta = "-2";
+			}else if(response.toString().equals("1")){
+				this.Respuesta = "1";
+				_retorno = 1;
+				this.ArchConnectServer.DeleteFile(this.DirectorioConexionServer+File.separator+this.FolderAplicacion);
+				BorrarOrdenes();
 			}
-		      
-			return _retorno;
+		} catch (Exception e) {
+			this.Respuesta = e.toString();
+		}
+		return _retorno;
 	}
 	
 	
@@ -707,7 +682,6 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 			this.UploadSQL.DeleteRegistro("amd_sellos", "id_orden='"+orden+"'");
 			this.UploadSQL.DeleteRegistro("amd_servicio_nuevo", "id_orden='"+orden+"'");
 		}
-		
 	}
 	
 	
