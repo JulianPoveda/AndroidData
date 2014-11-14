@@ -231,10 +231,15 @@ public class Form_Solicitudes extends Activity implements OnItemSelectedListener
 				
 			case R.id.TrasladarOrden:
 				if(!_txtOrden.getText().toString().isEmpty()){
-					if(FcnSolicitudes.getEstadoOrden(_txtOrden.getText().toString()).equals("P")){
-						DialogConfirmacion.putExtra("informacion", "Desea Trasladar La Orden "+_txtOrden.getText().toString());
-						startActivityForResult(DialogConfirmacion, CONFIRMACION_TRASLADAR_ORDEN);	
-					}
+					if(FcnSolicitudes.isAutogestion(_txtOrden.getText().toString())){
+						 DialogInformacion.putExtra("informacion","No se puede Trasladar Autogestiones.");
+						 startActivityForResult(DialogInformacion, CONFIRMACION_INFORMACION);
+					   }else{
+					   if(FcnSolicitudes.getEstadoOrden(_txtOrden.getText().toString()).equals("P")){
+						  DialogConfirmacion.putExtra("informacion", "Desea Trasladar La Orden "+_txtOrden.getText().toString());
+						  startActivityForResult(DialogConfirmacion, CONFIRMACION_TRASLADAR_ORDEN);	
+					     }
+				      }	
 				}else{
 					DialogInformacion.putExtra("informacion","No ha seleccionado una orden para trasladar.");
 					startActivityForResult(DialogInformacion, CONFIRMACION_INFORMACION);

@@ -1148,7 +1148,7 @@ public class SQLite {
 					"   where a.estado in ('T',' TA')");
 			
 			db.execSQL("CREATE VIEW upload_trabajos_exp AS " +
-					"	SELECT strftime('%d/%m/%Y %H:%M:%S', b.fecha_ins), a.id_orden" +
+					"	SELECT strftime('%d/%m/%Y %H:%M:%S', b.fecha_ins) as fecha_ins, a.id_orden" +
 					"	FROM amd_ordenes_trabajo as a"+
 					"   JOIN  amd_param_trabajos_orden as b"+
 					"   ON b.id_orden=a.id_orden"+
@@ -1331,7 +1331,7 @@ public class SQLite {
 					"   where a.estado in ('T',' TA')");
 			
 			db.execSQL("CREATE VIEW upload_trabajos_exp AS " +
-					"	SELECT strftime('%d/%m/%Y %H:%M:%S', b.fecha_ins), a.id_orden" +
+					"	SELECT strftime('%d/%m/%Y %H:%M:%S', b.fecha_ins) as fecha_ins, a.id_orden" +
 					"	FROM amd_ordenes_trabajo as a"+
 					"   JOIN  amd_param_trabajos_orden as b"+
 					"   ON b.id_orden=a.id_orden"+
