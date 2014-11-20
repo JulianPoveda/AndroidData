@@ -591,7 +591,8 @@ public class FormatosActas {
 		FcnZebra.WrLabel("N.          ", ordenTrabajo + ImpSQL.StrSelectShieldWhere("amd_param_sistema", "valor", "codigo='NPDA'"), 200, 0, 1);
 		FcnZebra.WrLabel("ACTA REF.   ", ImpSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "num_acta", "id_orden='"+ordenTrabajo+"'"), 200, 0, 1);
 		
-		if(Integer.parseInt(ordenTrabajo) >= 0){
+		long number= Long.decode(ordenTrabajo);
+		if(number >= 0){
 			if(ordenTrabajo.length()>6){
 				FcnZebra.WrLabel("Solicitud:   ", ordenTrabajo, 200, 0, 1.2);	
 			}else{
