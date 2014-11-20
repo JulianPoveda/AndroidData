@@ -1093,7 +1093,7 @@ public class SQLite {
 					"	WHERE 	a.estado in ('T','TA');");
 			
 			db.execSQL("CREATE VIEW upload_mvto_contadores_pda AS" +
-					"	SELECT 	a.id_orden, b.tipo, b.marca, b.serie, b.lectura, b.cuenta,  u.login, b.fecha_ins, b.cobro" +
+					"	SELECT 	a.id_orden, b.tipo, b.marca, b.serie, b.lectura, b.cuenta,  u.login, strftime('%d/%m/%Y', b.fecha_ins) as fecha_ins, b.cobro" +
 					"	FROM	amd_ordenes_trabajo AS a" +
 					"	JOIN 	amd_cambios_contadores AS b" +
 					"	ON 		a.id_orden = b.id_orden" +
@@ -1244,7 +1244,7 @@ public class SQLite {
 			
 			
 			db.execSQL("CREATE VIEW upload_mvto_contadores_pda AS" +
-					"	SELECT 	a.id_orden, b.tipo, b.marca, b.serie, b.lectura, b.cuenta,  u.login, b.fecha_ins, b.cobro" +
+					"	SELECT 	a.id_orden, b.tipo, b.marca, b.serie, b.lectura, b.cuenta,  u.login, strftime('%d/%m/%Y', b.fecha_ins) as fecha_ins, b.cobro" +
 					"	FROM	amd_ordenes_trabajo AS a" +
 					"	JOIN 	amd_cambios_contadores AS b" +
 					"	ON 		a.id_orden = b.id_orden" +
