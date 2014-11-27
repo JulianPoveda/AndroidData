@@ -209,7 +209,8 @@ public class Class_Autogestion{
 				Toast.makeText(this._ctxAutogestion,"No ha seleccionado la dependencia, la clase, el tipo de solicitud y/o tipo accion.",Toast.LENGTH_SHORT).show();
 				_retorno = false;
 			}else{
-				this._id_orden = this._consecutivo + this._dependencia + this._solicitud;
+				//this._id_orden = this._consecutivo + this._dependencia + this._solicitud;
+				this._id_orden =  this._solicitud;
 			}
 		}else if(this._tipoOrden.equals("REVISION")){
 			this._observacionTrabajo = "AUTOGESTIONR";
