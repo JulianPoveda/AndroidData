@@ -303,7 +303,7 @@ public class Form_CambioContador extends Activity implements OnClickListener, On
 				}else{
 					ConfirmacionMedidor.putExtra("lbl1", "Serie:");
 					ConfirmacionMedidor.putExtra("lbl2", "Lectura:");
-					if((_cmbMovimientoMedidor.getSelectedItem().toString().equals("SERVICIO_DIRECTO"))||(_cmbMovimientoMedidor.getSelectedItem().toString().equals("SIN_SERVICIO"))){
+					if((_cmbMovimientoMedidor.getSelectedItem().toString().equals("SERVICIO_DIRECTO"))||(_cmbMovimientoMedidor.getSelectedItem().toString().equals("SIN_SERVICIO"))||(_cmbMovimientoMedidor.getSelectedItem().toString().equals("CANCELACION_MATRIC"))){
 						ConfirmacionMedidor.putExtra("txt1", _txtSerie.getText().toString());
 						ConfirmacionMedidor.putExtra("txt2", _txtLectura.getText().toString());
 					}else if((_cmbMovimientoMedidor.getSelectedItem().toString().equals("DEFINITIVO"))||(_cmbMovimientoMedidor.getSelectedItem().toString().equals("PROVISIONAL"))){

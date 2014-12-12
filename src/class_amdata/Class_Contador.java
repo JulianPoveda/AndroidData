@@ -101,6 +101,16 @@ public class Class_Contador {
 			this._tempRegistro.put("valorMarcaMedidor","...");
 			this._tempRegistro.put("enableMarcaMedidor", false);
 			this._tempRegistro.put("visibleBodega", true);
+		}else if(_estadoMovimiento==RETIRADO && _movimiento.equals("CANCELACION_MATRIC")){
+			this._tempRegistro.put("textSerie","-1");
+			this._tempRegistro.put("enableSerie", false);
+			this._tempRegistro.put("textLectura","-1");
+			this._tempRegistro.put("enableLectura", false);
+			this._tempRegistro.put("valorTipoConexion","...");
+			this._tempRegistro.put("enableTipoConexion", false);
+			this._tempRegistro.put("valorMarcaMedidor","...");
+			this._tempRegistro.put("enableMarcaMedidor", false);
+			this._tempRegistro.put("visibleBodega", false);
 		}else{
 			this._tempRegistro.put("textSerie","");
 			this._tempRegistro.put("enableSerie", false);
