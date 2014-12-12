@@ -106,9 +106,19 @@ public class Class_Contador {
 			this._tempRegistro.put("enableSerie", false);
 			this._tempRegistro.put("textLectura","-1");
 			this._tempRegistro.put("enableLectura", false);
-			this._tempRegistro.put("valorTipoConexion","...");
+			this._tempRegistro.put("valorTipoConexion","Cancelacion Matricula");
 			this._tempRegistro.put("enableTipoConexion", false);
-			this._tempRegistro.put("valorMarcaMedidor","...");
+			this._tempRegistro.put("valorMarcaMedidor","CM (CANCELACION MATRICULA)");
+			this._tempRegistro.put("enableMarcaMedidor", false);
+			this._tempRegistro.put("visibleBodega", false);
+		}else if(_estadoMovimiento==RETIRADO && _movimiento.equals("SERVICIO_DIRECTO")){
+			this._tempRegistro.put("textSerie","-1");
+			this._tempRegistro.put("enableSerie", false);
+			this._tempRegistro.put("textLectura","-1");
+			this._tempRegistro.put("enableLectura", false);
+			this._tempRegistro.put("valorTipoConexion","Servicio Directo");
+			this._tempRegistro.put("enableTipoConexion", false);
+			this._tempRegistro.put("valorMarcaMedidor", "SD (SERVICIO DIRECTO)");
 			this._tempRegistro.put("enableMarcaMedidor", false);
 			this._tempRegistro.put("visibleBodega", false);
 		}else{
@@ -174,6 +184,7 @@ public class Class_Contador {
 		ArrayList<String> opcionesConexion= new ArrayList<String>();
 		opcionesConexion.clear();
 		opcionesConexion.add("...");
+		opcionesConexion.add("Cancelacion Matricula");
 		opcionesConexion.add("Servicio Directo");
 		opcionesConexion.add("Sin Servicio");
 		opcionesConexion.add("Monofasico");
@@ -235,7 +246,7 @@ public class Class_Contador {
 				break;
 				
 			case RETIRADO:
-				if(_movimiento.equals("CANCELACION_MATRICULA")){
+				if(_movimiento.equals("CANCELACION_MATRIC")){
 					this._tipo 	= "CM";
 					this._marca = "CM";
 					this._serie = "1";
