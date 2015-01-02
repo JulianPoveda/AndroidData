@@ -85,7 +85,7 @@ public class FormatosActas {
 		if(Double.parseDouble(cuentaCliente)>=0){
 			FcnZebra.WrLabel("Codigo:     ", ImpSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "cuenta", "id_orden='"+ordenTrabajo+"'"), 200, 0, 1.2);	
 		}else{
-			FcnZebra.WrLabel("Codigo:     ", ImpSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "____________________", "id_orden='"+ordenTrabajo+"'"), 200, 0, 1.2);			
+			FcnZebra.WrLabel("Codigo:     ", "____________________", 200, 0, 1.2);			
 		}
 			
 		this._infRegistro1 = ImpSQL.SelectDataRegistro("vista_ordenes_trabajo", "municipio", "id_orden='"+ordenTrabajo+"'");
@@ -105,7 +105,11 @@ public class FormatosActas {
 		FcnZebra.WrLabel("DIRECCION: ", this._infRegistro1.getAsString("direccion"),10,0,1); 
 		FcnZebra.WrLabel("MUNICIPIO: ", this._infRegistro1.getAsString("municipio"),10,0,1);
 		FcnZebra.WrLabel("SERVICIO: ",this._infRegistro1.getAsString("clase_servicio"),10,0,1);
-		FcnZebra.WrLabel("CARGA CONTRATADA: ",this._infRegistro1.getAsString("carga_contratada"),10,0,0);
+		if(this._infRegistro1.getAsString("carga_contratada") == null){
+			FcnZebra.WrLabel("CARGA CONTRATADA: ","",10,0,0);
+		}else{
+			FcnZebra.WrLabel("CARGA CONTRATADA: ",this._infRegistro1.getAsString("carga_contratada"),10,0,0);
+		}
 		
 		if(ImpSQL.ExistRegistros("amd_contador_cliente_orden", "cuenta='"+ImpSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "cuenta", "id_orden='"+ordenTrabajo+"'")+"' AND desinstalado IN (0,1)")){
 			this._infRegistro2 = ImpSQL.SelectDataRegistro("amd_contador_cliente_orden", "marca,serie", "cuenta='"+ImpSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "cuenta", "id_orden='"+ordenTrabajo+"'")+"' AND desinstalado IN (0,1)");		
@@ -121,18 +125,20 @@ public class FormatosActas {
 		this._infRegistro2.clear();
 		this._infRegistro2=ImpSQL.SelectDataRegistro("vista_ordenes_trabajo", "carga_instalada", "id_orden='"+ordenTrabajo+"'");
 		
-		if(this._infRegistro2.getAsString("carga_instalada")==null){
+		if(this._infRegistro2.getAsString("carga_instalada") == null){
 			FcnZebra.WrLabel("CARGA INSTALADA: "," ",10,1,0);
-			FcnZebra.WrLabel("CICLO: ",this._infRegistro1.getAsString("ciclo"),300,0,0);
-			FcnZebra.WrLabel("ESTRATO: ",this._infRegistro1.getAsString("estrato"),450,0,0);
-			FcnZebra.WrLabel("NODO: ",this._infRegistro1.getAsString("id_nodo"),600,0,2);
 		}else{
 			FcnZebra.WrLabel("CARGA INSTALADA: ",this._infRegistro1.getAsString("carga_instalada"),10,1,0);
-			FcnZebra.WrLabel("CICLO: ",this._infRegistro1.getAsString("ciclo"),300,0,0);
-			FcnZebra.WrLabel("ESTRATO: ",this._infRegistro1.getAsString("estrato"),450,0,0);
-			FcnZebra.WrLabel("NODO: ",this._infRegistro1.getAsString("id_nodo"),600,0,2);
 		}
 		
+		if(this._infRegistro1.getAsString("ciclo") == null){
+			FcnZebra.WrLabel("CICLO: ","",300,0,0);
+		}else{
+			FcnZebra.WrLabel("CICLO: ",this._infRegistro1.getAsString("ciclo"),300,0,0);
+		}
+		
+		FcnZebra.WrLabel("ESTRATO: ",this._infRegistro1.getAsString("estrato"),450,0,0);
+		FcnZebra.WrLabel("NODO: ",this._infRegistro1.getAsString("id_nodo"),600,0,2);
 		
 		
 		 
@@ -658,7 +664,7 @@ public class FormatosActas {
 			FcnZebra.WrLabel("","DESCRIPCION", 10, 0, 0);
 			FcnZebra.WrLabel("","CNT", 460, 0, 0);
 			FcnZebra.WrLabel("","ESTADO", 510, 0, 0);
-			FcnZebra.WrLabel("","DISPOSICION", 630, 0, 1.5);
+			FcnZebra.WrLabel("","DISPOSICION", 630, 0, 1.2);
 			for(int i=0; i<this._infTabla.size();i++){
 				this._infRegistro1 = this._infTabla.get(i);
 				if(this._infRegistro1.getAsString("material").length()>40){
@@ -668,6 +674,7 @@ public class FormatosActas {
 				}		
 				FcnZebra.WrLabel("",this._infRegistro1.getAsString("cantidad"), 460, 0, 0);
 				FcnZebra.WrLabel("",this._infRegistro1.getAsString("estado"), 510, 0, 0);
+				FcnZebra.WrLabel("",this._infRegistro1.getAsString("disposicion").substring(0, 2), 630, 0, 1);
 				
 				//if(this._infRegistro1.getAsString("disposicion").length()>2){
 					//FcnZebra.WrLabel("",this._infRegistro1.getAsString("disposicion").substring(0, 2), 630, 0, 1);
@@ -677,7 +684,7 @@ public class FormatosActas {
 			}			
 		}
 		
-		this._infRegistro1 = ImpSQL.SelectDataRegistro("imp_medidor_material", "serie,cobro,marca,lectura,tipo", "id_orden='"+ordenTrabajo+"' AND tipo IN ('DEFINITIVO','PROVISIONAL')");
+		this._infRegistro1 = ImpSQL.SelectDataRegistro("imp_medidor_material", "serie,cobro,marca,lectura,tipo", "id_orden='"+ordenTrabajo+"' AND tipo IN ('DEFINITIVO','PROVISIONAL','INSTALADO')");
 		if(this._infRegistro1.size()>0){
 			FcnZebra.WrSubTitulo("MEDIDOR INSTALADO",10,1.5,1);
 			if(this._infRegistro1.getAsString("cobro").equals("SERVICIO DIRECTO")){
@@ -694,7 +701,7 @@ public class FormatosActas {
 			
 		if(ImpSQL.ExistRegistros("amd_cambios_contadores","id_orden='"+ordenTrabajo+"' AND tipo IN ('R')")){
 			this._infRegistro1 = ImpSQL.SelectDataRegistro("amd_cambios_contadores", "marca,serie,lectura,tipo", "id_orden='"+ordenTrabajo+"' AND tipo IN ('R')");
-			FcnZebra.WrSubTitulo("MEDIDOR RETIRADO",10,1,1.2);		
+			FcnZebra.WrSubTitulo("MEDIDOR RETIRADO",10,2,1.2);		
 			FcnZebra.WrLabel("Marca:",this._infRegistro1.getAsString("marca"), 10, 0, 0);
 			FcnZebra.WrLabel("Serie:",this._infRegistro1.getAsString("serie"), 260, 0, 1);
 			FcnZebra.WrLabel("Lectura:",this._infRegistro1.getAsString("lectura"), 10, 0, 0);
@@ -703,10 +710,16 @@ public class FormatosActas {
 		
 		if(ImpSQL.ExistRegistros("imp_acometida_material","id_orden='"+ordenTrabajo+"' AND tipo_ingreso IN ('Nueva')")){
 			this._infRegistro1 = ImpSQL.SelectDataRegistro("imp_acometida_material", "fase,calibre,longitud", "id_orden='"+ordenTrabajo+"' AND tipo_ingreso IN ('Existente')");
-			FcnZebra.WrSubTitulo("ACOMETIDA RETIRADA",10,1,1.2);		
-			FcnZebra.WrLabel("Fase:",this._infRegistro1.getAsString("fase"), 10, 0, 0);
-			FcnZebra.WrLabel("Calibre:",this._infRegistro1.getAsString("calibre"), 260, 0, 0);
-			FcnZebra.WrLabel("Longitud:",this._infRegistro1.getAsString("longitud"), 400, 0, 1);
+			FcnZebra.WrSubTitulo("ACOMETIDA RETIRADA",10,1,1.2);
+			if(this._infRegistro1.size()>0){
+				FcnZebra.WrLabel("Fase:",this._infRegistro1.getAsString("fase"), 10, 0, 0);
+				FcnZebra.WrLabel("Calibre:",this._infRegistro1.getAsString("calibre"), 260, 0, 0);
+				FcnZebra.WrLabel("Longitud:",this._infRegistro1.getAsString("longitud"), 400, 0, 1);
+			}else{
+				FcnZebra.WrLabel("Fase:","", 10, 0, 0);
+				FcnZebra.WrLabel("Calibre:","", 260, 0, 0);
+				FcnZebra.WrLabel("Longitud:","", 400, 0, 1);
+			}
 		}
 		
 		if(ImpSQL.ExistRegistros("amd_observacion_materiales", "id_orden='"+ordenTrabajo+"'")){

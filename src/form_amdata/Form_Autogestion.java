@@ -23,13 +23,12 @@ public class Form_Autogestion extends Activity implements OnClickListener, OnIte
 	private Class_Autogestion 	FcnAutogestion;
 	private Class_Contador		FcnContador;
 	
-	private ArrayList<String> _strDependencia;		
-	private ArrayList<String> _strClaseSolicitud;	
-	private ArrayList<String> _strTipoSolicitud;	
-	private ArrayList<String> _strTipoAccion;
-	private ArrayList<String> _strMarcaContador;
-	
-	private String 	 FolderAplicacion= "";	
+	private ArrayList<String> 	_strDependencia;		
+	private ArrayList<String> 	_strClaseSolicitud;	
+	private ArrayList<String> 	_strTipoSolicitud;	
+	private ArrayList<String> 	_strTipoAccion;
+	private ArrayList<String> 	_strMarcaContador;	
+	private String 	 			FolderAplicacion= "";	
 	
 	
 	private String[] _strTipoOrden		={"","REVISION","SOLICITUD"};
@@ -154,7 +153,6 @@ public class Form_Autogestion extends Activity implements OnClickListener, OnIte
 
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-		// TODO Auto-generated method stub
 		switch(parent.getId()){
 			case R.id.AutogestionCmbTipoOrden:
 				if(this._cmbTipoOrden.getSelectedItem().toString().equals("REVISION")){
@@ -182,11 +180,12 @@ public class Form_Autogestion extends Activity implements OnClickListener, OnIte
 				}
 				break;
 				
+				
 			case R.id.AutogestionCmbMarcaContador:
 				if(this._cmbMarcaContador.getSelectedItem().toString().equals("SD (SERVICIO DIRECTO)") || this._cmbMarcaContador.getSelectedItem().toString().equals("SS (SIN SERVICIO)")){
 					this._txtNodo.setText("000000");
-					this._txtSerieContador.setText("");
-					this._txtLecturaContador.setText("");
+					this._txtSerieContador.setText("-1");
+					this._txtLecturaContador.setText("-1");
 					this._txtNodo.setEnabled(false);	
 					this._txtSerieContador.setEnabled(false);
 					this._txtLecturaContador.setEnabled(false);
@@ -197,6 +196,7 @@ public class Form_Autogestion extends Activity implements OnClickListener, OnIte
 					this._txtLecturaContador.setEnabled(true);
 				}
 				break;
+				
 			
 			case R.id.AutogestionCmbDependencia:
 				this._strClaseSolicitud = FcnAutogestion.getClaseSolicitud(this._cmbDependencia.getSelectedItem().toString());
@@ -225,13 +225,10 @@ public class Form_Autogestion extends Activity implements OnClickListener, OnIte
 
 	@Override
 	public void onNothingSelected(AdapterView<?> parent) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		switch(v.getId()){
 			case R.id.AutogestionBtnCrear:
 				if(this._cmbTipoOrden.getSelectedItem().toString().equals("SOLICITUD")){
@@ -268,12 +265,8 @@ public class Form_Autogestion extends Activity implements OnClickListener, OnIte
 							Toast.makeText(this,"Error al crear la autogestion.",Toast.LENGTH_SHORT).show();
 						}
 					}
-				}
-				
-				
-				
+				}				
 				break;
-		}
-		
+		}		
 	}
 }

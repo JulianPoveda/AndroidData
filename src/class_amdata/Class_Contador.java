@@ -166,7 +166,7 @@ public class Class_Contador {
 		ArrayList<String> opcionesMedidores= new ArrayList<String>();
 		opcionesMedidores.clear();
 		if(_estadoMovimiento == NO_RETIRADO){
-			this._tempTabla = ContadorSQL.SelectData("amd_param_marca_contador", "id_marca||' ('||nombre||')' as medidores", "id_marca IS NOT NULL");
+			this._tempTabla = ContadorSQL.SelectData("amd_param_marca_contador", "id_marca||' ('||nombre||')' as medidores", "id_marca IS NOT NULL ORDER BY medidores");
 			for(int i=0;i<this._tempTabla.size();i++){
 				opcionesMedidores.add(this._tempTabla.get(i).getAsString("medidores"));				
 			}			

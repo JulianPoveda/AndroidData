@@ -175,8 +175,10 @@ public class Class_Autogestion{
 		this._lecturaContador	= _lecturaContador;
 		this._solicitud = this.AutogestionUtil.generarAleatorio(4, this._NPDA);
 		
-		
-		if(this._propietario.isEmpty()){
+		if(!AutogestionUtil.validacionCuenta(this._cuenta)){
+			Toast.makeText(this._ctxAutogestion,"Cuenta no valida.",Toast.LENGTH_SHORT).show();
+			_retorno = false;
+		}else if(this._propietario.isEmpty()){
 			Toast.makeText(this._ctxAutogestion,"No ha ingresado el nombre del propietario.",Toast.LENGTH_SHORT).show();
 			_retorno = false;
 		}else if(this._ubicacion.isEmpty()){
@@ -256,12 +258,28 @@ public class Class_Autogestion{
 	public boolean crearAutogestion(){
 		boolean _retorno = false;		
 		if(this.AutogestionSQL.ExistRegistros("amd_nodo", "id_nodo='"+this._nodo+"'")){
-			if(this.crearOrden() && this.crearContadorClienteOrden()){
-				_retorno = true;
+			if(this.crearContadorClienteOrden()){
+				if(this.crearOrden()){
+					_retorno = true;
+				}else{
+					_retorno = false;
+				}				
+			}else{
+				_retorno = false;
 			}
 		}else{
-			if(this.crearNodo() && this.crearContadorClienteOrden() && this.crearOrden()){
-				_retorno = true;
+			if(this.crearContadorClienteOrden()){			
+				if(this.crearNodo()){
+					if(this.crearOrden()){
+						_retorno = true;
+					}else{
+						_retorno = false;
+					}
+				}else{
+					_retorno = false;
+				}
+			}else{
+				_retorno = false;
 			}
 		}
 		return _retorno;
