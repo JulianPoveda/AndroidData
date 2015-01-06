@@ -546,7 +546,8 @@ public class FormatosActas {
 		}
 		FcnZebra.JustInformation("NO PAGAR NI REALIZAR NEGOCIACIONES CON EL OPERARIO POR NINGUN CONCEPTO. DENUNCIE CUALQUIER IRREGULARIDAD AL TELEFONO"+" 6614000", 10, 1, 1);	
 		FcnZebra.WrSubTitulo("ITEMS DE PAGO APLICADOS: "+ImpSQL.StrSelectShieldWhere("amd_impresiones_inf", "items", "id_orden='"+ordenTrabajo+"'"),10,1.2,1.2);
-		
+
+	    
 		//_infImpresion = WrLabel(_infImpresion, "", copiaImpresion, 10, 0, 1);
 		switch(copiaImpresion){
 			case 1:
@@ -559,6 +560,13 @@ public class FormatosActas {
 				FcnZebra.WrLabel("", "Copia Archivo", 10, 0, 1);
 				break;
 		}
+		
+		String ubicacion = ImpSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "ubicacion", "id_orden='"+ordenTrabajo+"'");	
+		if (ubicacion.equals("U")){
+			FcnZebra.WrSubTitulo("UBICACION URBANA",10,0,1);
+		}
+		else FcnZebra.WrSubTitulo("UBICACION RURAL",10,0,1);
+	    
 		FcnZebra.WrLabel("",ImpSQL.StrSelectShieldWhere("amd_param_sistema", "valor", "codigo='NPDA'")+" - "+ DT.GetDateTimeHora(), 10, 0, 1);
 		FcnZebra.WrLabel("","Supervisor/Interventoria:________________________________________", 10, 0, 1);
 		
@@ -762,6 +770,13 @@ public class FormatosActas {
 				FcnZebra.WrLabel("", "Copia Archivo", 10, 0, 1);
 				break;
 		}
+		
+		String ubicacion = ImpSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "ubicacion", "id_orden='"+ordenTrabajo+"'");	
+		if (ubicacion.equals("U")){
+			FcnZebra.WrSubTitulo("UBICACION URBANA",10,0,1);
+		}
+		else FcnZebra.WrSubTitulo("UBICACION RURAL",10,0,1);
+		
 		FcnZebra.WrLabel("",ImpSQL.StrSelectShieldWhere("amd_param_sistema", "valor", "codigo='NPDA'")+" - "+ DT.GetDateTimeHora(), 10, 0, 1);
 		FcnZebra.WrLabel("","Supervisor/Interventoria:________________________________________", 10, 0, 1);
 		
