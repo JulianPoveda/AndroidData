@@ -682,7 +682,7 @@ public class FormatosActas {
 				}		
 				FcnZebra.WrLabel("",this._infRegistro1.getAsString("cantidad"), 460, 0, 0);
 				FcnZebra.WrLabel("",this._infRegistro1.getAsString("estado"), 510, 0, 0);
-				FcnZebra.WrLabel("",this._infRegistro1.getAsString("disposicion").substring(0, 2), 630, 0, 1);
+				//FcnZebra.WrLabel("",this._infRegistro1.getAsString("disposicion").substring(0, 2), 630, 0, 1);
 				
 				//if(this._infRegistro1.getAsString("disposicion").length()>2){
 					//FcnZebra.WrLabel("",this._infRegistro1.getAsString("disposicion").substring(0, 2), 630, 0, 1);
