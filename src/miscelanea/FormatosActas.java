@@ -20,6 +20,8 @@ public class FormatosActas {
 	private ArrayList<ContentValues> 	_infTabla		= new ArrayList<ContentValues>();
 	private ContentValues 				_infRegistro1	= new ContentValues();
 	private ContentValues				_infRegistro2	= new ContentValues();
+	private ContentValues				_infRegistro3	= new ContentValues();
+	
 	private String 						_tempStr1[];
 	private String 						_tempStr2[];
 	
@@ -104,7 +106,12 @@ public class FormatosActas {
 		this._infRegistro1 = ImpSQL.SelectDataRegistro("vista_ordenes_trabajo", "id_nodo,estrato,ciclo,carga_instalada,clase_servicio,direccion,municipio,cuenta,clase_servicio,carga_contratada,carga_instalada", "id_orden='"+ordenTrabajo+"'");
 		FcnZebra.WrLabel("DIRECCION: ", this._infRegistro1.getAsString("direccion"),10,0,1); 
 		FcnZebra.WrLabel("MUNICIPIO: ", this._infRegistro1.getAsString("municipio"),10,0,1);
-		FcnZebra.WrLabel("SERVICIO: ",this._infRegistro1.getAsString("clase_servicio"),10,0,1);
+		if(Double.parseDouble(this._infRegistro1.getAsString("cuenta"))<=0){
+			this._infRegistro3 = ImpSQL.SelectDataRegistro("amd_servicio_nuevo", "cuenta_vecina1", "id_orden='"+ordenTrabajo+"'");
+			FcnZebra.WrLabel("CUENTA REF: ", this._infRegistro3.getAsString("cuenta_vecina1"),10,0,0);
+		}
+		else FcnZebra.WrLabel("CUENTA: ", this._infRegistro1.getAsString("cuenta"),10,0,0);
+		FcnZebra.WrLabel("SERVICIO: ",this._infRegistro1.getAsString("clase_servicio"),300,0,1);
 		if(this._infRegistro1.getAsString("carga_contratada") == null){
 			FcnZebra.WrLabel("CARGA CONTRATADA: ","",10,0,0);
 		}else{
