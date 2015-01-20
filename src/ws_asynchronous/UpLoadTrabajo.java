@@ -660,9 +660,12 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 	public void BorrarOrdenes(){
 		for(int j=0; j<this._Ordenes.size();j++){
 			String orden=	this._Ordenes.get(j).toString();
+			String cuenta = UploadSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "cuenta", "id_orden='"+orden+"'");
+			String nodo = UploadSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "id_nodo", "id_orden='"+orden+"'");
+			
 			this.UploadSQL.DeleteRegistro("amd_actas", "id_orden='"+orden+"'");
-			this.UploadSQL.DeleteRegistro("amd_ordenes_trabajo", "id_orden='"+orden+"'");	
 			this.UploadSQL.DeleteRegistro("amd_acometida", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("amd_borrar_orden", "id_orden='"+orden+"'");
 			this.UploadSQL.DeleteRegistro("amd_cambios_contadores", "id_orden='"+orden+"'");
 			this.UploadSQL.DeleteRegistro("amd_censo_carga", "id_orden='"+orden+"'");
 			this.UploadSQL.DeleteRegistro("amd_consumos_orden", "id_orden='"+orden+"'");
@@ -671,11 +674,14 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 			this.UploadSQL.DeleteRegistro("amd_inconsistencias", "id_orden='"+orden+"'");
 			this.UploadSQL.DeleteRegistro("amd_irregularidades", "id_orden='"+orden+"'");
 			this.UploadSQL.DeleteRegistro("amd_material_usuario", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("amd_contador_cliente_orden", "cuenta='"+cuenta+"'");
 			this.UploadSQL.DeleteRegistro("amd_materiales_provisionales", "id_orden='"+orden+"'");
 			this.UploadSQL.DeleteRegistro("amd_materiales_trabajo_orden", "id_orden='"+orden+"'");
 			this.UploadSQL.DeleteRegistro("amd_medidor_encontrado", "id_orden='"+orden+"'");
 			this.UploadSQL.DeleteRegistro("amd_observacion_materiales", "id_orden='"+orden+"'");
 			this.UploadSQL.DeleteRegistro("amd_ordenes_trabajo", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("param_trabajos_orden", "id_orden='"+orden+"'");
+			this.UploadSQL.DeleteRegistro("amd_nodo", "id_nodo='"+nodo+"'");
 			this.UploadSQL.DeleteRegistro("amd_pct_error", "id_orden='"+orden+"'");
 			this.UploadSQL.DeleteRegistro("amd_prueba_integracion", "id_orden='"+orden+"'");
 			this.UploadSQL.DeleteRegistro("amd_pruebas", "id_orden='"+orden+"'");
