@@ -38,7 +38,7 @@ public class Form_Autogestion extends Activity implements OnClickListener, OnIte
 										,"La Uribe","Lejanias","Mapiripan","Mesetas","Puerto Concordia","Puerto Gaitan","Puerto Lleras","Puerto Lopez","Puerto Rico","Restrepo","San Carlos de Guaroa"
 										,"San Juan de Arama", "San Juanito","San Luis de Cubarral","San Martin","Villavicencio","Vista Hermosa"};
 	private String[] _strEstrato		={"","1","2","3","4","5","6"};
-	private String[] _strCiclo			={"","1","2","3","4","5","6","7","8","9","10","15","16","18","19","20","21","22","23","25","26","29","31","32","33","37","38","42"};
+	private String[] _strCiclo			={"","1","2","3","4","5","6","7","8","9","10","15","16","18","19","20","21","22","23","25","26","29","31","32","33","37","38","42","50","52"};
 	private String[] _strClaseServicio 	={"","Agricolas","Alumbrado Publico","Area Comun","Bloque","Bombeo de Agua","Comercial","Comunal","Empleado Residencial","Externas","Gran Industria","Individual",
 											"Industrial Regulada","Industrial","Macromedicion","No Regulada","No Residencial","Oficial","Otras Cargas","Provisional","PRUEBA_SECTOR_CONSUMO","Residencial",
 											"SECTOR DE CONSUMO INDUSTRIAL","SECTOR DE CONSUMO OFICIAL","SECTOR DE CONSUMO PROVISIONAL","SECTOR DE CONSUMO RESIDENCIAL","SECTOR DE CONSUMO COMERCIAL", 
