@@ -69,6 +69,7 @@ public class UploadTrabajo extends Activity {
 
 	public void MostrarOrdenesTrabajo(){
 		_tempTabla.clear();
+		data.clear();
 		_tempTabla = UploadSQL.SelectData("amd_ordenes_trabajo", "id_orden,id_nodo,cuenta,estado", "estado in ('T','TA') ORDER BY id_orden");
 		for(int i=0;i<_tempTabla.size();i++){
 			_tempRegistro = _tempTabla.get(i);

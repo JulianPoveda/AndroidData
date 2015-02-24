@@ -304,37 +304,73 @@ public class Class_Autogestion{
 	
 	
 	private boolean crearOrden(){
-		this._tempRegistro.clear();
-		this._tempRegistro.put("id_orden", this._id_orden);
-		this._tempRegistro.put("cuenta", this._cuenta);
-		this._tempRegistro.put("propietario", this._propietario);
-		this._tempRegistro.put("ubicacion", this._ubicacion);
-		this._tempRegistro.put("direccion", this._direccion);
-		this._tempRegistro.put("clase_servicio", this._claseServicio);
-		this._tempRegistro.put("estrato", this._estrato);
-		this._tempRegistro.put("id_nodo", this._nodo);
-		this._tempRegistro.put("ruta", "1");
-		this._tempRegistro.put("estado_cuenta", "ACTIVA");
-		this._tempRegistro.put("pda", this._NPDA);
-		this._tempRegistro.put("estado", "P");
-		this._tempRegistro.put("observacion_trabajo", this._observacionTrabajo);
-		this._tempRegistro.put("observacion_pad", "AUTOGESTION");
-		this._tempRegistro.put("tipo", "C");
-		this._tempRegistro.put("municipio", this._municipio);
-		this._tempRegistro.put("codigo_apertura", this.generarContrasena(this._solicitud.substring(1, 5)));
-		this._tempRegistro.put("solicitud", this._solicitud);
-		this._tempRegistro.put("clase_solicitud", this._claseSolicitud);
-		this._tempRegistro.put("tipo_solicitud", this._tipoSolicitud);
-		this._tempRegistro.put("dependencia", this._dependencia);
-		this._tempRegistro.put("tipo_accion", this._tipoAccion);
-		this._tempRegistro.put("dependencia_asignada", "62020");
-		this._tempRegistro.put("consecutivo_accion", this._consecutivo);
-		this._tempRegistro.put("fecha_ven", AutogestionDT.GetDateTimeHora());
-		this._tempRegistro.put("carga_contratada", this._carga);
-		this._tempRegistro.put("ciclo", this._ciclo);
-		this._tempRegistro.put("bodega", "1-SYPELC SOLICITUDES");		
-		return this.AutogestionSQL.InsertRegistro("amd_ordenes_trabajo", this._tempRegistro);
-	}
+			if(this._observacionTrabajo.equals("AUTOGESTIONR")){
+				this._tempRegistro.clear();
+				this._tempRegistro.put("id_orden", this._id_orden);
+				this._tempRegistro.put("cuenta", this._cuenta);
+				this._tempRegistro.put("propietario", this._propietario);
+				this._tempRegistro.put("ubicacion", this._ubicacion);
+				this._tempRegistro.put("direccion", this._direccion);
+				this._tempRegistro.put("clase_servicio", this._claseServicio);
+				this._tempRegistro.put("estrato", this._estrato);
+				this._tempRegistro.put("id_nodo", this._nodo);
+				this._tempRegistro.put("ruta", "1");
+				this._tempRegistro.put("estado_cuenta", "ACTIVA");
+				this._tempRegistro.put("pda", this._NPDA);
+				this._tempRegistro.put("estado", "P");
+				this._tempRegistro.put("observacion_trabajo", this._observacionTrabajo);
+				this._tempRegistro.put("observacion_pad", "AUTOGESTION");
+				this._tempRegistro.put("tipo", "C");
+				this._tempRegistro.put("municipio", this._municipio);
+				this._tempRegistro.put("codigo_apertura", this.generarContrasena(this._solicitud.substring(1, 5)));
+				this._tempRegistro.put("solicitud", "");
+				this._tempRegistro.put("clase_solicitud", "");
+				this._tempRegistro.put("tipo_solicitud", "");
+				this._tempRegistro.put("dependencia", "");
+				this._tempRegistro.put("tipo_accion", "");
+				this._tempRegistro.put("dependencia_asignada","");
+				this._tempRegistro.put("consecutivo_accion", this._consecutivo);
+				this._tempRegistro.put("fecha_ven", AutogestionDT.GetDateTimeHora());
+				this._tempRegistro.put("carga_contratada", this._carga);
+				this._tempRegistro.put("ciclo", this._ciclo);
+				this._tempRegistro.put("bodega", "1-SYPELC SOLICITUDES");		
+				return this.AutogestionSQL.InsertRegistro("amd_ordenes_trabajo", this._tempRegistro);
+			
+			}else{
+				this._tempRegistro.clear();
+				this._tempRegistro.put("id_orden", this._id_orden);
+				this._tempRegistro.put("cuenta", this._cuenta);
+				this._tempRegistro.put("propietario", this._propietario);
+				this._tempRegistro.put("ubicacion", this._ubicacion);
+				this._tempRegistro.put("direccion", this._direccion);
+				this._tempRegistro.put("clase_servicio", this._claseServicio);
+				this._tempRegistro.put("estrato", this._estrato);
+				this._tempRegistro.put("id_nodo", this._nodo);
+				this._tempRegistro.put("ruta", "1");
+				this._tempRegistro.put("estado_cuenta", "ACTIVA");
+				this._tempRegistro.put("pda", this._NPDA);
+				this._tempRegistro.put("estado", "P");
+				this._tempRegistro.put("observacion_trabajo", this._observacionTrabajo);
+				this._tempRegistro.put("observacion_pad", "AUTOGESTION");
+				this._tempRegistro.put("tipo", "C");
+				this._tempRegistro.put("municipio", this._municipio);
+				this._tempRegistro.put("codigo_apertura", this.generarContrasena(this._solicitud.substring(1, 5)));
+				this._tempRegistro.put("solicitud", this._solicitud);
+				this._tempRegistro.put("clase_solicitud", this._claseSolicitud);
+				this._tempRegistro.put("tipo_solicitud", this._tipoSolicitud);
+				this._tempRegistro.put("dependencia", this._dependencia);
+				this._tempRegistro.put("tipo_accion", this._tipoAccion);
+				this._tempRegistro.put("dependencia_asignada", "62020");
+				this._tempRegistro.put("consecutivo_accion", this._consecutivo);
+				this._tempRegistro.put("fecha_ven", AutogestionDT.GetDateTimeHora());
+				this._tempRegistro.put("carga_contratada", this._carga);
+				this._tempRegistro.put("ciclo", this._ciclo);
+				this._tempRegistro.put("bodega", "1-SYPELC SOLICITUDES");		
+				return this.AutogestionSQL.InsertRegistro("amd_ordenes_trabajo", this._tempRegistro);
+
+				}
+				
+			}
 	
 	
 	private boolean crearContadorClienteOrden(){
