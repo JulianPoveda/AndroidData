@@ -50,6 +50,7 @@ public class Form_Solicitudes extends Activity implements OnItemSelectedListener
 	private static int		CONFIRMACION_CERRAR_ORDEN	 = 3;
 	private static int 		CONFIRMACION_COD_APERTURA	 = 4;
 	private static int 		CONFIRMACION_TRASLADAR_ORDEN = 5;
+	private static int 		CONFIRMACION_ELIMINAR_DATOS	 = 6;
 	
 	private boolean enabledMenu = false;
 	
@@ -258,6 +259,13 @@ public class Form_Solicitudes extends Activity implements OnItemSelectedListener
 				}
 				return true;
 				
+			case R.id.EliminarDatosOrden:
+				if(this.FcnSolicitudes.getEstadoOrden(_txtOrden.getText().toString()).equals("E")){
+					DialogConfirmacion.putExtra("informacion", "Desea Eliminar Los Datos De La Orden "+ _txtOrden.getText().toString());
+					startActivityForResult(DialogConfirmacion, CONFIRMACION_ELIMINAR_DATOS);
+				}
+				return true;
+				
 			case R.id.EliminarAut:
 				if(FcnSolicitudes.getEstadoOrden(_txtOrden.getText().toString()).equals("P") && (FcnSolicitudes.isAutogestion(_txtOrden.getText().toString()))){
 					String _id_nodo= SolicitudesSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "id_nodo", "id_orden='"+_txtOrden.getText().toString()+"'");
@@ -323,6 +331,14 @@ public class Form_Solicitudes extends Activity implements OnItemSelectedListener
 				k.putExtra("FolderAplicacion", Environment.getExternalStorageDirectory() + File.separator + "EMSA");
 				startActivity(k);
 			}
+		}else if(resultCode == RESULT_OK && requestCode == CONFIRMACION_ELIMINAR_DATOS){
+			if(data.getExtras().getBoolean("accion")){
+				this.FcnSolicitudes.EliminarDatosOrden(	this._txtOrden.getText().toString(), 
+														this._txtCuenta.getText().toString(), 
+														this.FcnSolicitudes.getNodo(this._txtOrden.getText().toString()));
+				this.FcnSolicitudes.setEstadoOrden(this._txtOrden.getText().toString(), "P");
+				this.CargarOrdenesTrabajo();
+			}			
 		}else if(resultCode == RESULT_OK && requestCode == CONFIRMACION_CERRAR_ORDEN){
 			if(data.getExtras().getBoolean("accion")){
 				_tempRegistro.clear();

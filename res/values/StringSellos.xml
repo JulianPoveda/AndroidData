@@ -9,5 +9,11 @@
 <string name="SellosBtnRegistrar">Registrar Sello</string>
 <string name="SellosTxtEmpty"></string>
 <string name="SellosBtnEliminar">Eliminar Sello</string>
+<string name="SellosColumnTipoIngreso">TIPO INGRESO</string>
+<string name="SellosColumnTipoSello">TIPO SELLO</string>
+<string name="SellosColumnSerie">SERIE</string>
+<string name="SellosColumnColor">COLOR</string>
+<string name="SellosColumnUbicacion">UBICACION</string>
+<string name="SellosColumnIrregularidad">IRREGULARIDAD</string>
     
 </resources>

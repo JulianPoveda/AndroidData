@@ -182,20 +182,22 @@ public class FormatosActas {
 					FcnZebra.WrLabel("Tipo:",this._infRegistro1.getAsString("conexion"),280, 0, 1);
 					FcnZebra.WrLabel("Lectura:",this._infRegistro1.getAsString("lectura"),10, 0.5, 0);
 					FcnZebra.WrLabel("Propietario:","EMSA",280, 0, 1);
-				}else if(this._infRegistro1.getAsString("tipo").equals("D")){
+				}else if(this._infRegistro1.getAsString("tipo").equals("D")||this._infRegistro1.getAsString("tipo").equals("DP")){
 					FcnZebra.WrLabel("Medidor:","INSTALADO",10, 0.5, 0);
 					FcnZebra.WrLabel("Serie:",this._infRegistro1.getAsString("serie"),280, 0, 1);
 					FcnZebra.WrLabel("Marca:",this._infRegistro1.getAsString("marca"),10, 0.5, 0);
 					FcnZebra.WrLabel("Tipo:",this._infRegistro1.getAsString("conexion"),280, 0, 1);
 					FcnZebra.WrLabel("Lectura:",this._infRegistro1.getAsString("lectura"),10, 0.5, 0);
-					FcnZebra.WrLabel("Propietario:","EMSA",280, 0, 1);
-				}else if(this._infRegistro1.getAsString("tipo").equals("DP")){
-					FcnZebra.WrLabel("Medidor:","INSTALADO PROPIETARIO",10, 0.5, 0);
-					FcnZebra.WrLabel("Serie:",this._infRegistro1.getAsString("serie"),280, 0, 1);
-					FcnZebra.WrLabel("Marca:",this._infRegistro1.getAsString("marca"),10, 0.5, 0);
-					FcnZebra.WrLabel("Tipo:",this._infRegistro1.getAsString("conexion"),280, 0, 1);
-					FcnZebra.WrLabel("Lectura:",this._infRegistro1.getAsString("lectura"),10, 0.5, 0);
-					FcnZebra.WrLabel("Propietario:","Usuario",280, 0, 1);
+					//Este if se implemento para realizar el cruce directamente con la tabla amd_param_material_usuario, el cual contiene los codigos
+					//de materiales que son de propiedad de usuario.
+					if(this.ImpSQL.ExistRegistros(	"amd_param_material_usuario", 
+													"codigo='"+this.ImpSQL.StrSelectShieldWhere("amd_bodega_contadores", 
+																								"codigo_elemento", 
+																								"serie='"+this._infRegistro1.getAsString("serie")+"' AND marca='"+this._infRegistro1.getAsString("marca")+"'")+"'")){
+						FcnZebra.WrLabel("Propietario:","Usuario",280, 0, 1);
+					}else{
+						FcnZebra.WrLabel("Propietario:","EMSA",280, 0, 1);
+					}					
 				}
 			}
 		}else{

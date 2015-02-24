@@ -57,6 +57,13 @@ public class SQLite {
 			
 			db.execSQL("INSERT INTO amd_usuarios('login','password','perfil','documento','nombre') VALUES ('adm','perdidas','A','0','Administrador Sistema')");
 			
+			
+			db.execSQL("CREATE TABLE amd_param_material_usuario( codigo 		VARCHAR(50) NOT NULL PRIMARY KEY," +
+																"descripcion 	VARCHAR(255) NOT NULL);");
+			
+			db.execSQL("INSERT INTO amd_param_material_usuario(codigo,descripcion) VALUES('10051','Medidor Suministrado Por El Usuario');");
+						
+			
 			//Tabla con los parametros del sistema
 			db.execSQL("CREATE TABLE db_parametros (item TEXT PRIMARY KEY, valor TEXT NOT NULL, nivel INTEGER NOT NULL)");				
 			db.execSQL("INSERT INTO db_parametros (item,valor,nivel) VALUES ('servidor','http://190.93.133.87',0) ");
@@ -65,7 +72,7 @@ public class SQLite {
 			db.execSQL("INSERT INTO db_parametros (item,valor,nivel) VALUES ('web_service','AndroidWS.php?wsdl',0)");
 			db.execSQL("INSERT INTO db_parametros (item,valor,nivel) VALUES ('nombre_tecnico','sin_asignar',1)");
 			db.execSQL("INSERT INTO db_parametros (item,valor,nivel) VALUES ('impresora','sin asignar',1)");
-			db.execSQL("INSERT INTO db_parametros (item,valor,nivel) VALUES ('version','1.7',0)");
+			db.execSQL("INSERT INTO db_parametros (item,valor,nivel) VALUES ('version','1.8',0)");
 			
 			//Tabla con las informacion de las coordenadas GPS
 			db.execSQL("CREATE TABLE db_gps(id_serial	INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -1181,12 +1188,14 @@ public class SQLite {
 
 		@Override
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-			db.execSQL("UPDATE db_parametros SET valor = 'Sin Actualizar' WHERE item = 'version'");
+			db.execSQL("UPDATE db_parametros SET valor = '1.8' WHERE item = 'version'");
 			
-			/*db.execSQL(	"CREATE TRIGGER tg_fecha_revision AFTER INSERT ON amd_actas FOR EACH ROW BEGIN " +
-						"	UPDATE amd_actas SET fecha_revision=datetime('now','localtime') WHERE id_orden = NEW.id_orden;" +
-						"END;");*/
-			
+			db.execSQL(	"CREATE TABLE amd_param_material_usuario( codigo 		VARCHAR(50) NOT NULL PRIMARY KEY," +
+																" descripcion 	VARCHAR(255) NOT NULL);");
+
+			db.execSQL("INSERT INTO amd_param_material_usuario(codigo,descripcion) VALUES('10051','Medidor Suministrado Por El Usuario');");
+
+		
 			/*db.execSQL("CREATE VIEW upload_nodos_exp AS" +
 					"	SELECT 	b.id_acta, a.id_orden,b.id_revision, b.codigo_trabajo, b.nombre_enterado, b.cedula_enterado, b.evento, b.tipo_enterado, b.fecha_revision, u.login, b.fecha_ins, b.cedula_testigo, b.nombre_testigo" +
 					"	FROM	amd_ordenes_trabajo AS a" +

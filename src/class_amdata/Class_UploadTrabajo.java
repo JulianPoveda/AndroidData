@@ -59,37 +59,34 @@ public class Class_UploadTrabajo {
 	  return _Ordenes;
   }
   
-  public void DescargarActas(String PDA, ArrayList<String> ordenes){
-	  
+  public void DescargarActas(String PDA, ArrayList<String> ordenes){	  
 		_OrdenesS=ordenes;
-				this.InformacionCarga.clear();
-				//Incio archivo
-				StringSQL="INICIO ARCHIVO" + "&ENT&";
-				this.InformacionCarga.add(StringSQL);
+		this.InformacionCarga.clear();
+		//Incio archivo
+		StringSQL="INICIO ARCHIVO" + "&ENT&";
+		this.InformacionCarga.add(StringSQL);
 				
-				//se consulta la vista con las ordenes seleccionadas 
-				for(int j=0; j<this._OrdenesS.size();j++){
-				this._tempTabla	= this.UploadSQL.SelectData("upload_nodos_exp", "id_acta, id_orden,id_revision, codigo_trabajo, nombre_enterado, cedula_enterado, evento, tipo_enterado, fecha_revision, login, fecha_ins, cedula_testigo, nombre_testigo","id_orden='"+this._OrdenesS.get(j)+"'");
-				for(int i=0; i<this._tempTabla.size();i++){
-					this._tempRegistro = this._tempTabla.get(i);
-						  this.InformacionCarga.add("INSERT INTO SGD_ACTAS_PDA VALUES "+"('"+this._tempRegistro.getAsString("id_acta")+"','"+this._tempRegistro.getAsString("id_orden")+"','"+this._tempRegistro.getAsString("id_revision")+"','"
+		//se consulta la vista con las ordenes seleccionadas 
+		for(int j=0; j<this._OrdenesS.size();j++){
+			this._tempTabla	= this.UploadSQL.SelectData("upload_nodos_exp", "id_acta, id_orden,id_revision, codigo_trabajo, nombre_enterado, cedula_enterado, evento, tipo_enterado, fecha_revision, login, fecha_ins, cedula_testigo, nombre_testigo","id_orden='"+this._OrdenesS.get(j)+"'");
+			for(int i=0; i<this._tempTabla.size();i++){
+				this._tempRegistro = this._tempTabla.get(i);
+				this.InformacionCarga.add("INSERT INTO SGD_ACTAS_PDA VALUES "+"('"+this._tempRegistro.getAsString("id_acta")+"','"+this._tempRegistro.getAsString("id_orden")+"','"+this._tempRegistro.getAsString("id_revision")+"','"
 									+this._tempRegistro.getAsString("codigo_trabajo")+"','"+this._tempRegistro.getAsString("cedula_enterado")+"','"+this._tempRegistro.getAsString("nombre_enterado")+"','"
 									+this._tempRegistro.getAsString("id_orden")+"','"+this._tempRegistro.getAsString("tipo_enterado")+"','"+this._tempRegistro.getAsString("fecha_revision")+"','"
 									+this._tempRegistro.getAsString("usuario_ins")+"','"+this._tempRegistro.getAsString("fecha_ins")+"','"+this._tempRegistro.getAsString("cedula_testigo")+"','"
 									+this._tempRegistro.getAsString("nombre_testigo")+"','"+_NPDA+"','"+this._tempRegistro.getAsString("1")+"','"+this._tempRegistro.getAsString("@")+"')"+";"+"&ENT&");
 					  
-				}
 			}
+		}
 				
-				this.InformacionCarga.add("FIN ARCHIVO");
-				int tam=this.InformacionCarga.size();
-				Archivos cmd = new Archivos(contextU,FolderAplicacion,tam);
-				String listString = "";
-				for (String s : InformacionCarga)
-				{
-				    listString += s;
-				}
-				cmd.DoFile(FolderAplicacion,"SGD_ACTAS_PDA",listString);
+		this.InformacionCarga.add("FIN ARCHIVO");
+		int tam=this.InformacionCarga.size();
+		Archivos cmd = new Archivos(contextU,FolderAplicacion,tam);
+		String listString = "";
+		for (String s : InformacionCarga){
+			listString += s;
+		}
+		cmd.DoFile(FolderAplicacion,"SGD_ACTAS_PDA",listString);
 	}
-
 }

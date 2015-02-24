@@ -51,7 +51,7 @@ public class UploadTrabajo extends Activity {
 		this.FolderAplicacion= bundle.getString("FolderAplicacion");
 		UploadSQL	= new SQLite(this,FolderAplicacion);
 		
-		_lstPrueba=(ListView)findViewById(R.id.listView1);
+		_lstPrueba=(ListView)findViewById(R.id.SellosLstSellos);
 		adapter = new UploadAdapter(UploadTrabajo.this, data);
 		
 		if (savedInstanceState == null){

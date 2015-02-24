@@ -9,20 +9,26 @@ import dialogos.DialogSingleTxt;
 import miscelanea.SQLite;
 import miscelanea.Tablas;
 import miscelanea.Util;
+import adaptador_rows.AdaptadorSixItems;
+import adaptador_rows.DetalleSixItems;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -31,18 +37,15 @@ import android.widget.AdapterView.OnItemSelectedListener;
 
 public class Form_Sellos extends Activity implements OnClickListener, OnItemSelectedListener{
 	private static int 		CONFIRM_SELLOS = 1;
-	Intent 					DialogoSimple; 
+	private Intent 			DialogoSimple; 
 	
-	SQLite 				SellosSQL;
-	Util   				SellosUtil;
-	Tablas				GraphSellosTabla;
 	
-	private Class_Sellos FcnSellos;
-	
-	//String CamposDialogoSellos[] = {"Serie", "-1","Confirmacion de Sellos"};
-	
-	private TableLayout		TablaSellos;
-	private LinearLayout 	FilaTablaSellos;
+	private SQLite 			SellosSQL;
+	private Util   			SellosUtil;
+	private Class_Sellos 	FcnSellos;
+		
+	private AdaptadorSixItems			AdaptadorListadoSellos;
+	private ArrayList<DetalleSixItems> 	ArrayListadoSellos = new ArrayList<DetalleSixItems>();
 	
 	private String 	NombreUsuario	= "";
 	private String  CedulaUsuario	= "";
@@ -50,6 +53,8 @@ public class Form_Sellos extends Activity implements OnClickListener, OnItemSele
 	private String 	OrdenTrabajo 	= "";
 	private String 	CuentaCliente 	= "";
 	private String 	FolderAplicacion= "";
+	
+	private ContentValues SelloSeleccionado	= new ContentValues(); 
 	
 	ContentValues 			_tempRegistro 	= new ContentValues();
 	ArrayList<ContentValues>_tempTabla 		= new ArrayList<ContentValues>();	
@@ -71,8 +76,9 @@ public class Form_Sellos extends Activity implements OnClickListener, OnItemSele
 	
 	EditText	_txtSerie;
 	TextView	_lblEstado;
+	ListView	_lstSellos;
 	Spinner 	_cmbTipoMovimiento, _cmbTipoSello, _cmbUbicacion, _cmbColor, _cmbEstado;
-	Button		_btnRegistrarSello, _btnEliminarSello;
+	Button		_btnRegistrarSello;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -102,8 +108,9 @@ public class Form_Sellos extends Activity implements OnClickListener, OnItemSele
 		_cmbColor			= (Spinner) findViewById(R.id.SellosCmbColor);
 		_cmbEstado			= (Spinner) findViewById(R.id.SellosCmbEstado);
 		
+		_lstSellos			= (ListView) findViewById(R.id.SellosLstSellos);
+		
 		_btnRegistrarSello 	= (Button) findViewById(R.id.SellosBtnRegistrar);
-		_btnEliminarSello	= (Button) findViewById(R.id.SellosBtnEliminar);
 		
 		AdaptadorTipoMovimiento = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,_strTipoMovimiento);
 		_cmbTipoMovimiento.setAdapter(AdaptadorTipoMovimiento);
@@ -125,19 +132,56 @@ public class Form_Sellos extends Activity implements OnClickListener, OnItemSele
 		AdaptadorColor 	= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, strColor); 
 		_cmbColor.setAdapter(AdaptadorColor);
 		
-		
 		AdaptadorEstado 		= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,_strEstado);
 		_cmbEstado.setAdapter(AdaptadorEstado);
 		
-		GraphSellosTabla= new Tablas(this, "tipo_ingreso,tipo_sello,serie,color,ubicacion,irregularidad", "165,165,165,165,165,415", 1, "#74BBEE", "#A9CFEA" ,"#EE7474");
-		FilaTablaSellos	= (LinearLayout) findViewById(R.id.TablaSellos);
-		
 		this.VerSellosRegistrados();
-		_btnEliminarSello.setOnClickListener(this);
-		_btnRegistrarSello.setOnClickListener(this);
-		_cmbTipoMovimiento.setOnItemSelectedListener(this);		
-	
+		
+		registerForContextMenu(this._lstSellos);
+		//this._lstSellos.setOnItemClickListener(this);
+		this._btnRegistrarSello.setOnClickListener(this);
+		this._cmbTipoMovimiento.setOnItemSelectedListener(this);	
 	}
+	
+	/**Funciones para el control del menu contextual del listview que muestra las ordenes de trabajo**/
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
+        //this.ruta_seleccionada = arrayListadoRutas.get(info.position).getCodigoRuta();
+        this.SelloSeleccionado.clear();
+        this.SelloSeleccionado.put("tipo_ingreso",this.ArrayListadoSellos.get(info.position).getItem1());
+        this.SelloSeleccionado.put("tipo_sello",this.ArrayListadoSellos.get(info.position).getItem2());
+        this.SelloSeleccionado.put("serie",this.ArrayListadoSellos.get(info.position).getItem3());
+        this.SelloSeleccionado.put("color",this.ArrayListadoSellos.get(info.position).getItem4());
+        this.SelloSeleccionado.put("ubicacion",this.ArrayListadoSellos.get(info.position).getItem5());
+        this.SelloSeleccionado.put("irregularidad",this.ArrayListadoSellos.get(info.position).getItem6());
+                
+        switch(v.getId()){
+            case R.id.SellosLstSellos:
+                menu.setHeaderTitle("Sello " + this.SelloSeleccionado.getAsString("serie")+" \nTipo "+this.SelloSeleccionado.getAsString("tipo_sello")+" \nColor "+this.SelloSeleccionado.getAsString("color"));
+                super.onCreateContextMenu(menu, v, menuInfo);
+                MenuInflater inflater = getMenuInflater();
+                inflater.inflate(R.menu.context_menu_sellos, menu);
+                break;
+        }
+    }
+    
+    
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.SellosCtxEliminar:
+                if(this.FcnSellos.eliminarSello(this.SelloSeleccionado.getAsString("tipo_ingreso"), 
+                								this.SelloSeleccionado.getAsString("serie"))){
+                	this.VerSellosRegistrados();
+                }
+                return true;
+
+            default:
+                return super.onContextItemSelected(item);
+        }
+    }
+
 	
 	
 	@Override
@@ -299,11 +343,7 @@ public class Form_Sellos extends Activity implements OnClickListener, OnItemSele
 		        startActivityForResult(DialogoSimple, CONFIRM_SELLOS);
 				break;
 				
-			case R.id.SellosBtnEliminar:
-				if(!this.FcnSellos.eliminarSello(_cmbTipoMovimiento.getSelectedItem().toString(), _txtSerie.getText().toString())){
-					Toast.makeText(getApplicationContext(),"Error al tratar de eliminar el sello.", Toast.LENGTH_SHORT).show();
-				}
-				this.VerSellosRegistrados();
+			default:
 				break;
 		}		
 	}
@@ -326,8 +366,26 @@ public class Form_Sellos extends Activity implements OnClickListener, OnItemSele
     }
 	
 	private void VerSellosRegistrados(){
-		TablaSellos 	= GraphSellosTabla.CuerpoTabla(FcnSellos.getSellosRegistrados());
-		FilaTablaSellos.removeAllViews();
-		FilaTablaSellos.addView(TablaSellos);
+		this.ArrayListadoSellos.clear();
+		this._tempTabla = this.FcnSellos.getSellosRegistrados();
+		for(int i=0;i<this._tempTabla.size();i++){
+			this._tempRegistro = this._tempTabla.get(i);
+			this.ArrayListadoSellos.add(new DetalleSixItems(this._tempRegistro.getAsString("tipo_ingreso"),
+															this._tempRegistro.getAsString("tipo_sello"),
+															this._tempRegistro.getAsString("serie"),
+															this._tempRegistro.getAsString("color"),
+															this._tempRegistro.getAsString("ubicacion"),
+															this._tempRegistro.getAsString("irregularidad")));
+		}
+		this.AdaptadorListadoSellos = new AdaptadorSixItems(Form_Sellos.this, ArrayListadoSellos);
+		this._lstSellos.setAdapter(this.AdaptadorListadoSellos);
+		this.AdaptadorListadoSellos.notifyDataSetChanged();
 	}
+	
+
+	/*@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+		// TODO Auto-generated method stub
+		
+	}*/
 }

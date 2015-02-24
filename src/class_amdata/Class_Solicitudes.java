@@ -12,6 +12,7 @@ public class Class_Solicitudes {
 	private String  _folderSolicitudes;  
 	private SQLite 	SolicitudesSQL; 
 	
+	private ContentValues			_tempRegistro	= new ContentValues();
 	private ArrayList<ContentValues>_tempTabla		= new ArrayList<ContentValues>();
 	//private ContentValues			_tempRegistro	= new ContentValues();
 	
@@ -58,6 +59,45 @@ public class Class_Solicitudes {
 		}	
 		return _retorno;
 	}
+	
+	
+	/**********************Funcion para eliminar la informacion de la orden y volver a estado P********************/
+	public void EliminarDatosOrden(String _orden, String _cuenta, String _nodo){
+		this.SolicitudesSQL.DeleteRegistro("amd_actas", "id_orden='"+_orden+"'");
+		this.SolicitudesSQL.DeleteRegistro("amd_acometida", "id_orden='"+_orden+"'");
+		this.SolicitudesSQL.DeleteRegistro("amd_borrar_orden", "id_orden='"+_orden+"'");
+		this.SolicitudesSQL.DeleteRegistro("amd_cambios_contadores", "id_orden='"+_orden+"'");
+		this.SolicitudesSQL.DeleteRegistro("amd_censo_carga", "id_orden='"+_orden+"'");
+		this.SolicitudesSQL.DeleteRegistro("amd_consumos_orden", "id_orden='"+_orden+"'");
+		this.SolicitudesSQL.DeleteRegistro("amd_datos_tranfor", "id_orden='"+_orden+"'");
+		this.SolicitudesSQL.DeleteRegistro("amd_impresiones_inf", "id_orden='"+_orden+"'");
+		this.SolicitudesSQL.DeleteRegistro("amd_inconsistencias", "id_orden='"+_orden+"'");
+		this.SolicitudesSQL.DeleteRegistro("amd_irregularidades", "id_orden='"+_orden+"'");
+		this.SolicitudesSQL.DeleteRegistro("amd_material_usuario", "id_orden='"+_orden+"'");
+		this.SolicitudesSQL.DeleteRegistro("amd_contador_cliente_orden", "cuenta='"+_cuenta+"'");
+		this.SolicitudesSQL.DeleteRegistro("amd_materiales_provisionales", "id_orden='"+_orden+"'");
+		this.SolicitudesSQL.DeleteRegistro("amd_materiales_trabajo_orden", "id_orden='"+_orden+"'");
+		this.SolicitudesSQL.DeleteRegistro("amd_medidor_encontrado", "id_orden='"+_orden+"'");
+		this.SolicitudesSQL.DeleteRegistro("amd_observacion_materiales", "id_orden='"+_orden+"'");
+		this.SolicitudesSQL.DeleteRegistro("param_trabajos_orden", "id_orden='"+_orden+"'");
+		this.SolicitudesSQL.DeleteRegistro("amd_nodo", "id_nodo='"+_nodo+"'");
+		this.SolicitudesSQL.DeleteRegistro("amd_pct_error", "id_orden='"+_orden+"'");
+		this.SolicitudesSQL.DeleteRegistro("amd_prueba_integracion", "id_orden='"+_orden+"'");
+		this.SolicitudesSQL.DeleteRegistro("amd_pruebas", "id_orden='"+_orden+"'");
+		this.SolicitudesSQL.DeleteRegistro("amd_sellos", "id_orden='"+_orden+"'");
+		this.SolicitudesSQL.DeleteRegistro("amd_servicio_nuevo", "id_orden='"+_orden+"'");		
+	}
+	
+	
+	/***************************Funcion para el cambio de estado de la solicitud*************************************/
+	public boolean setEstadoOrden(String _orden, String _estado){
+		this._tempRegistro.clear();
+		this._tempRegistro.put("estado", _estado);
+		return this.SolicitudesSQL.UpdateRegistro(	"amd_ordenes_trabajo", 
+													this._tempRegistro, 
+													"id_orden='"+_orden+"'");	
+	}
+	
 	
 	
 	/**Funcion que valida si es posible abrir una con el codigo de apertura, para esto no debe haber ninguno otra 

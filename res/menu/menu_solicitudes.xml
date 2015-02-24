@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-   	<item android:id="@+id/InicioOrden" android:title="Iniciar Orden"></item>
-    <item android:id="@+id/AperturaOrdenes" android:title="Apertura de Ordenes"></item><item android:id="@+id/CerrarOrden" android:title="Cerrar Orden"></item><item android:id="@+id/TrasladarOrden" android:title="Trasladar Orden"></item>
-    <item android:id="@+id/EliminarAut" android:title="Eliminar Autogestión"></item>
-    
-    
-    
-     
-
+   	<item 	android:id="@+id/InicioOrden" 
+   	    	android:title="Iniciar Orden"/>
+    <item 	android:id="@+id/AperturaOrdenes" 
+        	android:title="Apertura de Ordenes"/>
+    <item 	android:id="@+id/CerrarOrden" 
+        	android:title="Cerrar Orden"/>
+    <item 	android:id="@+id/TrasladarOrden" 
+        	android:title="Trasladar Orden"/>
+    <item 	android:id="@+id/EliminarAut" 
+        	android:title="Eliminar Autogestión"/>
+    <item 	android:id="@+id/EliminarDatosOrden"
+        	android:title="Eliminar Datos Orden"/>
 </menu>

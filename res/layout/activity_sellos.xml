@@ -2,173 +2,234 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="12"
     tools:context="${packageName}.${activityClass}" >
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1" >
-
+   	<LinearLayout 
+    	android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:weightSum="10"
+        android:orientation="horizontal">
+            
         <TextView
-            android:id="@+id/SellosLbltipoIngreso"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/SellosCmbTipoIngreso"
-            android:layout_alignParentLeft="true"
-            android:layout_alignTop="@+id/SellosCmbTipoIngreso"
-            android:gravity="right|center_vertical"
-            android:text="@string/SellosLblTipoIngreso"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <Spinner
-            android:id="@+id/SellosCmbTipoIngreso"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="24dp"
-            android:layout_toRightOf="@+id/SellosLbltipoIngreso" />
-
-        <TextView
-            android:id="@+id/SellosLblTipoSellos"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/SellosCmbTipoIngreso"
-            android:layout_alignTop="@+id/SellosCmbTipoIngreso"
-            android:layout_marginLeft="86dp"
-            android:layout_toRightOf="@+id/SellosCmbTipoIngreso"
-            android:gravity="right|center_vertical"
-            android:text="@string/SellosLblTipoSello"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <Spinner
-            android:id="@+id/SellosCmbTipoSello"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/SellosLblTipoSellos"
-            android:layout_alignTop="@+id/SellosLblTipoSellos"
-            android:layout_toRightOf="@+id/SellosLblTipoSellos" />
-
-        <Spinner
-            android:id="@+id/SellosCmbUbicacion"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_alignLeft="@+id/SellosCmbTipoIngreso"
-            android:layout_below="@+id/SellosCmbTipoIngreso"
-            android:layout_toLeftOf="@+id/SellosLblTipoSellos" />
-
-        <TextView
-            android:id="@+id/SellosLblUbicacion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/SellosCmbUbicacion"
-            android:layout_alignParentLeft="true"
-            android:layout_alignRight="@+id/SellosLbltipoIngreso"
-            android:layout_alignTop="@+id/SellosCmbUbicacion"
-            android:gravity="right|center_vertical"
-            android:text="@string/SellosLblUbicacion"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <Spinner
-            android:id="@+id/SellosCmbColor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/SellosCmbUbicacion"
-            android:layout_alignLeft="@+id/SellosCmbTipoSello"
-            android:layout_alignRight="@+id/SellosCmbTipoSello"
-            android:layout_alignTop="@+id/SellosCmbUbicacion" />
-
-        <TextView
-            android:id="@+id/SellosLblColor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/SellosCmbColor"
-            android:layout_alignLeft="@+id/SellosLblTipoSellos"
-            android:layout_alignRight="@+id/SellosLblTipoSellos"
-            android:layout_below="@+id/SellosLblTipoSellos"
-            android:gravity="right|center_vertical"
-            android:text="@string/SellosLblColor"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <Spinner
-            android:id="@+id/SellosCmbEstado"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_alignLeft="@+id/SellosCmbColor"
-            android:layout_alignRight="@+id/SellosCmbColor"
-            android:layout_below="@+id/SellosCmbColor" />
-
-        <TextView
-            android:id="@+id/SellosLblEstado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/SellosCmbEstado"
-            android:layout_alignLeft="@+id/SellosLblColor"
-            android:layout_alignRight="@+id/SellosLblColor"
-            android:layout_alignTop="@+id/SellosCmbEstado"
-            android:gravity="right|center_vertical"
-            android:text="@string/SellosLblEstado"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
-            android:id="@+id/SellosLblSerie"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/SellosLblEstado"
-            android:layout_alignParentLeft="true"
-            android:layout_alignRight="@+id/SellosLblUbicacion"
-            android:layout_below="@+id/SellosLblUbicacion"
-            android:gravity="right|center_vertical"
-            android:text="@string/SellosLblSerie"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <EditText
-            android:id="@+id/SellosTxtSerie"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/SellosLblSerie"
-            android:layout_alignRight="@+id/SellosCmbUbicacion"
-            android:layout_toRightOf="@+id/SellosLblSerie"
-            android:ems="10"
-            android:inputType="numberPassword" >
-
-            <requestFocus />
-        </EditText>
-
-        <Button
-            android:id="@+id/SellosBtnRegistrar"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/SellosTxtSerie"
-            android:layout_marginRight="27dp"
-            android:layout_marginTop="22dp"
-            android:layout_toLeftOf="@+id/SellosLblEstado"
-            android:text="@string/SellosBtnRegistrar" />
-
-        <Button
-            android:id="@+id/SellosBtnEliminar"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/SellosBtnRegistrar"
-            android:layout_alignBottom="@+id/SellosBtnRegistrar"
-            android:layout_alignLeft="@+id/SellosLblEstado"
-            android:text="@string/SellosBtnEliminar" />
-
-        <ScrollView
-            android:id="@+id/scrollView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/SellosBtnRegistrar" >
-
-            <TableLayout
-                android:id="@+id/TablaSellos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" >
-            </TableLayout>
-        </ScrollView>
-		         
-    </RelativeLayout>
-
+	  		android:id="@+id/SellosLbltipoIngreso"
+	    	android:layout_height="match_parent"
+	      	android:layout_width="0dp"
+	      	android:layout_weight="2"
+	     	android:gravity="right|center_vertical"
+	        android:text="@string/SellosLblTipoIngreso"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+	 	<Spinner
+	   		android:id="@+id/SellosCmbTipoIngreso"
+	        android:layout_width="0dp"
+	        android:layout_height="match_parent"
+	        android:layout_weight="3" />
+	
+	  	<TextView
+			android:id="@+id/SellosLblTipoSellos"
+	       	android:layout_width="0dp"
+	       	android:layout_height="match_parent"
+	       	android:layout_weight="2"
+	        android:gravity="right|center_vertical"
+	        android:text="@string/SellosLblTipoSello"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+	    <Spinner
+	     	android:id="@+id/SellosCmbTipoSello"
+	        android:layout_width="0dp"
+	        android:layout_height="match_parent"
+	        android:layout_weight="3" />            
+ 	</LinearLayout>
+        
+   	
+	<LinearLayout 
+     	android:layout_width="match_parent"
+        android:layout_height="0dp"
+       	android:layout_weight="1"
+       	android:orientation="horizontal"
+       	android:weightSum="10">
+	  	
+	    <TextView
+	    	android:id="@+id/SellosLblUbicacion"
+	    	android:layout_height="match_parent"
+	        android:layout_width="0dp"
+	    	android:layout_weight="2"
+	        android:gravity="right|center_vertical"
+	        android:text="@string/SellosLblUbicacion"
+	       	android:textAppearance="?android:attr/textAppearanceLarge" />
+	    
+		<Spinner
+	    	android:id="@+id/SellosCmbUbicacion"
+	    	android:layout_height="match_parent"
+	        android:layout_width="0dp"
+	        android:layout_weight="3" />
+		
+		 <TextView
+	            android:id="@+id/SellosLblColor"
+	            android:layout_height="match_parent"
+	            android:layout_width="0dp"
+	            android:layout_weight="2"
+	            android:gravity="right|center_vertical"
+	            android:text="@string/SellosLblColor"
+	            android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+	   	<Spinner
+	  		android:id="@+id/SellosCmbColor"
+	        android:layout_height="match_parent"
+	    	android:layout_width="0dp"
+	    	android:layout_weight="3" />
+	</LinearLayout>
+		
+	<LinearLayout 
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:weightSum="10"
+		android:orientation="horizontal">
+		   
+	    <TextView
+	   		android:id="@+id/SellosLblEstado"
+	        android:layout_height="match_parent"
+	        android:layout_width="0dp"
+	        android:layout_weight="2"
+			android:gravity="right|center_vertical"
+	        android:text="@string/SellosLblEstado"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	    
+		<Spinner
+	    	android:id="@+id/SellosCmbEstado"
+	       	android:layout_height="match_parent"
+	       	android:layout_width="0dp"
+	       	android:layout_weight="3" />
+	
+	   	<TextView
+	  		android:id="@+id/SellosLblSerie"
+	        android:layout_height="match_parent"
+	        android:layout_width="0dp"
+	        android:layout_weight="2"
+	        android:gravity="center_vertical|right"
+	        android:text="@string/SellosLblSerie"
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+	  	<EditText
+	    	android:id="@+id/SellosTxtSerie"
+	        android:layout_height="match_parent"
+	        android:layout_width="0dp"
+	        android:layout_weight="3"
+	        android:ems="10"
+	        android:inputType="numberPassword" >
+	        <requestFocus />
+	   	</EditText>
+	</LinearLayout>
+        
+		
+	<LinearLayout 
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:weightSum="10"
+		android:orientation="horizontal"
+		android:gravity="center_vertical|center_horizontal">
+	  	
+		<Button
+	   		android:id="@+id/SellosBtnRegistrar"
+	        android:layout_height="match_parent"
+	        android:layout_width="0dp"
+	        android:layout_weight="3"
+	        android:text="@string/SellosBtnRegistrar" />
+	</LinearLayout>
+        
+	<LinearLayout 
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="8"
+		android:orientation="vertical"
+		android:weightSum="10">
+		
+	    <LinearLayout 
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_weight="1"
+			android:weightSum="13"
+			android:orientation="horizontal">
+	        
+			<TextView
+			    android:id="@+id/textView1"
+			    android:layout_width="0dp"
+			    android:layout_height="match_parent"
+			    android:layout_weight="2"
+			    android:gravity="center_vertical|center_horizontal"
+			    android:text="@string/SellosColumnTipoIngreso"
+			    android:textColor="#942323"
+			    android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+			<TextView
+			    android:id="@+id/textView2"
+			    android:layout_width="0dp"
+			    android:layout_height="match_parent"
+			    android:layout_weight="2"
+			    android:gravity="center_vertical|center_horizontal"
+			    android:text="@string/SellosColumnTipoSello"
+			    android:textColor="#942323"
+			    android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+			<TextView
+			    android:id="@+id/textView3"
+			    android:layout_width="0dp"
+			    android:layout_height="match_parent"
+			    android:layout_weight="2"
+			    android:gravity="center_vertical|center_horizontal"
+			    android:text="@string/SellosColumnSerie"
+			    android:textColor="#942323"
+			    android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+			<TextView
+			    android:id="@+id/textView4"
+			    android:layout_width="0dp"
+			    android:layout_height="match_parent"
+			    android:layout_weight="2"
+			    android:gravity="center_vertical|center_horizontal"
+			    android:text="@string/SellosColumnColor"
+			    android:textColor="#942323"
+			    android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+			<TextView
+			    android:id="@+id/textView5"
+			    android:layout_width="0dp"
+			    android:layout_height="match_parent"
+			    android:layout_weight="2"
+			    android:gravity="center_vertical|center_horizontal"
+			    android:text="@string/SellosColumnUbicacion"
+			    android:textColor="#942323"
+			    android:textAppearance="?android:attr/textAppearanceLarge" />
+	
+			<TextView
+			    android:id="@+id/textView6"
+			    android:layout_width="0dp"
+			    android:layout_height="match_parent"
+			    android:layout_weight="3"
+			    android:gravity="center_vertical|center_horizontal"
+			    android:text="@string/SellosColumnIrregularidad"
+			    android:textColor="#942323"
+			    android:textAppearance="?android:attr/textAppearanceLarge" />
+		</LinearLayout>
+		
+		<LinearLayout 
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_weight="9"
+			android:orientation="horizontal">
+			<ListView
+			    android:id="@+id/SellosLstSellos"
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:layout_weight="1" >
+			</ListView>
+		</LinearLayout>
+	</LinearLayout>   
+	
+	
 </LinearLayout>
