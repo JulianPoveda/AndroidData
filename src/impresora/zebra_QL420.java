@@ -223,4 +223,14 @@ public class zebra_QL420 {
 		this._lineaActual 	= this._margenSuperior;
 		this._lineaFinal 	= this._margenInferior;
 	}
+	
+	public void printerQRCode(String InfEtiqueta, int OffsetWrLabel, double SaltoLineaPre, double SaltoLineaPos){ 
+		this._lineaActual += this._altoFuente1 * SaltoLineaPre;
+	    
+	    this._infImpresora += "B QR " +OffsetWrLabel +" " +this._lineaActual + " M 2 U 4 \r\n";
+	    this._infImpresora += "MA,"+  InfEtiqueta +" \r\n";
+	    this._infImpresora += "ENDQR \r\n";
+	   
+	    this._lineaActual += this._altoFuente1 * SaltoLineaPos;
+	}
 }

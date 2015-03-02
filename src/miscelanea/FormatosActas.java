@@ -18,6 +18,11 @@ public class FormatosActas {
 	private Context 					context;
 	private String 						_folderAplicacion;
 	private ArrayList<ContentValues> 	_infTabla		= new ArrayList<ContentValues>();
+	private ArrayList<ContentValues> 	_infTabla1		= new ArrayList<ContentValues>();
+	private ArrayList<String>			_infoCodigoQR	= new ArrayList<String>();
+	private ArrayList<String>			_infoCodigoQRR	= new ArrayList<String>();
+	private ArrayList<String>			_materialInstalado	= new ArrayList<String>();
+	private ArrayList<String>			_materialRetirado	= new ArrayList<String>();
 	private ContentValues 				_infRegistro1	= new ContentValues();
 	private ContentValues				_infRegistro2	= new ContentValues();
 	private ContentValues				_infRegistro3	= new ContentValues();
@@ -580,7 +585,7 @@ public class FormatosActas {
 		FcnZebra.WrLabel("","Supervisor/Interventoria:________________________________________", 10, 0, 1);
 		
 		
-		//String nombreArchivo = DT.GetDateTimeHora();
+		//String nombreArchivo = DT.GetFecha();
 		if((_copiaSistema)&&((copiaImpresion==1)||(copiaImpresion==2))){
 			if(!this.ImpArchivos.ExistFolderOrFile(this._folderAplicacion+File.separator+ordenTrabajo)){
 				this.ImpArchivos.MakeDirectory(ordenTrabajo);
@@ -592,10 +597,131 @@ public class FormatosActas {
 			this._infRegistro1.put("id_impresion", num_impresion);
 			this.ImpSQL.UpdateRegistro("amd_impresiones_inf", this._infRegistro1, "id_orden='"+ordenTrabajo+"'");
 		}
+		
+		
+		
+		if(copiaImpresion==3){
+				String _fechaQR = DT.GetFecha();
+				String Info2=_fechaQR+"|"+ImpSQL.StrSelectShieldWhere("amd_param_sistema", "valor", "codigo='NPDA'")+"|"+ordenTrabajo+"|"+ImpSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "num_acta", "id_orden='"+ordenTrabajo+"'")+"|"+"I#";
+				this._materialInstalado = generarCodigoQRMI(ordenTrabajo);
+				for(int k=0;k<this._materialInstalado.size();k++){
+					Info2+=this._materialInstalado.get(k)+"@";
+				}
+				
+				String Info= _fechaQR+"|"+ImpSQL.StrSelectShieldWhere("amd_param_sistema", "valor", "codigo='NPDA'")+"|"+ordenTrabajo+"|"+ImpSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "num_acta", "id_orden='"+ordenTrabajo+"'")+"|"+"R#";
+				this._materialRetirado = generarCodigoQRMR(ordenTrabajo);
+				for(int k=0;k<this._materialRetirado.size();k++){
+					Info+=this._materialRetirado.get(k)+"@";
+				}
+				
+				String infoPrinterQRR = Info.substring(0, Info.length()-1);
+				FcnZebra.printerQRCode(infoPrinterQRR, 20, 4, 0);
+				
+				String infoPrinterQR = Info2.substring(0, Info2.length()-1);
+				FcnZebra.printerQRCode(infoPrinterQR, 300, 0, 15);
+			}
+		
 		MnBt.IntentPrint(this.Impresora,FcnZebra.getDoLabel());
 		FcnZebra.resetEtiqueta();
 	}
 	
+	/**********************************************************************************************************************************
+	 * 
+	 * @param ordenTrabajo
+	 *********************************************************************************************************************************/
+	
+	public ArrayList<String> generarCodigoQRMI(String ordenTrabajo){
+		
+		this._infTabla.clear();
+		this._infTabla1.clear();
+		this._infRegistro1.clear();
+		this._infRegistro2.clear();
+		
+		String[] arrayJoin 	= {"amd_materiales_trabajo_orden as b"};
+		String[] arrayOn	= {"a.codigo_material = b.id_material"};
+		
+		this._infTabla = ImpSQL.SelectNJoinLeftData("amd_param_materiales_seriado as a", "a.codigo_material,b.cantidad, a.seriado",arrayJoin,arrayOn, "b.id_orden='"+ordenTrabajo+"'");
+		
+		for(int i=0; i<this._infTabla.size();i++){
+			this._infRegistro1 = this._infTabla.get(i);
+				if(this._infRegistro1.getAsString("seriado").equals("SI") && this._infRegistro1.getAsString("codigo_material").equals("99999")){
+							this._infTabla1 = ImpSQL.SelectData("amd_sellos", "numero", "estado='INSTALADO' AND tipo='S-ROTOANCLA' and id_orden='"+ordenTrabajo+"'");
+							for (int j=0;j<this._infTabla1.size();j++){
+								this._infRegistro2 = this._infTabla1.get(j);
+								this._infoCodigoQR.add(this._infRegistro1.getAsString("codigo_material")+"|"+"1"+"|"+this._infRegistro2.getAsString("numero")+"|"+"D");								
+							}
+					
+				}else if(this._infRegistro1.getAsString("seriado").equals("SI")){
+							String numero = ImpSQL.StrSelectShieldWhere("amd_cambios_contadores","serie", "tipo='D' AND id_orden='"+ordenTrabajo+"'");
+							this._infoCodigoQR.add(this._infRegistro1.getAsString("codigo_material")+"|"+"1"+"|"+numero+"|"+"D");
+					
+						}else if(this._infRegistro1.getAsString("seriado").equals("NO")){
+							this._infoCodigoQR.add(this._infRegistro1.getAsString("codigo_material")+"|"+this._infRegistro1.getAsString("cantidad")+"|"+"0"+"|"+"D");
+							
+						}
+			}
+		if(ImpSQL.ExistRegistros("amd_cambios_contadores", "tipo='P' AND id_orden='"+ordenTrabajo+"'")){
+			String numeroM	 = ImpSQL.StrSelectShieldWhere("amd_cambios_contadores","serie", "tipo='P' AND id_orden='"+ordenTrabajo+"'");
+			String idMaterial= ImpSQL.StrSelectShieldWhere("amd_materiales_provisionales","elemento", "id_orden='"+ordenTrabajo+"'");
+			this._infoCodigoQR.add(idMaterial+"|"+"1"+"|"+numeroM+"|"+"P");
+		}
+		
+		if(ImpSQL.ExistRegistros("amd_sellos", "tipo='O-Sticker' AND id_orden='"+ordenTrabajo+"'")){
+			String numeroS	 = ImpSQL.StrSelectShieldWhere("amd_sellos","numero", "tipo='O-Sticker' AND id_orden='"+ordenTrabajo+"'");
+			this._infoCodigoQR.add("10013"+"|"+"1"+"|"+numeroS+"|"+"D");
+		}
+		
+		return this._infoCodigoQR; 		
+	}
+	
+	/**********************************************************************************************************************************
+	 * 
+	 * @param ordenTrabajo
+	 *********************************************************************************************************************************/
+	public ArrayList<String> generarCodigoQRMR(String ordenTrabajo){
+		this._infTabla.clear();
+		this._infTabla1.clear();
+		this._infRegistro1.clear();
+		this._infRegistro2.clear();
+		boolean codigo = false;
+		String[] arrayJoin 	= {"amd_cambios_contadores as b"};
+		String[] arrayOn	= {"a.marca=b.marca and a.tipo=b.cobro"};
+		
+		this._infTabla = ImpSQL.SelectData("amd_sellos", "numero", "estado='RETIRADO' AND id_orden='"+ordenTrabajo+"'");
+		for (int i=0;i<this._infTabla.size();i++){
+			this._infRegistro1 = this._infTabla.get(i);
+			this._infoCodigoQRR.add("99999"+"|"+"1"+"|"+this._infRegistro1.getAsString("numero")+"|"+"EC");								
+		}
+		
+		if(ImpSQL.ExistRegistros("amd_cambios_contadores", "tipo='R' AND id_orden='"+ordenTrabajo+"'")){
+			String numeroM	 = ImpSQL.StrSelectShieldWhere("amd_cambios_contadores","serie", "tipo='R' AND id_orden='"+ordenTrabajo+"'");
+			if(numeroM.equals("-1")){
+				this._infoCodigoQRR.add("");
+			}
+			else{
+				this._infTabla1 = ImpSQL.SelectNJoinLeftData("amd_param_tipo_medidor as a", "a.id_material",arrayJoin,arrayOn, "b.id_orden='"+ordenTrabajo+"' and b.tipo='R'");
+				for (int i=0;i<this._infTabla1.size();i++){
+					this._infRegistro2 = this._infTabla1.get(i);
+					codigo= true;
+				}
+				if(codigo){
+					this._infoCodigoQRR.add(this._infRegistro2.getAsString("id_material")+"|"+"1"+"|"+numeroM+"|"+"EC");
+					
+				}
+				else{this._infoCodigoQRR.add("10051"+"|"+"1"+"|"+numeroM+"|"+"EC");}
+			}
+			
+		}
+		this._infTabla.clear();
+		this._infRegistro1.clear();
+		this._infTabla = ImpSQL.SelectData("amd_material_usuario", "cantidad", "id_orden='"+ordenTrabajo+"'");
+		for (int i=0;i<this._infTabla.size();i++){
+			this._infRegistro1 = this._infTabla.get(i);
+			this._infoCodigoQRR.add("11111"+"|"+this._infRegistro1.getAsString("cantidad")+"|"+"0"+"|"+"EA");								
+		}
+		
+		return this._infoCodigoQRR;
+	}
 	
 	/**********************************************************************************************************************************
 	 * 

@@ -24,7 +24,11 @@ import android.util.Log;
 public class SQLite {
 	private static Archivos ArchSQL;	
 	private static String N_BD = null; 	
+<<<<<<< HEAD
+	private static final int VERSION_BD = 6;																		
+=======
 	private static final int VERSION_BD = 5;																		
+>>>>>>> origin/master
 	
 	private BDHelper nHelper;
 	private Context nContexto;
@@ -149,6 +153,167 @@ public class SQLite {
 			db.execSQL("INSERT INTO amd_items_pago  (item,descripcion) VALUES (39,'Toma de lectura de cliente segÃºn alcance del numeral 5.23.1')");
 			db.execSQL("INSERT INTO amd_items_pago  (item,descripcion) VALUES (40,'Toma de lectura de clientes concentrados segÃºn alcance del numeral 5.23.2')");			
 			
+			db.execSQL("CREATE TABLE amd_param_materiales_seriado( id_serial INTEGER PRIMARY KEY AUTOINCREMENT,codigo_material INTEGER NOT NULL, descripcion 	VARCHAR(255) NOT NULL, unidad VARCHAR(50) NOT NULL, seriado VARCHAR(50) NOT NULL);");
+			
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('1','7513','CODO EMT 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('2','7806','CODO EMT 3/4','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('3','8405','CONECTOR DE DERIV CUÑA TIPO II SIMETRICO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('4','7796','ESTRIBO 2 AWG CON CONEC  CUÐA TIPO VII','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('5','7610','TENSORES PARA ACOMETIDA','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('6','7781','TERMINAL EMT 3/4 PULGADA','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('7','7647','TRANSFORMADORES TIPO EXT. CL1 200/5','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('8','8064','TRANSFORMADOR TIPO EXT. CL 1 300/5','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('9','7536','FUSIBLE TIPO K DE 1 AMPERIO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('10','7537','FUSIBLE TIPO K DE 2 AMPERIO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('11','7538','FUSIBLE TIPO K DE 3 AMPERIO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('12','7539','FUSIBLE TIPO K DE 5 AMPERIO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('13','7540','FUSIBLE TIPO K DE 7 AMPERIO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('14','7546','TUBO E.M.T. 1 X 3 MTS','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('15','7551','TUBO CONDUIT GALVANIZADO 3/4 X 3 MTS','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('16','7514','UNION EMT 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('17','7809','UNION EMT 3/4','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('18','8309','CABLE CONCENTRICO ALUMINIO 1 X 6+6 AWG','MT','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('19','10020','IVA_CODO EMT 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('20','8328','MED ELECTRONICO TRIFASICO ESTROM CLASE 1','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('21','10001','HEBILLAS PARA CINTA BAND-IT','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('22','10002','CINTA BAND-IT','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('23','10003','GRAPA ABRASADERA 3/4','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('24','10004','GRAPA ABRASADERA 1/2','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('25','10005','TORNILLO CON CHAZO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('26','10006','TORNILLO DRAYWALL 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('27','10007','TORNILLO DRAYWALL 1 1/2','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('28','10008','TORNILLO CON TUERCA','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('29','10009','ACTA DE MATERIALES','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('30','10010','ACTA DE REVISION E INSTALACION RUTINARIAS','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('31','10011','ACTA DE REVISION CLIENTES DESTACADOS Y MACRO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('32','10012','ACTA DE DIAGRAMAS','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('33','10013','JUEGO DE SELLOS PARA MEDIDORES RETIRADOS','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('34','10014','SELLO PARA MEDIDOR RETIRADO','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('35','10015','SELLO PARA LECTURA EN CAJA PLC','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('36','7534','TERMINALES MT 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('37','99999','SELLOS DE SEGURIDAD PARA MEDIDOR DE ENERGIA','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('38','8105','CABLE 8X12 APANTALLADO TENSION 120/208V','MT','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('39','8097','MEDIDOR MEGA IP MACROM. ELECTRO. TRIFAS.','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('40','8075','TRANSFORMADOR TIPO VENTANA 50/5 TIPO EXT 600V CL1','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('41','7786','TRANSFORMADOR DE CORRIENTE 100/5 TIPO EXT CL1','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('42','7789','MEDIDOR HOLLEY ELECTRONICO MONOFASICO','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('43','10021','IVA_UNION EMT 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('44','10022','IVA_TERMINALES MT 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('45','10023','IVA_FUSIBLE TIPO K DE 1 AMPERIO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('46','10024','IVA_FUSIBLE TIPO K DE 2 AMPERIO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('47','10025','IVA_FUSIBLE TIPO K DE 3 AMPERIO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('48','10026','IVA_FUSIBLE TIPO K DE 5 AMPERIO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('49','10027','IVA_FUSIBLE TIPO K DE 7 AMPERIO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('50','10028','IVA_TUBO E.M.T. 1 X 3 MTS','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('51','10029','IVA_TUBO CONDUIT GALVANIZADO 3/4 X 3 MTS','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('52','10030','IVA_TENSORES PARA ACOMETIDA','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('53','10031','IVA_TRANSFORMADORES TIPO EXT. CL1 200/5','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('54','10032','IVA_TERMINAL EMT 3/4 PULGADA','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('55','10033','IVA_TRANSFORMADOR DE CORRIENTE 100/5 TIPO EXT CL1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('56','10034','IVA_MEDIDORES DE INDUCCION MONOFASICOS','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('57','7903','CAJA MON. TRANSPARENTE PLANA MED. ELECTR','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('58','7794','CAJAS POLIFASICAS HERMETICAS','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('59','10035','IVA_CAJAS POLIFASICAS HERMETICAS','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('60','10036','IVA_ESTRIBO 2 AWG CON CONEC  CUÐA TIPO VII','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('61','10037','IVA_CODO EMT 3/4','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('62','10038','IVA_UNION EMT 3/4','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('63','10039','IVA_CAJA MON. TRANSPARENTE PLANA MED. ELECTR','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('64','10040','IVA_TRANSFORMADOR TIPO EXT. CL 1 300/5','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('65','10041','IVA_TRANSFORMADOR TIPO VENTANA 50/5 TIPO EXT 600V CL1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('66','10042','IVA_MEDIDOR MEGA IP MACROM. ELECTRO. TRIFAS.','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('67','10043','IVA_CABLE 8X12 APANTALLADO TENSION 120/208V,','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('68','10044','IVA_CABLE CONCENTRICO ALUMINIO 1 X 6+6 AWG','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('69','10045','IVA_MED ELECTRONICO TRIFASICO ESTROM CLASE 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('70','10046','IVA_CONECTOR DE DERIV CUÑA TIPO II SIMETRICO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('71','7785','TRANS. CORRIENTE 400/5 CLASE 1 TIPO EXT.','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('72','10050','IVA_MEDIDOR HOLLEY ELECTRONICO MONOFASICO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('73','8520','MEDIDOR MEGA IP MACROM. ELECTRO. TRIFAS.','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('74','8098','OJOS DE ACERO PARA TENSOR DE ACOMETIDA','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('75','10047','IVA_OJOS DE ACERO PARA TENSOR DE ACOMETIDA','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('76','7798','CABLE CONCENTRICO PARA ACOMETIDA 3X8+8','MT','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('77','10048','IVA_CABLE CONCENTRICO PARA ACOMETIDA 3X8+8','MT','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('78','10051','MEDIDOR SUMISTRADO POR USUARIO','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('79','8653','MEDIDOR ELEC TRIF TETRAF ELGAMA ACTIV','un','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('80','10049','IVA_CONECTOR TIPO B','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('81','8404','CONECTOR DE DERIV TIPO CUÑA UCD  B ASIMET','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('82','7799','CABLE CONCENTRICO PARA ACOMETIDA 2X8+8','MT','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('83','10052','IVA_CABLE CONCENTRICO PARA ACOMETIDA 2X8+8','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('84','8327','MED. ELECTRONICO BIFASICO ESTROM CLASE 1','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('85','10053','IVA_MED. ELECTRONICO BIFASICO ESTROM CLASE 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('86','10054','ACTA DE NOTIFICACION','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('87','7953','MEDIDOR OSAKI ANTIHURTO MONOFASICO ELECTRONICO','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('88','10055','IVA_MEDIDOR OSAKI ANTIHURTO MONOFASICO ELECTRONICO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('89','8642','CABLE CUADRUPLEX 3 X 1/0 + 2 AL 600 V','MT','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('90','10056','IVA_CABLE CUADRUPLEX 3 X 1/0 + 2 AL 600 V','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('91','8643','CABLE COBRE THW 1/0','MT','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('92','10057','IVA_CABLE COBRE THW 1/0','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('93','8644','CONECTOR PIERCING PARA CAJA BARRAJE','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('94','10058','IVA_CONECTOR PIERCING PARA CAJA BARRAJE','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('95','7808','CONECTORES BIMETALICOS 2 PERNOS 1/0','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('96','10059','IVA_CONECTORES BIMETALICOS 2 PERNOS 1/0','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('97','8063','TRANSFORMADOR DE CORR. TIPO EXT. 600/5','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('98','10060','IVA_TRANSFORMADOR DE CORR. TIPO EXT. 600/5','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('99','8062','TRANSFORMADORES DE COR. TIPO EXT. 800/5','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('100','10061','IVA_TRANSFORMADORES DE COR. TIPO EXT. 800/5','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('101','8645','MEDIDOR TRIFASICO 120 208 UV MEGA IP','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('102','10062','IVA_MEDIDOR TRIFASICO 120 -208 UV MEGA IP','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('103','7817','CAPACETE DE 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('104','10063','IVA_CAPACETE DE 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('105','7668','MEDIDOR METER MONOFASICO ELECTRO CL 1','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('106','10064','IVA_MEDIDOR METER MONOFASICO ELECTRO CL 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('107','7702','MEDIDOR ELECTRONICO BIFASICO MTE CLASE 2','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('108','6478','MEDIDOR ELGAMA TRIFASICO TETRAFILAR CL 1','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('109','10065','IVA_MEDIDOR ELGAMA TRIFASICO TETRAFILAR CL 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('110','7044','BLOQUES DE PRUEBA','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('111','10066','IVA_BLOQUES DE PRUEBA','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('112','8641','MEDIDOR ELSTER A 1800 ELECTRICO TRIFIFASICO CL 0.5','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('113','10067','IVA_MEDIDOR ELSTER A 1800 ELECTRICO TRIFIFASICO CL 0.5','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('114','7535','CORAZA AMERICANA DE 1 1/2','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('115','7544','CONECTOR CURVO DE 1 1/2','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('116','7545','CONECTOR RECTO 1 1/2','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('117','7803','CAJA METALICA TRAFOS DE CTE EN BAJA TENS','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('118','8648','GABINETE PARA MEDIDOR','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('119','8069','MEDIDOR PREPAGO BICUERPO MON 120V10 (80)A','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('120','8100','ALAMBRE TRENZADO 2X2N.20LDPE RLX 200','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('121','7542','CABLE DE POTENCIA 4X2 AWG 600 V. PVC','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('122','7797','CAJA MONOFASICA  POLICARBONATO TRANSPARE (cóncava)','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('123','7902','CAJA POLIFASICA MACROMEDIDORES CON LUPA','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('124','8649','MEDIDOR SCORPION LCD CALIBRADO MONOFASIC','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('125','7818','OJOS DE ALUMINIO PARA  TENSOR DE ACOMETI','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('126','8650','MODEM GPRS INALAMBRICO MARCA WIECH','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('127','7703','MEDIDOR ELECTRONICO TRIFASICO MTE CL 2','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('128','7394','CABLE DE CONTROL 7X16 ENCAUCHETADO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('129','5985','CAPACETE 3/4','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('130','8651','TRANS. DE CORRIENTE INT. 400/5 CLASE 1','un','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('131','8652','CABLE 7X16 SIN APANTALLAMIENTO','un','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('132','8066','TRANSFORMADOR CTE.TIPO INT.100/5 CL 0.5','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('133','7829','TC USO EXT 35 KV CL 0.5 RELA 10-20/5 AMP','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('134','8654','MEDIDOR ELSTER ANTIHURTO MONOFA ELECTRONI','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('135','8655','MEDIDOR HEXING PREPAGO MONOFASICO','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('136','8660','MEDIDOR ITROM ETHERNET ELECTR TRIFA','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('137','7515','TRANSFORMADOR DE CTE. TIPO INT 200/5','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('138','7821','TRANSF. DE CTE. TIPO EXTERIOR 200/5CL.05','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('139','8661','TRANSFORMADOR CTE VENT CL1  2000/5','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('140','8662','MEDIDOR ELSTER A 1800 ELECTRONICO TRIFIFASICO CL 02','UN','SI');");
+
+			db.execSQL(	"CREATE TABLE amd_param_tipo_medidor(id_serial INTEGER PRIMARY KEY AUTOINCREMENT,id_material INTEGER NOT NULL,marca VARCHAR(20) NOT NULL,tipo VARCHAR(20) NOT NULL)");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('1','7789','HOL','MB')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('2','10051','HOL','MB')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('3','8328','EST','T')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('4','7953','OSA','MB')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('5','8327','EST','B')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('6','8645','MEG','T')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('7','7668','MET','MB')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('8','7702','MET','B')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('9','8069','LANDIS','MB')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('10','8641','ELS','T')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('11','8649','SCO','MB')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('12','7703','MET','T')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('13','8653','ELG','T')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('14','8654','ELS','MB')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('15','8655','HEX','MB')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('16','8660','ITR','T')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('17','8662','ELS','T')");
 			
 			db.execSQL(	"CREATE TABLE amd_tipo_enterado(	id_serial   	INTEGER PRIMARY KEY AUTOINCREMENT,"
 														+ " descripcion		VARCHAR(255) UNIQUE NOT NULL)");
@@ -1190,10 +1355,348 @@ public class SQLite {
 		public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 			db.execSQL("UPDATE db_parametros SET valor = '1.8' WHERE item = 'version'");
 			
-			db.execSQL(	"CREATE TABLE amd_param_material_usuario( codigo 		VARCHAR(50) NOT NULL PRIMARY KEY," +
+			/*db.execSQL(	"CREATE TABLE amd_param_material_usuario( codigo 		VARCHAR(50) NOT NULL PRIMARY KEY," +
 																" descripcion 	VARCHAR(255) NOT NULL);");
 
+<<<<<<< HEAD
+			db.execSQL("INSERT INTO amd_param_material_usuario(codigo,descripcion) VALUES('10051','Medidor Suministrado Por El Usuario');");*/
+			
+			/*db.execSQL("CREATE TABLE amd_param_materiales_seriado( id_serial INTEGER PRIMARY KEY AUTOINCREMENT,codigo_material INTEGER NOT NULL, descripcion 	VARCHAR(255) NOT NULL, unidad VARCHAR(50) NOT NULL, seriado VARCHAR(50) NOT NULL);");
+			
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('1','7513','CODO EMT 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('2','7806','CODO EMT 3/4','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('3','8405','CONECTOR DE DERIV CUÑA TIPO II SIMETRICO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('4','7796','ESTRIBO 2 AWG CON CONEC  CUÐA TIPO VII','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('5','7610','TENSORES PARA ACOMETIDA','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('6','7781','TERMINAL EMT 3/4 PULGADA','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('7','7647','TRANSFORMADORES TIPO EXT. CL1 200/5','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('8','8064','TRANSFORMADOR TIPO EXT. CL 1 300/5','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('9','7536','FUSIBLE TIPO K DE 1 AMPERIO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('10','7537','FUSIBLE TIPO K DE 2 AMPERIO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('11','7538','FUSIBLE TIPO K DE 3 AMPERIO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('12','7539','FUSIBLE TIPO K DE 5 AMPERIO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('13','7540','FUSIBLE TIPO K DE 7 AMPERIO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('14','7546','TUBO E.M.T. 1 X 3 MTS','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('15','7551','TUBO CONDUIT GALVANIZADO 3/4 X 3 MTS','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('16','7514','UNION EMT 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('17','7809','UNION EMT 3/4','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('18','8309','CABLE CONCENTRICO ALUMINIO 1 X 6+6 AWG','MT','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('19','10020','IVA_CODO EMT 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('20','8328','MED ELECTRONICO TRIFASICO ESTROM CLASE 1','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('21','10001','HEBILLAS PARA CINTA BAND-IT','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('22','10002','CINTA BAND-IT','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('23','10003','GRAPA ABRASADERA 3/4','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('24','10004','GRAPA ABRASADERA 1/2','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('25','10005','TORNILLO CON CHAZO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('26','10006','TORNILLO DRAYWALL 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('27','10007','TORNILLO DRAYWALL 1 1/2','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('28','10008','TORNILLO CON TUERCA','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('29','10009','ACTA DE MATERIALES','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('30','10010','ACTA DE REVISION E INSTALACION RUTINARIAS','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('31','10011','ACTA DE REVISION CLIENTES DESTACADOS Y MACRO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('32','10012','ACTA DE DIAGRAMAS','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('33','10013','JUEGO DE SELLOS PARA MEDIDORES RETIRADOS','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('34','10014','SELLO PARA MEDIDOR RETIRADO','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('35','10015','SELLO PARA LECTURA EN CAJA PLC','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('36','7534','TERMINALES MT 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('37','99999','SELLOS DE SEGURIDAD PARA MEDIDOR DE ENERGIA','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('38','8105','CABLE 8X12 APANTALLADO TENSION 120/208V','MT','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('39','8097','MEDIDOR MEGA IP MACROM. ELECTRO. TRIFAS.','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('40','8075','TRANSFORMADOR TIPO VENTANA 50/5 TIPO EXT 600V CL1','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('41','7786','TRANSFORMADOR DE CORRIENTE 100/5 TIPO EXT CL1','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('42','7789','MEDIDOR HOLLEY ELECTRONICO MONOFASICO','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('43','10021','IVA_UNION EMT 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('44','10022','IVA_TERMINALES MT 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('45','10023','IVA_FUSIBLE TIPO K DE 1 AMPERIO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('46','10024','IVA_FUSIBLE TIPO K DE 2 AMPERIO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('47','10025','IVA_FUSIBLE TIPO K DE 3 AMPERIO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('48','10026','IVA_FUSIBLE TIPO K DE 5 AMPERIO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('49','10027','IVA_FUSIBLE TIPO K DE 7 AMPERIO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('50','10028','IVA_TUBO E.M.T. 1 X 3 MTS','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('51','10029','IVA_TUBO CONDUIT GALVANIZADO 3/4 X 3 MTS','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('52','10030','IVA_TENSORES PARA ACOMETIDA','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('53','10031','IVA_TRANSFORMADORES TIPO EXT. CL1 200/5','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('54','10032','IVA_TERMINAL EMT 3/4 PULGADA','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('55','10033','IVA_TRANSFORMADOR DE CORRIENTE 100/5 TIPO EXT CL1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('56','10034','IVA_MEDIDORES DE INDUCCION MONOFASICOS','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('57','7903','CAJA MON. TRANSPARENTE PLANA MED. ELECTR','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('58','7794','CAJAS POLIFASICAS HERMETICAS','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('59','10035','IVA_CAJAS POLIFASICAS HERMETICAS','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('60','10036','IVA_ESTRIBO 2 AWG CON CONEC  CUÐA TIPO VII','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('61','10037','IVA_CODO EMT 3/4','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('62','10038','IVA_UNION EMT 3/4','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('63','10039','IVA_CAJA MON. TRANSPARENTE PLANA MED. ELECTR','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('64','10040','IVA_TRANSFORMADOR TIPO EXT. CL 1 300/5','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('65','10041','IVA_TRANSFORMADOR TIPO VENTANA 50/5 TIPO EXT 600V CL1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('66','10042','IVA_MEDIDOR MEGA IP MACROM. ELECTRO. TRIFAS.','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('67','10043','IVA_CABLE 8X12 APANTALLADO TENSION 120/208V,','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('68','10044','IVA_CABLE CONCENTRICO ALUMINIO 1 X 6+6 AWG','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('69','10045','IVA_MED ELECTRONICO TRIFASICO ESTROM CLASE 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('70','10046','IVA_CONECTOR DE DERIV CUÑA TIPO II SIMETRICO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('71','7785','TRANS. CORRIENTE 400/5 CLASE 1 TIPO EXT.','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('72','10050','IVA_MEDIDOR HOLLEY ELECTRONICO MONOFASICO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('73','8520','MEDIDOR MEGA IP MACROM. ELECTRO. TRIFAS.','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('74','8098','OJOS DE ACERO PARA TENSOR DE ACOMETIDA','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('75','10047','IVA_OJOS DE ACERO PARA TENSOR DE ACOMETIDA','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('76','7798','CABLE CONCENTRICO PARA ACOMETIDA 3X8+8','MT','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('77','10048','IVA_CABLE CONCENTRICO PARA ACOMETIDA 3X8+8','MT','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('78','10051','MEDIDOR SUMISTRADO POR USUARIO','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('79','8653','MEDIDOR ELEC TRIF TETRAF ELGAMA ACTIV','un','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('80','10049','IVA_CONECTOR TIPO B','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('81','8404','CONECTOR DE DERIV TIPO CUÑA UCD  B ASIMET','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('82','7799','CABLE CONCENTRICO PARA ACOMETIDA 2X8+8','MT','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('83','10052','IVA_CABLE CONCENTRICO PARA ACOMETIDA 2X8+8','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('84','8327','MED. ELECTRONICO BIFASICO ESTROM CLASE 1','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('85','10053','IVA_MED. ELECTRONICO BIFASICO ESTROM CLASE 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('86','10054','ACTA DE NOTIFICACION','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('87','7953','MEDIDOR OSAKI ANTIHURTO MONOFASICO ELECTRONICO','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('88','10055','IVA_MEDIDOR OSAKI ANTIHURTO MONOFASICO ELECTRONICO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('89','8642','CABLE CUADRUPLEX 3 X 1/0 + 2 AL 600 V','MT','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('90','10056','IVA_CABLE CUADRUPLEX 3 X 1/0 + 2 AL 600 V','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('91','8643','CABLE COBRE THW 1/0','MT','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('92','10057','IVA_CABLE COBRE THW 1/0','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('93','8644','CONECTOR PIERCING PARA CAJA BARRAJE','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('94','10058','IVA_CONECTOR PIERCING PARA CAJA BARRAJE','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('95','7808','CONECTORES BIMETALICOS 2 PERNOS 1/0','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('96','10059','IVA_CONECTORES BIMETALICOS 2 PERNOS 1/0','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('97','8063','TRANSFORMADOR DE CORR. TIPO EXT. 600/5','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('98','10060','IVA_TRANSFORMADOR DE CORR. TIPO EXT. 600/5','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('99','8062','TRANSFORMADORES DE COR. TIPO EXT. 800/5','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('100','10061','IVA_TRANSFORMADORES DE COR. TIPO EXT. 800/5','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('101','8645','MEDIDOR TRIFASICO 120 208 UV MEGA IP','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('102','10062','IVA_MEDIDOR TRIFASICO 120 -208 UV MEGA IP','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('103','7817','CAPACETE DE 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('104','10063','IVA_CAPACETE DE 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('105','7668','MEDIDOR METER MONOFASICO ELECTRO CL 1','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('106','10064','IVA_MEDIDOR METER MONOFASICO ELECTRO CL 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('107','7702','MEDIDOR ELECTRONICO BIFASICO MTE CLASE 2','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('108','6478','MEDIDOR ELGAMA TRIFASICO TETRAFILAR CL 1','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('109','10065','IVA_MEDIDOR ELGAMA TRIFASICO TETRAFILAR CL 1','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('110','7044','BLOQUES DE PRUEBA','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('111','10066','IVA_BLOQUES DE PRUEBA','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('112','8641','MEDIDOR ELSTER A 1800 ELECTRICO TRIFIFASICO CL 0.5','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('113','10067','IVA_MEDIDOR ELSTER A 1800 ELECTRICO TRIFIFASICO CL 0.5','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('114','7535','CORAZA AMERICANA DE 1 1/2','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('115','7544','CONECTOR CURVO DE 1 1/2','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('116','7545','CONECTOR RECTO 1 1/2','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('117','7803','CAJA METALICA TRAFOS DE CTE EN BAJA TENS','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('118','8648','GABINETE PARA MEDIDOR','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('119','8069','MEDIDOR PREPAGO BICUERPO MON 120V10 (80)A','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('120','8100','ALAMBRE TRENZADO 2X2N.20LDPE RLX 200','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('121','7542','CABLE DE POTENCIA 4X2 AWG 600 V. PVC','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('122','7797','CAJA MONOFASICA  POLICARBONATO TRANSPARE (cóncava)','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('123','7902','CAJA POLIFASICA MACROMEDIDORES CON LUPA','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('124','8649','MEDIDOR SCORPION LCD CALIBRADO MONOFASIC','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('125','7818','OJOS DE ALUMINIO PARA  TENSOR DE ACOMETI','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('126','8650','MODEM GPRS INALAMBRICO MARCA WIECH','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('127','7703','MEDIDOR ELECTRONICO TRIFASICO MTE CL 2','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('128','7394','CABLE DE CONTROL 7X16 ENCAUCHETADO','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('129','5985','CAPACETE 3/4','UN','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('130','8651','TRANS. DE CORRIENTE INT. 400/5 CLASE 1','un','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('131','8652','CABLE 7X16 SIN APANTALLAMIENTO','un','NO');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('132','8066','TRANSFORMADOR CTE.TIPO INT.100/5 CL 0.5','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('133','7829','TC USO EXT 35 KV CL 0.5 RELA 10-20/5 AMP','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('134','8654','MEDIDOR ELSTER ANTIHURTO MONOFA ELECTRONI','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('135','8655','MEDIDOR HEXING PREPAGO MONOFASICO','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('136','8660','MEDIDOR ITROM ETHERNET ELECTR TRIFA','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('137','7515','TRANSFORMADOR DE CTE. TIPO INT 200/5','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('138','7821','TRANSF. DE CTE. TIPO EXTERIOR 200/5CL.05','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('139','8661','TRANSFORMADOR CTE VENT CL1  2000/5','UN','SI');");
+			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('140','8662','MEDIDOR ELSTER A 1800 ELECTRONICO TRIFIFASICO CL 02','UN','SI');");*/
+		
+			db.execSQL(	"CREATE TABLE amd_param_tipo_medidor(id_serial INTEGER PRIMARY KEY AUTOINCREMENT,id_material INTEGER NOT NULL,marca VARCHAR(20) NOT NULL,tipo VARCHAR(20) NOT NULL)");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('1','7789','HOL','MB')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('2','10051','HOL','MB')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('3','8328','EST','T')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('4','7953','OSA','MB')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('5','8327','EST','B')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('6','8645','MEG','T')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('7','7668','MET','MB')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('8','7702','MET','B')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('9','8069','LANDIS','MB')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('10','8641','ELS','T')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('11','8649','SCO','MB')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('12','7703','MET','T')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('13','8653','ELG','T')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('14','8654','ELS','MB')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('15','8655','HEX','MB')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('16','8660','ITR','T')");
+			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('17','8662','ELS','T')");				
+			
+			
+			/*db.execSQL("CREATE VIEW upload_nodos_exp AS" +
+					"	SELECT 	b.id_acta, a.id_orden,b.id_revision, b.codigo_trabajo, b.nombre_enterado, b.cedula_enterado, b.evento, b.tipo_enterado, b.fecha_revision, u.login, b.fecha_ins, b.cedula_testigo, b.nombre_testigo" +
+					"	FROM	amd_ordenes_trabajo AS a" +
+					"	JOIN 	amd_actas AS b" +
+					"	ON 		a.id_orden = b.id_orden" +
+					"   JOIN    amd_usuarios as u"+
+					"   ON      b.usuario_ins=u.documento"+
+					"	WHERE 	a.estado in ('T','TA')"+
+					"   ORDER BY id_acta;");*/
+			
+			
+			/*db.execSQL("CREATE VIEW upload_acometidas_pda AS" +
+					"	SELECT 	a.id_orden, SUBSTR(b.tipo_ingreso, 1, 1) as tipo_ingreso, b.id_acometida, b.longitud, u.login, b.fecha_ins, b.fase, SUBSTR(b.clase, 1, 1) as clase" +
+					"	FROM	amd_ordenes_trabajo AS a" +
+					"	JOIN 	amd_acometida AS b" +
+					"	ON 		a.id_orden = b.id_orden" +
+					"   JOIN    amd_usuarios as u"+
+					"   ON      b.usuario_ins=u.documento"+
+					"	WHERE 	a.estado in ('T','TA');");*/
+			
+			/*db.execSQL("CREATE VIEW upload_detalle_censo_carga_pda AS" +
+					"	SELECT 	 b.id_elemento, b.capacidad, b.cantidad, u.login, b.fecha_ins, b.tipo_carga, a.id_orden" +
+					"	FROM	amd_ordenes_trabajo AS a" +
+					"	JOIN 	amd_censo_carga AS b" +
+					"	ON 		a.id_orden = b.id_orden"+
+					"   JOIN       amd_usuarios as u "+
+					"   ON           b.usuario_ins=u.documento"+
+					"   WHERE 	a.estado in ('T','TA');");*/
+			
+			
+			/*db.execSQL("CREATE VIEW upload_pct_error_pda AS" +
+					"	SELECT 	a.id_orden,  b.tipo_carga, b.voltaje, b.corriente, b.tiempo, b.vueltas, b.total, u.login, b.fecha_ins, b.rev, b.fase" +
+					"	FROM	amd_ordenes_trabajo AS a" +
+					"	JOIN 	amd_pct_error AS b" +
+					"	ON 		a.id_orden = b.id_orden" +
+					"   JOIN       amd_usuarios as u"+
+					"   ON           b.usuario_ins=u.documento"+
+					"	WHERE 	a.estado in ('T','TA');");*/
+			
+			
+			/*db.execSQL("CREATE VIEW upload_sellos_pda AS" +
+					"	SELECT 	a.id_orden, b.estado, b.tipo, b.numero, b.color, b.irregularidad, b.ubicacion,u.login, b.fecha_ins" +
+					"	FROM	amd_ordenes_trabajo AS a" +
+					"	JOIN 	amd_sellos AS b" +
+					"	ON 		a.id_orden = b.id_orden" +
+					"   JOIN    amd_usuarios as u"+
+					"   ON      b.usuario_ins=u.documento"+
+					"	WHERE 	a.estado in ('T','TA');");*/
+			
+			
+			/*db.execSQL("CREATE VIEW upload_irregularidades_pda AS" +
+					"	SELECT 	b.id_anomalia,a.id_orden, b.id_irregularidad, u.login, b.fecha_ins" +
+					"	FROM	amd_ordenes_trabajo AS a" +
+					"	JOIN 	amd_irregularidades AS b" +
+					"	ON 		a.id_orden  = b.id_orden" +
+					"   JOIN    amd_usuarios as u"+
+					"   ON      b.usuario_ins=u.documento"+
+					"	WHERE 	a.estado in ('T','TA');");*/
+			
+			
+			/*db.execSQL("CREATE VIEW upload_mvto_contadores_pda AS" +
+					"	SELECT 	a.id_orden, b.tipo, b.marca, b.serie, b.lectura, b.cuenta,  u.login, strftime('%d/%m/%Y', b.fecha_ins) as fecha_ins, b.cobro" +
+					"	FROM	amd_ordenes_trabajo AS a" +
+					"	JOIN 	amd_cambios_contadores AS b" +
+					"	ON 		a.id_orden = b.id_orden" +
+					"   JOIN    amd_usuarios as u"+
+					"   ON      b.usuario_ins=u.documento"+
+					"	WHERE 	a.estado in ('T','TA');");*/
+			
+			
+			/*db.execSQL("CREATE VIEW upload_materiales_trabajo_pda AS" +
+					"	SELECT 	a.id_orden, b.id_trabajo, b.id_material, b.cantidad, b.cuotas, b.automatico, b.usuario_ins, b.fecha_ins" +
+					"	FROM	amd_ordenes_trabajo AS a" +
+					"	JOIN 	amd_materiales_trabajo_orden AS b" +
+					"	ON 		a.id_orden = b.id_orden" +
+					"	WHERE 	a.estado in ('T','TA');");*/
+			
+			/*db.execSQL("CREATE VIEW upload_servicio_nuevo_pda AS " +
+					"	SELECT 	a.id_orden, b.cuenta, b.cuenta_vecina1, b.cuenta_vecina2, b.nodo_transformador,b.nodo_secundario,b.doc1,b.doc2,b.doc3,b.doc4,b.doc5,b.doc6,b.doc7" +
+					"	FROM	amd_ordenes_trabajo AS a"+
+					"   JOIN 	amd_servicio_nuevo AS b"+
+					"   ON 		a.id_orden = b.id_orden"+
+					"   WHERE 	a.estado in ('T','TA')");*/
+			
+			
+			/*db.execSQL("CREATE VIEW upload_medidor_encontrado_pda AS" +
+					"	SELECT 	a.id_orden, b.marca, b.serie, b.lectura, b.lectura_2, b.lectura_3, b.tipo" +
+					"	FROM	amd_ordenes_trabajo AS a" +
+					"	JOIN 	amd_medidor_encontrado AS b" +
+					"	ON 		a.id_orden = b.id_orden" +
+					"	WHERE 	a.estado in ('T','TA');");*/
+			
+			/*db.execSQL("CREATE VIEW upload_item_pago AS " +
+					"	SELECT 	a.id_orden, b.items" +
+					"	FROM	amd_ordenes_trabajo AS a"+
+					"   JOIN 	amd_impresiones_inf AS b"+
+					"   ON 		a.id_orden = b.id_orden"+
+					"   WHERE 	a.estado in ('T','TA')");*/
+			
+			
+			/*db.execSQL("CREATE VIEW  upload_inconsistencia_pda AS" +
+					"	SELECT 	  b.id_inconsistencia,a.id_orden, b.id_nodo, b.valor, b.fecha_ins,u.login, b.cod_inconsistencia, b.cuenta, b.trabajo" +
+					"	FROM	amd_ordenes_trabajo AS a" +
+					"	JOIN 	amd_inconsistencias AS b" +
+					"	ON 		a.id_orden = b.id_orden" +
+					"   JOIN    amd_usuarios as u"+
+					"   ON       b.usuario_ins=u.documento"+
+					"	WHERE 	a.estado in ('T','TA');");*/
+			
+			
+			/*db.execSQL("CREATE VIEW upload_trabajos_orden_pda AS" +
+					"	SELECT 	b.id_revision,a.id_orden, b.id_trabajo,b.cuenta,b.nodo,b.estado,u.login,b.fecha_ins,b.cantidad" +
+					"	FROM	amd_ordenes_trabajo AS a" +
+					"	JOIN 	amd_param_trabajos_orden AS b" +
+					"	ON 		a.id_orden  = b.id_orden" +
+					"   JOIN    amd_usuarios as u"+
+					"   ON      b.usuario_ins=u.documento"+
+					"	WHERE 	a.estado in ('T','TA');");*/
+			
+			
+			/*db.execSQL("CREATE VIEW upload_censo_carga_pda AS" +
+					"	SELECT  a.id_orden, sum(b.capacidad*b.cantidad)  as total_censo, u.login, b.fecha_ins" +
+					"	FROM	amd_ordenes_trabajo AS a" +
+					"	JOIN 	amd_censo_carga AS b" +
+					"	ON 		a.id_orden  = b.id_orden" +
+					"   JOIN    amd_usuarios as u"+
+					"   ON      usuario_ins=u.documento"+
+					"   WHERE 	a.estado in ('T','TA')"+
+					"	GROUP BY  a.id_orden;");*/
+			
+			
+			/*db.execSQL("CREATE VIEW upload_elementos_prov_pda AS" +
+					"	SELECT 	a.id_orden,  b.elemento, b.marca, b.serie, b.valor, b.id_agrupador, b.cuenta,b.proceso,b.estado, b.usuario_ins, b.fecha_ins, b.cantidad" +
+					"	FROM	amd_ordenes_trabajo AS a" +
+					"	JOIN 	amd_materiales_provisionales AS b" +
+					"	ON 		a.id_orden = b.id_orden" +
+					"   JOIN    amd_usuarios as u"+
+					"   ON      b.usuario_ins=u.documento	"+
+					"	WHERE 	a.estado in ('T','TA');");*/
+			
+			/*db.execSQL("CREATE VIEW upload_nodos AS " +
+					"	SELECT a.id_orden,n.id_nodo, n.observacion" +
+					"	from amd_ordenes_trabajo as a"+
+					"   JOIN amd_nodo as n"+
+					"   ON a.id_nodo=n.id_nodo"+
+					"   where a.estado in ('T',' TA')");*/
+			
+			/*db.execSQL("CREATE VIEW upload_trabajos_exp AS " +
+					"	SELECT strftime('%d/%m/%Y %H:%M:%S', b.fecha_ins) as fecha_ins, a.id_orden" +
+					"	FROM amd_ordenes_trabajo as a"+
+					"   JOIN  amd_param_trabajos_orden as b"+
+					"   ON b.id_orden=a.id_orden"+
+					"   WHERE a.estado='T'");*/
+			
+			/*db.execSQL("CREATE VIEW upload_sgd_ordenes_exp AS " +
+					"	SELECT a.id_orden, strftime('%d/%m/%Y', b.fecha_revision) as fecha_revision,a.hora_ini,a.hora_fin,a.observacion_pad,a.usuario " +
+					"	FROM amd_ordenes_trabajo as a "+
+					"   JOIN amd_actas as b"+
+					"   ON a.id_orden=b.id_orden"+
+					"   WHERE a.estado='T'"+
+					"   UNION"+
+					"    SELECT id_orden,strftime('%d/%m/%Y',fecha_atencion) ,hora_ini,hora_fin,observacion_pad,usuario"+
+					"   FROM amd_ordenes_trabajo"+
+					"   WHERE estado='TA'");*/
+			
+			/*db.execSQL("CREATE VIEW upload_sgd_ordenes_pda AS " +
+					"	SELECT id_orden,cuenta,strftime('%d/%m/%Y', fecha_atencion) as fecha_atencion,hora_ini,hora_fin,usuario,observacion_pad,bodega,solicitud,clase_solicitud,tipo_solicitud,dependencia,tipo_accion,dependencia_asignada,consecutivo_accion,propietario,municipio,ubicacion,clase_servicio,estrato,id_nodo,fecha_ven,direccion,observacion_trabajo " +
+					"	FROM amd_ordenes_trabajo "+
+					"   WHERE id_orden< '0' and estado='T' ");*/
+			
+=======
 			db.execSQL("INSERT INTO amd_param_material_usuario(codigo,descripcion) VALUES('10051','Medidor Suministrado Por El Usuario');");
+>>>>>>> origin/master
 		}
 	}
 	
