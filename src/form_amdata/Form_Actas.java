@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.ArrayList;
 
 import class_amdata.Class_Impresiones;
-import dialogos.Modal_BodegaContadores;
 import dialogos.Modal_MedidorSellosOrden;
 
 import sypelc.androidamdata.R;
@@ -371,7 +370,9 @@ public class Form_Actas extends Activity implements OnClickListener{
         		break;
         		
         	case R.id.ActaBtnGuardar:
-        		if(_lblItemAplicados.getText().length()==0){
+        		if(this._cmbTipoEnterado.getSelectedItem().toString().equals("...")){
+        			Toast.makeText(this,"No ha seleccionado el tipo de enterado.", Toast.LENGTH_SHORT).show();
+        		}else if(_lblItemAplicados.getText().length()==0){
         			Toast.makeText(this,"No ha seleccionado los items de pago a aplicar.", Toast.LENGTH_SHORT).show();
         		}else if(_cmbUbicacionMedidor.getSelectedItem().toString().equals("...")){
         			Toast.makeText(this,"No ha seleccionado la ubicacion del medidor.", Toast.LENGTH_SHORT).show();        			

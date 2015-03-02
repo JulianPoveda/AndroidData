@@ -24,7 +24,7 @@ import android.util.Log;
 public class SQLite {
 	private static Archivos ArchSQL;	
 	private static String N_BD = null; 	
-	private static final int VERSION_BD = 4;																		
+	private static final int VERSION_BD = 5;																		
 	
 	private BDHelper nHelper;
 	private Context nContexto;
@@ -201,6 +201,7 @@ public class SQLite {
 												+ " nombre_testigo  VARCHAR(100),"
 												+ " estado 			VARCHAR(2) NOT NULL)");
 			
+			
 			db.execSQL( "CREATE TABLE amd_ordenes_trabajo(	id_orden 				VARCHAR(20) NOT NULL PRIMARY KEY,"
 														+ "	num_acta				VARCHAR(20),"
 														+ "	cuenta 					VARCHAR(20) UNIQUE NOT NULL,"
@@ -241,8 +242,7 @@ public class SQLite {
 														+ "	consecutivo_accion		VARCHAR(50),"
 														+ "	carga_instalada			VARCHAR(100),"
 														+ "	carga_contratada		VARCHAR(100),"
-														+ "	ciclo 					VARCHAR(100))");
-			
+														+ "	ciclo 					VARCHAR(100))");			
 			
 			
 			db.execSQL(	"CREATE TABLE amd_servicio_nuevo(	id_orden			VARCHAR(20) NOT NULL PRIMARY KEY,"
@@ -1194,178 +1194,6 @@ public class SQLite {
 																" descripcion 	VARCHAR(255) NOT NULL);");
 
 			db.execSQL("INSERT INTO amd_param_material_usuario(codigo,descripcion) VALUES('10051','Medidor Suministrado Por El Usuario');");
-
-		
-			/*db.execSQL("CREATE VIEW upload_nodos_exp AS" +
-					"	SELECT 	b.id_acta, a.id_orden,b.id_revision, b.codigo_trabajo, b.nombre_enterado, b.cedula_enterado, b.evento, b.tipo_enterado, b.fecha_revision, u.login, b.fecha_ins, b.cedula_testigo, b.nombre_testigo" +
-					"	FROM	amd_ordenes_trabajo AS a" +
-					"	JOIN 	amd_actas AS b" +
-					"	ON 		a.id_orden = b.id_orden" +
-					"   JOIN    amd_usuarios as u"+
-					"   ON      b.usuario_ins=u.documento"+
-					"	WHERE 	a.estado in ('T','TA')"+
-					"   ORDER BY id_acta;");*/
-			
-			
-			/*db.execSQL("CREATE VIEW upload_acometidas_pda AS" +
-					"	SELECT 	a.id_orden, SUBSTR(b.tipo_ingreso, 1, 1) as tipo_ingreso, b.id_acometida, b.longitud, u.login, b.fecha_ins, b.fase, SUBSTR(b.clase, 1, 1) as clase" +
-					"	FROM	amd_ordenes_trabajo AS a" +
-					"	JOIN 	amd_acometida AS b" +
-					"	ON 		a.id_orden = b.id_orden" +
-					"   JOIN    amd_usuarios as u"+
-					"   ON      b.usuario_ins=u.documento"+
-					"	WHERE 	a.estado in ('T','TA');");*/
-			
-			/*db.execSQL("CREATE VIEW upload_detalle_censo_carga_pda AS" +
-					"	SELECT 	 b.id_elemento, b.capacidad, b.cantidad, u.login, b.fecha_ins, b.tipo_carga, a.id_orden" +
-					"	FROM	amd_ordenes_trabajo AS a" +
-					"	JOIN 	amd_censo_carga AS b" +
-					"	ON 		a.id_orden = b.id_orden"+
-					"   JOIN       amd_usuarios as u "+
-					"   ON           b.usuario_ins=u.documento"+
-					"   WHERE 	a.estado in ('T','TA');");*/
-			
-			
-			/*db.execSQL("CREATE VIEW upload_pct_error_pda AS" +
-					"	SELECT 	a.id_orden,  b.tipo_carga, b.voltaje, b.corriente, b.tiempo, b.vueltas, b.total, u.login, b.fecha_ins, b.rev, b.fase" +
-					"	FROM	amd_ordenes_trabajo AS a" +
-					"	JOIN 	amd_pct_error AS b" +
-					"	ON 		a.id_orden = b.id_orden" +
-					"   JOIN       amd_usuarios as u"+
-					"   ON           b.usuario_ins=u.documento"+
-					"	WHERE 	a.estado in ('T','TA');");*/
-			
-			
-			/*db.execSQL("CREATE VIEW upload_sellos_pda AS" +
-					"	SELECT 	a.id_orden, b.estado, b.tipo, b.numero, b.color, b.irregularidad, b.ubicacion,u.login, b.fecha_ins" +
-					"	FROM	amd_ordenes_trabajo AS a" +
-					"	JOIN 	amd_sellos AS b" +
-					"	ON 		a.id_orden = b.id_orden" +
-					"   JOIN    amd_usuarios as u"+
-					"   ON      b.usuario_ins=u.documento"+
-					"	WHERE 	a.estado in ('T','TA');");*/
-			
-			
-			/*db.execSQL("CREATE VIEW upload_irregularidades_pda AS" +
-					"	SELECT 	b.id_anomalia,a.id_orden, b.id_irregularidad, u.login, b.fecha_ins" +
-					"	FROM	amd_ordenes_trabajo AS a" +
-					"	JOIN 	amd_irregularidades AS b" +
-					"	ON 		a.id_orden  = b.id_orden" +
-					"   JOIN    amd_usuarios as u"+
-					"   ON      b.usuario_ins=u.documento"+
-					"	WHERE 	a.estado in ('T','TA');");*/
-			
-			
-			/*db.execSQL("CREATE VIEW upload_mvto_contadores_pda AS" +
-					"	SELECT 	a.id_orden, b.tipo, b.marca, b.serie, b.lectura, b.cuenta,  u.login, strftime('%d/%m/%Y', b.fecha_ins) as fecha_ins, b.cobro" +
-					"	FROM	amd_ordenes_trabajo AS a" +
-					"	JOIN 	amd_cambios_contadores AS b" +
-					"	ON 		a.id_orden = b.id_orden" +
-					"   JOIN    amd_usuarios as u"+
-					"   ON      b.usuario_ins=u.documento"+
-					"	WHERE 	a.estado in ('T','TA');");*/
-			
-			
-			/*db.execSQL("CREATE VIEW upload_materiales_trabajo_pda AS" +
-					"	SELECT 	a.id_orden, b.id_trabajo, b.id_material, b.cantidad, b.cuotas, b.automatico, b.usuario_ins, b.fecha_ins" +
-					"	FROM	amd_ordenes_trabajo AS a" +
-					"	JOIN 	amd_materiales_trabajo_orden AS b" +
-					"	ON 		a.id_orden = b.id_orden" +
-					"	WHERE 	a.estado in ('T','TA');");*/
-			
-			/*db.execSQL("CREATE VIEW upload_servicio_nuevo_pda AS " +
-					"	SELECT 	a.id_orden, b.cuenta, b.cuenta_vecina1, b.cuenta_vecina2, b.nodo_transformador,b.nodo_secundario,b.doc1,b.doc2,b.doc3,b.doc4,b.doc5,b.doc6,b.doc7" +
-					"	FROM	amd_ordenes_trabajo AS a"+
-					"   JOIN 	amd_servicio_nuevo AS b"+
-					"   ON 		a.id_orden = b.id_orden"+
-					"   WHERE 	a.estado in ('T','TA')");*/
-			
-			
-			/*db.execSQL("CREATE VIEW upload_medidor_encontrado_pda AS" +
-					"	SELECT 	a.id_orden, b.marca, b.serie, b.lectura, b.lectura_2, b.lectura_3, b.tipo" +
-					"	FROM	amd_ordenes_trabajo AS a" +
-					"	JOIN 	amd_medidor_encontrado AS b" +
-					"	ON 		a.id_orden = b.id_orden" +
-					"	WHERE 	a.estado in ('T','TA');");*/
-			
-			/*db.execSQL("CREATE VIEW upload_item_pago AS " +
-					"	SELECT 	a.id_orden, b.items" +
-					"	FROM	amd_ordenes_trabajo AS a"+
-					"   JOIN 	amd_impresiones_inf AS b"+
-					"   ON 		a.id_orden = b.id_orden"+
-					"   WHERE 	a.estado in ('T','TA')");*/
-			
-			
-			/*db.execSQL("CREATE VIEW  upload_inconsistencia_pda AS" +
-					"	SELECT 	  b.id_inconsistencia,a.id_orden, b.id_nodo, b.valor, b.fecha_ins,u.login, b.cod_inconsistencia, b.cuenta, b.trabajo" +
-					"	FROM	amd_ordenes_trabajo AS a" +
-					"	JOIN 	amd_inconsistencias AS b" +
-					"	ON 		a.id_orden = b.id_orden" +
-					"   JOIN    amd_usuarios as u"+
-					"   ON       b.usuario_ins=u.documento"+
-					"	WHERE 	a.estado in ('T','TA');");*/
-			
-			
-			/*db.execSQL("CREATE VIEW upload_trabajos_orden_pda AS" +
-					"	SELECT 	b.id_revision,a.id_orden, b.id_trabajo,b.cuenta,b.nodo,b.estado,u.login,b.fecha_ins,b.cantidad" +
-					"	FROM	amd_ordenes_trabajo AS a" +
-					"	JOIN 	amd_param_trabajos_orden AS b" +
-					"	ON 		a.id_orden  = b.id_orden" +
-					"   JOIN    amd_usuarios as u"+
-					"   ON      b.usuario_ins=u.documento"+
-					"	WHERE 	a.estado in ('T','TA');");*/
-			
-			
-			/*db.execSQL("CREATE VIEW upload_censo_carga_pda AS" +
-					"	SELECT  a.id_orden, sum(b.capacidad*b.cantidad)  as total_censo, u.login, b.fecha_ins" +
-					"	FROM	amd_ordenes_trabajo AS a" +
-					"	JOIN 	amd_censo_carga AS b" +
-					"	ON 		a.id_orden  = b.id_orden" +
-					"   JOIN    amd_usuarios as u"+
-					"   ON      usuario_ins=u.documento"+
-					"   WHERE 	a.estado in ('T','TA')"+
-					"	GROUP BY  a.id_orden;");*/
-			
-			
-			/*db.execSQL("CREATE VIEW upload_elementos_prov_pda AS" +
-					"	SELECT 	a.id_orden,  b.elemento, b.marca, b.serie, b.valor, b.id_agrupador, b.cuenta,b.proceso,b.estado, b.usuario_ins, b.fecha_ins, b.cantidad" +
-					"	FROM	amd_ordenes_trabajo AS a" +
-					"	JOIN 	amd_materiales_provisionales AS b" +
-					"	ON 		a.id_orden = b.id_orden" +
-					"   JOIN    amd_usuarios as u"+
-					"   ON      b.usuario_ins=u.documento	"+
-					"	WHERE 	a.estado in ('T','TA');");*/
-			
-			/*db.execSQL("CREATE VIEW upload_nodos AS " +
-					"	SELECT a.id_orden,n.id_nodo, n.observacion" +
-					"	from amd_ordenes_trabajo as a"+
-					"   JOIN amd_nodo as n"+
-					"   ON a.id_nodo=n.id_nodo"+
-					"   where a.estado in ('T',' TA')");*/
-			
-			/*db.execSQL("CREATE VIEW upload_trabajos_exp AS " +
-					"	SELECT strftime('%d/%m/%Y %H:%M:%S', b.fecha_ins) as fecha_ins, a.id_orden" +
-					"	FROM amd_ordenes_trabajo as a"+
-					"   JOIN  amd_param_trabajos_orden as b"+
-					"   ON b.id_orden=a.id_orden"+
-					"   WHERE a.estado='T'");*/
-			
-			/*db.execSQL("CREATE VIEW upload_sgd_ordenes_exp AS " +
-					"	SELECT a.id_orden, strftime('%d/%m/%Y', b.fecha_revision) as fecha_revision,a.hora_ini,a.hora_fin,a.observacion_pad,a.usuario " +
-					"	FROM amd_ordenes_trabajo as a "+
-					"   JOIN amd_actas as b"+
-					"   ON a.id_orden=b.id_orden"+
-					"   WHERE a.estado='T'"+
-					"   UNION"+
-					"    SELECT id_orden,strftime('%d/%m/%Y',fecha_atencion) ,hora_ini,hora_fin,observacion_pad,usuario"+
-					"   FROM amd_ordenes_trabajo"+
-					"   WHERE estado='TA'");*/
-			
-			/*db.execSQL("CREATE VIEW upload_sgd_ordenes_pda AS " +
-					"	SELECT id_orden,cuenta,strftime('%d/%m/%Y', fecha_atencion) as fecha_atencion,hora_ini,hora_fin,usuario,observacion_pad,bodega,solicitud,clase_solicitud,tipo_solicitud,dependencia,tipo_accion,dependencia_asignada,consecutivo_accion,propietario,municipio,ubicacion,clase_servicio,estrato,id_nodo,fecha_ven,direccion,observacion_trabajo " +
-					"	FROM amd_ordenes_trabajo "+
-					"   WHERE id_orden< '0' and estado='T' ");*/
-			
 		}
 	}
 	

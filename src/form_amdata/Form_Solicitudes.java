@@ -177,11 +177,15 @@ public class Form_Solicitudes extends Activity implements OnItemSelectedListener
 			menu.findItem(R.id.AperturaOrdenes).setEnabled(true);
 			menu.findItem(R.id.CerrarOrden).setEnabled(true);
 			menu.findItem(R.id.TrasladarOrden).setEnabled(true);
+			menu.findItem(R.id.EliminarAut).setEnabled(true);
+			menu.findItem(R.id.EliminarDatosOrden).setEnabled(true);
 		}else{
 			menu.findItem(R.id.InicioOrden).setEnabled(false);
 			menu.findItem(R.id.AperturaOrdenes).setEnabled(false);
 			menu.findItem(R.id.CerrarOrden).setEnabled(false);
 			menu.findItem(R.id.TrasladarOrden).setEnabled(false);
+			menu.findItem(R.id.EliminarAut).setEnabled(false);
+			menu.findItem(R.id.EliminarDatosOrden).setEnabled(false);
 		}    	
 		return true;  
 	}
@@ -220,9 +224,20 @@ public class Form_Solicitudes extends Activity implements OnItemSelectedListener
 			
 			case R.id.CerrarOrden:
 				if(!_txtOrden.getText().toString().isEmpty()){
-					if(FcnSolicitudes.getEstadoOrden(_txtOrden.getText().toString()).equals("E")){
+					if((this.FcnSolicitudes.getEstadoOrden(_txtOrden.getText().toString()).equals("P")||
+							this.FcnSolicitudes.getEstadoOrden(_txtOrden.getText().toString()).equals("E"))&&
+							this.NivelUsuario.equals("A")){
+						DialogConfirmacion.putExtra("informacion", "Desea Cerrar La Orden "+_txtOrden.getText().toString());
+						startActivityForResult(DialogConfirmacion, CONFIRMACION_CERRAR_ORDEN);
+					}else if(	this.FcnSolicitudes.getEstadoOrden(_txtOrden.getText().toString()).equals("E") && 
+								this.FcnSolicitudes.ExisteDatos(this._txtOrden.getText().toString(), 
+																this._txtCuenta.getText().toString(), 
+																this.FcnSolicitudes.getNodo(this._txtOrden.getText().toString()))){
 						DialogConfirmacion.putExtra("informacion", "Desea Cerrar La Orden "+_txtOrden.getText().toString());
 						startActivityForResult(DialogConfirmacion, CONFIRMACION_CERRAR_ORDEN);	
+					}else{
+						DialogInformacion.putExtra("informacion","La orden seleccionada no tiene la informacion minima necesaria.");
+						startActivityForResult(DialogInformacion, CONFIRMACION_INFORMACION);
 					}
 				}else{
 					DialogInformacion.putExtra("informacion","No ha seleccionado una orden para cerrar.");
@@ -341,6 +356,12 @@ public class Form_Solicitudes extends Activity implements OnItemSelectedListener
 			}			
 		}else if(resultCode == RESULT_OK && requestCode == CONFIRMACION_CERRAR_ORDEN){
 			if(data.getExtras().getBoolean("accion")){
+				if(this.NivelUsuario.equals("A") && !this.FcnSolicitudes.ExisteDatos(	this._txtOrden.getText().toString(), 
+																						this._txtCuenta.getText().toString(), 
+																						this.FcnSolicitudes.getNodo(this._txtOrden.getText().toString()))){
+					CrearActualizarIdTrabajo(_txtOrden.getText().toString(), _txtCuenta.getText().toString());
+					this.FcnSolicitudes.InsertDatosMinimos(this._txtOrden.getText().toString(), this.CedulaUsuario);
+				}
 				_tempRegistro.clear();
 				_tempRegistro.put("estado","T");
 				SolicitudesSQL.UpdateRegistro("amd_ordenes_trabajo", _tempRegistro, "id_orden='"+_txtOrden.getText().toString()+"'");	

@@ -7,13 +7,13 @@
 package ws_asynchronous;
 
 import java.io.File;
-import java.io.IOException;
+//import java.io.IOException;
 import java.util.ArrayList;
 
 import miscelanea.Archivos;
 import miscelanea.SQLite;
 
-import org.kobjects.base64.Base64;
+//import org.kobjects.base64.Base64;
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.MarshalBase64;
 import org.ksoap2.serialization.SoapObject;
@@ -40,7 +40,7 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 	private String 				StringSQL;
 	private String       		FolderAplicacion="Descarga";
 	private ArrayList<String> 	InformacionCarga = new ArrayList<String>(); //arrary donde se esta colocando toda la informacion	
-	private String LineasSQL[];
+	//private String LineasSQL[];
 	private ContentValues				_tempRegistro 	= new ContentValues();
 	private ArrayList<ContentValues>	_tempTabla		= new ArrayList<ContentValues>();
 	private ArrayList<ContentValues>	_tempTabla1		= new ArrayList<ContentValues>();
@@ -51,12 +51,12 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 	
 	/** Variables para manejar los archivos**/
 	private ContentValues			InformacionArchivos = new ContentValues();
-	private ArrayList<ContentValues>RegistroArchivos 	= new ArrayList<ContentValues>();
+	//private ArrayList<ContentValues>RegistroArchivos 	= new ArrayList<ContentValues>();
 	
-	private File[]				ListaDirectorios;
+	//private File[]				ListaDirectorios;
 	private File[]				ListaArchivos;
-	private ArrayList<String>	ListaFolderAplicacionActas = new ArrayList<String>();
-	private String 				Respuesta = "";
+	//private ArrayList<String>	ListaFolderAplicacionActas = new ArrayList<String>();
+	private String 				Respuesta;
 	
 	/**Variables para el consumo del web service a traves de nusoap**/
 	private String 	_ip_servidor	= "";
@@ -248,8 +248,7 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 		
 		this.InformacionCarga.add("FIN_ARCHIVO");
 		String listString2 = "";
-		for (String s : InformacionCarga)
-		{
+		for (String s : InformacionCarga){
 		    listString2 += s;
 		}
 		ArchConnectServer.DoFile(this.FolderAplicacion,"SGD_DETALLE_CENSO_CARGA_PDA",listString2);

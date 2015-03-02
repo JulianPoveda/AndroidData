@@ -5,12 +5,14 @@ import java.util.ArrayList;
 
 import android.content.ContentValues;
 import android.content.Context;
+import miscelanea.DateTime;
 import miscelanea.SQLite;
 
 public class Class_Solicitudes {
-	private Context _contextSolicitudes;
-	private String  _folderSolicitudes;  
-	private SQLite 	SolicitudesSQL; 
+	private Context 	_contextSolicitudes;
+	private String  	_folderSolicitudes;  
+	private SQLite 		SolicitudesSQL; 
+	private DateTime 	FcnDate = new DateTime();
 	
 	private ContentValues			_tempRegistro	= new ContentValues();
 	private ArrayList<ContentValues>_tempTabla		= new ArrayList<ContentValues>();
@@ -58,6 +60,38 @@ public class Class_Solicitudes {
 			_retorno = false;
 		}	
 		return _retorno;
+	}
+	
+	
+	/**************Insert manual de datos minimos cuando el usuario que la cierra es el administrador*************/
+	public boolean InsertDatosMinimos(String _ordenTrabajo, String _cedulaUsuario){
+		this._tempRegistro.clear();
+		this._tempRegistro.put("fecha_atencion", this.FcnDate.GetFecha());
+		this._tempRegistro.put("hora_ini", this.FcnDate.GetDateTimeHora());
+		this._tempRegistro.put("hora_fin", this.FcnDate.GetDateTimeHora());
+		this.SolicitudesSQL.UpdateRegistro("amd_ordenes_trabajo", this._tempRegistro,"id_orden='"+_ordenTrabajo+"'");	
+		
+		this._tempRegistro.clear();
+		this._tempRegistro.put("id_orden",_ordenTrabajo);
+		this._tempRegistro.put("id_acta",this.SolicitudesSQL.IntSelectShieldWhere("amd_actas", "max(cast(id_acta AS INTEGER)) as id_acta", "id_acta IS NOT NULL")+1);
+		this._tempRegistro.put("id_revision","0");
+		this._tempRegistro.put("codigo_trabajo",this.SolicitudesSQL.StrSelectShieldWhere("amd_param_trabajos_orden", "id_trabajo", "id_orden='"+_ordenTrabajo+"'"));
+		this._tempRegistro.put("cedula_enterado","00000");
+		this._tempRegistro.put("nombre_enterado","Administrador");
+		this._tempRegistro.put("evento","");
+		this._tempRegistro.put("tipo_enterado","Propietario");
+		this._tempRegistro.put("cedula_testigo","");
+		this._tempRegistro.put("nombre_testigo","");
+		this._tempRegistro.put("estado","E");
+		this._tempRegistro.put("usuario_ins",_cedulaUsuario);
+		return this.SolicitudesSQL.InsertRegistro("amd_actas", this._tempRegistro);	
+	}
+	
+	
+	/********************Validacion de datos minimos necesarios antes de cerrar la orden**************************/
+	public boolean ExisteDatos(String _orden, String _cuenta, String _nodo){
+		return 	this.SolicitudesSQL.ExistRegistros("amd_actas", "id_orden='"+_orden+"'") &
+				this.SolicitudesSQL.ExistRegistros("amd_medidor_encontrado", "id_orden='"+_orden+"'");
 	}
 	
 	
