@@ -492,11 +492,20 @@ public class Form_CensoCarga extends Activity implements OnClickListener, OnChec
         			Registro.put("usuario_ins", CedulaUsuario);
         			Registro.put("fp", _lblFp1.getText().toString());
         			Registro.put("fase", "1");
-        			if(CensoSQL.InsertRegistro("amd_pct_error", Registro)){
-        				Toast.makeText(this,"Factor de potencia de la fase A guardado correctamente",Toast.LENGTH_SHORT).show();
-        			}else{
-        				Toast.makeText(this,"Error al guardar el factor de potencia de la fase A.",Toast.LENGTH_SHORT).show();
-        			}
+        			if(_txtVa.getText().toString().equals("")){
+    		    		Toast.makeText(this,"No ha ingresado el Voltaje",Toast.LENGTH_SHORT).show();
+    		    	}else{
+    		    		if(_txtIa.getText().toString().equals("")){
+        		    		Toast.makeText(this,"No ha ingresado la Corriente",Toast.LENGTH_SHORT).show();
+        		    	}else{
+    		    			if(CensoSQL.InsertRegistro("amd_pct_error", Registro)){
+    	        				Toast.makeText(this,"Factor de potencia de la fase A guardado correctamente",Toast.LENGTH_SHORT).show();
+    	        			}else{
+    	        				Toast.makeText(this,"Error al guardar el factor de potencia de la fase A.",Toast.LENGTH_SHORT).show();
+    	        			}	
+    		    		}
+    		    	}
+        			
     			}
     			
     			if((_cmbConexion.getSelectedItemPosition()==1)||(_cmbConexion.getSelectedItemPosition()==2)){

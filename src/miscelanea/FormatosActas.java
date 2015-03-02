@@ -598,10 +598,11 @@ public class FormatosActas {
 			this.ImpSQL.UpdateRegistro("amd_impresiones_inf", this._infRegistro1, "id_orden='"+ordenTrabajo+"'");
 		}
 		
-		
-		
 		if(copiaImpresion==3){
-				String _fechaQR = DT.GetFecha();
+				this._infRegistro1.clear();
+				this._infRegistro1 = ImpSQL.SelectDataRegistro("vista_actas", "dia,mes,anno", "id_orden='"+ordenTrabajo+"'");
+				String _fechaQR = this._infRegistro1.getAsString("dia")+"-"+this._infRegistro1.getAsString("mes")+"-"+this._infRegistro1.getAsString("anno");
+				
 				String Info2=_fechaQR+"|"+ImpSQL.StrSelectShieldWhere("amd_param_sistema", "valor", "codigo='NPDA'")+"|"+ordenTrabajo+"|"+ImpSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "num_acta", "id_orden='"+ordenTrabajo+"'")+"|"+"I#";
 				this._materialInstalado = generarCodigoQRMI(ordenTrabajo);
 				for(int k=0;k<this._materialInstalado.size();k++){
@@ -632,6 +633,7 @@ public class FormatosActas {
 	
 	public ArrayList<String> generarCodigoQRMI(String ordenTrabajo){
 		
+		this._infoCodigoQR.clear();
 		this._infTabla.clear();
 		this._infTabla1.clear();
 		this._infRegistro1.clear();
@@ -687,6 +689,8 @@ public class FormatosActas {
 	 * @param ordenTrabajo
 	 *********************************************************************************************************************************/
 	public ArrayList<String> generarCodigoQRMR(String ordenTrabajo){
+		
+		this._infoCodigoQRR.clear();
 		this._infTabla.clear();
 		this._infTabla1.clear();
 		this._infRegistro1.clear();
