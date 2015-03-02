@@ -717,7 +717,7 @@ public class FormatosActas {
 		this._infTabla = ImpSQL.SelectData("amd_material_usuario", "cantidad", "id_orden='"+ordenTrabajo+"'");
 		for (int i=0;i<this._infTabla.size();i++){
 			this._infRegistro1 = this._infTabla.get(i);
-			this._infoCodigoQRR.add("11111"+"|"+this._infRegistro1.getAsString("cantidad")+"|"+"0"+"|"+"EA");								
+			this._infoCodigoQRR.add("10051"+"|"+this._infRegistro1.getAsString("cantidad")+"|"+"0"+"|"+"EA");								
 		}
 		
 		return this._infoCodigoQRR;

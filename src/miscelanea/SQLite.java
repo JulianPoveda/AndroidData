@@ -24,11 +24,11 @@ import android.util.Log;
 public class SQLite {
 	private static Archivos ArchSQL;	
 	private static String N_BD = null; 	
-<<<<<<< HEAD
+
 	private static final int VERSION_BD = 6;																		
-=======
-	private static final int VERSION_BD = 5;																		
->>>>>>> origin/master
+
+//	private static final int VERSION_BD = 5;																		
+
 	
 	private BDHelper nHelper;
 	private Context nContexto;
@@ -1694,9 +1694,8 @@ public class SQLite {
 					"	FROM amd_ordenes_trabajo "+
 					"   WHERE id_orden< '0' and estado='T' ");*/
 			
-=======
 			db.execSQL("INSERT INTO amd_param_material_usuario(codigo,descripcion) VALUES('10051','Medidor Suministrado Por El Usuario');");
->>>>>>> origin/master
+
 		}
 	}
 	
