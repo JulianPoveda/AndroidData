@@ -1358,7 +1358,7 @@ public class SQLite {
 			/*db.execSQL(	"CREATE TABLE amd_param_material_usuario( codigo 		VARCHAR(50) NOT NULL PRIMARY KEY," +
 																" descripcion 	VARCHAR(255) NOT NULL);");
 
-<<<<<<< HEAD
+
 			db.execSQL("INSERT INTO amd_param_material_usuario(codigo,descripcion) VALUES('10051','Medidor Suministrado Por El Usuario');");*/
 			
 			/*db.execSQL("CREATE TABLE amd_param_materiales_seriado( id_serial INTEGER PRIMARY KEY AUTOINCREMENT,codigo_material INTEGER NOT NULL, descripcion 	VARCHAR(255) NOT NULL, unidad VARCHAR(50) NOT NULL, seriado VARCHAR(50) NOT NULL);");
@@ -1504,7 +1504,7 @@ public class SQLite {
 			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('139','8661','TRANSFORMADOR CTE VENT CL1  2000/5','UN','SI');");
 			db.execSQL("INSERT INTO amd_param_materiales_seriado(id_serial,codigo_material,descripcion, unidad, seriado) VALUES('140','8662','MEDIDOR ELSTER A 1800 ELECTRONICO TRIFIFASICO CL 02','UN','SI');");*/
 		
-			db.execSQL(	"CREATE TABLE amd_param_tipo_medidor(id_serial INTEGER PRIMARY KEY AUTOINCREMENT,id_material INTEGER NOT NULL,marca VARCHAR(20) NOT NULL,tipo VARCHAR(20) NOT NULL)");
+			db.execSQL("CREATE TABLE amd_param_tipo_medidor(id_serial INTEGER PRIMARY KEY AUTOINCREMENT,id_material INTEGER NOT NULL,marca VARCHAR(20) NOT NULL,tipo VARCHAR(20) NOT NULL)");
 			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('1','7789','HOL','MB')");
 			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('2','10051','HOL','MB')");
 			db.execSQL("INSERT INTO amd_param_tipo_medidor (id_serial,id_material, marca, tipo) VALUES ('3','8328','EST','T')");
@@ -1694,7 +1694,7 @@ public class SQLite {
 					"	FROM amd_ordenes_trabajo "+
 					"   WHERE id_orden< '0' and estado='T' ");*/
 			
-			db.execSQL("INSERT INTO amd_param_material_usuario(codigo,descripcion) VALUES('10051','Medidor Suministrado Por El Usuario');");
+		//	db.execSQL("INSERT INTO amd_param_material_usuario(codigo,descripcion) VALUES('10051','Medidor Suministrado Por El Usuario');");
 
 		}
 	}

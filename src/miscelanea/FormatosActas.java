@@ -660,6 +660,14 @@ public class FormatosActas {
 							
 						}
 			}
+		if(this._infTabla.size()==0){
+			this._infTabla1 = ImpSQL.SelectData("amd_sellos", "numero", "estado='INSTALADO' AND tipo='S-ROTOANCLA' and id_orden='"+ordenTrabajo+"'");
+			for (int j=0;j<this._infTabla1.size();j++){
+				this._infRegistro2 = this._infTabla1.get(j);
+				this._infoCodigoQR.add("99999"+"|"+"1"+"|"+this._infRegistro2.getAsString("numero")+"|"+"D");								
+			}
+
+		}
 		if(ImpSQL.ExistRegistros("amd_cambios_contadores", "tipo='P' AND id_orden='"+ordenTrabajo+"'")){
 			String numeroM	 = ImpSQL.StrSelectShieldWhere("amd_cambios_contadores","serie", "tipo='P' AND id_orden='"+ordenTrabajo+"'");
 			String idMaterial= ImpSQL.StrSelectShieldWhere("amd_materiales_provisionales","elemento", "id_orden='"+ordenTrabajo+"'");
