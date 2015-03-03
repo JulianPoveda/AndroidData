@@ -599,17 +599,20 @@ public class FormatosActas {
 		}
 		
 		if(copiaImpresion==3){
+		
 				this._infRegistro1.clear();
 				this._infRegistro1 = ImpSQL.SelectDataRegistro("vista_actas", "dia,mes,anno", "id_orden='"+ordenTrabajo+"'");
 				String _fechaQR = this._infRegistro1.getAsString("dia")+"-"+this._infRegistro1.getAsString("mes")+"-"+this._infRegistro1.getAsString("anno");
+				String _cuentaQR 	= ImpSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "cuenta", "id_orden='"+ordenTrabajo+"'");
+				String _medidorQR	= ImpSQL.StrSelectShieldWhere("amd_contador_cliente_orden", "serie", "cuenta='"+_cuentaQR+"'");
 				
-				String Info2=_fechaQR+"|"+ImpSQL.StrSelectShieldWhere("amd_param_sistema", "valor", "codigo='NPDA'")+"|"+ordenTrabajo+"|"+ImpSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "num_acta", "id_orden='"+ordenTrabajo+"'")+"|"+"I#";
+				String Info2="I"+"|"+_fechaQR+"|"+ImpSQL.StrSelectShieldWhere("amd_param_sistema", "valor", "codigo='NPDA'")+"|"+ordenTrabajo+"|"+_cuentaQR+"|"+_medidorQR+"|"+ImpSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "num_acta", "id_orden='"+ordenTrabajo+"'")+"#";
 				this._materialInstalado = generarCodigoQRMI(ordenTrabajo);
 				for(int k=0;k<this._materialInstalado.size();k++){
 					Info2+=this._materialInstalado.get(k)+"@";
 				}
 				
-				String Info= _fechaQR+"|"+ImpSQL.StrSelectShieldWhere("amd_param_sistema", "valor", "codigo='NPDA'")+"|"+ordenTrabajo+"|"+ImpSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "num_acta", "id_orden='"+ordenTrabajo+"'")+"|"+"R#";
+				String Info= "R"+"|"+_fechaQR+"|"+ImpSQL.StrSelectShieldWhere("amd_param_sistema", "valor", "codigo='NPDA'")+"|"+ordenTrabajo+"|"+_cuentaQR+"|"+_medidorQR+"|"+ImpSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "num_acta", "id_orden='"+ordenTrabajo+"'")+"#";
 				this._materialRetirado = generarCodigoQRMR(ordenTrabajo);
 				for(int k=0;k<this._materialRetirado.size();k++){
 					Info+=this._materialRetirado.get(k)+"@";
