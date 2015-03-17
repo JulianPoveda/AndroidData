@@ -619,10 +619,10 @@ public class FormatosActas {
 				}
 				
 				String infoPrinterQRR = Info.substring(0, Info.length()-1);
-				FcnZebra.printerQRCode(infoPrinterQRR, 20, 4, 0);
+				FcnZebra.printerQRCode(infoPrinterQRR, 300, 4, 15);
 				
 				String infoPrinterQR = Info2.substring(0, Info2.length()-1);
-				FcnZebra.printerQRCode(infoPrinterQR, 300, 0, 15);
+				FcnZebra.printerQRCode(infoPrinterQR, 300, 4, 25);
 			}
 		
 		MnBt.IntentPrint(this.Impresora,FcnZebra.getDoLabel());
