@@ -66,6 +66,8 @@ public class SQLite {
 																"descripcion 	VARCHAR(255) NOT NULL);");
 			
 			db.execSQL("INSERT INTO amd_param_material_usuario(codigo,descripcion) VALUES('10051','Medidor Suministrado Por El Usuario');");
+			db.execSQL("INSERT INTO amd_param_material_usuario(codigo,descripcion) VALUES('10052','Alambre No.8');");
+			db.execSQL("INSERT INTO amd_param_material_usuario(codigo,descripcion) VALUES('10053','Alambre N� 10.');");
 						
 			
 			//Tabla con los parametros del sistema

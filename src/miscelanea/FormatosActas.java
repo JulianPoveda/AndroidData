@@ -729,9 +729,11 @@ public class FormatosActas {
 		}
 		this._infTabla.clear();
 		this._infRegistro1.clear();
-		this._infTabla = ImpSQL.SelectData("amd_material_usuario", "cantidad", "id_orden='"+ordenTrabajo+"'");
+		this._infTabla = ImpSQL.SelectData("amd_material_usuario", "cantidad,material", "id_orden='"+ordenTrabajo+"'");
 		for (int i=0;i<this._infTabla.size();i++){
 			this._infRegistro1 = this._infTabla.get(i);
+			//if material es igual a medidor coloque 10051 si no coloque 10052.
+			//preguntar a julian de donde consulta este material y hacer una tabla con estos codigos y consultar con join
 			this._infoCodigoQRR.add("10051"+"|"+this._infRegistro1.getAsString("cantidad")+"|"+"0"+"|"+"EA");								
 		}
 		
