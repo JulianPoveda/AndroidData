@@ -56,7 +56,7 @@ public class  UpLoadInformacionOrdenActual extends AsyncTask<String, Integer, St
 		this._tempRegistro.put("orden", this.ActaTrabajoSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "id_orden", "estado='E'"));
 		this._tempRegistro.put("cuenta", this.ActaTrabajoSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "cuenta", "estado='E'"));
 		this._tempRegistro.put("pda", this.ActaTrabajoSQL.IntSelectShieldWhere("amd_param_sistema", "valor", "codigo='NPDA'"));
-		this._tempRegistro.put("tecnico", this.ActaTrabajoSQL.StrSelectShieldWhere("db_parametros", "valor", "item='nombre_tecnico'"));
+		this._tempRegistro.put("tecnico", this.ActaTrabajoSQL.StrSelectShieldWhere("amd_param_sistema", "valor", "codigo='NOM_TECNICO'"));
 		this._tempRegistro.put("municipio", this.ActaTrabajoSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "municipio", "estado='E'"));
 		this._tempRegistro.put("ubicacion", this.ActaTrabajoSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "ubicacion", "estado='E'"));
 	}

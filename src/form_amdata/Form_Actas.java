@@ -1,20 +1,27 @@
 package form_amdata;
 
+
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
+
 
 import class_amdata.Class_Impresiones;
 import dialogos.Modal_MedidorSellosOrden;
 
 import sypelc.androidamdata.R;
+import ws_asynchronous.DownLoadTrabajo;
+import ws_asynchronous.UpLoadFoto;
 import miscelanea.FormatosActas;
 import miscelanea.SQLite;
 import miscelanea.Util;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,7 +35,13 @@ import android.widget.Toast;
 
 public class Form_Actas extends Activity implements OnClickListener{
 	private static int  ACT_MEDIDOR_SELLOS_ORDEN = 1;
+	private static int 	INICIAR_CAMARA	 	     = 2;
+	
+	public static int MAX_WIDTH=460;
+	public static int MAX_HEIGHT=460;
+	
 	Intent MedidorSellosOrden;
+	Intent 	    IniciarCamara;
 	
 	Class_Impresiones 	FcnImpresion;
 	FormatosActas 		ActaImpresa;
@@ -41,7 +54,8 @@ public class Form_Actas extends Activity implements OnClickListener{
 	private String 		OrdenTrabajo 	= "";
 	private String 		CuentaCliente 	= "";
 	private String 		FolderAplicacion= "";
-	
+	private String 		fotoParcial		= "";
+		
 	//Variable utilizada para realizar las operaciones en la base de datos 
 	ArrayList<ContentValues> Query 	= new ArrayList<ContentValues>();
 	ContentValues 	Registro 		= new ContentValues();
@@ -105,6 +119,7 @@ public class Form_Actas extends Activity implements OnClickListener{
 		this.FolderAplicacion	= bundle.getString("FolderAplicacion");
 		
 		MedidorSellosOrden 	= new Intent(this,Modal_MedidorSellosOrden.class);
+		this.IniciarCamara	= new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
 		FcnImpresion		= new Class_Impresiones(this, this.FolderAplicacion, this.CedulaUsuario);
 		
 		ActasSQL 	= new SQLite(this, this.FolderAplicacion);
@@ -119,6 +134,7 @@ public class Form_Actas extends Activity implements OnClickListener{
 		_lblOrden.setText(OrdenTrabajo);
 		_lblActa.setText(ActasSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "num_acta", "id_orden='"+OrdenTrabajo+"'"));
 		_lblCuenta.setText(CuentaCliente);	
+		
 		
 		_txtDocEnterado 	= (EditText) findViewById(R.id.ActaTxtDocEnterado);
 		_txtNombreEnterado 	= (EditText) findViewById(R.id.ActaTxtNombreEnterado);
@@ -341,7 +357,11 @@ public class Form_Actas extends Activity implements OnClickListener{
 				if(this.FcnImpresion.validarDatosImpresionActa(OrdenTrabajo)){
 					ActaImpresa.FormatoVerificacion(OrdenTrabajo, CuentaCliente, "Desviacion",3, CedulaUsuario);
 				}				
-				return true;	
+				return true;
+				
+			case R.id.Foto:
+				this.getFoto();				
+				return true;
 				
 			default:
 				return super.onOptionsItemSelected(item);
@@ -463,4 +483,34 @@ public class Form_Actas extends Activity implements OnClickListener{
 		}  
 		
 	}
+	
+	@Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        try{
+        	if(resultCode == RESULT_OK && requestCode == INICIAR_CAMARA){        		
+        		new UpLoadFoto(this, this.FolderAplicacion).execute(OrdenTrabajo,this.fotoParcial);        		
+            }
+        }catch(Exception e){
+
+        }
+    }
+	
+	private void getFoto(){
+		long ahora = System.currentTimeMillis();
+		Calendar calendario = Calendar.getInstance();
+		calendario.setTimeInMillis(ahora);
+		int minuto = calendario.get(Calendar.MINUTE);
+		
+        File imagesFolder   = new File(this.FolderAplicacion);
+        File image          = new File(imagesFolder,
+        								OrdenTrabajo+"_"+minuto+".jpeg");
+        
+        this.fotoParcial = image.toString();
+        
+        Uri uriSavedImage = Uri.fromFile(image);
+        this.IniciarCamara.putExtra(MediaStore.EXTRA_OUTPUT, uriSavedImage);
+        
+        startActivityForResult(IniciarCamara, INICIAR_CAMARA);
+    }
+	    
 }

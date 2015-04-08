@@ -1,7 +1,10 @@
 package thread_timer;
 
+import java.io.File;
+
 import miscelanea.SQLite;
 import ws_asynchronous.UpLoadActa;
+import ws_asynchronous.UpLoadFoto;
 import ws_asynchronous.UpLoadInformacionOrdenActual;
 import ws_asynchronous.UpLoadUbicacion;
 import android.content.Context;
@@ -35,10 +38,28 @@ public class Beacon extends CountDownTimer{
 		/**Web service para subir al servidor los registros de posiciones GPS**/
 		if(this.BeaconSQL.ExistRegistros("db_gps", "id_serial IS NOT NULL")){
 			new UpLoadUbicacion(this.TemporizadorCtx, this.FolderAplicacion).execute();	
-		}		
+		}
 		
+		File f = new File(this.FolderAplicacion);
+		File[] fotos = f.listFiles();
+		for (int i=0;i<fotos.length;i++){
+			if(!fotos[i].isDirectory()){
+				String extension = getFileExtension(fotos[i]);
+				if(extension.equals("jpeg")){
+					String[] _foto = fotos[i].getName().split("_");
+					new UpLoadFoto(this.TemporizadorCtx, this.FolderAplicacion).execute(_foto[0],fotos[i].toString());
+				}
+			}
+		}
 		
 	}
+	
+	private static String getFileExtension(File file) {
+        String fileName = file.getName();
+        if(fileName.lastIndexOf(".") != -1 && fileName.lastIndexOf(".") != 0)
+        return fileName.substring(fileName.lastIndexOf(".")+1);
+        else return "";
+    }
 	
 
 	@Override

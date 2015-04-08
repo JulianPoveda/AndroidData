@@ -28,6 +28,10 @@
                 	android:title="Copia Archivo"/>
         </menu>
     </item>
+    <item 	android:id="@+id/Foto" 
+        	android:title="Tomar Foto"
+        	android:showAsAction="ifRoom|withText">        
+    </item>
     <item 	android:id="@+id/Volver" 
         	android:title="Volver"></item>
     <item 	android:id="@+id/MedidorSellosOrden" 
