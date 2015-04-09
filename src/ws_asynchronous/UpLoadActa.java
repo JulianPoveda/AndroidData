@@ -88,7 +88,7 @@ public class  UpLoadActa extends AsyncTask<String, Integer, String>{
 		    				this.InformacionArchivos.put("tipo_archivo", temp2[0]);
 		    				this.InformacionArchivos.put("tipo_copia", temp2[1]);
 		    				this.InformacionArchivos.put("consecutivo", temp2[2]);
-		    				this.InformacionArchivos.put("items",this.UpLoadSQL.StrSelectShieldWhere("amd_impresiones_inf", "items", "id_orden='"+temp1[cantCarpetas-2]+"'"));
+		    				this.InformacionArchivos.put("items",this.UpLoadSQL.StrSelectShieldWhere("amd_ordenes_trabajo", "num_acta", "id_orden='"+temp1[cantCarpetas-2]+"'"));
 		    				this.InformacionArchivos.put("ruta_archivo",this.ListaArchivos[j].toString());
 		    				this.RegistroArchivos.add(this.InformacionArchivos);
 	    				}	    				

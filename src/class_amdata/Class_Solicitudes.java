@@ -91,7 +91,8 @@ public class Class_Solicitudes {
 	/********************Validacion de datos minimos necesarios antes de cerrar la orden**************************/
 	public boolean ExisteDatos(String _orden, String _cuenta, String _nodo){
 		return 	this.SolicitudesSQL.ExistRegistros("amd_actas", "id_orden='"+_orden+"'") &
-				this.SolicitudesSQL.ExistRegistros("amd_medidor_encontrado", "id_orden='"+_orden+"'");
+				(this.SolicitudesSQL.ExistRegistros("amd_medidor_encontrado", "id_orden='"+_orden+"'") |
+				this.SolicitudesSQL.ExistRegistros("amd_cambios_contadores", "id_orden='"+_orden+"'"));
 	}
 	
 	
