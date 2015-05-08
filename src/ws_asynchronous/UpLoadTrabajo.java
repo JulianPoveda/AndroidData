@@ -69,9 +69,9 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 	private String NAMESPACE;		//= "http://190.93.133.87:8080/ControlEnergia/WS";
 	
 	//Variables con la informacion del web service
-	private static final String METHOD_NAME	= "UpLoadTrabajo";
-	private static final String SOAP_ACTION	= "UpLoadTrabajo";
-	SoapPrimitive	response = null;
+	private final String METHOD_NAME	= "UpLoadTrabajo";
+	private final String SOAP_ACTION	= "UpLoadTrabajo";
+	SoapPrimitive 	response = null;
 	ProgressDialog 	_pDialog;
 	
 		
@@ -608,29 +608,8 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
    		
 		//  this.InformacionArchivos = this.RegistroArchivos.get(i);
 		try{
-			SoapObject so=new SoapObject(NAMESPACE, METHOD_NAME);
-			so.addProperty("pda",this.InformacionArchivos.getAsString("idPda"));
-			/*so.addProperty("archivo1",this.ArchUpLoadWS.FileToString(this.InformacionArchivos.getAsString("ITEM_PAGO"),true));
-			so.addProperty("archivo2",this.ArchUpLoadWS.FileToString(this.InformacionArchivos.getAsString("SGD_ACOMETIDAS_PDA"),true));
-			so.addProperty("archivo3",this.ArchUpLoadWS.FileToString(this.InformacionArchivos.getAsString("SGD_ACTAS_PDA"),true));
-			so.addProperty("archivo4",this.ArchUpLoadWS.FileToString(this.InformacionArchivos.getAsString("SGD_CENSO_CARGA_PDA"),true));
-			so.addProperty("archivo5",this.ArchUpLoadWS.FileToString(this.InformacionArchivos.getAsString("SGD_DETALLE_CENSO_CARGA_PDA"),true));
-			so.addProperty("archivo6",this.ArchUpLoadWS.FileToString(this.InformacionArchivos.getAsString("SGD_DIAGRAMAS_PDA"),true));
-			so.addProperty("archivo7",this.ArchUpLoadWS.FileToString(this.InformacionArchivos.getAsString("SGD_ELEMENTOS_PROV_PDA"),true));
-			so.addProperty("archivo8",this.ArchUpLoadWS.FileToString(this.InformacionArchivos.getAsString("SGD_INCONSISTENCIA_PDA"),true));
-			so.addProperty("archivo9",this.ArchUpLoadWS.FileToString(this.InformacionArchivos.getAsString("SGD_IRREGULARIDADES_PDA"),true));
-			so.addProperty("archivo10",this.ArchUpLoadWS.FileToString(this.InformacionArchivos.getAsString("SGD_MATERIALES_TRABAJO_PDA"),true));
-			so.addProperty("archivo11",this.ArchUpLoadWS.FileToString(this.InformacionArchivos.getAsString("SGD_MEDIDOR_ENCONTRADO_PDA"),true));
-			so.addProperty("archivo12",this.ArchUpLoadWS.FileToString(this.InformacionArchivos.getAsString("SGD_MVTO_CONTADORES_PDA"),true));
-			so.addProperty("archivo13",this.ArchUpLoadWS.FileToString(this.InformacionArchivos.getAsString("SGD_PCTERROR_PDA"),true));
-			so.addProperty("archivo14",this.ArchUpLoadWS.FileToString(this.InformacionArchivos.getAsString("SGD_SELLOS_PDA"),true));
-			so.addProperty("archivo15",this.ArchUpLoadWS.FileToString(this.InformacionArchivos.getAsString("SGD_SERVICIO_NUEVO_PDA"),true));
-			so.addProperty("archivo16",this.ArchUpLoadWS.FileToString(this.InformacionArchivos.getAsString("SGD_TRABAJOS_ORDEN_PDA"),true));
-			so.addProperty("archivo17",this.ArchUpLoadWS.FileToString(this.InformacionArchivos.getAsString("SGD_VISITAS_PDA"),true));
-			so.addProperty("archivo18",this.ArchUpLoadWS.FileToString(this.InformacionArchivos.getAsString("SGD_NODOS_EXP")+"\n",true));
-			so.addProperty("archivo19",this.ArchUpLoadWS.FileToString(this.InformacionArchivos.getAsString("SGD_ORDENES_TRABAJO_EXP"),true));
-			so.addProperty("archivo20",this.ArchUpLoadWS.FileToString(this.InformacionArchivos.getAsString("SGD_ORDENES_TRABAJO_PDA"),true));*/
-			
+			SoapObject so=new SoapObject(NAMESPACE, this.METHOD_NAME);
+			so.addProperty("idPda",this.InformacionArchivos.getAsString("idPda"));
 			so.addProperty("ITEM_PAGO",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("ITEM_PAGO")));
 			so.addProperty("SGD_ACOMETIDAS_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ACOMETIDAS_PDA")));
 			so.addProperty("SGD_ACTAS_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ACTAS_PDA")));
@@ -657,7 +636,7 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 			sse.dotNet=true;
 			sse.setOutputSoapObject(so);
 			HttpTransportSE htse=new HttpTransportSE(URL);
-			htse.call(SOAP_ACTION, sse);
+			htse.call(this.SOAP_ACTION, sse);
 			response=(SoapPrimitive) sse.getResponse();
 			
 			if(response==null) {
