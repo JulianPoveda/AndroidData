@@ -78,7 +78,7 @@ public class SQLite {
 			db.execSQL("INSERT INTO db_parametros (item,valor,nivel) VALUES ('web_service','AndroidWS.php?wsdl',0)");
 			db.execSQL("INSERT INTO db_parametros (item,valor,nivel) VALUES ('nombre_tecnico','sin_asignar',1)");
 			db.execSQL("INSERT INTO db_parametros (item,valor,nivel) VALUES ('impresora','sin asignar',1)");
-			db.execSQL("INSERT INTO db_parametros (item,valor,nivel) VALUES ('version','1.8',0)");
+			db.execSQL("INSERT INTO db_parametros (item,valor,nivel) VALUES ('version','1.8.1',0)");
 			
 			//Tabla con las informacion de las coordenadas GPS
 			db.execSQL("CREATE TABLE db_gps(id_serial	INTEGER PRIMARY KEY AUTOINCREMENT,"

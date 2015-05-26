@@ -398,6 +398,8 @@ public class Form_Actas extends Activity implements OnClickListener{
         			Toast.makeText(this,"No ha seleccionado la ubicacion del medidor.", Toast.LENGTH_SHORT).show();        			
         		}else if(_cmbUsoDerecho.getSelectedItem().toString().equals("...")){
         			Toast.makeText(this,"No ha seleccionado si el usuario hace uso del derecho.", Toast.LENGTH_SHORT).show();        			
+        		}else if(_txtDocEnterado.getText().toString().equals("")||_txtNombreEnterado.getText().toString().equals("")){
+        			Toast.makeText(this,"Faltan Datos de Enterado.", Toast.LENGTH_SHORT).show();
         		}else{
         			
         			/**********************************Se guarda la informacion de amd_impresiones_inf******************************/
@@ -437,13 +439,13 @@ public class Form_Actas extends Activity implements OnClickListener{
         				Registro.put("tipo_enterado",_cmbTipoEnterado.getSelectedItem().toString());
         				Registro.put("cedula_testigo",_txtDocTestigo.getText().toString());
         				Registro.put("nombre_testigo",_txtNombreTestigo.getText().toString());
-        				
+        				        				
         				if(ActasSQL.UpdateRegistro("amd_actas", Registro, "id_orden='"+OrdenTrabajo+"'")){
-        					Toast.makeText(this,"Registro actualizado correctamente en amd_actas.", Toast.LENGTH_SHORT).show();
-        				}else{
-        					Toast.makeText(this,"Error al ingresar el registro en amd_actas.", Toast.LENGTH_SHORT).show();
-        				}
-        			}else{
+            					Toast.makeText(this,"Registro actualizado correctamente en amd_actas.", Toast.LENGTH_SHORT).show();
+            			}else{
+            					Toast.makeText(this,"Error al ingresar el registro en amd_actas.", Toast.LENGTH_SHORT).show();
+            			}        				        				        				        			
+        			 }else{
         				Registro.put("id_orden",OrdenTrabajo);
         				Registro.put("id_acta",ActasSQL.IntSelectShieldWhere("amd_actas", "max(cast(id_acta AS INTEGER)) as id_acta", "id_acta IS NOT NULL")+1);
         				Registro.put("id_revision","0");
@@ -458,10 +460,10 @@ public class Form_Actas extends Activity implements OnClickListener{
         				Registro.put("usuario_ins",CedulaUsuario);
         				
         				if(ActasSQL.InsertRegistro("amd_actas", Registro)){
-        					Toast.makeText(this,"Registro ingresado correctamente en amd_actas.", Toast.LENGTH_SHORT).show();
-        				}else{
-        					Toast.makeText(this,"Error al ingresar el registro en amd_actas.", Toast.LENGTH_SHORT).show();
-        				}        				
+            					Toast.makeText(this,"Registro ingresado correctamente en amd_actas.", Toast.LENGTH_SHORT).show();
+            			}else{
+            					Toast.makeText(this,"Error al ingresar el registro en amd_actas.", Toast.LENGTH_SHORT).show();
+            			}             				       				   				
         			}
         			
         			/*************************Se guarda la informacion de la respuesta PQR en amd_inconsistencias***********************/
