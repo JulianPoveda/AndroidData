@@ -7,7 +7,7 @@
 package ws_asynchronous;
 
 import java.io.File;
-//import java.io.IOException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import miscelanea.Archivos;
@@ -65,12 +65,12 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 	private String 	_web_service 	= "";
 	private String _NPDA;
 	
-	private String URL;				//= "http://190.93.133.87:8080/ControlEnergia/WS/AndroidWS.php?wsdl";
-	private String NAMESPACE;		//= "http://190.93.133.87:8080/ControlEnergia/WS";
+	private String URL="";				//= "http://190.93.133.87:8080/ControlEnergia/WS/AndroidWS.php?wsdl";
+	private String NAMESPACE="";		//= "http://190.93.133.87:8080/ControlEnergia/WS";
 	
 	//Variables con la informacion del web service
-	private final String METHOD_NAME	= "UpLoadTrabajo";
-	private final String SOAP_ACTION	= "UpLoadTrabajo";
+	private static final String METHOD_NAME	= "UpLoadTrabajo";
+	private static final String SOAP_ACTION	= "UpLoadTrabajo";
 	SoapPrimitive 	response = null;
 	ProgressDialog 	_pDialog;
 	
@@ -608,8 +608,8 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
    		
 		//  this.InformacionArchivos = this.RegistroArchivos.get(i);
 		try{
-			SoapObject so=new SoapObject(NAMESPACE, this.METHOD_NAME);
-			so.addProperty("idPda",this.InformacionArchivos.getAsString("idPda"));
+			SoapObject so=new SoapObject(NAMESPACE, METHOD_NAME);
+			/*so.addProperty("idPda",this.InformacionArchivos.getAsString("idPda"));
 			so.addProperty("ITEM_PAGO",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("ITEM_PAGO")));
 			so.addProperty("SGD_ACOMETIDAS_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ACOMETIDAS_PDA")));
 			so.addProperty("SGD_ACTAS_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ACTAS_PDA")));
@@ -629,17 +629,40 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 			so.addProperty("SGD_VISITAS_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_VISITAS_PDA")));
 			so.addProperty("SGD_NODOS_EXP",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_NODOS_EXP")));
 			so.addProperty("SGD_ORDENES_TRABAJO_EXP",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ORDENES_TRABAJO_EXP")));
-			so.addProperty("SGD_ORDENES_TRABAJO_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ORDENES_TRABAJO_PDA")));
+			so.addProperty("SGD_ORDENES_TRABAJO_PDA",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ORDENES_TRABAJO_PDA")));*/
 			
+			so.addProperty("pda",this.InformacionArchivos.getAsString("idPda"));
+			so.addProperty("archivo1",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("ITEM_PAGO")));
+			so.addProperty("archivo2",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ACOMETIDAS_PDA")));
+			so.addProperty("archivo3",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ACTAS_PDA")));
+			so.addProperty("archivo4",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_CENSO_CARGA_PDA")));
+			so.addProperty("archivo5",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_DETALLE_CENSO_CARGA_PDA")));
+			so.addProperty("archivo6",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_DIAGRAMAS_PDA")));
+			so.addProperty("archivo7",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ELEMENTOS_PROV_PDA")));
+			so.addProperty("archivo8",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_INCONSISTENCIA_PDA")));
+			so.addProperty("archivo9",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_IRREGULARIDADES_PDA")));
+			so.addProperty("archivo10",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_MATERIALES_TRABAJO_PDA")));
+			so.addProperty("archivo11",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_MEDIDOR_ENCONTRADO_PDA")));
+			so.addProperty("archivo12",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_MVTO_CONTADORES_PDA")));
+			so.addProperty("archivo13",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_PCTERROR_PDA")));
+			so.addProperty("archivo14",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_SELLOS_PDA")));
+			so.addProperty("archivo15",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_SERVICIO_NUEVO_PDA")));
+			so.addProperty("archivo16",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_TRABAJOS_ORDEN_PDA")));
+			so.addProperty("archivo17",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_VISITAS_PDA")));
+			so.addProperty("archivo18",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_NODOS_EXP")));
+			so.addProperty("archivo19",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ORDENES_TRABAJO_EXP")));
+			so.addProperty("archivo20",this.ArchUpLoadWS.FileToArrayBytes(this.InformacionArchivos.getAsString("SGD_ORDENES_TRABAJO_PDA")));
+			
+					
 			SoapSerializationEnvelope sse=new SoapSerializationEnvelope(SoapEnvelope.VER11);
 			new MarshalBase64().register(sse);
 			sse.dotNet=true;
 			sse.setOutputSoapObject(so);
 			HttpTransportSE htse=new HttpTransportSE(URL);
-			htse.call(this.SOAP_ACTION, sse);
+			htse.call(SOAP_ACTION, sse);
 			response=(SoapPrimitive) sse.getResponse();
 			
-			if(response==null) {
+			if(response.toString()==null) {
 				this.Respuesta = "-1";
 			}else if(response.toString().isEmpty()){
 				this.Respuesta = "-2";

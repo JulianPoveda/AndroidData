@@ -227,8 +227,9 @@ public class Form_Solicitudes extends Activity implements OnItemSelectedListener
 					if((this.FcnSolicitudes.getEstadoOrden(_txtOrden.getText().toString()).equals("P")||
 							this.FcnSolicitudes.getEstadoOrden(_txtOrden.getText().toString()).equals("E"))&&
 							this.NivelUsuario.equals("A")){
-						DialogConfirmacion.putExtra("informacion", "Desea Cerrar La Orden "+_txtOrden.getText().toString());
+						DialogConfirmacion.putExtra("informacion", "Desea Cerrar La Orden "+_txtOrden.getText().toString());						
 						startActivityForResult(DialogConfirmacion, CONFIRMACION_CERRAR_ORDEN);
+						this.FcnSolicitudes.CerrarOrdenes(this._txtOrden.getText().toString());
 					}else if(	this.FcnSolicitudes.getEstadoOrden(_txtOrden.getText().toString()).equals("E") && 
 								this.FcnSolicitudes.ExisteDatos(this._txtOrden.getText().toString(), 
 																this._txtCuenta.getText().toString(), 

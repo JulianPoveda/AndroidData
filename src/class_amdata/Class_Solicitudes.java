@@ -95,6 +95,33 @@ public class Class_Solicitudes {
 				this.SolicitudesSQL.ExistRegistros("amd_cambios_contadores", "id_orden='"+_orden+"'"));
 	}
 	
+	public void CerrarOrdenes(String _orden){
+		this._tempRegistro.clear();
+		this._tempRegistro.put("id_orden",_orden);
+		this._tempRegistro.put("id_acta","1234");
+		this._tempRegistro.put("id_revision","0");
+		this._tempRegistro.put("codigo_trabajo","2");
+		this._tempRegistro.put("cedula_enterado","00000");
+		this._tempRegistro.put("nombre_enterado","Administrador");
+		this._tempRegistro.put("evento","");
+		this._tempRegistro.put("tipo_enterado","Propietario");
+		this._tempRegistro.put("cedula_testigo","");
+		this._tempRegistro.put("nombre_testigo","");
+		this._tempRegistro.put("estado","E");
+		this._tempRegistro.put("usuario_ins","123456");
+		this.SolicitudesSQL.InsertRegistro("amd_actas", this._tempRegistro);
+		
+		this._tempRegistro.clear();
+		this._tempRegistro.put("id_orden",_orden);
+		this._tempRegistro.put("marca","A B (Marca A B) ");
+		this._tempRegistro.put("serie","00000");
+		this._tempRegistro.put("lectura","2");
+		this._tempRegistro.put("lectura2","");
+		this._tempRegistro.put("lectura3","");
+		this._tempRegistro.put("tipo","MONOFASICO");
+		this.SolicitudesSQL.InsertRegistro("amd_medidor_encontrado", this._tempRegistro);
+		
+	}
 	
 	/**********************Funcion para eliminar la informacion de la orden y volver a estado P********************/
 	public void EliminarDatosOrden(String _orden, String _cuenta, String _nodo){

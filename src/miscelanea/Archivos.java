@@ -107,6 +107,41 @@ public class Archivos {
 		return CountBfrArchivo;
 	}
 	
+	//Metodo para convertir el contenido de un archivo a un array 
+			public String FileToString(String Archivo, boolean ruta_completa){
+				File file;
+				String queryString;
+				String storageState = Environment.getExternalStorageState();
+				String InformacionFile="";
+				
+				//ArrayList<String> InformacionFile = new ArrayList<String>();
+				
+				if (storageState.equals(Environment.MEDIA_MOUNTED)) {
+				    if(ruta_completa){
+				    	file = new File(Archivo);
+				    }else{
+				    	file = new File(this.Directory + File.separator +Archivo);
+				    }
+				    		 
+				    BufferedReader inputReader2;
+					try {
+						inputReader2 = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+						while ((queryString = inputReader2.readLine()) != null) {
+					    	InformacionFile +=queryString+"\n";
+					    }
+						file.delete();
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				return InformacionFile;
+			}
+		
+	
 	
 	//Metodo para convertir el contenido de un archivo a un array 
 	public ArrayList<String> FileToArrayString(String Archivo, boolean ruta_completa){
