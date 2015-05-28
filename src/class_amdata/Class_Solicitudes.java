@@ -136,7 +136,7 @@ public class Class_Solicitudes {
 		this.SolicitudesSQL.DeleteRegistro("amd_inconsistencias", "id_orden='"+_orden+"'");
 		this.SolicitudesSQL.DeleteRegistro("amd_irregularidades", "id_orden='"+_orden+"'");
 		this.SolicitudesSQL.DeleteRegistro("amd_material_usuario", "id_orden='"+_orden+"'");
-		this.SolicitudesSQL.DeleteRegistro("amd_contador_cliente_orden", "cuenta='"+_cuenta+"'");
+		//this.SolicitudesSQL.DeleteRegistro("amd_contador_cliente_orden", "cuenta='"+_cuenta+"'");
 		this.SolicitudesSQL.DeleteRegistro("amd_materiales_provisionales", "id_orden='"+_orden+"'");
 		this.SolicitudesSQL.DeleteRegistro("amd_materiales_trabajo_orden", "id_orden='"+_orden+"'");
 		this.SolicitudesSQL.DeleteRegistro("amd_medidor_encontrado", "id_orden='"+_orden+"'");

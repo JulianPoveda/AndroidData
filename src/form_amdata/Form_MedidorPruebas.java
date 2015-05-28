@@ -207,31 +207,35 @@ public class Form_MedidorPruebas extends Activity implements OnClickListener, On
 	
 	public void ValidarMedidorEncontrado(){
 		_tempRegistro = PruebasSQL.SelectDataRegistro("amd_contador_cliente_orden", "marca,serie,con_contador", "cuenta='"+CuentaCliente+"' AND desinstalado IN (0,1)");
-		if(_tempRegistro.getAsString("con_contador").equals("N")){
-			mi_marca = "SD (SERVICIO DIRECTO)";
-			mi_serie = "";
+		if(_tempRegistro.getAsString("marca").equals("")){
+			this.FcnIrregularidad.registrarIrregularidad("18");
 		}else{
-			mi_marca 	= _tempRegistro.getAsString("marca");
-			mi_serie	= _tempRegistro.getAsString("serie");
-		}
-		
-		if(!mi_marca.equals("SD (SERVICIO DIRECTO)")){
-			if(!_cmbMarcaMedidor.getSelectedItem().toString().equals("SS (SIN SERVICIO)")||(!_cmbMarcaMedidor.getSelectedItem().toString().equals("SD (SERVICIO DIRECTO)"))){
-				if(!mi_marca.equals(PruebasSQL.StrSelectShieldWhere("vista_marca_contador", "id_marca", "descripcion='"+_cmbMarcaMedidor.getSelectedItem().toString()+"'"))||!mi_serie.equals(_txtSerieMedidor.getText().toString())){
-					this.FcnIrregularidad.registrarIrregularidad("18");
-				}
-			}else if(!mi_marca.isEmpty()&&(_cmbMarcaMedidor.getSelectedItem().toString().equals("SS (SIN SERVICIO)")||(_cmbMarcaMedidor.getSelectedItem().toString().equals("SD (SERVICIO DIRECTO)")))){
-				this.FcnIrregularidad.registrarIrregularidad("55");				
+			if(_tempRegistro.getAsString("con_contador").equals("N")){
+				mi_marca = "SD (SERVICIO DIRECTO)";
+				mi_serie = "";
+			}else{
+				mi_marca 	= _tempRegistro.getAsString("marca");
+				mi_serie	= _tempRegistro.getAsString("serie");
 			}
-		}
-		
-		if(mi_marca.isEmpty()&&(!_cmbMarcaMedidor.getSelectedItem().toString().equals("SS (SIN SERVICIO)"))&&(!_txtSerieMedidor.getText().toString().isEmpty())){
-			this.FcnIrregularidad.registrarIrregularidad("67");
-		}
-		
-		if(mi_marca.equals("SD (SERVICIO DIRECTO)")&&(mi_marca.equals(_cmbMarcaMedidor.getSelectedItem().toString()))){
-			this.FcnIrregularidad.registrarIrregularidad("67");	
-		}
+			
+			if(!mi_marca.equals("SD (SERVICIO DIRECTO)")){
+				if(!_cmbMarcaMedidor.getSelectedItem().toString().equals("SS (SIN SERVICIO)")||(!_cmbMarcaMedidor.getSelectedItem().toString().equals("SD (SERVICIO DIRECTO)"))){
+					if(!mi_marca.equals(PruebasSQL.StrSelectShieldWhere("vista_marca_contador", "id_marca", "descripcion='"+_cmbMarcaMedidor.getSelectedItem().toString()+"'"))||!mi_serie.equals(_txtSerieMedidor.getText().toString())){
+						this.FcnIrregularidad.registrarIrregularidad("18");
+					}
+				}else if(!mi_marca.isEmpty()&&(_cmbMarcaMedidor.getSelectedItem().toString().equals("SS (SIN SERVICIO)")||(_cmbMarcaMedidor.getSelectedItem().toString().equals("SD (SERVICIO DIRECTO)")))){
+					this.FcnIrregularidad.registrarIrregularidad("55");				
+				}
+			}
+			
+			if(mi_marca.isEmpty()&&(!_cmbMarcaMedidor.getSelectedItem().toString().equals("SS (SIN SERVICIO)"))&&(!_txtSerieMedidor.getText().toString().isEmpty())){
+				this.FcnIrregularidad.registrarIrregularidad("67");
+			}
+			
+			if(mi_marca.equals("SD (SERVICIO DIRECTO)")&&(mi_marca.equals(_cmbMarcaMedidor.getSelectedItem().toString()))){
+				this.FcnIrregularidad.registrarIrregularidad("67");	
+			}
+		}	
 	}
 	
 

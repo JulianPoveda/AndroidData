@@ -490,7 +490,7 @@ public class UpLoadTrabajo extends AsyncTask<ArrayList<String>, Integer, Integer
 				this._tempRegistro = this._tempTabla.get(i);
 				this.InformacionCarga.add("INSERT INTO SGD_INCONSISTENCIA_PDA (ID_INCONSISTENCIA,ID_ORDEN,NODO,VALOR,FECHA_INS,USUARIO_INS,COD_INCONSISTENCIA,CUENTA,TRABAJO,ID_PDA,ID_CONTRATO,ID_CARGA ) VALUES "
 				+"('"+this._tempRegistro.getAsString("id_inconsistencia")+"','"+this._tempRegistro.getAsString("id_orden")+"','"+this._tempRegistro.getAsString("id_nodo")+"','"
-				+this._tempRegistro.getAsString("valor").replaceAll("[\n\r]","")+"','"+this._tempRegistro.getAsString("fecha_ins")+"','"+this._tempRegistro.getAsString("login")+"','"+this._tempRegistro.getAsString("cod_inconsistencia")+"','"
+				+this._tempRegistro.getAsString("valor").replaceAll("\n","")+"','"+this._tempRegistro.getAsString("fecha_ins")+"','"+this._tempRegistro.getAsString("login")+"','"+this._tempRegistro.getAsString("cod_inconsistencia")+"','"
 				+this._tempRegistro.getAsString("cuenta")+"','"+this._tempRegistro.getAsString("trabajo")+"','"+_NPDA+"','1','@')"+";"+"&ENT&");
 			}
 		}
