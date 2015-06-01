@@ -464,17 +464,99 @@ public class Form_CensoCarga extends Activity implements OnClickListener, OnChec
     			break;
     			
     		case R.id.ErrorBtnCalcular:
-    			if(_txtRevUnidades.getText().toString().isEmpty()){
-    				Toast.makeText(this,"No ha ingresado el parametro del medidor de Impulsos o Revoluciones Kw/h.",Toast.LENGTH_SHORT).show();
-    			}else{
-    				errorImpulsos = Float.parseFloat(_txtRevUnidades.getText()+"");
-        			if(errorImpulsos>=0){
-        				ValidarCamposLinea();    				
-        			}else{
+    			if((_cmbConexion.getSelectedItemPosition()==0)){
+    				if(_txtRevUnidades.getText().toString().isEmpty()){
         				Toast.makeText(this,"No ha ingresado el parametro del medidor de Impulsos o Revoluciones Kw/h.",Toast.LENGTH_SHORT).show();
-        			}
-    			}
-    			
+    	    		}else{
+    	    			if(_txtRevUnidades.getText().toString().isEmpty()){
+            				Toast.makeText(this,"No ha ingresado el parametro del medidor de Impulsos o Revoluciones Kw/h.",Toast.LENGTH_SHORT).show();
+        	    		}else{
+        	    			if(_txtVa.getText().toString().equals("")){
+        	    				Toast.makeText(this,"No ha ingresado el Voltaje",Toast.LENGTH_SHORT).show();
+        	    			 }else{
+        	    				 if(_txtIa.getText().toString().equals("")){
+        	    					 Toast.makeText(this,"No ha ingresado la Corriente",Toast.LENGTH_SHORT).show();
+        	    				 }else{
+        	    					 if(_txtTa.getText().toString().equals("")){
+        	    						 Toast.makeText(this,"No ha ingresado el Tiempo",Toast.LENGTH_SHORT).show();
+        	    					 }else{
+        	    						 if(_txtNva.getText().toString().equals("")){
+        	    							 Toast.makeText(this,"No ha ingresado el Numero de Vueltas",Toast.LENGTH_SHORT).show();
+        	    						 }else{
+        	 	 	 	    				errorImpulsos = Float.parseFloat(_txtRevUnidades.getText()+"");
+        	 	 	 	        			if(errorImpulsos>=0){
+        	 	 	 	        				ValidarCamposLinea();    				
+        	 	 	 	        			}else{
+        	 	 	 	        				Toast.makeText(this,"No ha ingresado el parametro del medidor de Impulsos o Revoluciones Kw/h.",Toast.LENGTH_SHORT).show();
+        	 	 	 	        			}
+        	 	 	 	    			 }
+        	    					 }
+        	    				 }	    				
+        	    			  }	    			
+        				 }
+    	    		}    				
+    			 }else{    				
+    				 if((_cmbConexion.getSelectedItemPosition()==1)){
+    					 if(_txtRevUnidades.getText().toString().isEmpty()){
+    	         				Toast.makeText(this,"No ha ingresado el parametro del medidor de Impulsos o Revoluciones Kw/h.",Toast.LENGTH_SHORT).show();
+    	     	    		}else{
+	    	    				if(_txtVb.getText().toString().equals("")||_txtVa.getText().toString().equals("")){
+	    	    		    		Toast.makeText(this,"No ha ingresado el Voltaje FaseB",Toast.LENGTH_SHORT).show();
+	    	    		    	}else{
+	    	    		    		if(_txtIb.getText().toString().equals("")||_txtIa.getText().toString().equals("")){
+	    	        		    		Toast.makeText(this,"No ha ingresado la Corriente FaseB",Toast.LENGTH_SHORT).show();
+	    	        		    	}else{
+	    	        		    		if(_txtTb.getText().toString().equals("")||_txtTa.getText().toString().equals("")){
+	    	        		    			Toast.makeText(this,"No ha ingresado el Tiempo FaseB",Toast.LENGTH_SHORT).show();
+	    	        		    		}else{
+	    	        		    			if(_txtNvb.getText().toString().equals("")||_txtNva.getText().toString().equals("")){
+	    	        		    				Toast.makeText(this,"No ha ingresado el Numero Vueltas FaseB",Toast.LENGTH_SHORT).show();
+	    	        		    			}else{
+	    	        		    				errorImpulsos = Float.parseFloat(_txtRevUnidades.getText()+"");
+	    		 	 	 	        			if(errorImpulsos>=0){
+	    		 	 	 	        				ValidarCamposLinea();    				
+	    		 	 	 	        			}else{
+	    		 	 	 	        				Toast.makeText(this,"No ha ingresado el parametro del medidor de Impulsos o Revoluciones Kw/h.",Toast.LENGTH_SHORT).show();
+	    		 	 	 	        			}
+	    	        		    			}
+	    	        		    		}
+	    	    		    		}
+	    	    		    	}
+    	     	    	    }
+    				 	}
+     	    		
+    				 else{
+    					 if(_cmbConexion.getSelectedItemPosition()==2){
+    						 if(_txtRevUnidades.getText().toString().isEmpty()){
+     	         				Toast.makeText(this,"No ha ingresado el parametro del medidor de Impulsos o Revoluciones Kw/h.",Toast.LENGTH_SHORT).show();
+     	     	    		}else{
+    	    		    	 if(_txtVc.getText().toString().equals("")||_txtVa.getText().toString().equals("")||_txtVb.getText().toString().equals("")){
+    	    		    		   Toast.makeText(this,"No ha ingresado el Voltaje FaseC",Toast.LENGTH_SHORT).show();
+    	    		    	 }else{
+    	    		    		   if(_txtIc.getText().toString().equals("")||_txtIa.getText().toString().equals("")||_txtIb.getText().toString().equals("")){
+    	    		        		    Toast.makeText(this,"No ha ingresado la Corriente FaseC",Toast.LENGTH_SHORT).show();
+    	    		        	   }else{
+    	    		        		    if(_txtTc.getText().toString().equals("")||_txtTa.getText().toString().equals("")||_txtTb.getText().toString().equals("")){
+    	    		        		    	 Toast.makeText(this,"No ha ingresado el Tiempo Fasec",Toast.LENGTH_SHORT).show();
+    	    		        		    }else{
+    	    		        		    	if(_txtNvc.getText().toString().equals("")||_txtNva.getText().toString().equals("")||_txtNvb.getText().toString().equals("")){
+    	    		        		    			Toast.makeText(this,"No ha ingresado el Numero Vueltas Fasec",Toast.LENGTH_SHORT).show();
+    	    		        		    	}else{
+    	    		        		    			errorImpulsos = Float.parseFloat(_txtRevUnidades.getText()+"");
+    	    			 	 	 	        		if(errorImpulsos>=0){
+    	    			 	 	 	        			ValidarCamposLinea();    				
+    	    			 	 	 	        		}else{
+    	    			 	 	 	        			Toast.makeText(this,"No ha ingresado el parametro del medidor de Impulsos o Revoluciones Kw/h.",Toast.LENGTH_SHORT).show();
+    	    			 	 	 	        			}
+    	    		        		    			}
+    	    		        		    	}
+    	    		        	   		}
+    	    		    	 	 }
+    					    }
+    	    		    }
+    				 }
+    			 }	 
+    				
     			break;
     		
     		case R.id.ErrorBtnGuardar:
@@ -492,20 +574,31 @@ public class Form_CensoCarga extends Activity implements OnClickListener, OnChec
         			Registro.put("usuario_ins", CedulaUsuario);
         			Registro.put("fp", _lblFp1.getText().toString());
         			Registro.put("fase", "1");
-        			if(_txtVa.getText().toString().equals("")){
-    		    		Toast.makeText(this,"No ha ingresado el Voltaje",Toast.LENGTH_SHORT).show();
-    		    	}else{
-    		    		if(_txtIa.getText().toString().equals("")){
-        		    		Toast.makeText(this,"No ha ingresado la Corriente",Toast.LENGTH_SHORT).show();
-        		    	}else{
-    		    			if(CensoSQL.InsertRegistro("amd_pct_error", Registro)){
-    	        				Toast.makeText(this,"Factor de potencia de la fase A guardado correctamente",Toast.LENGTH_SHORT).show();
-    	        			}else{
-    	        				Toast.makeText(this,"Error al guardar el factor de potencia de la fase A.",Toast.LENGTH_SHORT).show();
-    	        			}	
-    		    		}
-    		    	}
-        			
+        			if(_txtRevUnidades.getText().toString().isEmpty()){
+        				Toast.makeText(this,"No ha ingresado el parametro del medidor de Impulsos o Revoluciones Kw/h.",Toast.LENGTH_SHORT).show();
+    	    		}else{
+	        			if(_txtVa.getText().toString().equals("")){
+	    		    		Toast.makeText(this,"No ha ingresado el Voltaje",Toast.LENGTH_SHORT).show();
+	    		    	}else{
+	    		    		if(_txtIa.getText().toString().equals("")){
+	        		    		Toast.makeText(this,"No ha ingresado la Corriente",Toast.LENGTH_SHORT).show();
+	        		    	}else{
+	        		    		if(_txtTa.getText().toString().equals("")){
+	        		    			Toast.makeText(this,"No ha ingresado el Tiempo",Toast.LENGTH_SHORT).show();
+	        		    		}else{
+	        		    			if(_txtNva.getText().toString().equals("")){
+	        		    				Toast.makeText(this,"No ha ingresado el Numero Vueltas",Toast.LENGTH_SHORT).show();
+	        		    			}else{
+	        		    				if(CensoSQL.InsertRegistro("amd_pct_error", Registro)){
+	        		    					Toast.makeText(this,"Factor de potencia de la fase A guardado correctamente",Toast.LENGTH_SHORT).show();
+	        		    				}else{
+	        		    					Toast.makeText(this,"Error al guardar el factor de potencia de la fase A.",Toast.LENGTH_SHORT).show();
+	        		    				}	
+	        		    			}
+	        		    		}
+	        		    	}	
+	    		    	}
+    	    		}	
     			}
     			
     			if((_cmbConexion.getSelectedItemPosition()==1)||(_cmbConexion.getSelectedItemPosition()==2)){
@@ -521,11 +614,27 @@ public class Form_CensoCarga extends Activity implements OnClickListener, OnChec
         			Registro.put("usuario_ins", CedulaUsuario);
         			Registro.put("fp", _lblFp2.getText().toString());
         			Registro.put("fase", "2");
-        			if(CensoSQL.InsertRegistro("amd_pct_error", Registro)){
-        				Toast.makeText(this,"Factor de potencia de la fase B guardado correctamente",Toast.LENGTH_SHORT).show();
-        			}else{
-        				Toast.makeText(this,"Error al guardar el factor de potencia de la fase B.",Toast.LENGTH_SHORT).show();
-        			}
+        			if(_txtVb.getText().toString().equals("")){
+    		    		Toast.makeText(this,"No ha ingresado el Voltaje FaseB",Toast.LENGTH_SHORT).show();
+    		    	}else{
+    		    		if(_txtIb.getText().toString().equals("")){
+        		    		Toast.makeText(this,"No ha ingresado la Corriente FaseB",Toast.LENGTH_SHORT).show();
+        		    	}else{
+        		    		if(_txtTb.getText().toString().equals("")){
+        		    			Toast.makeText(this,"No ha ingresado el Tiempo FaseB",Toast.LENGTH_SHORT).show();
+        		    		}else{
+        		    			if(_txtNvb.getText().toString().equals("")){
+        		    				Toast.makeText(this,"No ha ingresado el Numero Vueltas FaseB",Toast.LENGTH_SHORT).show();
+        		    			}else{
+				        			if(CensoSQL.InsertRegistro("amd_pct_error", Registro)){
+				        				Toast.makeText(this,"Factor de potencia de la fase B guardado correctamente",Toast.LENGTH_SHORT).show();
+				        			}else{
+				        				Toast.makeText(this,"Error al guardar el factor de potencia de la fase B.",Toast.LENGTH_SHORT).show();
+				        			}
+        		    			}
+        		    		}
+    		    		}
+    		    	}
     			}
     			
     			if(_cmbConexion.getSelectedItemPosition()==2){
@@ -541,11 +650,27 @@ public class Form_CensoCarga extends Activity implements OnClickListener, OnChec
         			Registro.put("usuario_ins", CedulaUsuario);
         			Registro.put("fp", _lblFp3.getText().toString());
         			Registro.put("fase", "3");
-        			if(CensoSQL.InsertRegistro("amd_pct_error", Registro)){
-        				Toast.makeText(this,"Factor de potencia de la fase C guardado correctamente",Toast.LENGTH_SHORT).show();
-        			}else{
-        				Toast.makeText(this,"Error al guardar el factor de potencia de la fase C.",Toast.LENGTH_SHORT).show();
-        			}
+        			if(_txtVc.getText().toString().equals("")){
+    		    		Toast.makeText(this,"No ha ingresado el Voltaje FaseC",Toast.LENGTH_SHORT).show();
+    		    	}else{
+    		    		if(_txtIc.getText().toString().equals("")){
+        		    		Toast.makeText(this,"No ha ingresado la Corriente FaseC",Toast.LENGTH_SHORT).show();
+        		    	}else{
+        		    		if(_txtTc.getText().toString().equals("")){
+        		    			Toast.makeText(this,"No ha ingresado el Tiempo Fasec",Toast.LENGTH_SHORT).show();
+        		    		}else{
+        		    			if(_txtNvc.getText().toString().equals("")){
+        		    				Toast.makeText(this,"No ha ingresado el Numero Vueltas Fasec",Toast.LENGTH_SHORT).show();
+        		    			}else{
+				        			if(CensoSQL.InsertRegistro("amd_pct_error", Registro)){
+				        				Toast.makeText(this,"Factor de potencia de la fase C guardado correctamente",Toast.LENGTH_SHORT).show();
+				        			}else{
+				        				Toast.makeText(this,"Error al guardar el factor de potencia de la fase C.",Toast.LENGTH_SHORT).show();
+				        			}
+        		    			}
+        		    		}
+        		    	}
+    		    	}
     			}
     			break;
     			
